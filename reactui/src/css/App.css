@@ -1,0 +1,27 @@
+
+.App{
+  text-align: center;
+  background-size: auto;
+  background-repeat: repeat;
+  height: 100%;
+  align-items: center;
+}
+
+.App-header{
+  padding: 5px;
+  color: #fff;
+  font-family: Ubuntu;
+  font-size : x-large;
+}
+
+.App-Content{
+  color: #000;
+  align-items: center;
+  margin: 3%;
+}
+
+#movie-img{
+  height: auto;
+  width: 40%;
+  align-self: center;
+}

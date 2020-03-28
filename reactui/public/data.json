@@ -9,8 +9,8 @@
             "pros":"",
             "improvements":""
         }],
-        "rating":"",
-        "genre":[],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
         "language":"",
         "links":[{
             "type":"",
@@ -33,8 +33,8 @@
             "pros":"",
             "improvements":""
         }],
-        "rating":"",
-        "genre":[],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
         "language":"",
         "links":[{
             "type":"",
@@ -57,8 +57,8 @@
             "pros":"",
             "improvements":""
         }],
-        "rating":"",
-        "genre":[],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
         "language":"",
         "links":[{
             "type":"",
@@ -81,8 +81,8 @@
             "pros":"",
             "improvements":""
         }],
-        "rating":"",
-        "genre":[],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
         "language":"",
         "links":[{
             "type":"",
@@ -105,8 +105,8 @@
             "pros":"",
             "improvements":""
         }],
-        "rating":"",
-        "genre":[],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
         "language":"",
         "links":[{
             "type":"",
@@ -129,8 +129,296 @@
             "pros":"",
             "improvements":""
         }],
-        "rating":"",
-        "genre":[],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"7",
+        "titleImage":"https://upload.wikimedia.org/wikipedia/en/c/cc/K.G.F_Chapter_1_poster.jpg",
+        "title":"KGF Chapter 1",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"8",
+        "titleImage":"https://upload.wikimedia.org/wikipedia/en/3/3b/URI_-_New_poster.jpg",
+        "title":"URI",
+        "year":"2018",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"9",
+        "titleImage":"https://m.media-amazon.com/images/M/MV5BMTc4ODA2MjQyMF5BMl5BanBnXkFtZTgwMTY3MDI1NzM@._V1_QL50_SY1000_SX615_AL_.jpg",
+        "title":"Bell Bottom",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"10",
+        "titleImage":"https://static.toiimg.com/thumb/msid-71060697,width-219,height-317,imgsize-28563/71060697.jpg",
+        "title":"Geetha",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"11",
+        "titleImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTeXj7DKJpRm_SrJulH6Wooh9r181Fl8Sb44kL0vYSUpG6JO6Ib",
+        "title":"Gantu Moote",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"12",
+        "titleImage":"https://i.pinimg.com/originals/48/27/8c/48278c9195d2646dac152ce447cd3024.jpg",
+        "title":"Googly",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"13",
+        "titleImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSOCMbHL3htGdCWIj4bvxvCoEW6dk72RVsFoaa6f28ZnHWa1du2",
+        "title":"Gultoo",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"14",
+        "titleImage":"https://moifightclub.files.wordpress.com/2013/12/1098051_613543508681391_310772591_n.jpg",
+        "title":"Ulidavaru Kandante",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"15",
+        "titleImage":"http://www.impawards.com/intl/india/2013/posters/lucia_ver9.jpg",
+        "title":"Lucia",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"16",
+        "titleImage":"https://www.comingtrailer.com/images/poster/99-Kannada.jpg",
+        "title":"99",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"17",
+        "titleImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3iu1JPonvuyW7cflvf4KqEPoBepmf54-f9QJlI8jts6rSYFlY",
+        "title":"Chak de India",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
+        "language":"",
+        "links":[{
+            "type":"",
+            "linkText":""
+        }],
+        "cast":[
+            {
+                "name":"",
+                "role":""
+            }
+        ]
+    },
+    {
+        "reviewId":"18",
+        "titleImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3iu1JPonvuyW7cflvf4KqEPoBepmf54-f9QJlI8jts6rSYFlY",
+        "title":"Maya Bazaar",
+        "year":"2020",
+        "review":[{
+            "synopsis":"",
+            "pros":"",
+            "improvements":""
+        }],
+        "rating":"9.0/10",
+        "genre":["Action","Thriller"],
         "language":"",
         "links":[{
             "type":"",

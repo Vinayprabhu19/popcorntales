@@ -1,17 +1,15 @@
-
 .App{
   text-align: center;
+  width: 100%;
+  height: 100%;
   background-size: auto;
   background-repeat: repeat;
   height: 100%;
   align-items: center;
 }
 
-.App-header{
-  padding: 5px;
-  color: #fff;
-  font-family: Ubuntu;
-  font-size : x-large;
+.rightToolbar{
+  margin-left: auto;
 }
 
 .App-Content{
@@ -26,12 +24,45 @@
   align-self: center;
 }
 
+#autocomplete-box{
+  width: 120px;
+  margin-right: 10px;
+}
+
+#appBar{
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  vertical-align: middle;
+  color: black;
+ 
+}
+
+#title{
+  height: auto;
+  display: inline-block;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: normal;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+  vertical-align: middle;
+}
+footer{
+  align-content: center;
+  align-items: center;
+}
+footer nav{
+  display:inline-block;
+}
 @media screen and (max-width: 1100px) {
   #movie-img{
     object-fit: contain;
     width: 60%;
   }
-}
+  #title{
+    font-size: 1rem;
+  }
+} 
 
 @media screen and (max-width: 600px) {
   #movie-img{
@@ -41,9 +72,15 @@
   .App-Content{
     margin: 2%;
   }
+  #title{
+    font-size: 0.9rem;
+  }
 }
 @media screen and (max-width: 350px) {
   .App-Content{
     margin: 1%;
+  }
+  #title{
+    font-size: 0.8rem;
   }
 }

@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import '../css/component.css';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
+import Star from '@material-ui/icons/Star';
+
 
 class CardLayout extends Component {
   
   render() {
     return <div className="card-container">
       <a className="card" onClick={()=> this.props.onCardClick()}>
-          
               <figure id="card-figure">
-                <img id="card-img" alt="Movie" src={this.props.titleImage}/>
+                <img id="card-img" alt="Movie" src={this.props.review.titleImage}/>
               </figure>
               <figcaption id="card-content" >
-              <p className="title">{this.props.title}</p>
+              <Star id="star"/>
+              <h1>{this.props.review.rating}</h1>
+              <div>
+                {
+                  this.props.review.genre.map(g =>(
+                  <h2 key={g}>{g}</h2>
+                  ))
+                }
+              </div>
               </figcaption>
       </a>
-      <p className="title">{this.props.title}</p>
+      <p className="title">{this.props.review.title}</p>
     </div>
   }
 }

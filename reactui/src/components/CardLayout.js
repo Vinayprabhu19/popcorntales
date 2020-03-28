@@ -7,12 +7,16 @@ class CardLayout extends Component {
   
   render() {
     return <div className="card-container">
-      <Card className="card" onClick={()=> this.props.onCardClick()}>
-          <CardContent>
-              <img id="card-img" alt="Movie" src={this.props.titleImage}/>
-          </CardContent>
-      </Card>
-      <p class="title">{this.props.title}</p>
+      <a className="card" onClick={()=> this.props.onCardClick()}>
+          
+              <figure id="card-figure">
+                <img id="card-img" alt="Movie" src={this.props.titleImage}/>
+              </figure>
+              <figcaption id="card-content" >
+              <p className="title">{this.props.title}</p>
+              </figcaption>
+      </a>
+      <p className="title">{this.props.title}</p>
     </div>
   }
 }

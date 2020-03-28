@@ -1,11 +1,9 @@
 .card{
-    width:250px;
-    height: 300px; 
     align-items: center;
+    padding: 0;
+
 }
 .card-container{
-    width: 250px;
-    height: auto; 
     overflow-wrap: break-word;
     overflow: hidden;
     text-overflow: clip;
@@ -13,6 +11,7 @@
     margin-right: 4%;
     margin-top: 1%;
     margin-bottom: 1%;
+    display: block;
 }
 .cardGridList{
     width: 100%;
@@ -20,11 +19,9 @@
     justify-content: center;
     flex-wrap: nowrap;
     /* margin: 40px; */
-  
-
 }
 .title{
-    width: 250px;
+    width: 150px;
     font-size: .95em;
     font-weight: bold;
     text-align: left;
@@ -36,11 +33,69 @@
     text-overflow: ellipsis;
 }
 #card-img{
-    width:250px;
-    padding: 10px;
+    width: 250px;
+    padding: 3px;
     height: 300px;
     object-fit: stretch;
     align-self: auto;
     
 }
+#card-figure:hover{
+    opacity: 0.3;
+    /* visibility: hidden; */
+}
+#card-content{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    font-size: .95em;
+    left: 0;
+    top: 10%;
+    text-align: center;
+    visibility: hidden;
+    align-content: center;
+    align-items: center;
+}
+#card-figure:hover ~ #card-content{
+    visibility: visible;
+}
+@media screen and (max-width: 1100px) {
+    #card-img {
+        width: 300px;
+        height: 400px;
+    }
+    .card-container{
+        margin-left : 2%;
+        margin-right: 2%;
+    }
+  }
 
+@media screen and (max-width: 600px) {
+    #card-img {
+        width: 150px;
+        height: 210px;
+    }
+    .card-container{
+        margin-left : 1%;
+        margin-right: 1%;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    #card-img {
+        width: 120px;
+        height: 160px;
+    }
+    .card-container{
+        margin-left : 1%;
+        margin-right: 1%;
+        padding: 0;
+    }
+    .title{
+        width: 120px;
+        font-size: .7em;
+    }
+  }
+  
+  

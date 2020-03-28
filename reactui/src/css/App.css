@@ -22,6 +22,28 @@
 
 #movie-img{
   height: auto;
-  width: 40%;
+  width: 50%;
   align-self: center;
+}
+
+@media screen and (max-width: 1100px) {
+  #movie-img{
+    object-fit: contain;
+    width: 60%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #movie-img{
+    object-fit: contain;
+    width: 300px;
+  }
+  .App-Content{
+    margin: 2%;
+  }
+}
+@media screen and (max-width: 350px) {
+  .App-Content{
+    margin: 1%;
+  }
 }

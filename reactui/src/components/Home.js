@@ -10,15 +10,19 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import Pagination from "./Pagination"
+import { useHistory } from "react-router-dom";
 
-class App extends Component {
+class Home extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
     this.state = { 
       reviews: [],
-      totalPages:0
+      totalPages:0,
+      currentList:[]
      };
+
+     this.onPageChanged = this.onPageChanged.bind(this);
   
   }
 
@@ -30,16 +34,36 @@ class App extends Component {
           const rvs = result.map(item => {
             return item;
           });
+          var currentPages = [];
+          var len = (rvs.length > 8)?8:rvs.length;
+          for(var i=0;i< len ;i++){
+            currentPages.push(rvs[i]);
+          }
+
           this.setState({
-            activePage:1,
-            totalPages:rvs.length,
-            reviews: rvs
+            activePage: 1,
+            totalPages: rvs.length,
+            reviews: rvs,
+            currentList : currentPages
           });
       });   
   }
 
   onPageChanged(e){
-    console.log(e);
+      var currentPages = [];
+      var start = 8*(e.currentPage-1);
+      var len = (this.state.reviews.length > 8*(e.currentPage))?8*(e.currentPage):this.state.reviews.length;
+      for(var i=start;i< len ;i++){
+        currentPages.push(this.state.reviews[i]);
+      }
+
+      this.setState({
+        currentList : currentPages
+      });
+  }
+
+  onCardClick(image){
+    this.props.history.push('/review/'+image.title);
   }
 
 render(){
@@ -66,11 +90,11 @@ render(){
         </Toolbar>
       </AppBar>
       <img id="movie-img" src={movieImg} alt="Movie"/>
-      
+      <p id="bigTitle">POPCORN TALES</p>
       <div className="App-Content">
         <GridList className="cardGridList"  >
-                      {this.state.reviews.map(image => (
-                          <CardLayout key={image.reviewId} onCardClick ={()=> console.log(image)} review={image}/>
+                      {this.state.currentList.map(image => (
+                          <CardLayout key={image.reviewId} onCardClick ={()=> {this.onCardClick(image)}} review={image}/>
                       ))}
         </GridList>
       </div>
@@ -84,4 +108,4 @@ render(){
 }
 }
 
-export default App;
+export default Home;

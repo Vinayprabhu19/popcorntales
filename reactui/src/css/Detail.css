@@ -1,0 +1,190 @@
+
+#container{
+    width: 100%;
+  height: 100%;
+}
+#appBar{
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    vertical-align: middle;
+    color: black;
+   
+  }
+
+.movie-header{
+    margin: 5%;
+}
+#title{
+    visibility: visible;
+    text-decoration: none;
+}
+
+#card{
+    width: 25%;
+    float: left;
+    align-items: center;
+}
+
+#movie-description{
+    width: 40%;
+    float: left;
+    overflow-wrap: normal;
+}
+
+#trailer_div{
+    width: 400px;
+    height: 280px;
+    float: right;
+}
+
+#trailer{
+    width: 400px;
+    height: 280px;
+}
+.star-container{
+    margin-top: 3%;
+    display:inline-block;
+}
+
+#starIcon{
+    width: 30px;
+    height: 30px;
+    fill: gold;
+}
+
+
+#movieTitle{
+    font-size: 1.3em;
+    font-weight: bolder;
+    margin: 0;
+}
+
+#movieYear{
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0;
+}
+
+#ratingText{
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+
+#instagramBtn{
+    float: none;
+    clear: left;
+}
+@media screen and (min-width: 2000px) {
+    #trailer_div{
+        width: 40%;
+        float: right;
+    }
+    
+    #trailer{
+        width: 700px;
+        height: 400px;
+    }
+
+    #card{
+        width: 30%;
+        float: left;
+        align-items: center;
+    }
+    
+    #movie-description{
+        width: 20%;
+        float: left;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+
+}
+@media screen and (max-width: 1398px) {
+    #card{
+        width: 30%;
+        float: left;
+        align-items: center;
+    }
+    
+    #movie-description{
+        width: 30%;
+        float: left;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    #trailer_div{
+        width: 40%;
+    }
+    /* #trailer{
+        visibility: hidden;
+    } */
+    #starIcon{
+        width: 20px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #card{
+        width: 40%;
+        float: left;
+        align-items: center;
+    }
+    
+    #movie-description{
+        width: 60%;
+        float: left;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    #trailer_div{
+        width: 0%;
+    }
+    #trailer{
+        visibility: hidden;
+    }
+    #starIcon{
+        width: 15x;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #card{
+        width: 40%;
+        float: left;
+        align-items: center;
+    }
+    
+    #movie-description{
+        width: 60%;
+        float: left;
+        padding-left: 5%;
+        padding-right: 5%;
+    }
+    
+    #trailer_div{
+        width: 0%;
+    }
+    #starIcon{
+        width: 10px;
+    }
+    #movieTitle{
+        font-size: 1.1em;
+        font-weight: bolder;
+        margin: 0;
+    }
+    
+    #movieYear{
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 0;
+    }
+    
+    #ratingText{
+        font-size: 1em;
+        font-weight: bolder;
+    }
+}

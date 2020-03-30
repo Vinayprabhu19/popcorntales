@@ -12,8 +12,8 @@ class CardLayout extends Component {
                 <img id="card-img" alt="Movie" src={this.props.review.titleImage}/>
               </figure>
               <figcaption id="card-content" >
-              <Star id="star"/>
-              <h1>{this.props.review.rating}</h1>
+              <Star class="star"/>
+              <p id="ratingText">{this.props.review.rating}/10</p>
               <div>
                 {
                   this.props.review.genre.map(g =>(

@@ -4,7 +4,6 @@
   height: 100%;
   background-size: auto;
   background-repeat: repeat;
-  height: 100%;
   align-items: center;
 }
 
@@ -15,13 +14,20 @@
 .App-Content{
   color: #000;
   align-items: center;
-  margin: 3%;
+  margin: 2%;
 }
 
 #movie-img{
   height: auto;
   width: 50%;
   align-self: center;
+}
+
+#bigTitle{
+  font-size: x-large;
+  font-weight: bold;
+  font-family: Ubuntu;
+  visibility: hidden;
 }
 
 #autocomplete-box{
@@ -59,8 +65,14 @@ footer nav{
     object-fit: contain;
     width: 60%;
   }
+ 
+  #bigTitle{
+    visibility: visible;
+  }
+
   #title{
     font-size: 1rem;
+    visibility: hidden;
   }
 } 
 
@@ -72,15 +84,26 @@ footer nav{
   .App-Content{
     margin: 2%;
   }
+  
+  #bigTitle{
+    visibility: visible;
+  }
   #title{
     font-size: 0.9rem;
+    visibility: hidden;
   }
 }
 @media screen and (max-width: 350px) {
   .App-Content{
     margin: 1%;
   }
+  
+  #bigTitle{
+    visibility: visible;
+  }
+
   #title{
     font-size: 0.8rem;
+    visibility: hidden;
   }
 }

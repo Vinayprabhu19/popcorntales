@@ -62,7 +62,7 @@ render(){
         
         <div className="movie-header">
             <div id="card" >
-            <CardLayout review={this.state.selectedMovie}/>
+            <CardLayout review={this.state.selectedMovie} onCardClick={()=>{}}/>
             </div>
             <div id="movie-description">
                 <p id="movieTitle">{this.state.selectedMovie.title}</p>

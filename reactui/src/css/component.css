@@ -4,7 +4,6 @@
 }
 .card-container{
     width: 250px;
-    height: 300px;
     overflow-wrap: break-word;
     overflow: hidden;
     text-overflow: clip;
@@ -23,16 +22,29 @@
 }
 .title{
     width: 250px;
-    font-size: .95em;
-    font-weight: bold;
+    font-size: 1.05em;
+    font-weight: bolder;
     text-align: left;
     margin-left: 3%;
-    margin-top: 2%;
+    margin-bottom: 0;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: darkblue;
+}
+.language{
+    width: 250px;
+    font-size: .95em;
+    font-weight: bolder;
+    text-align: left;
+    margin-left: 3%;
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 #card-img{
     width: 250px;
     height: 300px;
@@ -62,7 +74,7 @@
     visibility: visible;
 }
 
-.star{
+#star{
     width: 100px;
     height: 50px;
     fill: gold;
@@ -70,7 +82,7 @@
 
 #ratingText{
     font-weight: bolder;
-    font-size: 2.2em;
+    font-size: 2.8em;
 }
 
 @media screen and (min-width: 2000px) {
@@ -80,11 +92,14 @@
     }
     .card-container{
         width: 400px;
-        height: 500px;
         margin-left : 2%;
         margin-right: 2%;
     }
     .title{
+        width: 400px;
+        font-size: .85em;
+    }
+    .language{
         width: 400px;
         font-size: .7em;
     }
@@ -97,13 +112,19 @@
     }
     .card-container{
         width: 150px;
-        height: 210px;
-        margin-left : 1%;
-        margin-right: 1%;
+        margin-left : 2%;
+        margin-right: 2%;
     }
     .title{
         width: 150px;
+        font-size: .85em;
+    }
+    .language{
+        width: 150px;
         font-size: .7em;
+    }
+    #card-content{
+        visibility: hidden;
     }
   }
 
@@ -114,14 +135,20 @@
     }
     .card-container{
         width: 120px;
-        height: 160px;
-        margin-left : 1%;
-        margin-right: 1%;
+        margin-left : 2%;
+        margin-right: 2%;
         padding: 0;
     }
     .title{
         width: 120px;
+        font-size: .85em;
+    }
+    .language{
+        width: 120px;
         font-size: .7em;
+    }
+    #card-content{
+        visibility: hidden;
     }
   }
   

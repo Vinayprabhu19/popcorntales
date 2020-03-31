@@ -9,15 +9,9 @@ manifest-*
 *.mtar
 *.war
 *.war.original
-cs-backend/cs-tool/target/
-cs-assembly/target/
-cs-backend/cs-tool/.settings/
+reactui/package-lock.json
 .mta/
-cs-backend/cs-img-service/__pycache__/
-cs-backend/cs-img-service/camouflage/__pycache__/
-cs-backend/cs-img-service/camouflage/migrations/
-cs-backend/cs-img-service/configuration/__pycache__/
-Servers/
+
 
 ### NodeJS related ###
 npm-debug.log

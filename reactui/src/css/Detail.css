@@ -13,29 +13,37 @@
   }
 
 .movie-header{
+    width: 100%;
     margin: 5%;
 }
+
+.movie-detail{
+    width: 100%;
+}
+
 #title{
     visibility: visible;
     text-decoration: none;
 }
 
 #card{
-    width: 25%;
+    width: fit-content;
     float: left;
     align-items: center;
 }
 
 #movie-description{
-    width: 40%;
+    width: fit-content;
     float: left;
     overflow-wrap: normal;
+    padding-left: 5%;
 }
 
 #trailer_div{
     width: 400px;
     height: 280px;
-    float: right;
+    float: left;
+    margin-left: 5%;
 }
 
 #trailer{
@@ -85,6 +93,10 @@
     font-size: 1.2em;
     font-weight: bolder;
 }
+
+.tab{
+    width: 33%;
+}
 @media screen and (min-width: 2000px) {
     #trailer_div{
         width: 40%;
@@ -94,16 +106,15 @@
     #trailer{
         width: 700px;
         height: 400px;
+        position: absolute;
     }
 
     #card{
-        width: 30%;
         float: left;
         align-items: center;
     }
     
     #movie-description{
-        width: 20%;
         float: left;
         padding-left: 5%;
         padding-right: 5%;
@@ -113,20 +124,19 @@
 }
 @media screen and (max-width: 1398px) {
     #card{
-        width: 30%;
         float: left;
         align-items: center;
     }
     
     #movie-description{
-        width: 30%;
         float: left;
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 3%;
     }
     
     #trailer_div{
-        width: 40%;
+        width: 200px;
+        height: auto;
+        padding-left: 1%;
     }
     /* #trailer{
         visibility: hidden;
@@ -138,13 +148,11 @@
 
 @media screen and (max-width: 900px) {
     #card{
-        width: 40%;
         float: left;
         align-items: center;
     }
     
     #movie-description{
-        width: 60%;
         float: left;
         padding-left: 5%;
         padding-right: 5%;
@@ -155,6 +163,7 @@
     }
     #trailer{
         visibility: hidden;
+        position: absolute;
     }
     #starIcon{
         width: 15x;
@@ -166,13 +175,11 @@
 
 @media screen and (max-width: 400px) {
     #card{
-        width: 40%;
         float: left;
         align-items: center;
     }
     
     #movie-description{
-        width: 60%;
         float: left;
         padding-left: 5%;
         padding-right: 5%;

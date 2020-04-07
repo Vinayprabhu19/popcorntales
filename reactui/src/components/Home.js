@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import movieImg from '../resources/movie.png';
 import '../css/App.css';
-import { Button } from '@material-ui/core';
 import CardLayout from "./CardLayout";
 import GridList from '@material-ui/core/GridList';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -10,7 +9,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import Pagination from "./Pagination"
-import { useHistory } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {

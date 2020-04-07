@@ -1,14 +1,14 @@
 import React from "react";
 import { Component } from 'react';
-import TextField from '@material-ui/core/TextField';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import InstagramIcon from '@material-ui/icons/Instagram';
 import CardLayout from "./CardLayout";
 import "../css/Detail.css";
 import Stars from "./Stars";
-import Theaters from '@material-ui/icons/Theaters';
 import { Button } from "@material-ui/core";
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Paper from '@material-ui/core/Paper';
 
 class Home extends Component {
   constructor(props) {
@@ -49,6 +49,10 @@ class Home extends Component {
     });   
   }
 
+  handleChange(){
+
+  }
+
 render(){
   return (
     <div id="container">
@@ -78,7 +82,15 @@ render(){
                 </iframe>
             </div>
         </div>
-          
+        <div className="movie-detail">
+          <AppBar position="static">
+            <Tabs onChange={this.handleChange}  variant="fullWidth" aria-label="simple tabs example">
+              <Tab label="Item One" className="tab"/>
+              <Tab label="Item Two" className="tab"/>
+              <Tab label="Item Three" className="tab"/>
+            </Tabs>
+          </AppBar>
+        </div>
     </div>
 
   );

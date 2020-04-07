@@ -59,7 +59,7 @@
 }
 #card-content{
     width: 100%;
-    height: auto;
+    height: fit-content;
     position: absolute;
     z-index: 2;
     font-size: .95em;

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import '../css/component.css';
 import Star from '@material-ui/icons/Star';
+import Paper from '@material-ui/core/Paper';
 
 
 class CardLayout extends Component {
   
   render() {
     return <div className="card-container">
-      <a className="card" onClick={()=> this.props.onCardClick()}>
+      <Paper elevation={4} className="card" onClick={()=> this.props.onCardClick()}>
               <figure id="card-figure">
                 <img id="card-img" alt="Movie" src={this.props.review.titleImage}/>
               </figure>
@@ -22,7 +23,7 @@ class CardLayout extends Component {
                 }
               </div>
               </figcaption>
-      </a>
+      </Paper>
       <p className="title">{this.props.review.title}</p>
       <p className="language">{this.props.review.language}</p>
     </div>

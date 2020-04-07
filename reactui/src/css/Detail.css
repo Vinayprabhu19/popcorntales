@@ -24,6 +24,7 @@
 #title{
     visibility: visible;
     text-decoration: none;
+    margin-left: 20px;
 }
 
 #card{
@@ -63,7 +64,7 @@
 }
 
 
-#movieTitle{
+#movieTitle , #genre{
     font-size: 1.3em;
     font-weight: bolder;
     margin: 0;
@@ -75,8 +76,9 @@
     margin: 0;
 }
 
+
 #ratingText{
-    font-size: 1.9em;
+    font-size: 1.4em;
     font-weight: bolder;
 }
 
@@ -87,6 +89,7 @@
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-top: 20px;
 }
 
 .genreText{
@@ -157,14 +160,7 @@
         padding-left: 5%;
         padding-right: 5%;
     }
-    
-    #trailer_div{
-        width: 0%;
-    }
-    #trailer{
-        visibility: hidden;
-        position: absolute;
-    }
+  
     #starIcon{
         width: 15x;
     }
@@ -185,13 +181,11 @@
         padding-right: 5%;
     }
     
-    #trailer_div{
-        width: 0%;
-    }
+
     #starIcon{
         width: 10px;
     }
-    #movieTitle{
+    #movieTitle , #genre{
         font-size: 1.1em;
         font-weight: bolder;
         margin: 0;

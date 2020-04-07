@@ -4,6 +4,7 @@
 }
 .card-container{
     width: 250px;
+    height: fit-content;
     overflow-wrap: break-word;
     overflow: hidden;
     text-overflow: clip;

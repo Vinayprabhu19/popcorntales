@@ -9,14 +9,18 @@ import { Button } from "@material-ui/core";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Paper from '@material-ui/core/Paper';
+import HomeButton from '@material-ui/icons/Home';
+import Hidden from '@material-ui/core/Hidden';
 
 class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
         selectedMovie: {
-            genre : []
-        }
+            genre : [],
+            genreText :""
+        },
+        selectedTab:0
     };
   }
 
@@ -39,6 +43,14 @@ class Home extends Component {
                break;
             }
         }
+        if(selectedMovie.genre.length>0){
+          var str= selectedMovie.genre[0];
+          for(var i=1;i<selectedMovie.genre.length;i++){
+              str = str+"/"+selectedMovie.genre[i];
+          }
+          selectedMovie.genreText=str;
+        }
+      
         if(selectedMovie ==null){
             this.props.history.push('/');
         }
@@ -49,17 +61,38 @@ class Home extends Component {
     });   
   }
 
-  handleChange(){
-
+  handleChange(v){
+    this.setState({
+      selectedTab:v
+    })
   }
 
+  getToolbar = () => {
+    switch(this.state.selectedTab) {
+        case 1: {
+            return <p>Synopsis</p> 
+        }
+        case 2: {
+          return <p>Movie</p> 
+      }
+      case 3: {
+        return <p>cast</p> 
+    }
+        default: {
+            return <p></p>
+        }
+    }   
+};
+
 render(){
+  const toolbar = this.getToolbar();
   return (
     <div id="container">
         <AppBar id="appBar" position="static">
         <Toolbar>
         <div>
-            <a id="title" href="/">Popcorn Tales</a>
+            <a href="/"><HomeButton/></a>
+            <p id="title">Popcorn Tales</p>
           </div>
           </Toolbar>
         </AppBar>
@@ -72,24 +105,32 @@ render(){
                 <p id="movieTitle">{this.state.selectedMovie.title}</p>
                 <p id="movieYear">{this.state.selectedMovie.year}</p>
                 <Stars stars={this.state.selectedMovie.rating}/>
+                <p id="genre">{this.state.selectedMovie.genreText}</p>
                 <div>
                 <Button id="instagramBtn" variant="contained" color="primary" href={this.state.selectedMovie.instagramReview}>Instagram</Button>
                 </div>
                
             </div>
-            <div id="trailer_div">
-                <iframe id="trailer" src={this.state.selectedMovie.trailer}>
-                </iframe>
-            </div>
+            <Hidden mdDown>
+              <div id="trailer_div">
+                  <iframe id="trailer" src={this.state.selectedMovie.trailer}>
+                  </iframe>
+              </div>
+            </Hidden>
+            
         </div>
         <div className="movie-detail">
           <AppBar position="static">
-            <Tabs onChange={this.handleChange}  variant="fullWidth" aria-label="simple tabs example">
-              <Tab label="Item One" className="tab"/>
-              <Tab label="Item Two" className="tab"/>
-              <Tab label="Item Three" className="tab"/>
+            <Tabs onChange={(e,v)=>{this.handleChange(v)}}  value={this.state.selectedTab} variant="fullWidth" aria-label="simple tabs example">
+              <Tab value={0} label="Synopsis" className="tab"/>
+              <Tab value={1} label="Review" className="tab"/>
+              <Tab value={2} label="Cast" className="tab"/>
+              <Tab value={3} label="Ticket" className="tab"/>
             </Tabs>
           </AppBar>
+          <div>
+          {toolbar}
+          </div>
         </div>
     </div>
 

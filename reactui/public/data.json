@@ -29,11 +29,11 @@
         "titleImage":"https://i0.wp.com/www.socialnews.xyz/wp-content/uploads/2020/03/07/Dia-movie-is-now-streaming-on-Amazon-Prime-Video.jpg",
         "title":"Dia",
         "year":"2019",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -53,11 +53,11 @@
         "titleImage":"https://images.fandango.com/ImageRenderer/0/0/redesign/static/img/default_poster.png/0/images/masterrepository/Fandango/222771/Kannum%20Kannum.jpg",
         "title":"Kannum kannum kollaiyadithaal",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Tamil",
@@ -77,11 +77,11 @@
         "titleImage":"https://in.bmscdn.com/iedb/movies/images/mobile/thumbnail/large/popcorn-monkey-tiger-et00126790-14-02-2020-11-49-59.jpg",
         "title":"Popcorn Monkey Tiger",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -101,11 +101,11 @@
         "titleImage":"https://a10.gaanacdn.com/gn_img/albums/Rz4W87v3xD/z4W80A5pWx/size_xxl.jpg",
         "title":"Shivaji Surathkal",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -125,11 +125,11 @@
         "titleImage":"https://m.media-amazon.com/images/M/MV5BYjM5MDIxYmYtZTAwZS00NWQ1LWEyOWMtYzE1MGI0ZTdhYTAzXkEyXkFqcGdeQXVyMzc4ODk0NTc@._V1_UY1200_CR165,0,630,1200_AL_.jpg",
         "title":"Maya Bazaar",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -149,11 +149,11 @@
         "titleImage":"https://upload.wikimedia.org/wikipedia/en/c/cc/K.G.F_Chapter_1_poster.jpg",
         "title":"KGF Chapter 1",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -173,11 +173,11 @@
         "titleImage":"https://upload.wikimedia.org/wikipedia/en/3/3b/URI_-_New_poster.jpg",
         "title":"URI",
         "year":"2018",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -197,11 +197,11 @@
         "titleImage":"https://m.media-amazon.com/images/M/MV5BMTc4ODA2MjQyMF5BMl5BanBnXkFtZTgwMTY3MDI1NzM@._V1_QL50_SY1000_SX615_AL_.jpg",
         "title":"Bell Bottom",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -221,11 +221,11 @@
         "titleImage":"https://static.toiimg.com/thumb/msid-71060697,width-219,height-317,imgsize-28563/71060697.jpg",
         "title":"Geetha",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -245,11 +245,11 @@
         "titleImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTeXj7DKJpRm_SrJulH6Wooh9r181Fl8Sb44kL0vYSUpG6JO6Ib",
         "title":"Gantu Moote",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -269,11 +269,11 @@
         "titleImage":"https://i.pinimg.com/originals/48/27/8c/48278c9195d2646dac152ce447cd3024.jpg",
         "title":"Googly",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -293,11 +293,11 @@
         "titleImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSOCMbHL3htGdCWIj4bvxvCoEW6dk72RVsFoaa6f28ZnHWa1du2",
         "title":"Gultoo",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -317,11 +317,11 @@
         "titleImage":"https://moifightclub.files.wordpress.com/2013/12/1098051_613543508681391_310772591_n.jpg",
         "title":"Ulidavaru Kandante",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -341,11 +341,11 @@
         "titleImage":"http://www.impawards.com/intl/india/2013/posters/lucia_ver9.jpg",
         "title":"Lucia",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -365,11 +365,11 @@
         "titleImage":"https://www.comingtrailer.com/images/poster/99-Kannada.jpg",
         "title":"99",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -389,11 +389,11 @@
         "titleImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3iu1JPonvuyW7cflvf4KqEPoBepmf54-f9QJlI8jts6rSYFlY",
         "title":"Chak de India",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",
@@ -413,11 +413,11 @@
         "titleImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ3iu1JPonvuyW7cflvf4KqEPoBepmf54-f9QJlI8jts6rSYFlY",
         "title":"Maya Bazaar",
         "year":"2020",
-        "review":[{
+        "review":{
             "synopsis":"",
             "pros":"",
             "improvements":""
-        }],
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",

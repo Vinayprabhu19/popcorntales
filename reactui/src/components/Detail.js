@@ -13,15 +13,19 @@ import Hidden from '@material-ui/core/Hidden';
 import Synopsis from './Synopsis';
 import Review from './Review';
 
-class Home extends Component {
+class Detail extends Component {
   constructor(props) {
     super(props);
+    debugger;
     this.state = {
         selectedMovie: {
             genre : [],
-            genreText :""
+            genreText :"",
+            review : {
+              synopsis:""
+            }
         },
-        selectedTab:0
+        selectedTab:null
     };
   }
 
@@ -44,6 +48,9 @@ class Home extends Component {
                break;
             }
         }
+        if(selectedMovie == null){
+          return;
+        }
         if(selectedMovie.genre.length>0){
           var str= selectedMovie.genre[0];
           for(var i=1;i<selectedMovie.genre.length;i++){
@@ -56,7 +63,8 @@ class Home extends Component {
             this.props.history.push('/');
         }
         this.setState({
-            selectedMovie : selectedMovie
+            selectedMovie : selectedMovie,
+            selectedTab:0
           });
 
     });   
@@ -71,6 +79,7 @@ class Home extends Component {
   getToolbar = () => {
     switch(this.state.selectedTab) {
         case 0: {
+          debugger;
           if(this.state.selectedMovie.review != undefined)
          return <Synopsis synopsis={this.state.selectedMovie.review.synopsis}/>
         }
@@ -144,4 +153,4 @@ render(){
 }
 }
 
-export default Home;
+export default Detail;

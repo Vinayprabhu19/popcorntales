@@ -1,14 +1,14 @@
 [
     {
         "reviewId":"1",
-        "titleImage":"https://images-na.ssl-images-amazon.com/images/S/pv-target-images/a4fc1d2c74c02ff871920dfc668c223236c6d1ef44adf1def5ac431bfe7d5978._RI_V_TTW_.jpg",
+        "titleImage":"https://lh3.googleusercontent.com/X-tuAq7AGLw_r2LIKmzjTXXeOkWCXmvOU9onO8aswA_DINeqMQ60RNCPA_fOgpyX61h8yAS_ORramxf8Gh4NDCRo1BZA2k9QwpRf_D7cdBnB86AL1c6FhAFGL9dddcV6_KZF-kO0QbClcBVQj5WMlyGP6catHcktVgdOh9d67YV5ZQZK7SAmRTxJVQIpK3G7Rd-ojQiCrf8Z3jLyqpVrt5Bpo6XAfPt6dyEDIl2wjpGD16U1nNigp14aT84iuUROUC-hz-EZmFJMGGPSHB69MnfwYrIr3dsRYXomtjsxcl-mKenyJ6Vo5ro1ggZBi2y2owUwKMha6lFTOYyWFHoK92QV5u692JOcME1738tEXdi2NSBmOWekSru9frXIGAk6q4kvyCH1rbzQUWtiw7aWpvXWdLFWH8wDsuqd000Mky-upjScFY_lyGPIyMb2-jp3tVtX9vC0snvmwk1tEwdrwAg7nz2WLv9VUdpsGV5whPYG2L-vZHzRqX_jKTDv-p7Oy59IMDlaNHc4Hh-zXhMGbisQ_9LC--o3vVApaPs8TKQbl5OBe8lLzdvdkC44xW6aTrKTMMj7rNMBfWaIGttXOCMN03YQV-_FIoozl7WMcb1_IocXCS77ee-eh4xSy-kRpJ29UpsH8m6d21-PedBU-fRY4j3i4unu61y15Kde_y42EWHi2sSPwUiTeEHGMjZlHYGLbZgsXDO_f0nsyZ7jsTqEHPLqvbD8_pMhjUFbolT4fCPSJH8T=w633-h843-no",
         "title":"Love Mocktail",
         "year":"2019",
-        "review":[{
-            "synopsis":"",
-            "pros":"",
-            "improvements":""
-        }],
+        "review":{
+            "synopsis":"Adi (played by a teenager who looks very similar to Darling Krishna) has a major crush on his classmate (Reema).\n But like most boys, he is hesitant to approach her. But his antics like caring for her and dreaming of a future with her keep him busy. Once the bubble is burst, Adi wakes up to reality and gets into an engineering college where he meets Jo (Amruta Iyengar) who comes from a well-to-do family.\nThough her love is true, she has her own doubts about his ability to take care of her and provide the lifestyle she deserves. But this doesn’t keep them away from enjoying and living in the moment. After engineering, he joins an IT company and promises to fulfil her desires. But Jo, who is under pressure from her parents to marry a well-off guy, breaks up with Adi. Heartbroken, Adi meets Nidhi (Milana Nagraj), an IT employee and a down-to-earth woman, who enjoys the simple things in life. What follows is another interesting tale.",
+            "pros":["Pro 1","Pro 2 ","Pro 3"],
+            "improvements":[]
+        },
         "rating":9.5,
         "genre":["Action","Thriller"],
         "language":"Kannada",

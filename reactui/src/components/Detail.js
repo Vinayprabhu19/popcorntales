@@ -8,9 +8,10 @@ import Stars from "./Stars";
 import { Button } from "@material-ui/core";
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Paper from '@material-ui/core/Paper';
 import HomeButton from '@material-ui/icons/Home';
 import Hidden from '@material-ui/core/Hidden';
+import Synopsis from './Synopsis';
+import Review from './Review';
 
 class Home extends Component {
   constructor(props) {
@@ -69,15 +70,20 @@ class Home extends Component {
 
   getToolbar = () => {
     switch(this.state.selectedTab) {
-        case 1: {
-            return <p>Synopsis</p> 
+        case 0: {
+          if(this.state.selectedMovie.review != undefined)
+         return <Synopsis synopsis={this.state.selectedMovie.review.synopsis}/>
         }
-        case 2: {
-          return <p>Movie</p> 
+        case 1: {
+          if(this.state.selectedMovie.review != undefined)
+         return <Review review={this.state.selectedMovie.review}/>
       }
-      case 3: {
-        return <p>cast</p> 
+      case 2: {
+        return <p>Cast</p> 
     }
+    case 3: {
+      return <p>Ticket</p> 
+  }
         default: {
             return <p></p>
         }

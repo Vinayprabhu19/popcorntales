@@ -15,6 +15,26 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyCZ5WXlORkFJImDHWP0z1yBUx_BaFD2F-8",
+        authDomain: "popcorn-tales.firebaseapp.com",
+        databaseURL: "https://popcorn-tales.firebaseio.com",
+        projectId: "popcorn-tales",
+        storageBucket: "popcorn-tales.appspot.com",
+        messagingSenderId: "131835073231",
+        appId: "1:131835073231:web:5916862b3bfd2341d4ddba",
+        measurementId: "G-V7845KH0YF"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.

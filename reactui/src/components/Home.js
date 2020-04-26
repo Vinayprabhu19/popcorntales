@@ -77,7 +77,7 @@ render(){
             id="autocomplete-box"
             options={this.state.reviews}
             getOptionLabel={option => option.title}
-            onChange={(e,v)=>{debugger;console.log(v)}}
+            onChange={(e,v)=>{this.onCardClick(v)}}
             renderInput={params => <TextField {...params} InputProps={{...params.InputProps, disableUnderline: true}} placeholder="Movie" />}
           />
           

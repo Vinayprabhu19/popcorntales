@@ -9,6 +9,7 @@
 
 .rightToolbar{
   margin-left: auto;
+  margin-right: 50px;
 }
 
 .App-Content{
@@ -19,7 +20,7 @@
 
 #movie-img{
   height: auto;
-  width: 50%;
+  width: 45%;
   align-self: center;
 }
 
@@ -63,7 +64,7 @@ footer nav{
 @media screen and (max-width: 1100px) {
   #movie-img{
     object-fit: contain;
-    width: 60%;
+    width: 450px;
   }
  
   #bigTitle{
@@ -79,7 +80,7 @@ footer nav{
 @media screen and (max-width: 600px) {
   #movie-img{
     object-fit: contain;
-    width: 300px;
+    width: 60%;
   }
   .App-Content{
     margin: 2%;

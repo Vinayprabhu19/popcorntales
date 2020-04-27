@@ -9,7 +9,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import Pagination from "./Pagination"
-
+import Hidden from '@material-ui/core/Hidden';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -69,9 +69,9 @@ render(){
     <div className="App">
       <AppBar id="appBar" position="static">
         <Toolbar>
-        <div>
-            <p id="title">Popcorn Tales</p>
-          </div>
+          <Hidden mdDown>
+          <p id="title">Popcorn Tales</p>
+          </Hidden>
         <section className="rightToolbar">
           <Autocomplete
             id="autocomplete-box"

@@ -40,17 +40,7 @@
     padding-left: 5%;
 }
 
-#trailer_div{
-    width: 400px;
-    height: 280px;
-    float: left;
-    margin-left: 5%;
-}
 
-#trailer{
-    width: 400px;
-    height: 280px;
-}
 
 .star-container{
     margin-top: 2%;
@@ -64,15 +54,9 @@
 }
 
 
-#movieTitle , #genre{
+.movieInfo {
     font-size: 1.3em;
     font-weight: bolder;
-    margin: 0;
-}
-
-#movieYear{
-    font-size: 1em;
-    font-weight: bold;
     margin: 0;
 }
 
@@ -92,25 +76,12 @@
     margin-top: 20px;
 }
 
-.genreText{
-    font-size: 1.2em;
-    font-weight: bolder;
-}
 
 .tab{
     width: 33%;
 }
 @media screen and (min-width: 2000px) {
-    #trailer_div{
-        width: 40%;
-        float: right;
-    }
-    
-    #trailer{
-        width: 700px;
-        height: 400px;
-        position: absolute;
-    }
+   
 
     #card{
         float: left;
@@ -136,14 +107,7 @@
         padding-left: 3%;
     }
     
-    #trailer_div{
-        width: 200px;
-        height: auto;
-        padding-left: 1%;
-    }
-    /* #trailer{
-        visibility: hidden;
-    } */
+  
     #starIcon{
         width: 20px;
     }
@@ -164,9 +128,6 @@
     #starIcon{
         width: 15x;
     }
-    .genreText{
-        visibility: hidden;
-    }
 }
 
 @media screen and (max-width: 400px) {
@@ -185,23 +146,14 @@
     #starIcon{
         width: 10px;
     }
-    #movieTitle , #genre{
+    .movieInfo {
         font-size: 1.1em;
         font-weight: bolder;
-        margin: 0;
-    }
-    
-    #movieYear{
-        font-size: 0.9em;
-        font-weight: bold;
         margin: 0;
     }
     
     #ratingText{
         font-size: 1em;
         font-weight: bolder;
-    }
-    .genreText{
-        visibility: hidden;
     }
 }

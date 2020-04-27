@@ -11,6 +11,7 @@ import Tab from '@material-ui/core/Tab';
 import HomeButton from '@material-ui/icons/Home';
 import Synopsis from './Synopsis';
 import Review from './Review';
+import Hidden from '@material-ui/core/Hidden';
 
 class Detail extends Component {
   constructor(props) {
@@ -114,16 +115,22 @@ render(){
             <CardLayout review={this.state.selectedMovie} onCardClick={()=>{}}/>
             </div>
             <div id="movie-description">
-                <p className="movieInfo">{this.state.selectedMovie.title}</p>
-                <p className="movieInfo">{this.state.selectedMovie.year}</p>
+                <p className="headerLevel1">{this.state.selectedMovie.title}</p>
+                <p className="headerLevel2">{this.state.selectedMovie.year}</p>
+                <p className="headerLevel2">{this.state.selectedMovie.genreText}</p>
+                <p className="headerLevel2">{this.state.selectedMovie.rating}/5</p>
                 <Stars stars={this.state.selectedMovie.rating}/>
-                <p className="movieInfo">{this.state.selectedMovie.genreText}</p>
                 <div>
                 <Button id="instagramBtn" variant="contained" color="primary" href={this.state.selectedMovie.instagramReview}>Instagram</Button>
                 </div>
                
             </div>
-            
+            <Hidden smDown>
+              <div id="trailer_div">
+                  <iframe id="trailer" src={this.state.selectedMovie.trailer}>
+                  </iframe>
+              </div>
+            </Hidden>
         </div>
         <div className="movie-detail">
           <AppBar position="static">

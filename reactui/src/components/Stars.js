@@ -42,7 +42,6 @@ class Stars extends Component {
           <StarHalf key={s.key} id="starIcon"/>
         ))
       }
-      <p id="ratingText">{this.props.stars}/10</p>
     </div>
   }
 }

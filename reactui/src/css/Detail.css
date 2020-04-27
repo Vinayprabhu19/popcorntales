@@ -13,12 +13,21 @@
   }
 
 .movie-header{
-    width: 100%;
-    margin: 5%;
+    margin: 50px;
 }
 
 .movie-detail{
     width: 100%;
+}
+
+#trailer_container{
+    width: fit-content;
+    height: fit-content;
+}
+#trailer{
+    width: 450px;
+    height: 320px;
+    float: right;
 }
 
 #title{
@@ -54,9 +63,17 @@
 }
 
 
-.movieInfo {
+.headerLevel1 {
     font-size: 1.3em;
     font-weight: bolder;
+    margin: 0;
+    height: auto;
+}
+
+.headerLevel2{
+    font-size: 1em;
+    font-weight: bold;
+    height: auto;
     margin: 0;
 }
 
@@ -80,7 +97,7 @@
 .tab{
     width: 33%;
 }
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 2100px) {
    
 
     #card{
@@ -94,6 +111,11 @@
         padding-right: 5%;
     }
     
+    #trailer{
+        width: 800px;
+        height: 540px;
+        float: right;
+    }
 
 }
 @media screen and (max-width: 1398px) {
@@ -107,10 +129,6 @@
         padding-left: 3%;
     }
     
-  
-    #starIcon{
-        width: 20px;
-    }
 }
 
 @media screen and (max-width: 900px) {
@@ -123,10 +141,6 @@
         float: left;
         padding-left: 5%;
         padding-right: 5%;
-    }
-  
-    #starIcon{
-        width: 15x;
     }
 }
 
@@ -141,17 +155,10 @@
         padding-left: 5%;
         padding-right: 5%;
     }
-    
+    .movie-header{
+        margin: 15px;
+    }
 
-    #starIcon{
-        width: 10px;
-    }
-    .movieInfo {
-        font-size: 1.1em;
-        font-weight: bolder;
-        margin: 0;
-    }
-    
     #ratingText{
         font-size: 1em;
         font-weight: bolder;

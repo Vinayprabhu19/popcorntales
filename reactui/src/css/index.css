@@ -4,9 +4,12 @@ html,body,#root {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
   margin: 0;
   width: 100%;
+  background-image: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)), url("../resources/memphis-colorful.png");
+  background-repeat: repeat;
+  background-blend-mode: soft-light;
+  
 }
 
 code {

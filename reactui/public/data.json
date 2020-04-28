@@ -31,8 +31,8 @@
         "year":"2019",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -55,8 +55,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -79,8 +79,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -103,8 +103,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -127,8 +127,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -151,8 +151,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -175,8 +175,8 @@
         "year":"2018",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -199,8 +199,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -223,8 +223,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -247,8 +247,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -271,8 +271,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -295,8 +295,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -319,8 +319,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -343,8 +343,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -367,8 +367,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -391,8 +391,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],
@@ -415,8 +415,8 @@
         "year":"2020",
         "review":{
             "synopsis":"",
-            "pros":"",
-            "improvements":""
+            "pros":[],
+            "improvements":[]
         },
         "rating":4.5,
         "genre":["Action","Thriller"],

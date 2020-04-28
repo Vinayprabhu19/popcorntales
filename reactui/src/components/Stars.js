@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../css/Detail.css';
 import Star from '@material-ui/icons/Star';
 import StarHalf from '@material-ui/icons/StarHalf';
-import PropTypes from 'prop-types';
 
 class Stars extends Component {
   constructor(props) {
@@ -13,7 +12,7 @@ class Stars extends Component {
     };
   }
   componentDidUpdate(prevProps, prevState, snapshot){
-    if(this.props.stars == prevProps.stars)
+    if(this.props.stars === prevProps.stars)
       return;
     var rows = [];
     var half = this.props.stars - parseInt(this.props.stars);

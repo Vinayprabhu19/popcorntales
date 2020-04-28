@@ -21,7 +21,9 @@ class Detail extends Component {
             genre : [],
             genreText :"",
             review : {
-              synopsis:""
+              synopsis:"",
+              pros:[],
+              cons:[]
             }
         },
         selectedTab:null
@@ -42,7 +44,7 @@ class Detail extends Component {
         });
         var selectedMovie = null;
         for(var i=0;i< rvs.length ;i++){
-            if(rvs[i].title == movieTitle){
+            if(rvs[i].title === movieTitle){
                 selectedMovie = rvs[i];
                break;
             }
@@ -52,7 +54,7 @@ class Detail extends Component {
         }
         if(selectedMovie.genre.length>0){
           var str= selectedMovie.genre[0];
-          for(var i=1;i<selectedMovie.genre.length;i++){
+          for(i=1;i<selectedMovie.genre.length;i++){
               str = str+"/"+selectedMovie.genre[i];
           }
           selectedMovie.genreText=str;
@@ -77,20 +79,20 @@ class Detail extends Component {
 
   getToolbar = () => {
     switch(this.state.selectedTab) {
-        case 0: {
+        case 0: 
+          if(this.state.selectedMovie.review !== undefined)
+            return <Synopsis synopsis={this.state.selectedMovie.review.synopsis}/>
+        break;
+        case 1: 
           if(this.state.selectedMovie.review != undefined)
-         return <Synopsis synopsis={this.state.selectedMovie.review.synopsis}/>
-        }
-        case 1: {
-          if(this.state.selectedMovie.review != undefined)
-         return <Review review={this.state.selectedMovie.review}/>
-      }
-      case 2: {
-        return <p>Cast</p> 
-    }
-    case 3: {
-      return <p>Ticket</p> 
-  }
+            return <Review review={this.state.selectedMovie.review}/>
+         break;
+      case 2: 
+          return <p>Cast</p> 
+       break;
+    case 3: 
+          return <p>Ticket</p> 
+        break;
         default: {
             return <p></p>
         }
@@ -119,15 +121,11 @@ render(){
                 <p className="headerLevel2">{this.state.selectedMovie.year}</p>
                 <p className="headerLevel2">{this.state.selectedMovie.genreText}</p>
                 <p className="headerLevel2">{this.state.selectedMovie.rating}/5</p>
-                <Stars stars={this.state.selectedMovie.rating}/>
-                <div>
-                <Button id="instagramBtn" variant="contained" color="primary" href={this.state.selectedMovie.instagramReview}>Instagram</Button>
-                </div>
-               
+                <Stars stars={this.state.selectedMovie.rating}/>        
             </div>
             <Hidden smDown>
               <div id="trailer_div">
-                  <iframe id="trailer" src={this.state.selectedMovie.trailer}>
+                  <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}>
                   </iframe>
               </div>
             </Hidden>

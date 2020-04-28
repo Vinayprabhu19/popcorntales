@@ -51,6 +51,7 @@
 .genreText{
     font-size: larger;
     font-weight: bolder;
+    margin: 0;
 }
 
 #card-img{
@@ -72,7 +73,7 @@
     z-index: 2;
     font-size: .95em;
     left: 0;
-    top: 10%;
+    top: 2%;
     text-align: center;
     visibility: hidden;
     align-content: center;
@@ -125,11 +126,11 @@
     }
     .title{
         width: 150px;
-        font-size: .85em;
+        font-size: .95em;
     }
     .language{
         width: 150px;
-        font-size: .7em;
+        font-size: .8em;
     }
     #card-content{
         visibility: hidden;
@@ -143,17 +144,17 @@
     }
     .card-container{
         width: 120px;
-        margin-left : 5%;
-        margin-right: 5%;
+        margin-left : 6%;
+        margin-right: 6%;
         padding: 0;
     }
     .title{
         width: 120px;
-        font-size: .85em;
+        font-size: .95em;
     }
     .language{
         width: 120px;
-        font-size: .7em;
+        font-size: .8em;
     }
     #card-content{
         visibility: hidden;

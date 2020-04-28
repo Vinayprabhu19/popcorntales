@@ -14,7 +14,7 @@ class CardLayout extends Component {
               </figure>
               <figcaption id="card-content" >
               <Star id="star"/>
-              <p id="ratingText">{this.props.review.rating}/10</p>
+              <p id="ratingText">{this.props.review.rating}/5</p>
               <div>
                 {
                   this.props.review.genre.map(g =>(

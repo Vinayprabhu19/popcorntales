@@ -11,28 +11,28 @@
   margin-left: auto;
   margin-right: 50px;
 }
+#titleImage{
+  margin-top: 25px;
+  width: 70%;
+}
+#banner-container{
+  width: 100%;
+}
 
 .App-Content{
   color: #000;
   align-items: center;
-  margin: 2%;
+  margin: 75px 2% 2% 2%;
 }
 
 #movie-img{
-  height: auto;
-  width: 45%;
+  width: 100%;
   align-self: center;
 }
 
-#bigTitle{
-  font-size: x-large;
-  font-weight: bold;
-  font-family: Ubuntu;
-  visibility: hidden;
-}
 
 #autocomplete-box{
-  width: 120px;
+  width: 100px;
   margin-right: 10px;
 }
 
@@ -61,34 +61,26 @@ footer{
 footer nav{
   display:inline-block;
 }
-@media screen and (max-width: 1100px) {
-  #movie-img{
-    object-fit: contain;
-    width: 450px;
-  }
- 
-  #bigTitle{
-    visibility: visible;
+@media screen and (min-width: 1500px) {
+
+  #banner-container{
+    background-image: url("../resources/canadian-dollar.png") ;
+    background-repeat: repeat;
   }
 
-  #title{
-    font-size: 1rem;
-    visibility: hidden;
+  #movie-img{
+    width: 70%;
+    align-self: center;
+    
   }
 } 
 
 @media screen and (max-width: 600px) {
-  #movie-img{
-    object-fit: contain;
-    width: 60%;
-  }
+
   .App-Content{
-    margin: 2%;
+    margin: 20px 1% 1% 1%;
   }
   
-  #bigTitle{
-    visibility: visible;
-  }
   #title{
     font-size: 0.9rem;
     visibility: hidden;
@@ -96,13 +88,9 @@ footer nav{
 }
 @media screen and (max-width: 350px) {
   .App-Content{
-    margin: 1%;
+    margin: 20px 1% 1% 1%;
   }
   
-  #bigTitle{
-    visibility: visible;
-  }
-
   #title{
     font-size: 0.8rem;
     visibility: hidden;

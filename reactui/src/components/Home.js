@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import movieImg from '../resources/movie.png';
 import '../css/App.css';
+import Carousel from 'react-bootstrap/Carousel';
 import CardLayout from "./CardLayout";
 import GridList from '@material-ui/core/GridList';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -8,8 +8,11 @@ import TextField from '@material-ui/core/TextField';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import Pagination from "./Pagination"
+import Pagination from "./Pagination";
+import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
+import Title from '../resources/Title.png';
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -17,9 +20,11 @@ class Home extends Component {
     this.state = { 
       reviews: [],
       totalPages:0,
-      currentList:[]
+      currentList:[],
+      banners:[]
      };
 
+     this.carouselIndex=0;
      this.onPageChanged = this.onPageChanged.bind(this);
   
   }
@@ -45,6 +50,15 @@ class Home extends Component {
             currentList : currentPages
           });
       });   
+
+      fetch('./banners.json')
+      .then(response => response.json())
+      .then(result => {
+        this.setState({
+          banners:result
+        });
+      });
+      
   }
 
   onPageChanged(e){
@@ -63,6 +77,11 @@ class Home extends Component {
   onCardClick(image){
     this.props.history.push('/review/'+image.title);
   }
+
+  handleSelect = (selectedIndex, e) => {
+    this.carouselIndex=selectedIndex;
+  };
+
 
 render(){
   return (
@@ -87,8 +106,22 @@ render(){
           </a>
         </Toolbar>
       </AppBar>
-      <img id="movie-img" src={movieImg} alt="Movie"/>
-      <p id="bigTitle">POPCORN TALES</p>
+      <Paper id="banner-container" elevation={5}>
+        <Carousel activeIndex={this.index} onSelect={this.handleSelect} indicators={false}>
+            {
+              this.state.banners.map(banner=>{
+                return <Carousel.Item key={banner.id}>
+                    <img id="movie-img" src={banner.url} key={banner.id} alt="Movie"/>
+                </Carousel.Item>
+              })
+              
+            }
+
+        </Carousel>
+      </Paper>
+      <Hidden mdUp>
+      <img src={Title} id="titleImage" />
+      </Hidden>
       <div className="App-Content">
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (

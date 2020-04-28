@@ -2,6 +2,7 @@
 #container{
     width: 100%;
   height: 100%;
+  background-color: #fff;
 }
 #appBar{
     width: 100%;
@@ -17,6 +18,7 @@
 }
 
 .movie-detail{
+    background-color: #fff;
     width: 100%;
 }
 
@@ -45,7 +47,7 @@
 #movie-description{
     width: fit-content;
     float: left;
-    overflow-wrap: normal;
+    overflow-wrap: break-word;
     padding-left: 5%;
 }
 
@@ -106,7 +108,7 @@
     }
     
     #movie-description{
-        float: left;
+        float: right;
         padding-left: 5%;
         padding-right: 5%;
     }
@@ -139,26 +141,39 @@
     
     #movie-description{
         float: left;
-        padding-left: 5%;
-        padding-right: 5%;
+        padding-left: 7%;
+        padding-right: 7%;
     }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 500px) {
     #card{
         float: left;
         align-items: center;
     }
     
     #movie-description{
+        width: fit-content;
         float: left;
         padding-left: 5%;
         padding-right: 5%;
     }
     .movie-header{
-        margin: 15px;
+        margin: 20px;
+    }
+    .headerLevel1 {
+        font-size: 1.1em;
+    }
+    
+    .headerLevel2{
+        font-size: 0.9em;
     }
 
+    #starIcon{
+        width: 20px;
+        height: 20px;
+        fill: gold;
+    }
     #ratingText{
         font-size: 1em;
         font-weight: bolder;

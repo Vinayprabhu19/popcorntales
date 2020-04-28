@@ -1,0 +1,16 @@
+[
+    {
+        "id":1,
+        "name":"Love Mocktail",
+        "url":"https://popcorntales-media.s3.amazonaws.com/Banners/Love-Mocktail.png"
+    },
+    {
+        "id":2,
+        "url":"https://popcorntales-media.s3.amazonaws.com/Banners/Dia.png"
+    },
+    {
+        "id":3,
+        "url":"https://popcorntales-media.s3.amazonaws.com/Banners/Kannum-kannum-kollaiyadithaal.png"
+    }
+
+]

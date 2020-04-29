@@ -14,6 +14,8 @@ import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
 import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
+import Grid from '@material-ui/core/Grid';
+
 
 class Detail extends Component {
   constructor(props) {
@@ -102,8 +104,19 @@ class Detail extends Component {
     }   
 };
 
+stars = (starCount) => {
+  if(starCount == undefined)
+    return;
+  const value = starCount;
+  return (
+    <Rating name="disabled" value={value} precision={0.5}  size="large"/>
+  );
+}
+
+
 render(){
   const toolbar = this.getToolbar();
+  const stars = this.stars(this.state.selectedMovie.rating);
   return (
     <div id="container">
         <AppBar id="appBar" position="static">
@@ -120,17 +133,22 @@ render(){
               <Paper elevation={19}>
               <img id="card-img" alt="Movie" src={this.state.selectedMovie.titleImage}/>
               </Paper>
+              <Hidden smDown>
+              <Grid container justify = "center" id="starPhoto">
+                  {stars}
+                  </Grid>
+              
+              </Hidden>
             </div>
             <Hidden mdUp >
                   <div className="topHeader">
                   <p className="headerLevel1 centerAligned">{this.state.selectedMovie.title} {this.state.selectedMovie.year}</p>
                   <p className="headerLevel2 centerAligned">{this.state.selectedMovie.genreText}</p>
                   <p className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</p>
-                  <div className="centerAlign">
-                  <Stars stars={this.state.selectedMovie.rating} /> 
-                  </div>
-                    
-
+                  
+                  <Grid container justify = "center">
+                  {stars}
+                  </Grid>
                   
                   </div>
             </Hidden>
@@ -139,8 +157,7 @@ render(){
                 <p className="headerLevel1">{this.state.selectedMovie.title}</p>
                 <p className="headerLevel2">{this.state.selectedMovie.year}</p>
                 <p className="headerLevel2">{this.state.selectedMovie.genreText}</p>
-                <p className="headerLevel2">{this.state.selectedMovie.rating}/5</p>
-                <Stars stars={this.state.selectedMovie.rating}/>        
+                <p className="headerLevel2">{this.state.selectedMovie.rating}/5</p>   
             </div>
             </Hidden>
             

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../css/Detail.css';
 import Star from '@material-ui/icons/Star';
 import StarHalf from '@material-ui/icons/StarHalf';
-import { GridList } from '@material-ui/core';
 
 class Stars extends Component {
   constructor(props) {
@@ -12,8 +11,6 @@ class Stars extends Component {
         halfStars:[]
     };
   }
-
-  
   componentDidUpdate(prevProps, prevState, snapshot){
     if(this.props.stars === prevProps.stars)
       return;
@@ -33,14 +30,18 @@ class Stars extends Component {
   }
 
   render() {
-    return <GridList cols={5} className="star-container">
-    {
-      this.state.stars.map(s=>(<Star key={s.key} id="starIcon"/>))
-    }  
-    {
-      this.state.halfStars.map(s=>(<StarHalf key={s.key} id="starIcon"/>))
-    }
-    </GridList>
+    return <div className="star-container">
+      {
+        this.state.stars.map(s=>(
+          <Star key={s.key} id="starIcon"/>
+        ))
+      }  
+      {
+        this.state.halfStars.map(s=>(
+          <StarHalf key={s.key} id="starIcon"/>
+        ))
+      }
+    </div>
   }
 }
 

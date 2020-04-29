@@ -137,15 +137,15 @@
     }
   }
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 500px) {
     #card-img {
-        width: 120px;
-        height: 160px;
+        width: 150px;
+        height: 180px;
     }
     .card-container{
-        width: 120px;
-        margin-left : 6%;
-        margin-right: 6%;
+        width: 150px;
+        margin-left : 5%;
+        margin-right: 5%;
         padding: 0;
     }
     .title{
@@ -155,6 +155,30 @@
     .language{
         width: 120px;
         font-size: .8em;
+    }
+    #card-content{
+        visibility: hidden;
+    }
+  }
+
+  @media screen and (max-width: 380px) {
+    #card-img {
+        width: 150px;
+        height: 155px;
+    }
+    .card-container{
+        width: 150px;
+        margin-left : 3%;
+        margin-right: 3%;
+        padding: 0;
+    }
+    .title{
+        width: 100px;
+        font-size: .8em;
+    }
+    .language{
+        width: 90px;
+        font-size: .6em;
     }
     #card-content{
         visibility: hidden;

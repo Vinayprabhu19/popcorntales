@@ -126,7 +126,7 @@ render(){
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (
                           <CardLayout key={image.reviewId} onCardClick ={()=> {this.onCardClick(image)}} review={image}/>
-                      ))}
+                      ))} 
         </GridList>
       </div>
       <footer>

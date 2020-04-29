@@ -2,7 +2,6 @@ import React from "react";
 import { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import CardLayout from "./CardLayout";
 import "../css/Detail.css";
 import Stars from "./Stars";
 import { Button } from "@material-ui/core";
@@ -11,7 +10,10 @@ import Tab from '@material-ui/core/Tab';
 import HomeButton from '@material-ui/icons/Home';
 import Synopsis from './Synopsis';
 import Review from './Review';
+import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
+import Rating from '@material-ui/lab/Rating';
 
 class Detail extends Component {
   constructor(props) {
@@ -63,6 +65,7 @@ class Detail extends Component {
         if(selectedMovie ==null){
             this.props.history.push('/');
         }
+        console.log(typeof(selectedMovie.rating))
         this.setState({
             selectedMovie : selectedMovie,
             selectedTab:0
@@ -111,11 +114,27 @@ render(){
           </div>
           </Toolbar>
         </AppBar>
-        
         <div className="movie-header">
+            
             <div id="card" >
-            <CardLayout review={this.state.selectedMovie} onCardClick={()=>{}}/>
+              <Paper elevation={19}>
+              <img id="card-img" alt="Movie" src={this.state.selectedMovie.titleImage}/>
+              </Paper>
             </div>
+            <Hidden mdUp >
+                  <div className="topHeader">
+                  <p className="headerLevel1 centerAligned">{this.state.selectedMovie.title} {this.state.selectedMovie.year}</p>
+                  <p className="headerLevel2 centerAligned">{this.state.selectedMovie.genreText}</p>
+                  <p className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</p>
+                  <div className="centerAlign">
+                  <Stars stars={this.state.selectedMovie.rating} /> 
+                  </div>
+                    
+
+                  
+                  </div>
+            </Hidden>
+            <Hidden smDown>
             <div id="movie-description">
                 <p className="headerLevel1">{this.state.selectedMovie.title}</p>
                 <p className="headerLevel2">{this.state.selectedMovie.year}</p>
@@ -123,7 +142,9 @@ render(){
                 <p className="headerLevel2">{this.state.selectedMovie.rating}/5</p>
                 <Stars stars={this.state.selectedMovie.rating}/>        
             </div>
-            <Hidden smDown>
+            </Hidden>
+            
+            <Hidden mdDown>
               <div id="trailer_div">
                   <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}>
                   </iframe>

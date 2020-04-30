@@ -10,8 +10,9 @@ public class Movie {
     private String language;
     private String titleImage;
     private String year;
-    private String rating;
+    private Float rating;
     private JSONArray genre;
+    private String timestamp;
     
 	public String getTitle() {
 		return title;
@@ -37,10 +38,10 @@ public class Movie {
 	public void setYear(String year) {
 		this.year = year;
 	}
-	public String getRating() {
+	public Float getRating() {
 		return rating;
 	}
-	public void setRating(String rating) {
+	public void setRating(Float rating) {
 		this.rating = rating;
 	}
 	public JSONArray getGenre() {
@@ -49,8 +50,13 @@ public class Movie {
 	public void setGenre(JSONArray genre) {
 		this.genre = genre;
 	}
-    
-    public Item getItem() {
+    public String getTimestamp() {
+		return timestamp;
+	}
+	public void setTimestamp(String timestamp) {
+		this.timestamp = timestamp;
+	}
+	public Item getItem() {
     	Item item = new Item();
     	item.with("title", this.title);
     	item.with("language", this.language);
@@ -58,6 +64,7 @@ public class Movie {
     	item.with("rating", this.rating);
     	item.with("year", this.year);
     	item.with("genre", this.genre.toList());
+    	item.with("timeStamp", this.timestamp);
     	return item;
     }
  

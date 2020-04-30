@@ -73,7 +73,7 @@
     z-index: 2;
     font-size: .95em;
     left: 0;
-    top: 2%;
+    top: 25px;
     text-align: center;
     visibility: hidden;
     align-content: center;
@@ -91,9 +91,27 @@
 
 #ratingText{
     font-weight: bolder;
-    font-size: 3.5em;
+    font-size: 3.8em;
+    font-family: sans-serif;
 }
 
+.container{
+    margin: 50px;
+}
+
+.smallField{
+    width: 250px;
+    border: none;
+}
+
+.mediumField{
+    width: 350px;
+}
+
+.textArea{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 @media screen and (min-width: 2000px) {
     #card-img {
         width: 400px;

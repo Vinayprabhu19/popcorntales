@@ -31,9 +31,14 @@ class Home extends Component {
 
 
   componentDidMount(){
-    fetch('./data.json')
+    const requestOptions = {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json','Access-Control-Allow-Origin':'*'}
+  };
+    fetch('https://8cfsbr5d62.execute-api.us-east-1.amazonaws.com/prod/movie')
       .then(response => response.json())
       .then(result => {
+        debugger;
           const rvs = result.map(item => {
             return item;
           });
@@ -48,8 +53,12 @@ class Home extends Component {
             totalPages: rvs.length,
             reviews: rvs,
             currentList : currentPages
-          });
-      });   
+          })
+      })
+      .catch(error =>{
+        debugger;
+        console.error(error);
+      })
 
       fetch('./banners.json')
       .then(response => response.json())
@@ -125,7 +134,7 @@ render(){
       <div className="App-Content">
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (
-                          <CardLayout key={image.reviewId} onCardClick ={()=> {this.onCardClick(image)}} review={image}/>
+                          <CardLayout key={image.title} onCardClick ={()=> {this.onCardClick(image)}} review={image}/>
                       ))} 
         </GridList>
       </div>

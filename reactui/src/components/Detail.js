@@ -3,8 +3,7 @@ import { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
-import Stars from "./Stars";
-import { Button } from "@material-ui/core";
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import HomeButton from '@material-ui/icons/Home';
@@ -12,9 +11,18 @@ import Synopsis from './Synopsis';
 import Review from './Review';
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
-import Typography from '@material-ui/core/Typography';
 import Rating from '@material-ui/lab/Rating';
+import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+
+const StyledRating = withStyles({
+  iconFilled: {
+    color: '#ff6d75',
+  },
+  iconHover: {
+    color: '#ff3d47',
+  },
+})(Rating);
 
 
 class Detail extends Component {
@@ -36,44 +44,22 @@ class Detail extends Component {
 
   componentDidMount(){
     var movieTitle = this.props.match.params.movieName;
-    fetch('../data.json',{
+    fetch('https://8cfsbr5d62.execute-api.us-east-1.amazonaws.com/prod/moviereview?movie='+movieTitle,{
         headers : { 
-          'Content-Type': 'application/json',
           'Accept': 'application/json'
          }})
     .then(response => response.json())
     .then(result => {
-        const rvs = result.map(item => {
-          return item;
-        });
-        var selectedMovie = null;
-        for(var i=0;i< rvs.length ;i++){
-            if(rvs[i].title === movieTitle){
-                selectedMovie = rvs[i];
-               break;
-            }
-        }
-        if(selectedMovie == null){
-          return;
-        }
-        if(selectedMovie.genre.length>0){
-          var str= selectedMovie.genre[0];
-          for(i=1;i<selectedMovie.genre.length;i++){
-              str = str+"/"+selectedMovie.genre[i];
-          }
-          selectedMovie.genreText=str;
-        }
-      
-        if(selectedMovie ==null){
-            this.props.history.push('/');
-        }
-        console.log(typeof(selectedMovie.rating))
+        result.review=JSON.parse(result.review);
         this.setState({
-            selectedMovie : selectedMovie,
+            selectedMovie : result,
             selectedTab:0
           });
-
-    });   
+    })
+    .catch(error =>{
+      debugger;
+      console.error(error);
+    })  
   }
 
   handleChange(v){
@@ -109,7 +95,10 @@ stars = (starCount) => {
     return;
   const value = starCount;
   return (
-    <Rating name="disabled" value={value} precision={0.5}  size="large"/>
+    // <Rating name="disabled" value={value} precision={0.25}  size="large"/>
+
+        <StyledRating name="customized-color" defaultValue={value} precision={0.25}
+                    icon={<FavoriteIcon fontSize="inherit" />}/>
   );
 }
 
@@ -128,7 +117,6 @@ render(){
           </Toolbar>
         </AppBar>
         <div className="movie-header">
-            
             <div id="card" >
               <Paper elevation={19}>
               <img id="card-img" alt="Movie" src={this.state.selectedMovie.titleImage}/>
@@ -137,7 +125,6 @@ render(){
               <Grid container justify = "center" id="starPhoto">
                   {stars}
                   </Grid>
-              
               </Hidden>
             </div>
             <Hidden mdUp >
@@ -149,7 +136,6 @@ render(){
                   <Grid container justify = "center">
                   {stars}
                   </Grid>
-                  
                   </div>
             </Hidden>
             <Hidden smDown>
@@ -163,7 +149,8 @@ render(){
             
             <Hidden mdDown>
               <div id="trailer_div">
-                  <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}>
+                  <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
+                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
                   </iframe>
               </div>
             </Hidden>

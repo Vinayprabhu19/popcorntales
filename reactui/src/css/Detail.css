@@ -14,7 +14,7 @@
   }
 .movie-header{
     width: 100%;
-    padding: 20px;
+    padding: 10px;
 }
 .movie-detail{
     background-color: #fff;
@@ -56,16 +56,18 @@
 
 
 .headerLevel1 {
-    font-size: 1.3em;
+    font-size: 1.8em;
     font-weight: bolder;
+    font-family: sans-serif;
     margin: 0;
     height: auto;
 }
 
 .headerLevel2{
-    font-size: 1em;
-    font-weight: bold;
+    font-size: 1.4em;
+    font-weight: normal;
     height: auto;
+    font-family: sans-serif;
     margin: 0;
 }
 
@@ -160,9 +162,6 @@ h5,h6{
         padding-left: 3%;
     }
     
-    .movie-header{
-        margin-bottom: 25px;
-    }
 }
 
 @media screen and (max-width: 958px) {

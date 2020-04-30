@@ -19,6 +19,6 @@ POST Request to add movie
 		"placeWatched":"venue"
 	},
 	"cast":["cast 1","cast 2","cast 2"],
-	"userId":"VinayPrabhu",
-	"password":"v1NayTales"
+	"userId":"",
+	"password":""
 }

@@ -23,6 +23,8 @@ node_modules
 *.iml
 *.ipr
 
+.firebase 
+
 fioriHtmlRunner.html
 .*/fioriHtmlRunner.html
 visual_ext_index.html

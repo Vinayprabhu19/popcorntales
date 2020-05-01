@@ -1,7 +1,16 @@
-.review-component{
+.review-component {
     margin: 20px 50px 20px 50px;
     font-size: larger;
     text-align: justify;
+}
+.cast-component{
+    margin: 20px 50px 20px 50px;
+    font-size: larger;
+    text-align: justify;
+}
+.ticket-component{
+    width: 100%;
+    padding: 20px;
 }
 .flexbox-container{
     display: flex;
@@ -15,6 +24,26 @@
     color: red;
     margin-right: 20px;
 }
+.movieIcon{
+    color: black;
+    margin-right: 20px;
+}
 .subsection{
     margin-top: 25px;
+}
+#ticket-container{
+    width: 350px;
+    align-items: center;
+    margin-top: 25px;
+}
+.ticketImage{
+    width: 350px;
+}
+@media screen and (max-width: 900px) {
+    .cast-component{
+        margin: 20px 10px 20px 20px;
+    }
+    .review-component{
+        margin: 20px 30px 30px 20px;
+    }
 }

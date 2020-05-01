@@ -16,6 +16,8 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import Cast from './Cast';
+import Ticket from './Ticket';
 
 const StyledRating = withStyles({
   iconFilled: {
@@ -53,6 +55,7 @@ class Detail extends Component {
     .then(response => response.json())
     .then(result => {
         result.review=JSON.parse(result.review);
+        result.ticketDetails = JSON.parse(result.ticketDetails);
         this.setState({
             selectedMovie : result,
             selectedTab:0,
@@ -82,10 +85,10 @@ class Detail extends Component {
             return <Review review={this.state.selectedMovie.review}/>
          break;
       case 2: 
-          return <p>Cast</p> 
+          return <Cast cast={this.state.selectedMovie.cast}/>
        break;
     case 3: 
-          return <p>Ticket</p> 
+          return <Ticket ticketDetails={this.state.selectedMovie.ticketDetails}/>
         break;
         default: {
             return <p></p>

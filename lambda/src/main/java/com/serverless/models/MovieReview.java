@@ -104,6 +104,11 @@ public class MovieReview {
     	item.with("review", new JSONObject(review).toString());
     	item.with("cast",this.cast.toList());
     	item.with("trailer", this.trailer);
+    	JSONObject ticketDetails = new JSONObject();
+    	ticketDetails.put("ticketImage", this.ticketImage);
+    	ticketDetails.put("placeWatched", this.placeWatched);
+    	ticketDetails.put("watchDate", this.watchDate);
+    	item.with("ticketDetails", ticketDetails.toString());
     	return item;
     }
 }

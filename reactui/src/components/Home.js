@@ -42,7 +42,6 @@ class Home extends Component {
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
-        debugger;
           const rvs = result.map(item => {
             return item;
           });

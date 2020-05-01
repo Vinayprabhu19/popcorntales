@@ -136,10 +136,10 @@ h5,h6{
 
     #card{
         float: left;
+        margin-left: 5%;
     }
     
     #movie-description{
-        float: right;
         padding-left: 5%;
         padding-right: 5%;
     }
@@ -147,7 +147,6 @@ h5,h6{
     #trailer{
         width: 800px;
         height: 540px;
-        float: right;
         margin-right: 50px;
     }
 

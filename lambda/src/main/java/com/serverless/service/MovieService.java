@@ -159,6 +159,7 @@ public class MovieService {
 			GetItemSpec spec = new GetItemSpec()
 				    .withPrimaryKey("title", movieName);
 //		
+			LOG.info(movieName);
 			Item item = movieTable.getItem(spec);
 			    
 			if(item == null) {

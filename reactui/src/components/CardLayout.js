@@ -8,7 +8,7 @@ class CardLayout extends Component {
   
   render() {
     return <div className="card-container">
-      <Paper elevation={4} className="card" onClick={()=> this.props.onCardClick()}>
+      <Paper elevation={19} className="card" onClick={()=> this.props.onCardClick()}>
               <figure id="card-figure">
                 <img id="card-img" alt="Movie" src={this.props.review.titleImage}/>
               </figure>

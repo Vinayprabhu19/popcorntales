@@ -42,6 +42,7 @@ class Home extends Component {
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
+        result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)})
           const rvs = result.map(item => {
             return item;
           });

@@ -52,9 +52,10 @@ class Movie extends Component {
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
+      credentials: "include"
   };
-  fetch('https://8cfsbr5d62.execute-api.us-east-1.amazonaws.com/prod/movie', requestOptions)
+  fetch('https://api.popcorntales.com/movie', requestOptions)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -90,6 +91,7 @@ class Movie extends Component {
           <Button onClick={this.onSubmit} >Submit</Button>
       </FormGroup>
     </FormControl>
+    
     </div>
   }
 }

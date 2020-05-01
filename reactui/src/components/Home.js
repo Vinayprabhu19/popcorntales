@@ -12,6 +12,8 @@ import Pagination from "./Pagination";
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
 import Title from '../resources/Title.png';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 class Home extends Component {
   constructor(props) {
@@ -21,7 +23,8 @@ class Home extends Component {
       reviews: [],
       totalPages:0,
       currentList:[],
-      banners:[]
+      banners:[],
+      loading:true
      };
 
      this.carouselIndex=0;
@@ -33,9 +36,10 @@ class Home extends Component {
   componentDidMount(){
     const requestOptions = {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json','Access-Control-Allow-Origin':'*'}
+      headers: { 'Content-Type': 'application/json'},
+      mode: "no-cors"
   };
-    fetch('https://8cfsbr5d62.execute-api.us-east-1.amazonaws.com/prod/movie')
+    fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
         debugger;
@@ -52,7 +56,8 @@ class Home extends Component {
             activePage: 1,
             totalPages: rvs.length,
             reviews: rvs,
-            currentList : currentPages
+            currentList : currentPages,
+            loading:false
           })
       })
       .catch(error =>{
@@ -94,7 +99,11 @@ class Home extends Component {
 
 render(){
   return (
-    <div className="App">
+    <div>
+      <Backdrop open={this.state.loading}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+    <div className={this.state.loading ? 'hidden' : 'App'}>
       <AppBar id="appBar" position="static">
         <Toolbar>
           <Hidden mdDown>
@@ -143,6 +152,7 @@ render(){
                 pageNeighbours={1}
                 onPageChanged={this.onPageChanged}/>
         </footer>
+    </div>
     </div>
   );
 }

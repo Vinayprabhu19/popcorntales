@@ -13,6 +13,7 @@ function App() {
       <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/review/:movieName" component={Detail} />
+      <Route path="/:movieName" component={Detail} />
       <Route path="/addMovie" component={Movie} />
     </Switch>
     </Router>

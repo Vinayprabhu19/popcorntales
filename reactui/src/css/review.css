@@ -3,13 +3,18 @@
     font-size: larger;
     text-align: justify;
 }
-
 .flexbox-container{
     display: flex;
     flex-direction: row;
 }
-
 .checkIcon{
     color: green;
     margin-right: 20px;
+}
+.cancelIcon{
+    color: red;
+    margin-right: 20px;
+}
+.subsection{
+    margin-top: 25px;
 }

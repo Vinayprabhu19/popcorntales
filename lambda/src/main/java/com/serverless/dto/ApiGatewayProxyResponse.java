@@ -10,6 +10,8 @@ public class ApiGatewayProxyResponse {
     private boolean isBase64Encoded;
 
     public ApiGatewayProxyResponse() {
+    		this.headers = new HashMap<String, String>();
+    		this.headers.put("Access-Control-Allow-Origin", "*");
     }
 
     public int getStatusCode() {

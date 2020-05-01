@@ -14,6 +14,8 @@ import Hidden from '@material-ui/core/Hidden';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
+import Backdrop from '@material-ui/core/Backdrop';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const StyledRating = withStyles({
   iconFilled: {
@@ -31,20 +33,20 @@ class Detail extends Component {
     this.state = {
         selectedMovie: {
             genre : [],
-            genreText :"",
             review : {
               synopsis:"",
               pros:[],
               cons:[]
             }
         },
-        selectedTab:null
+        selectedTab:null,
+        loading:true
     };
   }
 
   componentDidMount(){
     var movieTitle = this.props.match.params.movieName;
-    fetch('https://8cfsbr5d62.execute-api.us-east-1.amazonaws.com/prod/moviereview?movie='+movieTitle,{
+    fetch('https://api.popcorntales.com/moviereview?movie='+movieTitle,{
         headers : { 
           'Accept': 'application/json'
          }})
@@ -53,12 +55,13 @@ class Detail extends Component {
         result.review=JSON.parse(result.review);
         this.setState({
             selectedMovie : result,
-            selectedTab:0
+            selectedTab:0,
+            loading:false
           });
     })
     .catch(error =>{
-      debugger;
       console.error(error);
+      this.props.history.push('/');
     })  
   }
 
@@ -107,7 +110,12 @@ render(){
   const toolbar = this.getToolbar();
   const stars = this.stars(this.state.selectedMovie.rating);
   return (
-    <div id="container">
+    <div>
+    <Backdrop open={this.state.loading}>
+          <CircularProgress color="inherit" />
+        </Backdrop>
+    <div id="container" className={this.state.loading ? 'hidden' : ''}>
+        
         <AppBar id="appBar" position="static">
         <Toolbar>
         <div>
@@ -129,9 +137,9 @@ render(){
             </div>
             <Hidden mdUp >
                   <div className="topHeader">
-                  <p className="headerLevel1 centerAligned">{this.state.selectedMovie.title} {this.state.selectedMovie.year}</p>
-                  <p className="headerLevel2 centerAligned">{this.state.selectedMovie.genreText}</p>
-                  <p className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</p>
+                  <p className="headerLevel1 centerAligned">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</p>
+                  <p className="headerLevel2 centerAligned" >{this.state.selectedMovie.language}</p>
+                  <p className="headerLevel2 centerAligned">{this.state.selectedMovie.genre.join(",")}</p>
                   
                   <Grid container justify = "center">
                   {stars}
@@ -140,9 +148,9 @@ render(){
             </Hidden>
             <Hidden smDown>
             <div id="movie-description">
-                <p className="headerLevel1">{this.state.selectedMovie.title}</p>
-                <p className="headerLevel2">{this.state.selectedMovie.year}</p>
-                <p className="headerLevel2">{this.state.selectedMovie.genreText}</p>
+                <p className="headerLevel1">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</p>
+                <p className="headerLevel2">{this.state.selectedMovie.language}</p>
+                <p className="headerLevel2">{this.state.selectedMovie.genre.join(",")}</p>
                 <p className="headerLevel2">{this.state.selectedMovie.rating}/5</p>   
             </div>
             </Hidden>
@@ -169,7 +177,7 @@ render(){
           </div>
         </div>
     </div>
-
+    </div>
   );
 }
 }

@@ -7,6 +7,9 @@
   align-items: center;
 }
 
+.hidden{
+  display: none;
+}
 .rightToolbar{
   margin-left: auto;
   margin-right: 50px;

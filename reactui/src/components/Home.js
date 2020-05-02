@@ -108,7 +108,7 @@ render(){
       <AppBar id="appBar" position="static">
         <Toolbar>
           <Hidden mdDown>
-          <p id="title">Popcorn Tales</p>
+          <h1 id="title">Popcorn Tales</h1>
           </Hidden>
         <section className="rightToolbar">
           <Autocomplete

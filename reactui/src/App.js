@@ -8,13 +8,14 @@ import Movie from './components/Movie';
 import { Route,Switch } from "react-router-dom";
 
 function App() {
+  const reload = () => window.location.reload();
   return (
     <Router history={history}>
       <Switch>
       <Route path="/" exact component={Home} />
+      <Route path="/sitemap.xml" onEnter={reload} />
       <Route path="/addMovie" component={Movie} />
       <Route path="/review/:movieName" component={Detail} />
-      <Route path="/:movieName" component={Detail} />
     </Switch>
     </Router>
   );

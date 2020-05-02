@@ -19,6 +19,16 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Cast from './Cast';
 import Ticket from './Ticket';
 import MailIcon from '@material-ui/icons/Mail';
+import {
+  FacebookShareButton,
+  TelegramShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  FacebookIcon,
+  WhatsappIcon,
+  TelegramIcon,
+  TwitterIcon
+} from "react-share";
 
 const StyledRating = withStyles({
   iconFilled: {
@@ -43,7 +53,9 @@ class Detail extends Component {
             }
         },
         selectedTab:null,
-        loading:true
+        loading:true,
+        shareUrl:"www.popcorntales.com",
+        tags:"#popcorntales #movietime #moviereview #popcorn #letswatch"
     };
   }
 
@@ -60,7 +72,9 @@ class Detail extends Component {
         this.setState({
             selectedMovie : result,
             selectedTab:0,
-            loading:false
+            loading:false,
+            shareUrl:"www.popcorntales.com/review/"+movieTitle.replace(/ /g, '%20'),
+            quote:"I read a review of "+movieTitle+" and I feel that it's worth watching over in theatres. Read the review and let's goooo!!"
           });
     })
     .catch(error =>{
@@ -124,14 +138,14 @@ render(){
         <Toolbar>
         <div>
             <a href="/"><HomeButton/></a>
-            <p id="title">Popcorn Tales</p>
+            <h1 id="title">Popcorn Tales</h1>
           </div>
           </Toolbar>
         </AppBar>
         <div className="movie-header">
             <div id="card" >
               <Paper elevation={19}>
-              <img id="card-img" alt="Movie" src={this.state.selectedMovie.titleImage}/>
+              <img id="card-img" alt="Image for your awesome latest movie review" src={this.state.selectedMovie.titleImage}/>
               </Paper>
               <Hidden smDown>
               <Grid container justify = "center" id="starPhoto">
@@ -141,10 +155,9 @@ render(){
             </div>
             <Hidden mdUp >
                   <div className="topHeader">
-                  <p className="headerLevel1 centerAligned">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</p>
-                  <p className="headerLevel2 centerAligned" >{this.state.selectedMovie.language}</p>
-                  <p className="headerLevel2 centerAligned">{this.state.selectedMovie.genre.join(",")}</p>
-                  
+                  <h1 className="headerLevel1 centerAligned">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                  <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.language}</h3>
+                  <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.genre.join(",")}</h3>
                   <Grid container justify = "center">
                   {stars}
                   </Grid>
@@ -152,10 +165,16 @@ render(){
             </Hidden>
             <Hidden smDown>
             <div id="movie-description">
-                <p className="headerLevel1">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</p>
-                <p className="headerLevel2">{this.state.selectedMovie.language}</p>
-                <p className="headerLevel2">{this.state.selectedMovie.genre.join(",")}</p>
-                <p className="headerLevel2">{this.state.selectedMovie.rating}/5</p>   
+                <h1 className="headerLevel1">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                <h2 className="headerLevel2">{this.state.selectedMovie.language}</h2>
+                <h3 className="headerLevel2">{this.state.selectedMovie.genre.join(",")}</h3>
+                <h3 className="headerLevel2">{this.state.selectedMovie.rating}/5</h3>   
+                <div className="icon-container">
+                <TwitterShareButton url={this.state.shareUrl} quote={this.state.quote} className="social-media-icon"><TwitterIcon size={28} round/></TwitterShareButton>
+                <FacebookShareButton url={this.state.shareUrl} title={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={28} round/></FacebookShareButton>
+                <WhatsappShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><WhatsappIcon size={28} round/></WhatsappShareButton>
+                <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={28} round/></TelegramShareButton>
+                </div>
             </div>
             </Hidden>
             
@@ -182,6 +201,14 @@ render(){
         </div>
         <footer>
           <div id="footerText"> 
+              <Hidden smUp>
+                <Grid container justify = "center" className="icon-container">
+                  <TwitterShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TwitterIcon size={25} round/></TwitterShareButton>
+                  <FacebookShareButton url={this.state.shareUrl} quote={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={25} round/></FacebookShareButton>
+                  <WhatsappShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><WhatsappIcon size={25} round/></WhatsappShareButton>
+                  <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={25} round/></TelegramShareButton>
+                  </Grid>
+              </Hidden>
               <h6>Need your feedback to improve  
               <a href="mailto:vinay@popcorntales.com"> <MailIcon/></a>
               </h6>

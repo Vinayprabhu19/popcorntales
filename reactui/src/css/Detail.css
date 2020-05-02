@@ -80,7 +80,13 @@
     font-family: sans-serif;
     margin: 0;
 }
-
+.social-media-icon{
+    margin-right: 5px;
+}
+.icon-container{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
 
 #ratingText{
     font-size: 1.4em;

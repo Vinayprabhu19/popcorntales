@@ -18,6 +18,7 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Cast from './Cast';
 import Ticket from './Ticket';
+import MailIcon from '@material-ui/icons/Mail';
 
 const StyledRating = withStyles({
   iconFilled: {
@@ -179,6 +180,13 @@ render(){
           {toolbar}
           </div>
         </div>
+        <footer>
+          <div id="footerText"> 
+              <h6>Need your feedback to improve  
+              <a href="mailto:vinay@popcorntales.com"> <MailIcon/></a>
+              </h6>
+          </div>
+        </footer>
     </div>
     </div>
   );

@@ -64,6 +64,13 @@ footer{
 footer nav{
   display:inline-block;
 }
+#footerText{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  align-items: center;
+}
+
 @media screen and (min-width: 1500px) {
 
   #banner-container{

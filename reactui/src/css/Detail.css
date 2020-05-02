@@ -52,7 +52,13 @@
     overflow-wrap: break-word;
     padding-left: 5%;
 }
-
+#footerText{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 100%;
+    align-items: center;
+  }
+  
 #starPhoto{
     margin-top: 15px;
     margin-bottom: 10px;

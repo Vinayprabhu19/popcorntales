@@ -14,6 +14,7 @@ import Hidden from '@material-ui/core/Hidden';
 import Title from '../resources/Title.png';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import MailIcon from '@material-ui/icons/Mail';
 
 class Home extends Component {
   constructor(props) {
@@ -151,6 +152,12 @@ render(){
           <Pagination  totalRecords={this.state.totalPages} pageLimit={8}
                 pageNeighbours={1}
                 onPageChanged={this.onPageChanged}/>
+
+          <div id="footerText"> 
+              <h6>Need your feedback to improve  
+              <a href="mailto:vinay@popcorntales.com"> <MailIcon/></a>
+              </h6>
+          </div>
         </footer>
     </div>
     </div>

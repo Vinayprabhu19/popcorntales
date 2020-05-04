@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/component.css';
+import '../css/card.css';
 import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';

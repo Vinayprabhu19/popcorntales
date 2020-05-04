@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/component.css';
+import '../css/card.css';
 import Star from '@material-ui/icons/Star';
 import Paper from '@material-ui/core/Paper';
 

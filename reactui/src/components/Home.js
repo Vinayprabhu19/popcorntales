@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/App.css';
+import '../css/Home.css';
 import Carousel from 'react-bootstrap/Carousel';
 import CardLayout from "./CardLayout";
 import GridList from '@material-ui/core/GridList';

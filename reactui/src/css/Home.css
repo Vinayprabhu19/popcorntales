@@ -17,6 +17,7 @@
 #titleImage{
   margin-top: 25px;
   width: 70%;
+  margin-bottom: 15px;
 }
 #banner-container{
   width: 100%;
@@ -70,7 +71,12 @@ footer nav{
   width: 100%;
   align-items: center;
 }
-
+.filter-sort{
+  float: right;
+  margin-right: 5%;
+  margin-bottom: 10px;
+  color: #000;
+}
 @media screen and (min-width: 1500px) {
 
   #banner-container{
@@ -88,7 +94,7 @@ footer nav{
 @media screen and (max-width: 600px) {
 
   .App-Content{
-    margin: 20px 1% 1% 1%;
+    margin: 5px 1% 1% 1%;
   }
   
   #title{

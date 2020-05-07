@@ -15,7 +15,10 @@ import Title from '../resources/Title.png';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MailIcon from '@material-ui/icons/Mail';
-
+import FilterListIcon from '@material-ui/icons/FilterList';
+import SortIcon from '@material-ui/icons/Sort';
+import IconButton from '@material-ui/core/IconButton';
+import Sort from "./Sort";
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -25,12 +28,18 @@ class Home extends Component {
       totalPages:0,
       currentList:[],
       banners:[],
-      loading:true
+      loading:true,
+      sortOpen:false,
+      sorter:{
+        "field":"timeStamp",
+        "sortType":"Ascending"
+      }
      };
 
      this.carouselIndex=0;
      this.onPageChanged = this.onPageChanged.bind(this);
-  
+     this.openSort = this.openSort.bind(this);
+     this.handleSortClose = this.handleSortClose.bind(this);
   }
 
 
@@ -43,7 +52,7 @@ class Home extends Component {
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
-        result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)})
+        result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
           const rvs = result.map(item => {
             return item;
           });
@@ -62,7 +71,6 @@ class Home extends Component {
           })
       })
       .catch(error =>{
-        debugger;
         console.error(error);
       })
 
@@ -89,6 +97,8 @@ class Home extends Component {
       });
   }
 
+
+
   onCardClick(image){
     this.props.history.push('/review/'+image.title);
   }
@@ -96,7 +106,12 @@ class Home extends Component {
   handleSelect = (selectedIndex, e) => {
     this.carouselIndex=selectedIndex;
   };
-
+  openSort(){
+    this.setState({
+      sortOpen : true
+    });
+  }
+  
 
 render(){
   return (
@@ -120,7 +135,7 @@ render(){
           />
           
         </section>
-        <a id="instagramButton" href="https://www.instagram.com/matineetales">
+        <a href="https://www.instagram.com/matineetales">
               <InstagramIcon/>
           </a>
         </Toolbar>
@@ -142,6 +157,11 @@ render(){
       <img src={Title} id="titleImage" />
       </Hidden>
       <div className="App-Content">
+        <div className="filter-sort">
+          {/* <IconButton className="iconBtn"><FilterListIcon/></IconButton> */}
+          <IconButton className="iconBtn" onClick={this.openSort} ><SortIcon/></IconButton>
+        </div>
+        <Sort open={this.state.sortOpen} close={(data)=>this.handleSortClose(data)} data={this.state.sorter}/>
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (
                           <CardLayout key={image.title} onCardClick ={()=> {this.onCardClick(image)}} review={image}/>
@@ -163,6 +183,49 @@ render(){
     </div>
   );
 }
+handleSortClose(data){
+  // result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
+  // sorter:{
+  //   "field":"timeStamp",
+  //   "sortType":"Ascending"
+  // }
+      if(data.field == this.state.sorter.field && data.sortType == this.state.sorter.sortType){
+        this.setState({sortOpen:false})
+        return;
+      }
+      var reviews;
+      if(this.field == "timeStamp"){
+        if(data.sortType == "Descending")
+          reviews = this.state.reviews.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)})
+        else
+          reviews = this.state.reviews.sort(function(a,b){return new Date(a.timeStamp)- new Date(b.timeStamp)})
+      }
+      else{
+        if(data.sortType == "Descending")
+          reviews = this.state.reviews.sort(function(a,b){if(a[data.field] > b[data.field]) { return -1; }
+          if(a[data.field] < b[data.field]) { return 1; }
+          return 0;})
+        else
+          reviews = this.state.reviews.sort(function(a,b){if(a[data.field] < b[data.field]) { return -1; }
+          if(a[data.field] > b[data.field]) { return 1; }
+          return 0;})
+      }
+      debugger;
+      var currentPages = [];
+      var len = (reviews.length > 8)?8:reviews.length;
+      for(var i=0;i< len ;i++){
+        currentPages.push(reviews[i]);
+      }
+      this.setState({
+        activePage: 1,
+        totalPages: reviews.length,
+        reviews: reviews,
+        currentList : currentPages,
+        loading:false,
+        sortOpen:false,
+        sorter:data
+      });
+    }
 }
 
 export default Home;

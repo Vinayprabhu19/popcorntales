@@ -5,6 +5,7 @@ import history from './services/history';
 import Home from './components/Home';
 import Detail from './components/Detail';
 import Movie from './components/Movie';
+import Analytics from './components/Analytics';
 import { Route,Switch } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Router history={history}>
       <Switch>
       <Route path="/" exact component={Home} />
+      <Route path="/analytics" component={Analytics} />
       <Route path="/sitemap.xml" onEnter={reload} />
       <Route path="/addMovie" component={Movie} />
       <Route path="/review/:movieName" component={Detail} />

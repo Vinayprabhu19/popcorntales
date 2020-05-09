@@ -1,0 +1,22 @@
+.chart-container{
+    margin-left: 7%;
+    margin-right: 7%;
+}
+.analytics{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 20px 50px 50px 50px;
+}
+
+.smallChart{
+    padding: 20px;
+    width: 250px;
+    margin: 10px;
+}
+
+.mediumChart{
+    padding: 20px;
+    width: 350px;
+    margin: 10px;
+}

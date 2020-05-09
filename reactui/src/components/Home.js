@@ -1,24 +1,24 @@
-import React, { Component } from 'react';
-import '../css/Home.css';
-import Carousel from 'react-bootstrap/Carousel';
-import CardLayout from "./CardLayout";
-import GridList from '@material-ui/core/GridList';
-import Autocomplete from '@material-ui/lab/Autocomplete';
-import TextField from '@material-ui/core/TextField';
 import AppBar from '@material-ui/core/AppBar';
+import Backdrop from '@material-ui/core/Backdrop';
+import Button from '@material-ui/core/Button';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import GridList from '@material-ui/core/GridList';
+import Hidden from '@material-ui/core/Hidden';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
 import Toolbar from '@material-ui/core/Toolbar';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import Pagination from "./Pagination";
-import Paper from '@material-ui/core/Paper';
-import Hidden from '@material-ui/core/Hidden';
-import Title from '../resources/Title.png';
-import Backdrop from '@material-ui/core/Backdrop';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import MailIcon from '@material-ui/icons/Mail';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import SortIcon from '@material-ui/icons/Sort';
-import IconButton from '@material-ui/core/IconButton';
+import Autocomplete from '@material-ui/lab/Autocomplete';
+import React, { Component } from 'react';
+import Carousel from 'react-bootstrap/Carousel';
+import '../css/Home.css';
+import Title from '../resources/Title.png';
+import CardLayout from "./CardLayout";
+import Pagination from "./Pagination";
 import Sort from "./Sort";
+import BarChartIcon from '@material-ui/icons/BarChart';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -125,6 +125,7 @@ render(){
           <Hidden mdDown>
           <h1 id="title">Popcorn Tales</h1>
           </Hidden>
+          <a href="/analytics"><BarChartIcon fontSize={"large"} color={"primary"}/></a>
         <section className="rightToolbar">
           <Autocomplete
             id="autocomplete-box"
@@ -136,7 +137,7 @@ render(){
           
         </section>
         <a href="https://www.instagram.com/matineetales">
-              <InstagramIcon/>
+              <InstagramIcon fontSize={"medium"}/>
           </a>
         </Toolbar>
       </AppBar>
@@ -159,7 +160,7 @@ render(){
       <div className="App-Content">
         <div className="filter-sort">
           {/* <IconButton className="iconBtn"><FilterListIcon/></IconButton> */}
-          <IconButton className="iconBtn" onClick={this.openSort} ><SortIcon/></IconButton>
+          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"medium"}/></Button>
         </div>
         <Sort open={this.state.sortOpen} close={(data)=>this.handleSortClose(data)} data={this.state.sorter}/>
         <GridList className="cardGridList"  >

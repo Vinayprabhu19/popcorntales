@@ -29,7 +29,7 @@ class CardLayout extends Component {
   }
   render() {
     const stars = this.stars(this.props.review.rating);
-    return <div className="card-container">
+    return <a className="card-container" href={this.props.review.title}>
       <Paper elevation={19} className="card" onClick={()=> this.props.onCardClick()}>
         <div>
               <figure id="card-figure">
@@ -53,7 +53,7 @@ class CardLayout extends Component {
       <h5 className="title">{this.props.review.title}</h5>
       <h6 className="language">{this.props.review.language}</h6>
      
-    </div>
+    </a>
   }
 }
 

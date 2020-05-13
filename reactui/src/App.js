@@ -18,6 +18,7 @@ function App() {
       <Route path="/sitemap.xml" onEnter={reload} />
       <Route path="/addMovie" component={Movie} />
       <Route path="/review/:movieName" component={Detail} />
+      <Route path="/:movieName" component={Detail} />
     </Switch>
     </Router>
   );

@@ -22,6 +22,9 @@ public class ApiGatewayProxyResponse {
         return headers;
     }
 
+    public void addHeader(String key,String value) {
+    	this.headers.put(key, value);
+    }
     public String getBody() {
         return body;
     }

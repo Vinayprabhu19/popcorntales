@@ -52,6 +52,7 @@ class Home extends Component {
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
+        debugger;
         result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
           const rvs = result.map(item => {
             return item;
@@ -137,7 +138,7 @@ render(){
           
         </section>
         <a href="https://www.instagram.com/matineetales">
-              <InstagramIcon fontSize={"medium"}/>
+              <InstagramIcon fontSize={"default"}/>
           </a>
         </Toolbar>
       </AppBar>
@@ -160,12 +161,12 @@ render(){
       <div className="App-Content">
         <div className="filter-sort">
           {/* <IconButton className="iconBtn"><FilterListIcon/></IconButton> */}
-          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"medium"}/></Button>
+          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"default"}/></Button>
         </div>
         <Sort open={this.state.sortOpen} close={(data)=>this.handleSortClose(data)} data={this.state.sorter}/>
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (
-                          <CardLayout key={image.title} onCardClick ={()=> {this.onCardClick(image)}} review={image}/>
+                          <CardLayout key={image.title} review={image}/>
                       ))} 
         </GridList>
       </div>

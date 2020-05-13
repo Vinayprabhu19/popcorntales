@@ -3,6 +3,7 @@ package com.serverless.models;
 import org.json.JSONArray;
 
 import com.amazonaws.services.dynamodbv2.document.Item;
+import com.serverless.utils.DTOUtil;
 
 public class Movie {
 	
@@ -12,7 +13,7 @@ public class Movie {
     private String year;
     private Float rating;
     private JSONArray genre;
-    private String timestamp;
+    private String timeStamp;
     
 	public String getTitle() {
 		return title;
@@ -30,7 +31,7 @@ public class Movie {
 		return titleImage;
 	}
 	public void setTitleImage(String titleImage) {
-		this.titleImage = titleImage;
+		this.titleImage = DTOUtil.API_OBJECT_URL+ titleImage;
 	}
 	public String getYear() {
 		return year;
@@ -50,11 +51,11 @@ public class Movie {
 	public void setGenre(JSONArray genre) {
 		this.genre = genre;
 	}
-    public String getTimestamp() {
-		return timestamp;
+	public String getTimeStamp() {
+		return timeStamp;
 	}
-	public void setTimestamp(String timestamp) {
-		this.timestamp = timestamp;
+	public void setTimeStamp(String timeStamp) {
+		this.timeStamp = timeStamp;
 	}
 	public Item getItem() {
     	Item item = new Item();
@@ -64,7 +65,7 @@ public class Movie {
     	item.with("rating", this.rating);
     	item.with("year", this.year);
     	item.with("genre", this.genre.toList());
-    	item.with("timeStamp", this.timestamp);
+    	item.with("timeStamp", this.timeStamp);
     	return item;
     }
  

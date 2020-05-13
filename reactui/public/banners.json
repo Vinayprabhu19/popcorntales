@@ -2,15 +2,15 @@
     {
         "id":1,
         "name":"Love Mocktail",
-        "url":"https://popcorntales-media.s3.amazonaws.com/Banners/Love-Mocktail.jpg"
+        "url":"https://api.popcorntales.com/image?object=Banners/Love-Mocktail.jpg"
     },
     {
         "id":2,
-        "url":"https://popcorntales-media.s3.amazonaws.com/Banners/Dia.jpg"
+        "url":"https://api.popcorntales.com/image?object=Banners/Dia.jpg"
     },
     {
         "id":3,
-        "url":"https://popcorntales-media.s3.amazonaws.com/Banners/Kannum-kannum-kollaiyadithaal.jpg"
+        "url":"https://api.popcorntales.com/image?object=Banners/Kannum-kannum-kollaiyadithaal.jpg"
     }
 
 ]

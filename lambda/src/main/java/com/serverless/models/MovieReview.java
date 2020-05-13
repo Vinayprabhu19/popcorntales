@@ -4,6 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import com.amazonaws.services.dynamodbv2.document.Item;
+import com.serverless.utils.DTOUtil;
 
 public class MovieReview {
 
@@ -36,7 +37,7 @@ public class MovieReview {
 		return titleImage;
 	}
 	public void setTitleImage(String titleImage) {
-		this.titleImage = titleImage;
+		this.titleImage = DTOUtil.API_OBJECT_URL+titleImage;
 	}
 	public String getYear() {
 		return year;
@@ -79,7 +80,7 @@ public class MovieReview {
 		return ticketImage;
 	}
 	public void setTicketImage(String ticketImage) {
-		this.ticketImage = ticketImage;
+		this.ticketImage = DTOUtil.API_OBJECT_URL+ticketImage;
 	}
 	public String getWatchDate() {
 		return watchDate;

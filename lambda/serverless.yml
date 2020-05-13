@@ -59,6 +59,11 @@ functions:
     handler: com.serverless.Handler::getMovies
   getMovieReview:
     handler: com.serverless.Handler::getMovieReview
+  resizeImage:
+    handler: com.serverless.Handler::resizeImage
+  fetchImage:
+    handler: com.serverless.Handler::fetchImage
+  
   
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events

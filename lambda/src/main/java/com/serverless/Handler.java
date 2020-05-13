@@ -29,4 +29,14 @@ public class Handler implements RequestHandler<ApiGatewayProxyRequest, ApiGatewa
 		return MovieService.getMovieReview(movieName);
 		
 	}
+	
+	public ApiGatewayProxyResponse fetchImage(ApiGatewayProxyRequest input,Context context) {
+		return MovieService.fetchImage(input);
+		
+	}
+	
+	public ApiGatewayProxyResponse resizeImage(ApiGatewayProxyRequest input,Context context) {
+		return MovieService.resizeImage(input);
+		
+	}
 }

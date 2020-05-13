@@ -193,6 +193,7 @@ public class MovieService {
 			}
 			String titleImage = DTOUtil.API_OBJECT_URL + item.get("titleImage");
 			item.with("titleImage", titleImage);
+			
 			response.addHeader("Content-type", "application/json");
 			response.addHeader("Cache-Control","max-age=86400");
 			response.setBody(item.toJSON());

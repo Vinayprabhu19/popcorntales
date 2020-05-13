@@ -176,7 +176,7 @@ render(){
 
           <div id="footerText"> 
               <h6>Need your feedback to improve  
-              <a href="mailto:vinay@popcorntales.com"> <MailIcon/></a>
+              <a href="mailto:vinayprabhu19@gmail.com"> <MailIcon/></a>
               </h6>
           </div>
         </footer>

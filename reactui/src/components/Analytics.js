@@ -55,7 +55,7 @@ class Analytics extends Component {
     <Grid container justify = "center" className="analytics" >
       <Paper  elevation={15}className="mediumChart">
         <h5>Total Movies : {this.state.totalMovies}</h5>
-        <PieChart data={this.state.languagesData} legend="bottom"/>
+        <PieChart data={this.state.languagesData} legend="bottom" width={250} height={250}/>
       </Paper>
       <Paper  elevation={15}className="mediumChart">
         <PieChart data={this.state.categoryData} legend="bottom" donut={true} />
@@ -73,7 +73,7 @@ class Analytics extends Component {
    <footer>
    <div id="footerText"> 
        <h6>Need your feedback to improve  
-       <a href="mailto:vinay@popcorntales.com"> <MailIcon/></a>
+       <a href="mailto:vinayprabhu19@gmail.com"> <MailIcon/></a>
        </h6>
    </div>
  </footer>

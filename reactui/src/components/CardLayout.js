@@ -30,7 +30,7 @@ class CardLayout extends Component {
   render() {
     const stars = this.stars(this.props.review.rating);
     return <a className="card-container" href={this.props.review.title}>
-      <Paper elevation={19} className="card" onClick={()=> this.props.onCardClick()}>
+      <Paper elevation={19} className="card" >
         <div>
               <figure id="card-figure">
                 <img id="card-img" alt="Image for your latest movie review" src={this.props.review.titleImage}/>

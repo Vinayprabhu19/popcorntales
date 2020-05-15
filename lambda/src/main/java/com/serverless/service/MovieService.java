@@ -223,13 +223,13 @@ public class MovieService {
          try {
         	 final ByteArrayOutputStream os = new ByteArrayOutputStream();
 			BufferedImage srcImage = ImageIO.read(objectData);
-			ImageIO.write(srcImage, "png", os);
+			ImageIO.write(srcImage, "jpg", os);
 	        byte[] imageBytes = os.toByteArray();
             os.close();
 	        Base64.Encoder encoder = Base64.getEncoder();
 	        String b64String = encoder.encodeToString(imageBytes);
 	        response.addHeader("Cache-Control","max-age=364400");
-	        response.addHeader("Content-type", "image/png");
+	        response.addHeader("Content-type", "image/jpg");
 			response.setBody(b64String);
 			response.setStatusCode(HttpStatus.SC_OK);
 			response.setBase64Encoded(true);

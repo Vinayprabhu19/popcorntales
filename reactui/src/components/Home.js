@@ -52,7 +52,6 @@ class Home extends Component {
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
-        debugger;
         result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
           const rvs = result.map(item => {
             return item;
@@ -150,25 +149,25 @@ render(){
                     <img id="movie-img" src={banner.url} key={banner.id} alt="Movie"/>
                 </Carousel.Item>
               })
-              
             }
-
         </Carousel>
       </Paper>
-      <Hidden mdUp>
+      {/* <Hidden mdUp> */}
       <img src={Title} id="titleImage" />
-      </Hidden>
+      {/* </Hidden> */}
       <div className="App-Content">
         <div className="filter-sort">
           {/* <IconButton className="iconBtn"><FilterListIcon/></IconButton> */}
           <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"default"}/></Button>
         </div>
         <Sort open={this.state.sortOpen} close={(data)=>this.handleSortClose(data)} data={this.state.sorter}/>
+        <Paper elevation={5} className="cardList">
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (
                           <CardLayout key={image.title} review={image}/>
                       ))} 
         </GridList>
+        </Paper>
       </div>
       <footer>
           <Pagination  totalRecords={this.state.totalPages} pageLimit={8}

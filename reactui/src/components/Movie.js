@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import '../css/card.css';
-import FormLabel from '@material-ui/core/FormLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormGroup from '@material-ui/core/FormGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';

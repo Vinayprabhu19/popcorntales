@@ -15,11 +15,6 @@ class Analytics extends Component {
       }
 
       componentDidMount(){
-        const requestOptions = {
-          method: 'GET',
-          headers: { 'Content-Type': 'application/json'},
-          mode: "no-cors"
-      };
         fetch('https://api.popcorntales.com/movie')
           .then(response => response.json())
           .then(result => {
@@ -73,7 +68,7 @@ class Analytics extends Component {
    <footer>
    <div id="footerText"> 
        <h6>Need your feedback to improve  
-       <a href="mailto:vinayprabhu19@gmail.com"> <MailIcon/></a>
+       <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
        </h6>
    </div>
  </footer>
@@ -88,7 +83,7 @@ getLanguages(result){
       languages.push(result[i].language)
     }
   }
-  for(var i = 0 ;i<languages.length;i++){
+  for(i = 0 ;i<languages.length;i++){
     const count = result.filter((obj) => obj.language === languages[i]).length;
     languageCount.push(
       [languages[i],count]
@@ -106,7 +101,7 @@ getMovieCountByYear(result){
       year.push(result[i].year)
     }
   }
-  for(var i = 0 ;i<year.length;i++){
+  for(i = 0 ;i<year.length;i++){
     const count = result.filter((obj) => obj.year === year[i]).length;
     yearCount.push([year[i],count])
   }
@@ -125,7 +120,7 @@ getratingCountByLanguage(result){
     {name:"avg",data:{}},
     {name:"max",data:{}}
 ]
-  for(var i = 0 ;i<languages.length;i++){
+  for(i = 0 ;i<languages.length;i++){
     var filteredByLanguage= result.filter((obj) =>  obj.language === languages[i]);
     var min=999;
     var max =-1;
@@ -158,7 +153,7 @@ getRatingCountByCategory(result){
     {name:"avg",data:{}},
     {name:"max",data:{}}
   ]
-  for(var i = 0 ;i<catergories.length;i++){
+  for(i = 0 ;i<catergories.length;i++){
     var filteredByCategory= result.filter((obj) =>  obj.genre.includes(catergories[i]));
     var min=999;
     var max =-1;

@@ -19,6 +19,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import Cast from './Cast';
 import Ticket from './Ticket';
 import MailIcon from '@material-ui/icons/Mail';
+import SocialMenu from './SocialMenu';
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -96,7 +97,7 @@ class Detail extends Component {
             return <Synopsis synopsis={this.state.selectedMovie.review.synopsis}/>
         break;
         case 1: 
-          if(this.state.selectedMovie.review != undefined)
+          if(this.state.selectedMovie.review !== undefined)
             return <Review review={this.state.selectedMovie.review}/>
          break;
       case 2: 
@@ -136,10 +137,11 @@ render(){
         
         <AppBar id="appBar" position="static">
         <Toolbar>
-        <div>
             <a href="/"><HomeButton/></a>
             <h1 id="title">Popcorn Tales</h1>
-          </div>
+            <section className="rightToolbar">
+            <SocialMenu/>
+            </section>
           </Toolbar>
         </AppBar>
         <div className="movie-header">
@@ -210,7 +212,7 @@ render(){
                   </Grid>
               </Hidden>
               <h6>Need your feedback to improve  
-              <a href="mailto:vinayprabhu19@gmail.com"> <MailIcon/></a>
+              <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
               </h6>
           </div>
         </footer>

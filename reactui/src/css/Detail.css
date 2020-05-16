@@ -33,7 +33,9 @@
     height: 300px;
     float: right;
 }
-
+.rightToolbar{
+    margin-left: auto;
+  }
 #title{
     visibility: visible;
     text-decoration: none;

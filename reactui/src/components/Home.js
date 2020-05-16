@@ -7,7 +7,6 @@ import Hidden from '@material-ui/core/Hidden';
 import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Toolbar from '@material-ui/core/Toolbar';
-import InstagramIcon from '@material-ui/icons/Instagram';
 import MailIcon from '@material-ui/icons/Mail';
 import SortIcon from '@material-ui/icons/Sort';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -18,7 +17,9 @@ import Title from '../resources/Title.png';
 import CardLayout from "./CardLayout";
 import Pagination from "./Pagination";
 import Sort from "./Sort";
+import Grid from '@material-ui/core/Grid';
 import BarChartIcon from '@material-ui/icons/BarChart';
+import SocialMenu from './SocialMenu';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -44,11 +45,6 @@ class Home extends Component {
 
 
   componentDidMount(){
-    const requestOptions = {
-      method: 'GET',
-      headers: { 'Content-Type': 'application/json'},
-      mode: "no-cors"
-  };
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
@@ -122,26 +118,16 @@ render(){
     <div className={this.state.loading ? 'hidden' : 'App'}>
       <AppBar id="appBar" position="static">
         <Toolbar>
+          <a href="/analytics"><BarChartIcon fontSize={"large"} color={"primary"}/></a>
           <Hidden mdDown>
           <h1 id="title">Popcorn Tales</h1>
           </Hidden>
-          <a href="/analytics"><BarChartIcon fontSize={"large"} color={"primary"}/></a>
-        <section className="rightToolbar">
-          <Autocomplete
-            id="autocomplete-box"
-            options={this.state.reviews}
-            getOptionLabel={option => option.title}
-            onChange={(e,v)=>{this.onCardClick(v)}}
-            renderInput={params => <TextField {...params} InputProps={{...params.InputProps, disableUnderline: true}} placeholder="Movie" />}
-          />
-          
-        </section>
-        <a href="https://www.instagram.com/matineetales">
-              <InstagramIcon fontSize={"default"}/>
-          </a>
+          <section className="rightToolbar">
+            <SocialMenu/>
+          </section>
         </Toolbar>
       </AppBar>
-      <Paper id="banner-container" elevation={5}>
+      <Paper id="banner-container" elevation={10}>
         <Carousel activeIndex={this.index} onSelect={this.handleSelect} indicators={false}>
             {
               this.state.banners.map(banner=>{
@@ -152,22 +138,27 @@ render(){
             }
         </Carousel>
       </Paper>
-      {/* <Hidden mdUp> */}
+      <Hidden mdUp>
       <img src={Title} id="titleImage" />
-      {/* </Hidden> */}
+      </Hidden>
       <div className="App-Content">
-        <div className="filter-sort">
+      <Grid container justify = "flex-end" className="filter-sort">
           {/* <IconButton className="iconBtn"><FilterListIcon/></IconButton> */}
-          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"default"}/></Button>
-        </div>
+          <Autocomplete
+            id="autocomplete-box"
+            options={this.state.reviews}
+            getOptionLabel={option => option.title}
+            onChange={(e,v)=>{this.onCardClick(v)}}
+            renderInput={params => <TextField {...params} InputProps={{...params.InputProps, disableUnderline: true}} placeholder="Movie" />}
+          />
+          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"default"} color={"primary"}/></Button>
+        </Grid>
         <Sort open={this.state.sortOpen} close={(data)=>this.handleSortClose(data)} data={this.state.sorter}/>
-        <Paper elevation={5} className="cardList">
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (
                           <CardLayout key={image.title} review={image}/>
                       ))} 
         </GridList>
-        </Paper>
       </div>
       <footer>
           <Pagination  totalRecords={this.state.totalPages} pageLimit={8}
@@ -176,7 +167,7 @@ render(){
 
           <div id="footerText"> 
               <h6>Need your feedback to improve  
-              <a href="mailto:vinayprabhu19@gmail.com"> <MailIcon/></a>
+              <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
               </h6>
           </div>
         </footer>
@@ -190,19 +181,19 @@ handleSortClose(data){
   //   "field":"timeStamp",
   //   "sortType":"Ascending"
   // }
-      if(data.field == this.state.sorter.field && data.sortType == this.state.sorter.sortType){
+      if(data.field === this.state.sorter.field && data.sortType === this.state.sorter.sortType){
         this.setState({sortOpen:false})
         return;
       }
       var reviews;
-      if(this.field == "timeStamp"){
-        if(data.sortType == "Descending")
+      if(this.field === "timeStamp"){
+        if(data.sortType === "Descending")
           reviews = this.state.reviews.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)})
         else
           reviews = this.state.reviews.sort(function(a,b){return new Date(a.timeStamp)- new Date(b.timeStamp)})
       }
       else{
-        if(data.sortType == "Descending")
+        if(data.sortType === "Descending")
           reviews = this.state.reviews.sort(function(a,b){if(a[data.field] > b[data.field]) { return -1; }
           if(a[data.field] < b[data.field]) { return 1; }
           return 0;})

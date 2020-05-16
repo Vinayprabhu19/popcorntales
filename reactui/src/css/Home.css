@@ -12,7 +12,6 @@
 }
 .rightToolbar{
   margin-left: auto;
-  margin-right: 50px;
 }
 #titleImage{
   margin-top: 25px;
@@ -38,10 +37,12 @@
 
 
 #autocomplete-box{
-  width: 100px;
+  width: 150px;
   margin-right: 10px;
 }
-
+.social-icon{
+  margin-right: 15px;
+}
 #appBar{
   width: 100%;
   height: 60px;
@@ -75,8 +76,7 @@ footer nav{
 }
 .filter-sort{
   float: right;
-  margin-right: 5%;
-  margin-bottom: 10px;
+  padding: 10px;
   color: #000;
 }
 @media screen and (min-width: 600px) {
@@ -87,7 +87,7 @@ footer nav{
   }
 
   #movie-img{
-    width: 70%;
+    width: 60%;
     align-self: center;
     
   }
@@ -101,6 +101,10 @@ footer nav{
   .App-Content{
     margin: 20px;
   }
+  .filter-sort{
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 } 
 
 @media screen and (max-width: 600px) {
@@ -110,7 +114,7 @@ footer nav{
   }
   
   #title{
-    font-size: 0.9rem;
+    font-size: 1.0rem;
     visibility: hidden;
   }
 }
@@ -120,7 +124,7 @@ footer nav{
   }
   
   #title{
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     visibility: hidden;
   }
 }

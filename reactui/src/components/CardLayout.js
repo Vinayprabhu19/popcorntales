@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../css/card.css';
-import Star from '@material-ui/icons/Star';
 import Paper from '@material-ui/core/Paper';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
@@ -17,7 +16,7 @@ const StyledRating = withStyles({
 class CardLayout extends Component {
   
   stars = (starCount) => {
-    if(starCount == undefined)
+    if(starCount === undefined)
       return;
     const value = starCount;
     return (
@@ -30,7 +29,7 @@ class CardLayout extends Component {
   render() {
     const stars = this.stars(this.props.review.rating);
     return <a className="card-container" href={this.props.review.title}>
-      <Paper elevation={19} className="card" >
+      <Paper elevation={13} className="card" >
         <div>
               <figure id="card-figure">
                 <img id="card-img" alt="Image for your latest movie review" src={this.props.review.titleImage}/>

@@ -193,7 +193,7 @@ render(){
             <Tabs onChange={(e,v)=>{this.handleChange(v)}}  value={this.state.selectedTab} variant="fullWidth" aria-label="simple tabs example">
               <Tab value={0} label="Synopsis" className="tab"/>
               <Tab value={1} label="Review" className="tab"/>
-              <Tab value={2} label="Cast" className="tab"/>
+              <Tab value={2} label="Cast & Crew" className="tab"/>
               <Tab value={3} label="Ticket" className="tab"/>
             </Tabs>
           </AppBar>

@@ -30,7 +30,7 @@ export default function SocialMenu() {
         open={Boolean(anchorEl)}
         onClose={handleClose}>
         <MenuItem onClick={handleClose}> 
-        <a href="https://www.twitter.com/TalesPopcorn" className="social-icon">
+        <a href="https://www.twitter.com/PopcornTaless" className="social-icon">
               <TwitterIcon fontSize={"default"}/>
           </a></MenuItem>
         <MenuItem onClick={handleClose}>
@@ -39,7 +39,7 @@ export default function SocialMenu() {
           </a>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-        <a href="https://www.instagram.com/popcorntales19" className="social-icon">
+        <a href="https://www.instagram.com/popcorntaless" className="social-icon">
               <InstagramIcon fontSize={"default"}/>
           </a>
         </MenuItem>

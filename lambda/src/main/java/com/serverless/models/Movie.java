@@ -28,10 +28,10 @@ public class Movie {
 		this.language = language;
 	}
 	public String getTitleImage() {
-		return titleImage;
+		return  DTOUtil.API_OBJECT_URL+titleImage;
 	}
 	public void setTitleImage(String titleImage) {
-		this.titleImage = DTOUtil.API_OBJECT_URL+ titleImage;
+		this.titleImage = titleImage;
 	}
 	public String getYear() {
 		return year;

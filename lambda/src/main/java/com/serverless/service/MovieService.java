@@ -214,13 +214,14 @@ public class MovieService {
 
 		String objectKey= input.getQueryStringParameters().get("object");
 		ApiGatewayProxyResponse response = new ApiGatewayProxyResponse();
-		 AmazonS3 s3Client = new AmazonS3Client();
-         S3Object s3Object = s3Client.getObject(new GetObjectRequest(
-                 BUCKET_NAME, objectKey));
-         InputStream objectData = s3Object.getObjectContent();
 
+		LOG.info(objectKey);
          // Read the source image
          try {
+        	 AmazonS3 s3Client = new AmazonS3Client();
+             S3Object s3Object = s3Client.getObject(new GetObjectRequest(
+                     BUCKET_NAME, objectKey));
+             InputStream objectData = s3Object.getObjectContent();
         	 final ByteArrayOutputStream os = new ByteArrayOutputStream();
 			BufferedImage srcImage = ImageIO.read(objectData);
 			ImageIO.write(srcImage, "jpg", os);

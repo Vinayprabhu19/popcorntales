@@ -34,10 +34,10 @@ public class MovieReview {
 		this.language = language;
 	}
 	public String getTitleImage() {
-		return titleImage;
+		return  DTOUtil.API_OBJECT_URL+titleImage;
 	}
 	public void setTitleImage(String titleImage) {
-		this.titleImage = DTOUtil.API_OBJECT_URL+titleImage;
+		this.titleImage =titleImage;
 	}
 	public String getYear() {
 		return year;
@@ -77,10 +77,10 @@ public class MovieReview {
 	}
 	
 	public String getTicketImage() {
-		return ticketImage;
+		return  DTOUtil.API_OBJECT_URL+ticketImage;
 	}
 	public void setTicketImage(String ticketImage) {
-		this.ticketImage = DTOUtil.API_OBJECT_URL+ticketImage;
+		this.ticketImage = ticketImage;
 	}
 	public String getWatchDate() {
 		return watchDate;

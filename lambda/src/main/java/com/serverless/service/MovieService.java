@@ -160,6 +160,7 @@ public class MovieService {
 				movies.put(new JSONObject(item.toJSON()));
 			}
 			response.addHeader("Content-type", "application/json");
+			response.addHeader("Cache-Control","max-age=600");
 			response.setBody(movies.toString());
 			response.setStatusCode(HttpStatus.SC_OK);
 			return response;
@@ -212,7 +213,8 @@ public class MovieService {
 
 	public static ApiGatewayProxyResponse fetchImage(ApiGatewayProxyRequest input) {
 
-		String objectKey= input.getQueryStringParameters().get("object");
+		Map<String,String> params = input.getQueryStringParameters();
+		String objectKey= params.get("object");
 		ApiGatewayProxyResponse response = new ApiGatewayProxyResponse();
 
 		LOG.info(objectKey);
@@ -224,12 +226,17 @@ public class MovieService {
              InputStream objectData = s3Object.getObjectContent();
         	 final ByteArrayOutputStream os = new ByteArrayOutputStream();
 			BufferedImage srcImage = ImageIO.read(objectData);
+			if(params.containsKey("width") && params.containsKey("height")) {
+				int width = Integer.parseInt(input.getQueryStringParameters().get("width"));
+				int height = Integer.parseInt(input.getQueryStringParameters().get("height"));
+				srcImage =resize(srcImage, height,width);
+			}
 			ImageIO.write(srcImage, "jpg", os);
 	        byte[] imageBytes = os.toByteArray();
             os.close();
 	        Base64.Encoder encoder = Base64.getEncoder();
 	        String b64String = encoder.encodeToString(imageBytes);
-	        response.addHeader("Cache-Control","max-age=364400");
+	        response.addHeader("Cache-Control","max-age=3664400");
 	        response.addHeader("Content-type", "image/jpg");
 			response.setBody(b64String);
 			response.setStatusCode(HttpStatus.SC_OK);

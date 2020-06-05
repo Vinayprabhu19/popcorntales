@@ -2,17 +2,17 @@
     {
         "id":1,
         "name":"Love Mocktail",
-        "url":"https://api.popcorntales.com/image?object=Banners/Movie1.jpg"
+        "url":"https://api.popcorntales.com/image?object=Banners/Movie1.jpg&width=920&height=207"
     },
     {
         "id":2,
         "name":"Dia",
-        "url":"https://api.popcorntales.com/image?object=Banners/Movie2.jpg"
+        "url":"https://api.popcorntales.com/image?object=Banners/Movie2.jpg&width=920&height=207"
     },
     {
         "id":3,
         "name":"Kannum Kannum",
-        "url":"https://api.popcorntales.com/image?object=Banners/Movie3.jpg"
+        "url":"https://api.popcorntales.com/image?object=Banners/Movie3.jpg&width=920&height=207"
     }
 
 ]

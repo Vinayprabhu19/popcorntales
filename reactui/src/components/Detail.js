@@ -68,6 +68,7 @@ class Detail extends Component {
          }})
     .then(response => response.json())
     .then(result => {
+        result=this.processImageData(result);
         result.review=JSON.parse(result.review);
         result.ticketDetails = JSON.parse(result.ticketDetails);
         this.setState({
@@ -123,7 +124,24 @@ stars = (starCount) => {
                     icon={<FavoriteIcon fontSize="inherit" />}/>
   );
 }
-
+processImageData(data){
+  var width,height;
+  var width,height;
+  if(window.matchMedia("(max-width: 300px)").matches){
+    width=150;height=200;
+  }
+  if(window.matchMedia("(max-width: 576px)").matches){
+    width=280;height=320;
+  }
+  else if(window.matchMedia("(max-width: 1980px)").matches){
+    width=300;height=360;
+  }
+  else{
+    width=400;height=500;
+  }
+  data.titleImage=  data.titleImage+"&width="+width+"&height="+height;
+  return data;
+}
 
 render(){
   const toolbar = this.getToolbar();

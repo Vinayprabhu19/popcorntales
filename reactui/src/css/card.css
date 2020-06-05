@@ -4,7 +4,6 @@
     margin-bottom: 5px;
 }
 .card-container{
-    width: 250px;
     height: fit-content;
     overflow-wrap: break-word;
     overflow: hidden;
@@ -23,7 +22,6 @@
     /* margin: 40px; */
 }
 .title{
-    width: 250px;
     font-size: 1.05em;
     font-weight: bolder;
     text-align: left;
@@ -37,7 +35,6 @@
     color: darkblue;
 }
 .language{
-    width: 250px;
     font-size: .95em;
     font-weight: bolder;
     text-align: left;
@@ -60,8 +57,6 @@
 }
 
 #card-img{
-    width: 250px;
-    height: 300px;
     padding: 3px;
     object-fit: stretch;
     align-self: auto;
@@ -124,41 +119,28 @@
     margin-top: 10px;
 }
 @media screen and (min-width: 2000px) {
-    #card-img {
-        width: 400px;
-        height: 500px;
-    }
     .card-container{
-        width: 400px;
         margin-left : 6%;
         margin-right: 6%;
     }
     .title{
-        width: 400px;
         font-size: .85em;
     }
     .language{
-        width: 400px;
         font-size: .7em;
     }
   }
 
 @media screen and (max-width: 600px) {
-    #card-img {
-        width: 150px;
-        height: 210px;
-    }
+
     .card-container{
-        width: 150px;
         margin-left : 6%;
         margin-right: 6%;
     }
     .title{
-        width: 150px;
         font-size: .95em;
     }
     .language{
-        width: 150px;
         font-size: .8em;
     }
     #card-content{
@@ -167,22 +149,15 @@
   }
 
   @media screen and (max-width: 500px) {
-    #card-img {
-        width: 150px;
-        height: 180px;
-    }
     .card-container{
-        width: 150px;
         margin-left : 5%;
         margin-right: 5%;
         padding: 0;
     }
     .title{
-        width: 120px;
         font-size: .95em;
     }
     .language{
-        width: 120px;
         font-size: .8em;
     }
     #card-content{
@@ -191,22 +166,15 @@
   }
 
   @media screen and (max-width: 380px) {
-    #card-img {
-        width: 150px;
-        height: 155px;
-    }
     .card-container{
-        width: 150px;
         margin-left : 3%;
         margin-right: 3%;
         padding: 0;
     }
     .title{
-        width: 100px;
         font-size: .8em;
     }
     .language{
-        width: 90px;
         font-size: .6em;
     }
     #card-content{

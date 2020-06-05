@@ -48,6 +48,7 @@ class Home extends Component {
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
+        result = this.processImageData(result);
         result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
           const rvs = result.map(item => {
             return item;
@@ -174,6 +175,28 @@ render(){
     </div>
     </div>
   );
+}
+processImageData(data){
+  var width,height;
+  if(window.matchMedia("(max-width: 300px)").matches){
+    width=150;height=200;
+  }
+  if(window.matchMedia("(max-width: 576px)").matches){
+    width=280;height=320;
+  }
+  else if(window.matchMedia("(max-width: 958px)").matches){
+    width=300;height=360;
+  }
+  else if(window.matchMedia("(max-width: 1300px)").matches){
+    width=300;height=350;
+  }
+  else{
+    width=400;height=500;
+  }
+  for(var i=0;i<data.length;i++){
+    data[i].titleImage=  data[i].titleImage+"&width="+width+"&height="+height;
+  }
+  return data;
 }
 handleSortClose(data){
   // result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});

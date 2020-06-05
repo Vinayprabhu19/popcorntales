@@ -1,5 +1,8 @@
 package com.serverless;
 
+import java.util.Arrays;
+
+import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
@@ -16,7 +19,9 @@ public class Handler implements RequestHandler<ApiGatewayProxyRequest, ApiGatewa
 	
 	@Override
 	public ApiGatewayProxyResponse handleRequest(ApiGatewayProxyRequest input, Context context) {
-		JSONObject body = new JSONObject(input.getBody());
+		String b= input.getBody();
+		String decodedString = decodeString(b);
+		JSONObject body = new JSONObject(decodedString);
 		return MovieService.addMovie(body);
 	} 
 
@@ -36,7 +41,15 @@ public class Handler implements RequestHandler<ApiGatewayProxyRequest, ApiGatewa
 	}
 	
 	public ApiGatewayProxyResponse resizeImage(ApiGatewayProxyRequest input,Context context) {
+		String b= input.getBody();
+		String decodedString = decodeString(b);
+		input.setBody(decodedString);
 		return MovieService.resizeImage(input);
 		
+	}
+	
+	private String decodeString(String encodedString) {
+		byte[] byteArray = Base64.decodeBase64(encodedString.getBytes());
+		return new String(byteArray);
 	}
 }

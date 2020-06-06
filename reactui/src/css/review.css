@@ -39,6 +39,10 @@
 .ticketImage{
     width: 350px;
 }
+.pointerText{
+    text-align: justify;
+    padding: 3px;
+}
 @media screen and (max-width: 900px) {
     .cast-component{
         margin: 20px 10px 20px 20px;

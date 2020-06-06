@@ -7,7 +7,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 const StyledRating = withStyles({
   iconFilled: {
-    color: '#ff6d75',
+    color: '#ff6d75'
   },
   iconHover: {
     color: '#ff3d47',
@@ -36,22 +36,22 @@ class CardLayout extends Component {
               </figure>
               <figcaption id="card-content" >
               {/* <Star id="star"/> */}
-              <h3>{this.props.review.rating}/5</h3>
-              {stars}
-              <div>
+              {/* <h3>{this.props.review.rating}/5</h3> */}
+              {/* {stars} */}
+              {/* <div>
                 {
                   this.props.review.genre.map(g =>(
                   <h4 key={g}>{g}</h4>
                   ))
                 }
-              </div>
+              </div> */}
                
+              <h4 className="rating">{this.props.review.rating}/5</h4>
               </figcaption>
           </div>
       </Paper>
       <h5 className="title">{this.props.review.title}</h5>
       <h6 className="language">{this.props.review.language}</h6>
-     
     </a>
   }
 }

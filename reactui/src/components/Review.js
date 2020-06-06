@@ -19,7 +19,7 @@ class Review extends Component {
             this.state.pros.map(pro=>(
                 <div className="flexbox-container" key={pro}>
                     <div><BeenhereIcon className="checkIcon" /></div>
-                    <div >{pro}</div>
+                    <h5 class="pointerText">{pro}</h5>
                 </div>
             ))
         }
@@ -28,7 +28,7 @@ class Review extends Component {
             this.state.cons.map(con=>(
                 <div class="flexbox-container" key={con}>
                     <div><CancelIcon className="cancelIcon" /></div>
-                    <div >{con}</div>
+                    <h5 class="pointerText">{con}</h5>
                 </div>
             ))
         }

@@ -16,7 +16,7 @@ class Cast extends Component {
             this.state.cast.map(c=>(
                 <div className="flexbox-container" key={c}>
                     <div><LocalMoviesIcon className="movieIcon" /></div>
-                    <div >{c}</div>
+                    <h6>{c}</h6>
                 </div>
             ))
         }

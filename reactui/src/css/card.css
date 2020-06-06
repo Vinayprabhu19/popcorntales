@@ -11,7 +11,7 @@
     margin-left : 3%;
     margin-right: 3%;
     margin-top: 1%;
-    margin-bottom: 1%;
+    margin-bottom: 20px;
     display: block;
 }
 .cardGridList{
@@ -34,15 +34,24 @@
     text-overflow: ellipsis;
     color: darkblue;
 }
-.language{
+.language,.rating{
     font-size: .95em;
     font-weight: bolder;
     text-align: left;
     margin-left: 3%;
+    margin-bottom: 0;
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.rating{
+    color: purple;
+    font-size: larger;
+    padding: 3px;
+    text-align: center;
+    color: white;
 }
 .filtercontainer{
     padding-left: 25px;
@@ -73,18 +82,18 @@
     width: 100%;
     height: fit-content;
     position: absolute;
-    z-index: 2;
+    z-index: 5;
     font-size: .95em;
     left: 0;
-    top: 20px;
+    bottom: 0;
+    background-color: purple;
     text-align: center;
-    visibility: hidden;
     align-content: center;
     align-items: center;
 }
-#card-figure:hover ~ #card-content{
+/* #card-figure:hover ~ #card-content{
     visibility: visible;
-}
+} */
 #star{
     width: 100px;
     height: 50px;
@@ -118,7 +127,7 @@
 .buttonGroup{
     margin-top: 10px;
 }
-@media screen and (min-width: 2000px) {
+@media screen and (min-width: 1398x) {
     .card-container{
         margin-left : 6%;
         margin-right: 6%;
@@ -128,6 +137,9 @@
     }
     .language{
         font-size: .7em;
+    }
+    #card-content{
+        font-size: 1.2;
     }
   }
 
@@ -143,9 +155,6 @@
     .language{
         font-size: .8em;
     }
-    #card-content{
-        visibility: hidden;
-    }
   }
 
   @media screen and (max-width: 500px) {
@@ -160,9 +169,6 @@
     .language{
         font-size: .8em;
     }
-    #card-content{
-        visibility: hidden;
-    }
   }
 
   @media screen and (max-width: 380px) {
@@ -176,9 +182,6 @@
     }
     .language{
         font-size: .6em;
-    }
-    #card-content{
-        visibility: hidden;
     }
   }
   

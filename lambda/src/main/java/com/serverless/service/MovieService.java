@@ -87,6 +87,13 @@ public class MovieService {
 			String titleImage = input.getString("titleImage");
 			String language = input.getString("language");
 			Float rating = input.getFloat("rating");
+			Float scriptRating = input.getFloat("scriptRating");
+			Float directionRating = input.getFloat("directionRating");
+			Float dialoguesRating = input.getFloat("dialoguesRating");
+			Float cinematographyRating = input.getFloat("cinematographyRating");
+			Float editingRating = input.getFloat("editingRating");
+			Float musicRating = input.getFloat("musicRating");
+			Float actingRating = input.getFloat("actingRating");
 			String year = input.getString("year");
 			JSONObject reviewObj = input.getJSONObject("review");		
 			JSONArray genres=input.getJSONArray("genre");
@@ -111,6 +118,13 @@ public class MovieService {
 			movieReview.setTitleImage(titleImage);
 			movieReview.setLanguage(language);
 			movieReview.setRating(rating);
+			movieReview.setScriptRating(scriptRating);
+			movieReview.setDirectionRating(directionRating);
+			movieReview.setDialoguesRating(dialoguesRating);
+			movieReview.setCinematographyRating(cinematographyRating);
+			movieReview.setEditingRating(editingRating);
+			movieReview.setMusicRating(musicRating);
+			movieReview.setActingRating(actingRating);
 			movieReview.setYear(year);
 			movieReview.setGenre(genres);
 			movieReview.setReview(review);

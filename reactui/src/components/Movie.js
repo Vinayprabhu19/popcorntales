@@ -10,7 +10,9 @@ class Movie extends Component {
     super(props);
     this.state = {
       title:"",
-      titleImage:"",year:"2020-05",genre:"",rating:5,synopsis:"",pros:"",cons:"",language:"",cast:"",
+      titleImage:"",year:"2020-05",genre:"",rating:5,scriptRating:5,directionRating:5,dialoguesRating:5,cinematographyRating:5,
+      editingRating:5,musicRating:5,actingRating:5,
+      synopsis:"",pros:"",cons:"",language:"",cast:"",
       ticketImage:"",watchDate:"2020-05-19",placeWatched:"",userId:"",password:"",trailer:""
     };
 
@@ -30,6 +32,13 @@ class Movie extends Component {
       language:this.state.language,
       genre:this.state.genre.split(","),
       rating:this.state.rating,
+      scriptRating:this.state.scriptRating,
+      directionRating:this.state.directionRating,
+      dialoguesRating:this.state.dialoguesRating,
+      cinematographyRating:this.state.cinematographyRating,
+      editingRating:this.state.editingRating,
+      musicRating:this.state.musicRating,
+      actingRating:this.state.actingRating,
       trailer:this.state.trailer,
       review:{
         synopsis:this.state.synopsis,
@@ -74,6 +83,15 @@ class Movie extends Component {
           <TextField className="smallField" type={"month"} value={this.state.year} onChange={e=> this.setState({year : e.target.value})} label={"Year"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"text"} value={this.state.genre} onChange={e=> this.setState({genre : e.target.value})} label={"Genre"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"number"} value={this.state.rating} onChange={e=> this.setState({rating : e.target.value})} label={"Rating"} InputProps={{ disableUnderline: true }}/>
+          <TextField className="smallField" type={"number"} value={this.state.scriptRating} onChange={e=> this.setState({scriptRating : e.target.value})} label={"Script Rating"} InputProps={{ disableUnderline: true }}/>
+          <TextField className="smallField" type={"number"} value={this.state.directionRating} onChange={e=> this.setState({directionRating : e.target.value})} label={"Direction Rating"} InputProps={{ disableUnderline: true }}/>
+          <TextField className="smallField" type={"number"} value={this.state.dialoguesRating} onChange={e=> this.setState({dialoguesRating : e.target.value})} label={"Dialogues Rating"} InputProps={{ disableUnderline: true }}/>
+          <TextField className="smallField" type={"number"} value={this.state.cinematographyRating} onChange={e=> this.setState({cinematographyRating : e.target.value})} label={"Cinematography Rating"} InputProps={{ disableUnderline: true }}/>
+          <TextField className="smallField" type={"number"} value={this.state.editingRating} onChange={e=> this.setState({editingRating : e.target.value})} label={"Editing Rating"} InputProps={{ disableUnderline: true }}/>
+          <TextField className="smallField" type={"number"} value={this.state.musicRating} onChange={e=> this.setState({musicRating : e.target.value})} label={"Music Rating"} InputProps={{ disableUnderline: true }}/>
+          <TextField className="smallField" type={"number"} value={this.state.actingRating} onChange={e=> this.setState({actingRating : e.target.value})} label={"Acting Rating"} InputProps={{ disableUnderline: true }}/>          
+        
+          
           <TextField className="mediumField" type={"text"} value={this.state.trailer} onChange={e=> this.setState({trailer : e.target.value})} label={"Trailer"} InputProps={{ disableUnderline: true }}/>
           <TextareaAutosize aria-label="Synopsis" rowsMin={3} placeholder="Synopsis" value={this.state.synopsis} onChange={e=> this.setState({synopsis : e.target.value})} className="textArea"  />
           <TextareaAutosize aria-label="Pros" rowsMin={3} placeholder="Pros" value={this.state.pros} onChange={e=> this.setState({pros : e.target.value})}  className="textArea"/>

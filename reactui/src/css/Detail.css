@@ -105,7 +105,9 @@
     margin-top: 20px;
 }
 
-
+.infoBtn{
+    margin-left: 10px;
+}
 .tab{
     width: 33%;
 }
@@ -242,7 +244,7 @@ h5,h6{
     }
     
     .headerLevel2{
-        font-size: 0.9em;
+        font-size: 1.0em;
     }
 
     #ratingText{

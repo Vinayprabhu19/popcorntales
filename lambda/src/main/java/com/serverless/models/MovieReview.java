@@ -15,6 +15,13 @@ public class MovieReview {
 	private JSONArray genre;
 	private Review review;
 	private Float rating;
+    private Float scriptRating;
+    private Float directionRating;
+    private Float dialoguesRating;
+    private Float cinematographyRating;
+    private Float editingRating;
+    private Float musicRating;
+    private Float actingRating;
 	private JSONArray cast;
 	private String trailer;
 	private String ticketImage;
@@ -94,12 +101,62 @@ public class MovieReview {
 	public void setPlaceWatched(String placeWatched) {
 		this.placeWatched = placeWatched;
 	}
+	public Float getScriptRating() {
+		return scriptRating;
+	}
+	public void setScriptRating(Float scriptRating) {
+		this.scriptRating = scriptRating;
+	}
+	public Float getDirectionRating() {
+		return directionRating;
+	}
+	public void setDirectionRating(Float directionRating) {
+		this.directionRating = directionRating;
+	}
+	public Float getDialoguesRating() {
+		return dialoguesRating;
+	}
+	public void setDialoguesRating(Float dialoguesRating) {
+		this.dialoguesRating = dialoguesRating;
+	}
+	public Float getCinematographyRating() {
+		return cinematographyRating;
+	}
+	public void setCinematographyRating(Float cinematographyRating) {
+		this.cinematographyRating = cinematographyRating;
+	}
+	public Float getEditingRating() {
+		return editingRating;
+	}
+	public void setEditingRating(Float editingRating) {
+		this.editingRating = editingRating;
+	}
+	public Float getMusicRating() {
+		return musicRating;
+	}
+	public void setMusicRating(Float musicRating) {
+		this.musicRating = musicRating;
+	}
+	
+	public Float getActingRating() {
+		return actingRating;
+	}
+	public void setActingRating(Float actingRating) {
+		this.actingRating = actingRating;
+	}
 	public Item getItem() {
     	Item item = new Item();
     	item.with("title", this.title);
     	item.with("language", this.language);
     	item.with("titleImage", this.titleImage);
     	item.with("rating", this.rating);
+    	item.with("scriptRating", this.scriptRating);
+    	item.with("directionRating", this.directionRating);
+    	item.with("dialoguesRating", this.dialoguesRating);
+    	item.with("cinematographyRating", this.cinematographyRating);
+    	item.with("editingRating", this.editingRating);
+    	item.with("musicRating", this.musicRating);
+    	item.with("actingRating", this.actingRating);
     	item.with("year", this.year);
     	item.with("genre", this.genre.toList());
     	item.with("review", new JSONObject(review).toString());

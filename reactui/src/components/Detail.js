@@ -3,7 +3,6 @@ import { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import HomeButton from '@material-ui/icons/Home';
@@ -11,8 +10,6 @@ import Synopsis from './Synopsis';
 import Review from './Review';
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
-import Rating from '@material-ui/lab/Rating';
-import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
@@ -20,6 +17,10 @@ import Cast from './Cast';
 import Ticket from './Ticket';
 import MailIcon from '@material-ui/icons/Mail';
 import SocialMenu from './SocialMenu';
+import DetailedRating from './DetailedRating';
+import Rating from '@material-ui/lab/Rating';
+import { withStyles } from '@material-ui/core/styles';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -39,8 +40,6 @@ const StyledRating = withStyles({
     color: '#ff3d47',
   },
 })(Rating);
-
-
 class Detail extends Component {
   constructor(props) {
     super(props);
@@ -113,14 +112,12 @@ class Detail extends Component {
     }   
 };
 
-stars = (starCount) => {
+hearts = (starCount) => {
   if(starCount == undefined)
     return;
   const value = starCount;
   return (
-    // <Rating name="disabled" value={value} precision={0.25}  size="large"/>
-
-        <StyledRating name="customized-color" defaultValue={value} precision={0.25}
+        <StyledRating name="customized-color" defaultValue={value} precision={0.1} value={value} 
                     icon={<FavoriteIcon fontSize="inherit" />}/>
   );
 }
@@ -145,7 +142,7 @@ processImageData(data){
 
 render(){
   const toolbar = this.getToolbar();
-  const stars = this.stars(this.state.selectedMovie.rating);
+  const overallRating = this.hearts(this.state.selectedMovie.rating);
   return (
     <div>
     <Backdrop open={this.state.loading}>
@@ -168,24 +165,30 @@ render(){
               <img id="card-img" alt="Image for your awesome latest movie review" src={this.state.selectedMovie.titleImage}/>
               </Paper>
               <Hidden smDown>
-              <Grid container justify = "center" id="starPhoto">
-                  {stars}
+              <Grid container justify = "center" className="ratingHearts">
+                 {overallRating}
                   </Grid>
               </Hidden>
             </div>
             <Hidden mdUp >
                   <div className="topHeader">
+                    <Grid container alignItems="center" spacing={0} justify = "center">
                   <h1 className="headerLevel1 centerAligned">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                  <DetailedRating selectedMovie={this.state.selectedMovie}/>
+                  </Grid>
                   <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.language}</h3>
                   <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.genre.join(",")}</h3>
                   <Grid container justify = "center">
-                  {stars}
+                  {overallRating}
                   </Grid>
                   </div>
             </Hidden>
             <Hidden smDown>
             <div id="movie-description">
-                <h1 className="headerLevel1">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                <Grid container alignItems="center" spacing={0} justify = "center">
+                  <h1 className="headerLevel1 centerAligned">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                  <DetailedRating selectedMovie={this.state.selectedMovie}/>
+                  </Grid>
                 <h2 className="headerLevel2">{this.state.selectedMovie.language}</h2>
                 <h3 className="headerLevel2">{this.state.selectedMovie.genre.join(",")}</h3>
                 <h3 className="headerLevel2">{this.state.selectedMovie.rating}/5</h3>   

@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import '../css/review.css';
 import BeenhereIcon from '@material-ui/icons/Beenhere';
 import CancelIcon from '@material-ui/icons/Cancel';
-
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 class Review extends Component {
     constructor(props) {
         super(props);
         debugger;
         this.state={
             pros : props.review.pros,
-            cons : props.review.cons
+            cons : props.review.cons,
+            url : "https://api.popcorntales.com/image?object=Graph/"+props.title+".png&width=500&height=500"
         }
       }
   render() {
@@ -32,6 +34,11 @@ class Review extends Component {
                 </div>
             ))
         }
+        <Grid container justify = "center" className="graphContainer">
+        <Paper elevation={10}>
+        <img src={this.state.url} className="graphImage"/>
+        </Paper>
+        </Grid>
     </div>
   }
 }

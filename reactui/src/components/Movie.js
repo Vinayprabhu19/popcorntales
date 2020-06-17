@@ -54,13 +54,10 @@ class Movie extends Component {
       userId:this.state.userId,
       password:this.state.password
     };
-    debugger;
-
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-      credentials: "include"
+      body: JSON.stringify(data)
   };
   fetch('https://api.popcorntales.com/movie', requestOptions)
       .then(response => response.json())
@@ -71,6 +68,7 @@ class Movie extends Component {
         console.error(error);
       })
   }
+  
 
   render() {
     return <div className="container"> 

@@ -43,11 +43,30 @@
     text-align: justify;
     padding: 3px;
 }
+.graphContainer{
+    margin-top: 25px;
+}
+.graphImage{
+    width: 500px;
+    height: 500px;
+}
 @media screen and (max-width: 900px) {
     .cast-component{
         margin: 20px 10px 20px 20px;
     }
     .review-component{
         margin: 20px 30px 30px 20px;
+    }
+
+    .graphImage{
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .graphImage{
+        width: 300px;
+        height: 300px;
     }
 }

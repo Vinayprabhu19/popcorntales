@@ -12,6 +12,8 @@ public class ApiGatewayProxyResponse {
     public ApiGatewayProxyResponse() {
     		this.headers = new HashMap<String, String>();
     		this.headers.put("Access-Control-Allow-Origin", "*");
+    		this.headers.put("Access-Control-Allow-Headers","*");
+    		this.headers.put("Access-Control-Allow-Methods","GET, POST, PUT, DELETE, OPTIONS");
     }
 
     public int getStatusCode() {

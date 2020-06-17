@@ -75,7 +75,7 @@ class Detail extends Component {
             selectedTab:0,
             loading:false,
             shareUrl:"www.popcorntales.com/review/"+movieTitle.replace(/ /g, '%20'),
-            quote:"I read a review of "+movieTitle+" and I feel that it's worth watching over in theatres. Read the review and let's goooo!!"
+            quote:"I read a review of "+movieTitle+" and I feel that it's worth watching. Read the review and let's watch it together!!"
           });
     })
     .catch(error =>{
@@ -98,7 +98,7 @@ class Detail extends Component {
         break;
         case 1: 
           if(this.state.selectedMovie.review !== undefined)
-            return <Review review={this.state.selectedMovie.review}/>
+            return <Review review={this.state.selectedMovie.review} title={this.state.selectedMovie.title}/>
          break;
       case 2: 
           return <Cast cast={this.state.selectedMovie.cast}/>

@@ -85,7 +85,7 @@
     z-index: 5;
     font-size: .95em;
     left: 0;
-    bottom: 0;
+    bottom: 10px;
     background-color: purple;
     text-align: center;
     align-content: center;

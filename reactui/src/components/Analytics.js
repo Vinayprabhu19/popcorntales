@@ -94,17 +94,20 @@ getLanguages(result){
 
 
 getMovieCountByYear(result){
+ 
   var year = [];
   var yearCount = [];
   for (var i = 0; i < result.length; i++){
-    if(!(year.includes(result[i].year))){
-      year.push(result[i].year)
+    var y =new Date(result[i].timeStamp).getFullYear();
+    if(!(year.includes(y))){
+      year.push(y);
     }
   }
   for(i = 0 ;i<year.length;i++){
-    const count = result.filter((obj) => obj.year === year[i]).length;
+    const count = result.filter((obj) => new Date(obj.timeStamp).getFullYear() === year[i]).length;
     yearCount.push([year[i],count])
   }
+  debugger;
   return yearCount;
 }
 

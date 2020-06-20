@@ -16,14 +16,24 @@ class Movie extends Component {
       ticketImage:"",watchDate:"2020-05-19",placeWatched:"",userId:"",password:"",trailer:""
     };
 
-    
-
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidUpdate(prevProps, prevState, snapshot){
     
   }
 
+  setupBeforeUnloadListener = () => {
+    window.addEventListener("beforeunload", (ev) => {
+        ev.preventDefault();
+        return ev.returnValue="Are you sure you want to close ?";
+    });
+};
+
+componentDidMount() {
+    // Activate the event listener
+    this.setupBeforeUnloadListener();
+}
+  
   onSubmit(evt){
     var data ={
       title:this.state.title,
@@ -59,16 +69,20 @@ class Movie extends Component {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
   };
+
+ 
+
   fetch('https://api.popcorntales.com/movie', requestOptions)
       .then(response => response.json())
       .then(data => {
+        alert(data);
         console.log(data);
       })
       .catch(error =>{
+        alert(error);
         console.error(error);
       })
   }
-  
 
   render() {
     return <div className="container"> 

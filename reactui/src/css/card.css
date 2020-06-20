@@ -91,6 +91,11 @@
     align-content: center;
     align-items: center;
 }
+.item{
+    width: 100%;
+    margin:10px 0 10px 0;
+    text-align: left;
+}
 /* #card-figure:hover ~ #card-content{
     visibility: visible;
 } */
@@ -143,13 +148,14 @@
     }
   }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
 
     .card-container{
         margin-left : 6%;
         margin-right: 6%;
     }
     .title{
+        width: 150px;
         font-size: .95em;
     }
     .language{
@@ -164,6 +170,7 @@
         padding: 0;
     }
     .title{
+        width: 150px;
         font-size: .95em;
     }
     .language{
@@ -178,6 +185,7 @@
         padding: 0;
     }
     .title{
+        width: 150px;
         font-size: .8em;
     }
     .language{

@@ -14,9 +14,11 @@ import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import '../css/Home.css';
 import Title from '../resources/Title.png';
+import FilterListIcon from '@material-ui/icons/FilterList';
 import CardLayout from "./CardLayout";
 import Pagination from "./Pagination";
 import Sort from "./Sort";
+import Filter from "./Filter";
 import Grid from '@material-ui/core/Grid';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import SocialMenu from './SocialMenu';
@@ -31,23 +33,32 @@ class Home extends Component {
       banners:[],
       loading:true,
       sortOpen:false,
+      filterOpen:false,
       sorter:{
         "field":"timeStamp",
         "sortType":"Ascending"
-      }
+      },
+      filter:{
+        "language":"All",
+        "year":"All",
+        "rating":[0.0,5.0]
+      },
+      filterData:{"years":["All"],"languages":["All"]}
      };
 
      this.carouselIndex=0;
      this.onPageChanged = this.onPageChanged.bind(this);
      this.openSort = this.openSort.bind(this);
      this.handleSortClose = this.handleSortClose.bind(this);
+     this.openFilter=this.openFilter.bind(this);
+     this.getFilteredData = this.getFilteredData.bind(this);
   }
-
 
   componentDidMount(){
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
+        this.getFilteredData(result);
         result = this.processImageData(result);
         result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
           const rvs = result.map(item => {
@@ -58,10 +69,10 @@ class Home extends Component {
           for(var i=0;i< len ;i++){
             currentPages.push(rvs[i]);
           }
-
           this.setState({
             activePage: 1,
             totalPages: rvs.length,
+            allReviews:rvs,
             reviews: rvs,
             currentList : currentPages,
             loading:false
@@ -109,6 +120,12 @@ class Home extends Component {
     });
   }
   
+  openFilter(){
+    this.setState({
+      filterOpen : true
+    });
+  }
+  
 
 render(){
   return (
@@ -144,17 +161,25 @@ render(){
       </Hidden>
       <div className="App-Content">
       <Grid container justify = "flex-end" className="filter-sort">
-          {/* <IconButton className="iconBtn"><FilterListIcon/></IconButton> */}
           <Autocomplete
             id="autocomplete-box"
+            limitTags={3}
             options={this.state.reviews}
             getOptionLabel={option => option.title}
             onChange={(e,v)=>{this.onCardClick(v)}}
             renderInput={params => <TextField {...params} InputProps={{...params.InputProps, disableUnderline: true}} placeholder="Movie" />}
           />
+          <Hidden mdDown>
+          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"large"} color={"primary"}/></Button>
+          <Button className="iconBtn" onClick={this.openFilter} ><FilterListIcon fontSize={"large"} color={"primary"}/> </Button>
+          </Hidden>
+          <Hidden mdUp>
           <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"default"} color={"primary"}/></Button>
+          <Button className="iconBtn" onClick={this.openFilter}><FilterListIcon fontSize={"default"} color={"primary"}/> </Button>
+          </Hidden>
         </Grid>
         <Sort open={this.state.sortOpen} close={(data)=>this.handleSortClose(data)} data={this.state.sorter}/>
+        <Filter open={this.state.filterOpen} close={(data)=>this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData}/>
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (
                           <CardLayout key={image.title} review={image}/>
@@ -175,6 +200,15 @@ render(){
     </div>
     </div>
   );
+}
+getFilteredData(result){
+  for(var i=0;i<result.length;i++){
+    if(this.state.filterData.languages.includes(result[i].language)) continue;
+    this.state.filterData.languages.push(result[i].language);}
+  for(var i=0;i<result.length;i++){
+      if(this.state.filterData.years.includes(result[i].year)) continue;
+      this.state.filterData.years.push(result[i].year);}
+
 }
 processImageData(data){
   var width,height;
@@ -197,6 +231,39 @@ processImageData(data){
     data[i].titleImage=  data[i].titleImage+"&width="+width+"&height="+height;
   }
   return data;
+}
+handleFilterClose(data){
+  if(data == null){
+    this.setState({
+      filterOpen:false
+    });
+    return;
+  }
+  var reviews = [];
+  for(var i=0;i<this.state.allReviews.length;i++){
+    reviews.push(this.state.allReviews[i]);}
+  if(data.filter.language!="All"){
+    reviews = reviews.filter(function(r){return r.language == data.filter.language});}
+  if(data.filter.year!="All"){
+      reviews = reviews.filter(function(r){return r.year == data.filter.year});}
+  
+  reviews = reviews.filter(function(r){return r.rating >= data.filter.rating[0] && r.rating <= data.filter.rating[1]});
+    debugger;
+  var currentPages = [];
+  var len = (reviews.length > 8)?8:reviews.length;
+  for(var i=0;i< len ;i++){
+    currentPages.push(reviews[i]);
+  }
+  this.setState({
+    activePage: 1,
+    totalPages: reviews.length,
+    reviews: reviews,
+    currentList : currentPages,
+    loading:false,
+    sortOpen:false,
+    filterOpen:false,
+    filter:data.filter
+  });
 }
 handleSortClose(data){
   // result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
@@ -225,7 +292,6 @@ handleSortClose(data){
           if(a[data.field] > b[data.field]) { return 1; }
           return 0;})
       }
-      debugger;
       var currentPages = [];
       var len = (reviews.length > 8)?8:reviews.length;
       for(var i=0;i< len ;i++){

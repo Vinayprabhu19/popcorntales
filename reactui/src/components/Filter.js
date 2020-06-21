@@ -35,7 +35,7 @@ class Sort extends Component {
     return  <Dialog maxWidth={'sm'} fullWidth={true} onClose={(data)=>this.props.close(data)} disableBackdropClick={true} disableEscapeKeyDown={true} aria-labelledby="simple-dialog-title" open={this.props.open}>
     <DialogTitle id="simple-dialog-title">Filter</DialogTitle>
     <div className="filtercontainer">
-    <h6 className="item">Language</h6>
+    <h5 className="item">Language</h5>
     <Select
           className="item"
           variant="outlined"
@@ -51,7 +51,7 @@ class Sort extends Component {
             })
           }
         </Select>
-    <h6 className="item">Year</h6>
+    <h5 className="item">Year</h5>
     <Select
           className="item"
           variant="outlined"
@@ -67,7 +67,7 @@ class Sort extends Component {
             })
           }
     </Select>
-    <h6 className="item">Minimum Rating</h6>
+    <h5 className="item">Rating</h5>
     <Slider
       className="item"
       value={this.state.filter.rating}

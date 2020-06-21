@@ -4,7 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-
+import LazyImage from "../components/LazyImage";
 const StyledRating = withStyles({
   iconFilled: {
     color: '#ff6d75'
@@ -32,7 +32,7 @@ class CardLayout extends Component {
       <Paper elevation={13} className="card" >
         <div>
               <figure id="card-figure">
-                <img id="card-img" alt="Image for your latest movie review" src={this.props.review.titleImage}/>
+                <LazyImage className="card-img" alt={"Popcorn Tales - " + this.props.review.title } unloadedSrc={this.props.review.titleImage}/>
               </figure>
               <figcaption id="card-content" >
               {/* <Star id="star"/> */}
@@ -50,8 +50,8 @@ class CardLayout extends Component {
               </figcaption>
           </div>
       </Paper>
-      <h5 className="title">{this.props.review.title}</h5>
-      <h6 className="language">{this.props.review.language}</h6>
+      <h2 className="title">{this.props.review.title}</h2>
+      <h3 className="language">{this.props.review.language}</h3>
     </a>
   }
 }

@@ -7,7 +7,6 @@ import Paper from '@material-ui/core/Paper';
 class Review extends Component {
     constructor(props) {
         super(props);
-        debugger;
         this.state={
             pros : props.review.pros,
             cons : props.review.cons,
@@ -36,7 +35,7 @@ class Review extends Component {
         }
         <Grid container justify = "center" className="graphContainer">
         <Paper elevation={10}>
-        <img src={this.state.url} className="graphImage"/>
+        <img src={this.state.url} className="graphImage" alt={"Popcorn Tales " + this.props.title}/>
         </Paper>
         </Grid>
     </div>

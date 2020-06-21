@@ -31,10 +31,7 @@
   margin: 75px 2% 2% 2%;
 }
 
-#movie-img{
-  width: 100%;
-  align-self: center;
-}
+
 
 
 #autocomplete-box{
@@ -88,12 +85,6 @@ footer nav{
     background-repeat: repeat;
   }
 
-  #movie-img{
-    width: 60%;
-    align-self: center;
-    
-  }
-
   #titleImage{
     width: 40%;
   }
@@ -120,7 +111,7 @@ footer nav{
     visibility: hidden;
   }
 }
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 400px) {
   .App-Content{
     margin: 20px 1% 1% 1%;
   }
@@ -128,5 +119,9 @@ footer nav{
   #title{
     font-size: 0.9rem;
     visibility: hidden;
+  }
+
+  #autocomplete-box{
+    width: 100px;
   }
 }

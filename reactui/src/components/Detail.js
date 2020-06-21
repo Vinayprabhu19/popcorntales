@@ -8,6 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import HomeButton from '@material-ui/icons/Home';
 import Synopsis from './Synopsis';
 import Review from './Review';
+import LazyImage from "../components/LazyImage";
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
@@ -21,6 +22,7 @@ import DetailedRating from './DetailedRating';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import { Helmet } from 'react-helmet';
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -45,6 +47,7 @@ class Detail extends Component {
     super(props);
     this.state = {
         selectedMovie: {
+            title: "Popcorn Tales",
             genre : [],
             review : {
               synopsis:"",
@@ -124,14 +127,17 @@ hearts = (starCount) => {
 processImageData(data){
   var width,height;
   var width,height;
-  if(window.matchMedia("(max-width: 300px)").matches){
+  if(window.matchMedia("(max-width: 576px)").matches){
     width=150;height=200;
   }
-  if(window.matchMedia("(max-width: 576px)").matches){
-    width=280;height=320;
+  else if(window.matchMedia("(max-width: 958px)").matches){
+    width=200;height=260;
   }
-  else if(window.matchMedia("(max-width: 1980px)").matches){
-    width=300;height=360;
+  else if(window.matchMedia("(max-width: 1300px)").matches){
+    width=220;height=250;
+  }
+  else if(window.matchMedia("(max-width: 2000px)").matches){
+    width=250;height=300;
   }
   else{
     width=400;height=500;
@@ -144,6 +150,11 @@ render(){
   const toolbar = this.getToolbar();
   const overallRating = this.hearts(this.state.selectedMovie.rating);
   return (
+    <>
+       <Helmet>
+          <title>{this.state.selectedMovie.title + " - Review"}</title>
+          <meta name="description" content={this.state.selectedMovie.review.synopsis}/>
+        </Helmet>
     <div>
     <Backdrop open={this.state.loading}>
           <CircularProgress color="inherit" />
@@ -162,7 +173,7 @@ render(){
         <div className="movie-header">
             <div id="card" >
               <Paper elevation={19}>
-              <img id="card-img" alt="Image for your awesome latest movie review" src={this.state.selectedMovie.titleImage}/>
+              <LazyImage className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title + " Review Image"} unloadedSrc={this.state.selectedMovie.titleImage}/>
               </Paper>
               <Hidden smDown>
               <Grid container justify = "center" className="ratingHearts">
@@ -239,6 +250,7 @@ render(){
         </footer>
     </div>
     </div>
+    </>
   );
 }
 }

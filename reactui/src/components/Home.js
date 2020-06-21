@@ -13,11 +13,13 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import '../css/Home.css';
+import LazyImage from "../components/LazyImage";
 import Title from '../resources/Title.png';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import CardLayout from "./CardLayout";
 import Pagination from "./Pagination";
 import Sort from "./Sort";
+import { Helmet } from 'react-helmet';
 import Filter from "./Filter";
 import Grid from '@material-ui/core/Grid';
 import BarChartIcon from '@material-ui/icons/BarChart';
@@ -129,6 +131,11 @@ class Home extends Component {
 
 render(){
   return (
+    <>
+    <Helmet>
+        <title>Popcorn Tales</title>
+          <meta name="description" content="Popcorn Tales is an Indian movie review website reviewing movies from Kannada,Hindi,English,Tamil,Telugu,Malayalam and other languages. Find latest movie review here."/>
+        </Helmet>
     <div>
       <Backdrop open={this.state.loading}>
           <CircularProgress color="inherit" />
@@ -150,7 +157,7 @@ render(){
             {
               this.state.banners.map(banner=>{
                 return <Carousel.Item key={banner.id}>
-                    <img id="movie-img" src={banner.url} key={banner.id} alt="Movie"/>
+                    <LazyImage className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/>
                 </Carousel.Item>
               })
             }
@@ -199,6 +206,7 @@ render(){
         </footer>
     </div>
     </div>
+    </>
   );
 }
 getFilteredData(result){
@@ -212,17 +220,17 @@ getFilteredData(result){
 }
 processImageData(data){
   var width,height;
-  if(window.matchMedia("(max-width: 300px)").matches){
+  if(window.matchMedia("(max-width: 576px)").matches){
     width=150;height=200;
   }
-  if(window.matchMedia("(max-width: 576px)").matches){
-    width=280;height=320;
-  }
   else if(window.matchMedia("(max-width: 958px)").matches){
-    width=300;height=360;
+    width=200;height=260;
   }
   else if(window.matchMedia("(max-width: 1300px)").matches){
-    width=300;height=350;
+    width=220;height=250;
+  }
+  else if(window.matchMedia("(max-width: 2000px)").matches){
+    width=250;height=300;
   }
   else{
     width=400;height=500;

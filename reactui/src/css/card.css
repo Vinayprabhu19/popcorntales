@@ -65,7 +65,7 @@
     margin: 0;
 }
 
-#card-img{
+.card-img{
     padding: 3px;
     object-fit: stretch;
     align-self: auto;
@@ -129,10 +129,30 @@
     margin-bottom: 10px;
 }
 
+.movie-img{
+    width: 100%;
+    align-self: center;
+  }
 .buttonGroup{
     margin-top: 10px;
 }
-@media screen and (min-width: 1398x) {
+@media screen and (min-width: 2000px){
+    .card-img{
+        width: 400px;
+        height: 500px;
+    }
+}
+@media screen and (max-width: 2000px){
+    .card-img{
+        width: 250px;
+        height: 300px;
+    }
+    .movie-img{
+        width: 60%;
+        align-self: center;
+      }
+}
+@media screen and (max-width: 1398px) {
     .card-container{
         margin-left : 6%;
         margin-right: 6%;
@@ -146,9 +166,17 @@
     #card-content{
         font-size: 1.2;
     }
+    .card-img{
+        width: 220px;
+        height: 250px;
+    }
+    .movie-img{
+        width: 60%;
+        align-self: center;
+      }
   }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 958px) {
 
     .card-container{
         margin-left : 6%;
@@ -161,9 +189,17 @@
     .language{
         font-size: .8em;
     }
+    .card-img{
+        width: 200px;
+        height: 260px;
+    }
+    .movie-img{
+        width: 100%;
+        align-self: center;
+      }
   }
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 576px) {
     .card-container{
         margin-left : 5%;
         margin-right: 5%;
@@ -176,6 +212,14 @@
     .language{
         font-size: .8em;
     }
+    .card-img{
+        width: 150px;
+        height: 200px;
+    }
+    .movie-img{
+        width: 100%;
+        align-self: center;
+      }
   }
 
   @media screen and (max-width: 380px) {
@@ -191,6 +235,14 @@
     .language{
         font-size: .6em;
     }
+    .card-img{
+        width: 150px;
+        height: 200px;
+    }
+    .movie-img{
+        width: 100%;
+        align-self: center;
+      }
   }
   
   

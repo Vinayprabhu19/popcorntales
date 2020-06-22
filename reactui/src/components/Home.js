@@ -157,7 +157,9 @@ render(){
             {
               this.state.banners.map(banner=>{
                 return <Carousel.Item key={banner.id}>
-                    <LazyImage className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/>
+                  <div className="bannerBackground" >
+                    <LazyImage  className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/>
+                    </div>
                 </Carousel.Item>
               })
             }

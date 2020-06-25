@@ -39,8 +39,10 @@
 .ticketImage{
     width: 350px;
 }
+h5,h6{
+    text-align: left;
+}
 .pointerText{
-    text-align: justify;
     padding: 3px;
 }
 .graphContainer{

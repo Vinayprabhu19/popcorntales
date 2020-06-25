@@ -131,6 +131,7 @@
 
 .movie-img{
     width: 100%;
+    max-height: 15%;
     align-self: center;
   }
 .buttonGroup{
@@ -148,7 +149,6 @@
         height: 300px;
     }
     .movie-img{
-        width: 60%;
         align-self: center;
       }
 }
@@ -161,7 +161,7 @@
         font-size: .85em;
     }
     .language{
-        font-size: .7em;
+        font-size: .8em;
     }
     #card-content{
         font-size: 1.2;
@@ -171,7 +171,6 @@
         height: 250px;
     }
     .movie-img{
-        width: 60%;
         align-self: center;
       }
   }
@@ -187,7 +186,7 @@
         font-size: .95em;
     }
     .language{
-        font-size: .8em;
+        font-size: .85em;
     }
     .card-img{
         width: 200px;
@@ -210,7 +209,7 @@
         font-size: .95em;
     }
     .language{
-        font-size: .8em;
+        font-size: .85em;
     }
     .card-img{
         width: 150px;
@@ -233,7 +232,7 @@
         font-size: .8em;
     }
     .language{
-        font-size: .6em;
+        font-size: .75em;
     }
     .card-img{
         width: 150px;

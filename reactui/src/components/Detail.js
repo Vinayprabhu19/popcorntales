@@ -243,9 +243,11 @@ render(){
                   <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={25} round/></TelegramShareButton>
                   </Grid>
               </Hidden>
+              <Grid container justify = "center" id="footerText">
               <h6>Need your feedback to improve  
               <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
               </h6>
+              </Grid>
           </div>
         </footer>
     </div>

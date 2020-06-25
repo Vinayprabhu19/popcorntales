@@ -15,7 +15,7 @@ class Review extends Component {
       }
   render() {
     return <div className="review-component">
-        <h4>Pros</h4>
+        <h4>What worked well?</h4>
         {
             this.state.pros.map(pro=>(
                 <div className="flexbox-container" key={pro}>
@@ -24,7 +24,7 @@ class Review extends Component {
                 </div>
             ))
         }
-        <h4 className="subsection">Cons</h4>
+        <h4 className="subsection">What didn't work well?</h4>
         {
             this.state.cons.map(con=>(
                 <div class="flexbox-container" key={con}>

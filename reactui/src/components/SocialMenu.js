@@ -29,10 +29,10 @@ export default function SocialMenu() {
         keepMounted
         open={Boolean(anchorEl)}
         onClose={handleClose}>
-        <MenuItem onClick={handleClose}> 
+        {/* <MenuItem onClick={handleClose}> 
         <a href="https://www.twitter.com/PopcornTaless" className="social-icon">
               <TwitterIcon fontSize={"default"}/>
-          </a></MenuItem>
+          </a></MenuItem> */}
         <MenuItem onClick={handleClose}>
         <a href="https://www.facebook.com/popcorntales" className="social-icon">
               <FacebookIcon fontSize={"default"}/>

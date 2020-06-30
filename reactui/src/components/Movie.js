@@ -70,12 +70,13 @@ componentDidMount() {
       body: JSON.stringify(data)
   };
 
- 
+  var proxyUrl = 'https://fierce-chamber-21718.herokuapp.com/';
+  var url = 'https://api.popcorntales.com/movie';
 
-  fetch('https://api.popcorntales.com/movie', requestOptions)
+  fetch(proxyUrl + url, requestOptions)
       .then(response => response.json())
       .then(data => {
-        alert(data);
+        alert(data.message);
         console.log(data);
       })
       .catch(error =>{

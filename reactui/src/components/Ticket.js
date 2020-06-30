@@ -13,9 +13,10 @@ class Cast extends Component {
         }
       }
   render() {
+    
     return <div className="ticket-component">
-       <h5>Date Watched : {this.state.ticketDetails.watchDate}</h5>
-       <h5>Venue : {this.state.ticketDetails.placeWatched}</h5>
+      <h5 className="Ticket">Date Watched : {this.state.ticketDetails.watchDate}</h5>
+       <h5 className="Ticket">Place Watched : {this.state.ticketDetails.placeWatched}</h5>
        <Grid container justify = "center">
        <Paper elevation={20} id="ticket-container">
        <img src={this.state.ticketDetails.ticketImage} className="ticketImage" alt={"Ticket image of the movie"}></img>

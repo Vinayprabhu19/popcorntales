@@ -22,6 +22,7 @@ import Filter from "./Filter";
 import Grid from '@material-ui/core/Grid';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import SocialMenu from './SocialMenu';
+import Tooltip from '@material-ui/core/Tooltip';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,7 @@ class Home extends Component {
       searchText:"",
       sorter:{
         "field":"timeStamp",
-        "sortType":"Ascending"
+        "sortType":"Descending"
       },
       filter:{
         "language":"All",
@@ -173,7 +174,7 @@ render(){
     <div className={this.state.loading ? 'hidden' : 'App'}>
       <AppBar id="appBar" position="static">
         <Toolbar>
-          <a href="/analytics"><BarChartIcon fontSize={"large"} color={"primary"}/></a>
+          <Tooltip title="Analytics"><a href="/analytics"><BarChartIcon fontSize={"large"} color={"primary"}/></a></Tooltip>
           <Hidden mdDown>
           <h1 id="title">Popcorn Tales</h1>
           </Hidden>
@@ -199,12 +200,20 @@ render(){
           <Grid container justify = "center">
           <input type="text" id="searchField" value={this.state.searchText} onChange={this.onSearch} placeholder="Movie Title"/>
           <Hidden smDown>
+            <Tooltip title="Sort">
           <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"large"} style={{fill: "purple"}}/></Button>
+          </Tooltip>
+          <Tooltip title="Filter">
           <Button className="iconBtn" onClick={this.openFilter} ><FilterListIcon fontSize={"large"} style={{fill: "purple"}} /> </Button>
+          </Tooltip>
           </Hidden>
           <Hidden mdUp>
+          <Tooltip title="Sort">
           <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"default"} style={{fill: "purple"}}/></Button>
+          </Tooltip>
+          <Tooltip title="Filter">
           <Button className="iconBtn" onClick={this.openFilter}><FilterListIcon fontSize={"default"} style={{fill: "purple"}}/> </Button>
+          </Tooltip>
           </Hidden>
         <Sort open={this.state.sortOpen} close={(data)=>this.handleSortClose(data)} data={this.state.sorter}/>
         <Filter open={this.state.filterOpen} close={(data)=>this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData}/>

@@ -39,8 +39,14 @@
 .ticketImage{
     width: 350px;
 }
+h4{
+    text-align: center;
+}
 h5,h6{
     text-align: left;
+}
+.Ticket{
+    text-align: center;
 }
 .pointerText{
     padding: 3px;

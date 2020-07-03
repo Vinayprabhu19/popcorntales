@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Detail from './components/Detail';
 import Movie from './components/Movie';
 import Analytics from './components/Analytics';
+import ImageAdder from './components/ImageAdder';
 import { Route,Switch } from "react-router-dom";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Route path="/analytics" component={Analytics} />
       <Route path="/sitemap.xml" onEnter={reload} />
       <Route path="/addMovie" component={Movie} />
+      <Route path="/addImage" component={ImageAdder} />
       <Route path="/review/:movieName" component={Detail} />
       <Route path="/:movieName" component={Detail} />
     </Switch>

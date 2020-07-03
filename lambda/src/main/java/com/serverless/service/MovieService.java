@@ -29,6 +29,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.amazonaws.AmazonClientException;
+import com.amazonaws.AmazonServiceException;
 import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.document.Item;
@@ -322,6 +324,66 @@ public class MovieService {
 			response.setStatusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR);
 			return response;
 		}
+	}
+	
+	public static ApiGatewayProxyResponse addImage(JSONObject input) {
+		ApiGatewayProxyResponse 
+		response = new ApiGatewayProxyResponse();
+		try {
+			DynamoDB dynamoDB = DynamoDBOperations.initDynamoDbClient(REGION);
+			
+			//Check for authentication
+			Table authTable = dynamoDB.getTable(DYNAMO_AUTH_TABLE);
+			if(!input.has("userId") || !input.has("password")) {
+				response.setBody(DTOUtil.getMessage("Enter the credentials"));
+				response.setStatusCode(HttpStatus.SC_BAD_REQUEST);
+				return response;
+			}
+			GetItemSpec spec = new GetItemSpec()
+				    .withPrimaryKey("UserId", input.getString("userId"));
+			Item item = authTable.getItem(spec);
+			
+
+			if(!item.get("Password").equals(input.get("password"))) {
+				response.setBody(DTOUtil.getMessage("Incorrect password"));
+				response.setStatusCode(HttpStatus.SC_BAD_REQUEST);
+				return response;
+			}
+			String base64Data = input.getString("image");
+			String imageType = input.getString("imageType");
+			String imageName = input.getString("imageName");
+			AmazonS3 s3 = new AmazonS3Client();
+			byte[] bI = org.apache.commons.codec.binary.Base64.decodeBase64((base64Data.substring(base64Data.indexOf(",")+1)).getBytes());
+
+			InputStream fis = new ByteArrayInputStream(bI);
+			ObjectMetadata metadata = new ObjectMetadata();
+			metadata.setContentLength(bI.length);
+			metadata.setContentType(imageType);
+			metadata.setCacheControl("public, max-age=31536000");
+			s3.putObject(BUCKET_NAME, imageName, fis, metadata);
+			response.setBody(DTOUtil.getMessage("Added image "));
+			response.setStatusCode(HttpStatus.SC_CREATED);
+		} catch (AmazonServiceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			response.setBody(DTOUtil.getMessage(e.getMessage()));
+			response.setStatusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR);
+			return response;
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+			response.setBody(DTOUtil.getMessage(e.getMessage()));
+			response.setStatusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR);
+		} catch (AmazonClientException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+			response.setBody(DTOUtil.getMessage(e.getMessage()));
+			response.setStatusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR);
+		}
+		
+		return response;
 	}
 	
 	 private static BufferedImage resize(BufferedImage img, int height, int width) {

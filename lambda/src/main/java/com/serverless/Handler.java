@@ -40,6 +40,18 @@ public class Handler implements RequestHandler<ApiGatewayProxyRequest, ApiGatewa
 		
 	}
 	
+	public ApiGatewayProxyResponse addImage(ApiGatewayProxyRequest input,Context context) {
+		String b= input.getBody();
+		System.out.println(b);
+		String decodedString = decodeString(b);
+		System.out.println("image");
+		System.out.println(decodedString);
+		JSONObject body = new JSONObject(decodedString);
+		
+		return MovieService.addImage(body);
+		
+	}
+	
 	public ApiGatewayProxyResponse resizeImage(ApiGatewayProxyRequest input,Context context) {
 		String b= input.getBody();
 		String decodedString = decodeString(b);

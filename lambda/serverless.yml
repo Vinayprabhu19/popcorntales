@@ -72,6 +72,9 @@ functions:
   fetchImage:
     handler: com.serverless.Handler::fetchImage
     warmup: true
+  addImage:
+    handler: com.serverless.Handler::addImage
+    warmup: true
   
   
 #    The following are a few example events you can configure

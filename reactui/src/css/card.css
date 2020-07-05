@@ -22,7 +22,7 @@
     /* margin: 40px; */
 }
 .title{
-    font-size: 1.05em;
+    font-size: 1.25em;
     font-weight: bolder;
     text-align: left;
     margin-top: 10px;
@@ -35,7 +35,7 @@
     color: darkblue;
 }
 .language,.rating{
-    font-size: .95em;
+    font-size: 1.25em;
     font-weight: bolder;
     text-align: left;
     margin-left: 3%;

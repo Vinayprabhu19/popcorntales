@@ -1,0 +1,211 @@
+html,body,#root {
+  font-family: 'Straight';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  width: 100%;
+  background-image: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)), url("/memphis-colorful.png");
+  background-repeat: repeat;
+  background-blend-mode: soft-light;
+  
+}
+@font-face {
+  font-family: 'Regular';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/regular.ttf'); 
+}
+
+@font-face {
+  font-family: 'Straight';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/straight.ttf'); 
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.App{
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-size: auto;
+  background-repeat: repeat;
+  align-items: center;
+}
+.hidden{
+  display: none;
+}
+.rightToolbar{
+  margin-left: auto;
+}
+.bannerBackground{
+  background-color: #fff;
+  }
+#titleImage{
+  margin-top: 25px;
+  width: 70%;
+}
+.cardList{
+  margin: 10px 5px 20px 5px;
+}
+#banner-container{
+  width: 100%;
+}
+
+.App-Content{
+  color: #000;
+  align-items: center;
+  margin: 75px 2% 2% 2%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#filterGrid{
+  width: 100%;
+  height: 60px;
+}
+#searchField{
+  width: 250px;
+  border-radius: 20px;
+  margin-right: 20px;
+  border-width: 1px;
+  padding-left: 5%;
+  padding-right: 5%;
+  text-align: center;
+  border-color: purple;
+  font-size: large;
+}
+#feedbackText{
+  margin-right: 10px;
+}
+.iconBtn{
+  margin-left: 10px;
+}
+.social-icon{
+  margin-right: 15px;
+}
+#appBar{
+  width: 100%;
+  height: fit-content;
+  vertical-align: middle;
+  color: black;
+  background-color: white;
+ 
+}
+
+#title{
+  font-size: 1.2em;
+  height: auto;
+  display: inline-block;
+  margin-left: 10px;
+  font-weight: normal;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+  vertical-align: middle;
+}
+footer{
+  align-content: center;
+  align-items: center;
+}
+footer nav{
+  display:inline-block;
+}
+#footerText{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  align-items: center;
+  font-weight: lighter;
+}
+.filter-sort{
+  margin:0;
+  padding:10px 0 10px 0;
+  width: 100%;
+  float: right;
+  color: #000;
+  background-color: white;
+}
+
+
+
+@media screen and (min-width: 2000px){
+  #searchField{
+    width: 400px;
+    border-radius: 25px;
+    margin-right: 50px;
+    border-width: 1px;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: large;
+  }
+}
+@media screen and (min-width: 600px) {
+
+  #titleImage{
+    width: 40%;
+  }
+  .cardList{
+    margin: 10px;
+  }
+  .App-Content{
+    margin: 30px;
+  }
+  .filter-sort{
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+} 
+
+@media screen and (max-width: 600px) {
+
+  .App-Content{
+    margin: 5px 1% 1% 1%;
+  }
+  
+  #searchField{
+    width: 200px;
+    border-radius: 15px;
+    margin-right: 15px;
+    border-width: 1px;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: large;
+  }
+}
+@media screen and (max-width: 400px) {
+  .App-Content{
+    margin: 20px 1% 1% 1%;
+  }
+  
+  #searchField{
+    width: 150px;
+    border-radius: 15px;
+    margin-right: 5px;
+    border-width: 1px;
+    padding-left: 5%;
+    padding-right: 5%;
+    font-size: medium;
+  }
+  #title{
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 300px){
+  #searchField{
+    width: 100px;
+    border-radius: 10px;
+    margin-right: 2px;
+    border-width: 1px;
+    padding-left: 2%;
+    padding-right: 2%;
+    font-size: medium;
+  }
+  #title{
+    font-size: 0.85em;
+  }
+  #appBar{
+    padding:1%;
+  }
+}

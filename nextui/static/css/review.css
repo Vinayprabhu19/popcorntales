@@ -1,0 +1,95 @@
+.review-component {
+    margin: 40px 40px 20px 40px;
+    font-size: larger;
+    text-align: justify;
+}
+.cast-component{
+    margin: 20px 50px 20px 50px;
+    font-size: larger;
+    text-align: justify;
+}
+
+.ticket-component{
+    width: 100%;
+    margin-top: 20px;
+}
+.flexbox-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 8px;
+}
+.synopsis{
+    text-align: justify;
+}
+.checkIcon{
+    color: green;
+    margin-right: 20px;
+}
+.cancelIcon{
+    color: red;
+    margin-right: 20px;
+}
+.movieIcon{
+    color: black;
+    margin-right: 20px;
+}
+.subsection{
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+#ticket-container{
+    width: 300px;
+    height: fit-content;
+    align-items: center;
+    margin: 25px 0 0 0;
+    padding: 0;
+}
+.ticketImage{
+    width: 300px;
+}
+h4{
+    text-align: center;
+}
+h5,h6{
+    text-align: left;
+}
+.Ticket{
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: lighter;
+}
+.pointerText{
+    padding: 1px;
+    text-align: left;
+    margin: 0;
+    text-align: justify;
+}
+.graphContainer{
+    margin-top: 25px;
+}
+.graphImage{
+    width: 500px;
+    height: 500px;
+}
+@media screen and (max-width: 900px) {
+    .cast-component{
+        margin: 20px 10px 20px 20px;
+    }
+    .graphImage{
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .graphImage{
+        width: 300px;
+        height: 300px;
+    }
+    .review-component {
+        margin: 30px 25px 20px 25px;
+        font-size: larger;
+        text-align: justify;
+    }
+}

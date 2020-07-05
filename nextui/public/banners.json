@@ -1,0 +1,23 @@
+[
+    {
+        "id":1,
+        "name":"Movie1",
+        "url":"https://api.popcorntales.com/image?object=Banners/Movie1.jpg"
+    },
+    {
+        "id":2,
+        "name":"Movie2",
+        "url":"https://api.popcorntales.com/image?object=Banners/Movie2.jpg"
+    },
+    {
+        "id":3,
+        "name":"Movie3",
+        "url":"https://api.popcorntales.com/image?object=Banners/Movie3.jpg"
+    },
+    {
+        "id":4,
+        "name":"Movie4",
+        "url":"https://api.popcorntales.com/image?object=Banners/Movie4.jpg"
+    }
+
+]

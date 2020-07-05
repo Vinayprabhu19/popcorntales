@@ -23,8 +23,6 @@ import javax.imageio.ImageWriter;
 import javax.imageio.stream.ImageOutputStream;
 
 import org.apache.http.HttpStatus;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,7 +52,6 @@ import com.serverless.utils.DTOUtil;
 
 public class MovieService {
 	
-	private static final Logger LOG = LogManager.getLogger(MovieService.class);
     private static final String DYNAMODB_TABLE_MOVIE = "MOVIE";
     private static final String DYNAMODB_TABLE_MOVIE_REVIEW = "MOVIE_REVIEW";
     private static final String DYNAMO_AUTH_TABLE = "AUTH";
@@ -200,7 +197,6 @@ public class MovieService {
 			GetItemSpec spec = new GetItemSpec()
 				    .withPrimaryKey("title", movieName);
 //		
-			LOG.info(movieName);
 			Item item = movieTable.getItem(spec);
 			    
 			if(item == null) {
@@ -233,7 +229,6 @@ public class MovieService {
 		String objectKey= params.get("object");
 		ApiGatewayProxyResponse response = new ApiGatewayProxyResponse();
 
-		LOG.info(objectKey);
          // Read the source image
          try {
         	 AmazonS3 s3Client = new AmazonS3Client();

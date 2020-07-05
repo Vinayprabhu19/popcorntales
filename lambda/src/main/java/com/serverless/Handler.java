@@ -3,8 +3,6 @@ package com.serverless;
 import java.util.Arrays;
 
 import org.apache.commons.codec.binary.Base64;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import com.amazonaws.services.lambda.runtime.Context;
@@ -14,8 +12,6 @@ import com.serverless.dto.ApiGatewayProxyResponse;
 import com.serverless.service.MovieService;
 
 public class Handler implements RequestHandler<ApiGatewayProxyRequest, ApiGatewayProxyResponse> {
-	
-	private static final Logger LOG = LogManager.getLogger(Handler.class);
 	
 	@Override
 	public ApiGatewayProxyResponse handleRequest(ApiGatewayProxyRequest input, Context context) {

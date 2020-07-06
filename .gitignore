@@ -12,6 +12,7 @@ manifest-*
 reactui/package-lock.json
 .mta/
 
+nextjs
 
 ### NodeJS related ###
 npm-debug.log

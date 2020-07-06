@@ -77,6 +77,8 @@ class Detail extends Component {
   constructor(props) {
     super(props);
     var result = props.movie;
+    if (typeof window === 'object')
+    result = this.processImageData(result);
     if(typeof(result.review) == "string")
         result.review=JSON.parse(result.review);
     if(typeof(result.ticketDetails) == "string")
@@ -99,6 +101,27 @@ class Detail extends Component {
     };
   }
 
+  processImageData(data){
+    var width,height;
+    var width,height;
+    if(window.matchMedia("(max-width: 576px)").matches){
+      width=150;height=200;
+    }
+    else if(window.matchMedia("(max-width: 958px)").matches){
+      width=200;height=260;
+    }
+    else if(window.matchMedia("(max-width: 1300px)").matches){
+      width=220;height=250;
+    }
+    else if(window.matchMedia("(max-width: 2000px)").matches){
+      width=250;height=300;
+    }
+    else{
+      width=400;height=500;
+    }
+    data.titleImage=  data.titleImage+"&width="+width+"&height="+height;
+    return data;
+  }
   handleChange(v){
     this.setState({
       selectedTab:v

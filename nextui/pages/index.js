@@ -46,6 +46,8 @@ class Home extends Component {
   constructor(props) {
     super(props);
     var result = props.movies;
+    if (typeof window === 'object')
+    result = this.processImageData(result);
     var filter = this.getFilteredData(result);
     var banners = props.banners;
     result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
@@ -90,9 +92,31 @@ class Home extends Component {
      this.handleSortClose = this.handleSortClose.bind(this);
      this.openFilter=this.openFilter.bind(this);
      this.onSearch = this.onSearch.bind(this);
-    
+     this.processImageData = this.processImageData.bind(this);
   }
 
+  processImageData(data){
+    var width,height;
+    if(window.matchMedia("(max-width: 576px)").matches){
+      width=150;height=200;
+    }
+    else if(window.matchMedia("(max-width: 958px)").matches){
+      width=200;height=260;
+    }
+    else if(window.matchMedia("(max-width: 1300px)").matches){
+      width=220;height=250;
+    }
+    else if(window.matchMedia("(max-width: 2000px)").matches){
+      width=250;height=300;
+    }
+    else{
+      width=400;height=500;
+    }
+    for(var i=0;i<data.length;i++){
+      data[i].titleImage=  data[i].titleImage+"&width="+width+"&height="+height;
+    }
+    return data;
+  }
   
 
   onPageChanged(e){

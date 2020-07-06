@@ -7,7 +7,6 @@ import Tab from '@material-ui/core/Tab';
 import HomeButton from '@material-ui/icons/Home';
 import Synopsis from '../components/Synopsis';
 import Review from '../components/Review';
-import LazyImage from "../components/LazyImage";
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
@@ -20,8 +19,9 @@ import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Head from 'next/head';
-import Router from 'next/router'
+import Router from 'next/router';
 import { useRouter } from 'next/router';
+import LazyImage from "../components/LazyImage";
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -86,7 +86,6 @@ class Detail extends Component {
     if(movieTitle == undefined){
       movieTitle="Popcorn Tales";
     }
-    debugger;
     this.state = {
         loading:true,
         shareUrl:"www.popcorntales.com",
@@ -166,20 +165,9 @@ render(){
                 measurementId: "G-LK5DBSBMTR"
               };
               firebase.initializeApp(firebaseConfig);
-              firebase.analytics();
-              window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-170786754-1');
-                  `,
+              firebase.analytics(); `,
             }}
-          ></script>
-          <script>
-            
-          </script>
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170786754-1"></script>
-        </Head>
+          ></script> </Head>
     <div>
     <div id="container" className={this.state.loading ? 'hidden' : ''}>
         
@@ -195,7 +183,7 @@ render(){
         <div className="movie-header">
             <div id="card" >
               <Paper elevation={19}>
-              <LazyImage className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title + " Review Image"} unloadedSrc={this.state.selectedMovie.titleImage}/>
+              <img className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title + " Review Image"} src={this.state.selectedMovie.titleImage}/>
               </Paper>
               <Hidden smDown>
               <Grid container justify = "center" className="ratingHearts">

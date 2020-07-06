@@ -3,6 +3,7 @@ import BeenhereIcon from '@material-ui/icons/Beenhere';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import LazyImage from "../components/LazyImage";
 class Review extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +35,7 @@ class Review extends Component {
         }
         <Grid container justify = "center" className="graphContainer">
         <Paper elevation={10}>
-        <img src={this.state.url} className="graphImage" alt={"Popcorn Tales " + this.props.title}/>
+        <LazyImage src={this.state.url} className="graphImage" alt={"Popcorn Tales " + this.props.title}/>
         </Paper>
         </Grid>
     </div>

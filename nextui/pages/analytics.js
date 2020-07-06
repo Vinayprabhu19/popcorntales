@@ -65,13 +65,7 @@ class Analytics extends Component {
                 measurementId: "G-LK5DBSBMTR"
               };
               firebase.initializeApp(firebaseConfig);
-              firebase.analytics();
-              window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-170786754-1');
-                  `,
+              firebase.analytics(); `,
             }}
           ></script>
           <script>
@@ -97,15 +91,22 @@ class Analytics extends Component {
       <Paper  elevation={15}className="mediumChart">
         <PieChart data={this.state.categoryData} legend="bottom" donut={true} id="categoryChart"/>
       </Paper>
+      
+      
       <Paper  elevation={15}className="mediumChart">
         <LineChart data={this.state.ratingCountByLanguage} id="languageLineChart" precision={2} xtitle="Movie" ytitle="Rating" min={0} max={5.0} legend="bottom"/>
       </Paper>
+      
+      
       <Paper  elevation={15}className="mediumChart">
         <LineChart data={this.state.ratingByCategory} precision={2}  id="categoryLineChart" xtitle="Category" ytitle="Rating" min={0} max={5.0} legend="bottom"/>
       </Paper>
+      
+      
       <Paper  elevation={15}className="mediumChart">
       <ColumnChart data={this.state.yearData}  id="yearChart" xtitle="Year"  ytitle="Movies Watched"/>
       </Paper>
+      
    </Grid>
    <footer>
    <div id="footerText"> 

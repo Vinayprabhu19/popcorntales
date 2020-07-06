@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import LazyImage from "../components/LazyImage";
 class Cast extends Component {
     constructor(props) {
         super(props);
@@ -18,7 +19,7 @@ class Cast extends Component {
        <h5 className="Ticket">Place Watched : {this.state.ticketDetails.placeWatched}</h5>
        <Grid container justify = "center">
        <div id="ticket-container">
-       <img src={this.state.ticketDetails.ticketImage} className="ticketImage" alt={"Ticket image of the movie"}></img>
+       <LazyImage src={this.state.ticketDetails.ticketImage} className="ticketImage" alt={"Ticket image of the movie"}/>
        </div>
        </Grid>
     </div>

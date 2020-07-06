@@ -1,38 +1,8 @@
-
-html,body,#root {
-    font-family: 'Straight';
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    background-image: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)), url("/memphis-colorful.png");
-    background-repeat: repeat;
-    background-blend-mode: soft-light;
-    overflow-x: hidden;
-  }
-  @font-face {
-    font-family: 'Regular';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/regular.ttf'); 
-  }
-  
-  @font-face {
-    font-family: 'Straight';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/straight.ttf'); 
-  }
 #toolbar{
     align-items: center;
     margin: 0;
     padding: 0 15px 0 15px;
 }
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
-  }
 #container{
     width: 100%;
   height: 100%;

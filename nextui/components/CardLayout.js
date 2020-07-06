@@ -32,7 +32,7 @@ class CardLayout extends Component {
       <Paper elevation={0} className="card"  >
           <a href={this.props.review.title}>
               <figure id="card-figure">
-                <LazyImage className="card-img" alt={"Popcorn Tales - " + this.props.review.title } unloadedSrc={this.props.review.titleImage}/>
+                <LazyImage className="card-img" alt={"Popcorn Tales - " + this.props.review.title } src={this.props.review.titleImage}/>
               </figure>
           </a>
       </Paper>

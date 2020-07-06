@@ -7,7 +7,7 @@ html,body,#root {
   background-image: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)), url("/memphis-colorful.png");
   background-repeat: repeat;
   background-blend-mode: soft-light;
-  
+  overflow-x: hidden;
 }
 @font-face {
   font-family: 'Regular';
@@ -27,7 +27,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+.carousel-status{
+  visibility: hidden;
+}
+.dot{
+  width: 12px;
+  height: 12px;
+}
 .App{
   text-align: center;
   width: 100%;
@@ -69,6 +75,7 @@ code {
 }
 #searchField{
   width: 250px;
+  height: 40px;
   border-radius: 20px;
   margin-right: 20px;
   border-width: 1px;
@@ -82,7 +89,8 @@ code {
   margin-right: 10px;
 }
 .iconBtn{
-  margin-left: 10px;
+  margin-left: 5px;
+  fill: purple;
 }
 .social-icon{
   margin-right: 15px;
@@ -166,6 +174,7 @@ footer nav{
   
   #searchField{
     width: 200px;
+    height: 35px;
     border-radius: 15px;
     margin-right: 15px;
     border-width: 1px;
@@ -192,15 +201,18 @@ footer nav{
     font-size: 1em;
   }
 }
-@media screen and (max-width: 300px){
+@media screen and (max-width: 330px){
   #searchField{
-    width: 100px;
+    width: 120px;
     border-radius: 10px;
     margin-right: 2px;
     border-width: 1px;
     padding-left: 2%;
     padding-right: 2%;
     font-size: medium;
+  }
+  .MuiButton-text{
+    padding: 2px;
   }
   #title{
     font-size: 0.85em;

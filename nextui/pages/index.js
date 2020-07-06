@@ -10,13 +10,13 @@ import MailIcon from '@material-ui/icons/Mail';
 import SortIcon from '@material-ui/icons/Sort';
 import React, { Component } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-import LazyImage from "../components/LazyImage";
 import FilterListIcon from '@material-ui/icons/FilterList';
 import CardLayout from "../components/CardLayout";
 import Sort from "../components/Sort";
 import Pagination from '@material-ui/lab/Pagination';
 import Filter from "../components/Filter";
 import Head from 'next/head';
+import LazyImage from "../components/LazyImage";
 import Grid from '@material-ui/core/Grid';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import SocialMenu from '../components/SocialMenu';
@@ -172,7 +172,6 @@ render(){
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#000000" />
           <link async rel="canonical" href="https://www.Popcorntales.com/" />
-          <script src="https://unpkg.com/prop-types/prop-types.min.js"></script>
           <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-app.js"></script>
           <script src="https://www.gstatic.com/firebasejs/7.14.3/firebase-analytics.js"></script>
           <script
@@ -190,18 +189,9 @@ render(){
               };
               firebase.initializeApp(firebaseConfig);
               firebase.analytics();
-              window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'UA-170786754-1');
                   `,
             }}
           ></script>
-          <script>
-            
-          </script>
-          <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170786754-1"></script>
         </Head>
     <div>
       <Backdrop open={this.state.loading}>
@@ -218,11 +208,11 @@ render(){
         </Toolbar>
       </AppBar>
       <Paper id="banner-container" elevation={10}>
-        <Carousel showThumbs={false}>
+        <Carousel showThumbs={false} showStatus={false}>
             {
               this.state.banners.map(banner=>{
                 return <div key={banner.id}>
-                    <LazyImage  className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/>
+                    <LazyImage  className="movie-img" src={banner.url} key={banner.id} alt="Movie Banner"/>
                 </div>
               })
             }
@@ -233,18 +223,18 @@ render(){
           <input type="text" id="searchField" value={this.state.searchText} onChange={this.onSearch} placeholder="Movie Title"/>
           <Hidden smDown>
             <Tooltip title="Sort">
-          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"large"} style={{fill: "purple"}}/></Button>
+          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"large"} /></Button>
           </Tooltip>
           <Tooltip title="Filter">
-          <Button className="iconBtn" onClick={this.openFilter} ><FilterListIcon fontSize={"large"} style={{fill: "purple"}} /> </Button>
+          <Button className="iconBtn" onClick={this.openFilter} ><FilterListIcon fontSize={"large"}  /> </Button>
           </Tooltip>
           </Hidden>
           <Hidden mdUp>
           <Tooltip title="Sort">
-          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"default"} style={{fill: "purple"}}/></Button>
+          <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"default"} /></Button>
           </Tooltip>
           <Tooltip title="Filter">
-          <Button className="iconBtn" onClick={this.openFilter}><FilterListIcon fontSize={"default"} style={{fill: "purple"}}/> </Button>
+          <Button className="iconBtn" onClick={this.openFilter}><FilterListIcon fontSize={"default"} /> </Button>
           </Tooltip>
           </Hidden>
         <Sort open={this.state.sortOpen} close={(data)=>this.handleSortClose(data)} data={this.state.sorter}/>

@@ -20,7 +20,7 @@ export default class LazyImage extends React.Component {
           error: true
         });
       };
-      img.src = this.props.src;
+        img.src = this.props.src;
     }
   
     render() {

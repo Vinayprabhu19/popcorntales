@@ -23,6 +23,7 @@ import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Helmet } from 'react-helmet';
+import LazyLoad from 'react-lazy-load';
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -53,13 +54,15 @@ class Detail extends Component {
               synopsis:"",
               pros:[],
               cons:[]
-            }
+            },
+            rating:5
         },
         selectedTab:null,
         loading:true,
         shareUrl:"www.popcorntales.com",
         tags:"#popcorntales #movietime #moviereview #popcorn #letswatch"
     };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount(){
@@ -87,7 +90,7 @@ class Detail extends Component {
     })  
   }
 
-  handleChange(v){
+  handleChange(e,v){
     this.setState({
       selectedTab:v
     })
@@ -211,7 +214,7 @@ render(){
                 </div>
             </div>
             </Hidden>
-            
+            <LazyLoad >
             <Hidden mdDown>
               <div id="trailer_div">
                   <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
@@ -219,12 +222,13 @@ render(){
                   </iframe>
               </div>
             </Hidden>
+            </LazyLoad>
         </div>
         <div className="movie-detail">
           <AppBar position="static">
-            <Tabs onChange={(e,v)=>{this.handleChange(v)}}  value={this.state.selectedTab} variant="fullWidth" aria-label="simple tabs example">
-              <Tab value={0} label="Synopsis" className="tab"/>
-              <Tab value={1} label="Review" className="tab"/>
+            <Tabs onChange={this.handleChange}  value={this.state.selectedTab} variant="fullWidth" aria-label="simple tabs example">
+              <Tab value={0} label="Review" className="tab"/>
+              <Tab value={1} label="Hit & Miss" className="tab"/>
               <Tab value={2} label="Cast & Crew" className="tab"/>
               <Tab value={3} label="Ticket" className="tab"/>
             </Tabs>

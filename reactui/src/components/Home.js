@@ -11,8 +11,8 @@ import SortIcon from '@material-ui/icons/Sort';
 import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import '../css/Home.css';
+import '../css/card.css';
 import LazyImage from "../components/LazyImage";
-import Title from '../resources/Title.png';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import CardLayout from "./CardLayout";
 import Pagination from "./Pagination";
@@ -188,8 +188,8 @@ render(){
             {
               this.state.banners.map(banner=>{
                 return <Carousel.Item key={banner.id}>
-                  <div className="bannerBackground" >
-                    <LazyImage  className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/>
+                  <div className="movie-img" style={{backgroundImage: "url(" + banner.url + ")"}} >
+                    {/* <LazyImage  className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/> */}
                     </div>
                 </Carousel.Item>
               })
@@ -219,9 +219,6 @@ render(){
         <Filter open={this.state.filterOpen} close={(data)=>this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData}/>
         </Grid>
       </Paper>
-      <Hidden mdUp>
-      <img src={Title} id="titleImage" />
-      </Hidden>
       <div className="App-Content">
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (
@@ -257,7 +254,7 @@ getFilteredData(result){
 processImageData(data){
   var width,height;
   if(window.matchMedia("(max-width: 576px)").matches){
-    width=150;height=200;
+    width=140;height=200;
   }
   else if(window.matchMedia("(max-width: 958px)").matches){
     width=200;height=260;

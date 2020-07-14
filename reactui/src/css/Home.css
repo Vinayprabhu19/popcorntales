@@ -23,7 +23,7 @@
   margin: 10px 5px 20px 5px;
 }
 #banner-container{
-  width: 100%;
+  /* width: 100%; */
 }
 
 .App-Content{
@@ -50,12 +50,12 @@
 .social-icon{
   margin-right: 15px;
 }
-#appBar{
+#toolBar{
   width: 100%;
   height: 60px;
   vertical-align: middle;
   color: black;
- 
+  background-color: #66023c;
 }
 
 #title{
@@ -89,6 +89,9 @@ footer nav{
   color: #000;
   background-color: purple;
 }
+.MuiPaper-root{
+  background-color: black;
+}
 
 @media screen and (min-width: 2000px){
   #searchField{
@@ -110,7 +113,7 @@ footer nav{
     margin: 10px;
   }
   .App-Content{
-    margin: 20px;
+    margin: 100px 20px 20px 20px;
   }
   .filter-sort{
     padding-left: 10%;
@@ -121,7 +124,7 @@ footer nav{
 @media screen and (max-width: 600px) {
 
   .App-Content{
-    margin: 5px 1% 1% 1%;
+    margin: 100px 1% 1% 1%;
   }
   
   #title{
@@ -140,7 +143,7 @@ footer nav{
 }
 @media screen and (max-width: 400px) {
   .App-Content{
-    margin: 20px 1% 1% 1%;
+    margin: 100px 1% 1% 1%;
   }
   
   #title{

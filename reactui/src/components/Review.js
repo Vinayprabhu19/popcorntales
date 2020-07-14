@@ -20,16 +20,16 @@ class Review extends Component {
             this.state.pros.map(pro=>(
                 <div className="flexbox-container" key={pro}>
                     <div><BeenhereIcon className="checkIcon" /></div>
-                    <h5 class="pointerText">{pro}</h5>
+                    <h5 className="pointerText">{pro}</h5>
                 </div>
             ))
         }
         <h4 className="subsection">What didn't work well?</h4>
         {
             this.state.cons.map(con=>(
-                <div class="flexbox-container" key={con}>
+                <div className="flexbox-container" key={con}>
                     <div><CancelIcon className="cancelIcon" /></div>
-                    <h5 class="pointerText">{con}</h5>
+                    <h5 className="pointerText">{con}</h5>
                 </div>
             ))
         }

@@ -7,6 +7,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.security.Timestamp;
+import java.security.acl.LastOwnerException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
@@ -234,7 +236,10 @@ public class MovieService {
         	 AmazonS3 s3Client = new AmazonS3Client();
              S3Object s3Object = s3Client.getObject(new GetObjectRequest(
                      BUCKET_NAME, objectKey));
-             String contentType=s3Object.getObjectMetadata().getContentType().replace("image/", "");
+             ObjectMetadata metadata = s3Object.getObjectMetadata();
+             String contentType=metadata.getContentType().replace("image/", "");
+             
+             response.addHeader("Last-Modified", getLastModified(metadata.getLastModified()));
              InputStream objectData = s3Object.getObjectContent();
         	 final ByteArrayOutputStream os = new ByteArrayOutputStream();
 			BufferedImage srcImage = ImageIO.read(objectData);
@@ -248,10 +253,7 @@ public class MovieService {
             os.close();
 	        Base64.Encoder encoder = Base64.getEncoder();
 	        String b64String = encoder.encodeToString(imageBytes);
-	        if(objectKey.startsWith("Banners"))
-	        	response.addHeader("Cache-Control","max-age=86400");
-	        else
-	        	response.addHeader("Cache-Control","max-age=3664400");
+	        response.addHeader("Cache-Control","max-age=3664400");
 	        response.addHeader("Content-type", s3Object.getObjectMetadata().getContentType());
 			response.setBody(b64String);
 			response.setStatusCode(HttpStatus.SC_OK);
@@ -389,4 +391,10 @@ public class MovieService {
 	        g2d.dispose();
 	        return resized;
 	    }
+	 
+	 private static String getLastModified(Date date) {
+		 SimpleDateFormat sdf = new SimpleDateFormat(
+                 "EEE, dd MMM yyyy hh:mm:ss");
+		 return sdf.format(date)+" GMT";
+	 }
 }

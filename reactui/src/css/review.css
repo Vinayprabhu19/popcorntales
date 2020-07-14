@@ -50,6 +50,7 @@ h5,h6{
 }
 .pointerText{
     padding: 3px;
+    text-align: justify;
 }
 .graphContainer{
     margin-top: 25px;

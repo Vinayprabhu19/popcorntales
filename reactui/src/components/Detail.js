@@ -176,8 +176,10 @@ render(){
         <div className="movie-header">
             <div id="card" >
               <Paper elevation={19}>
-              <LazyImage className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title + " Review Image"} unloadedSrc={this.state.selectedMovie.titleImage}/>
-              </Paper>
+              <LazyLoad>
+              <img className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title + " Review Image"} src={this.state.selectedMovie.titleImage}/>
+              </LazyLoad>
+               </Paper>
               <Hidden smDown>
               <Grid container justify = "center" className="ratingHearts">
                  {overallRating}

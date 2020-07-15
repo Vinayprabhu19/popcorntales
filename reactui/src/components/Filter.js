@@ -9,7 +9,7 @@ import Slider from '@material-ui/core/Slider';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import Grid from '@material-ui/core/Grid';
-class Sort extends Component {
+class Filter extends Component {
     constructor(props) {
         super(props);
         var year = props.data.year;
@@ -20,15 +20,25 @@ class Sort extends Component {
           "language":language,
           "rating":rating
         };
-        this.state = {filter:filter,filterData:props.filterData};
+        var originalFilter={
+          "year":year,
+          "language":language,
+          "rating":rating
+        };
+        this.state = {filter:filter,filterData:props.filterData,originalFilter:originalFilter};
         this.onCancel = this.onCancel.bind(this);
         this.onOK = this.onOK.bind(this);
       }
       onCancel(){
-        debugger;
+        this.state.filter["year"]=this.state.originalFilter["year"];
+        this.state.filter["language"]=this.state.originalFilter["language"];
+        this.state.filter["rating"]=this.state.originalFilter["rating"];
         this.props.close(null);
       }
       onOK(){
+        this.state.originalFilter["year"]=this.state.filter["year"];
+        this.state.originalFilter["language"]=this.state.filter["language"];
+        this.state.originalFilter["rating"]=this.state.filter["rating"];
         this.props.close(this.state);
       }
   render() {
@@ -94,4 +104,4 @@ class Sort extends Component {
   }
 }
 
-export default Sort;
+export default Filter;

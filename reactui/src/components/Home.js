@@ -13,6 +13,7 @@ import Carousel from 'react-bootstrap/Carousel';
 import '../css/Home.css';
 import '../css/card.css';
 import LazyImage from "../components/LazyImage";
+import LazyLoad from 'react-lazy-load';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import CardLayout from "./CardLayout";
 import Pagination from "./Pagination";
@@ -62,7 +63,7 @@ class Home extends Component {
       .then(response => response.json())
       .then(result => {
         this.getFilteredData(result);
-        result = this.processImageData(result);
+        // result = this.processImageData(result);
         result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
           const rvs = result.map(item => {
             return item;
@@ -102,7 +103,6 @@ class Home extends Component {
       for(var i=start;i< len ;i++){
         currentPages.push(this.state.reviews[i]);
       }
-
       this.setState({
         currentList : currentPages
       });
@@ -175,9 +175,7 @@ render(){
       <AppBar id="appBar" position="static">
         <Toolbar>
           <Tooltip title="Analytics"><a href="/analytics"><BarChartIcon fontSize={"large"} color={"primary"}/></a></Tooltip>
-          <Hidden mdDown>
           <h1 id="title">Popcorn Tales</h1>
-          </Hidden>
           <section className="rightToolbar">
             <SocialMenu/>
           </section>
@@ -249,6 +247,7 @@ getFilteredData(result){
   for(var i=0;i<result.length;i++){
       if(this.state.filterData.years.includes(result[i].year)) continue;
       this.state.filterData.years.push(result[i].year);}
+      this.state.filterData.years.sort();
 
 }
 processImageData(data){

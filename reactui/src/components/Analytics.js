@@ -2,41 +2,123 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MailIcon from '@material-ui/icons/Mail';
 import 'chart.js';
+import { makeStyles } from '@material-ui/core/styles';
 import HomeButton from '@material-ui/icons/Home';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import React, { Component } from 'react';
 import { ColumnChart, LineChart, PieChart } from 'react-chartkick';
 import '../css/analytics.css';
+import Filter from "./Filter";
+import Tooltip from '@material-ui/core/Tooltip';
+import Button from '@material-ui/core/Button';
+import FilterListIcon from '@material-ui/icons/FilterList';
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import CardLayout from "./CardLayout";
+import Typography from '@material-ui/core/Typography';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
 class Analytics extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+          reviews:[],
+          filterOpen:false,
+          filter:{
+            "language":"All",
+            "year":"All",
+            "rating":[0.0,5.0]
+          },
+          filterData:{"years":["All"],"languages":["All"]},
+          bestMovie:{},
+            worstMovie:{},
+            averageRating:5
+        };
+          
+     this.openFilter=this.openFilter.bind(this);
+     this.getFilteredData = this.getFilteredData.bind(this);
       }
 
       componentDidMount(){
         fetch('https://api.popcorntales.com/movie')
           .then(response => response.json())
           .then(result => {
+            this.getFilteredData(result);
             var languagesData = this.getLanguages(result);
             var yearData = this.getMovieCountByYear(result);
             var categoryData = this.getMovieCountByCategory(result);
             var ratingByCategory = this.getRatingCountByCategory(result);
             var ratingCountByLanguage = this.getratingCountByLanguage(result);
-              this.setState({
+            var movies = this.getMovies(result);
+            this.setState({
+                allReviews:result,
+                reviews: result,
                 totalMovies:result.length,
                 languagesData: languagesData,
                 yearData: yearData,
                 categoryData:categoryData,
                 ratingByCategory:ratingByCategory,
-                ratingCountByLanguage:ratingCountByLanguage
+                ratingCountByLanguage:ratingCountByLanguage,
+                bestMovie:movies["bestMovie"],
+                worstMovie:movies["worstMovie"],
+                averageRating:movies["averageRating"]
               })
           })
           .catch(error =>{
             console.error(error);
           })
-          
       }
+  
+  openFilter(){
+        this.setState({
+          filterOpen : true
+        });
+      }
+  getFilteredData(result){
+    for(var i=0;i<result.length;i++){
+      if(this.state.filterData.languages.includes(result[i].language)) continue;
+      this.state.filterData.languages.push(result[i].language);}
+    for(var i=0;i<result.length;i++){
+        if(this.state.filterData.years.includes(result[i].year)) continue;
+        this.state.filterData.years.push(result[i].year);}
+    this.state.filterData.years.sort();
+    this.state.filterData.years.reverse();
+  } 
+  handleFilterClose(data){
+    if(data == null){
+      this.setState({
+        filterOpen:false,
+        filter:this.state.filter
+      });
+      return;
+    }
+    var reviews = [];
+    for(var i=0;i<this.state.allReviews.length;i++){
+      reviews.push(this.state.allReviews[i]);}
+    if(data.filter.language!="All"){
+      reviews = reviews.filter(function(r){return r.language == data.filter.language});}
+    if(data.filter.year!="All"){
+        reviews = reviews.filter(function(r){return r.year == data.filter.year});}
+    
+    reviews = reviews.filter(function(r){return r.rating >= data.filter.rating[0] && r.rating <= data.filter.rating[1]});
+    var categoryData = this.getMovieCountByCategory(reviews);
+    var ratingByCategory = this.getRatingCountByCategory(reviews);
+    var ratingCountByLanguage = this.getratingCountByLanguage(reviews);
+    var movies = this.getMovies(reviews);
+    this.setState({
+      reviews: reviews,
+      filterOpen:false,
+      filter:data.filter,
+      categoryData:categoryData,
+      ratingByCategory:ratingByCategory,
+      ratingCountByLanguage:ratingCountByLanguage,
+      bestMovie:movies["bestMovie"],
+      worstMovie:movies["worstMovie"],
+      averageRating:movies["averageRating"]
+    });
+  }
   render() {
     return  <div >
     <AppBar id="appBar" position="static">
@@ -47,32 +129,99 @@ class Analytics extends Component {
           </div>
           </Toolbar>
     </AppBar>
-    <Grid container justify = "center" className="analytics" >
+    <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <h5 className="centerText">Total Movies : {this.state.totalMovies}</h5>
+        </AccordionSummary>
+        <AccordionDetails>
+        <Grid container justify = "center">
+        <Paper  elevation={15}className="mediumChart">
+          <PieChart data={this.state.languagesData} legend="bottom"  width={300} height={250}/>
+        </Paper>
+          <Paper  elevation={15}className="mediumChart">
+            <LineChart data={this.state.ratingCountByLanguage} precision={2} xtitle="Movie" ytitle="Rating" min={0} max={5.0} legend="bottom"/>
+          </Paper>
+          <Paper  elevation={15}className="mediumChart">
+        <ColumnChart data={this.state.yearData} xtitle="Year" ytitle="Movies Watched"/>
+        </Paper>
+        </Grid>
+        </AccordionDetails>
+    </Accordion>
+    <Paper elevation={10} id="filterBar">
+        <Tooltip title="Filter">
+          <Button className="iconBtn" onClick={this.openFilter} ><FilterListIcon fontSize={"large"} style={{fill: "purple"}} /> </Button>
+           </Tooltip>
+    </Paper>
+    <Filter open={this.state.filterOpen} close={(data)=>this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData}/>
+    <div id="section">
+    
+    <div id="centerSection">
+    <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <h5 className="centerText">High Rated : {this.state.bestMovie.title} {this.state.bestMovie.rating}</h5>
+        </AccordionSummary>
+        <AccordionDetails>
+        <Grid container justify = "center" >
+          <CardLayout review={this.state.bestMovie}/>
+          </Grid>
+        </AccordionDetails>
+    </Accordion>
+    <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <h5 className="centerText">Low Rated : {this.state.worstMovie.title} {this.state.worstMovie.rating}</h5>
+        </AccordionSummary>
+        <AccordionDetails>
+        <Grid container justify = "center" >
+          <CardLayout review={this.state.worstMovie}/>
+          </Grid>
+        </AccordionDetails>
+    </Accordion>
+    <Grid container justify = "center" >
       <Paper  elevation={15}className="mediumChart">
-        <h5>Total Movies : {this.state.totalMovies}</h5>
-        <PieChart data={this.state.languagesData} legend="bottom" width={250} height={250}/>
-      </Paper>
-      <Paper  elevation={15}className="mediumChart">
-        <PieChart data={this.state.categoryData} legend="bottom" donut={true} />
-      </Paper>
-      <Paper  elevation={15}className="mediumChart">
-        <LineChart data={this.state.ratingCountByLanguage} precision={2} xtitle="Movie" ytitle="Rating" min={0} max={5.0} legend="bottom"/>
-      </Paper>
-      <Paper  elevation={15}className="mediumChart">
+        <h6 className="chartText">Average Rating - {this.state.averageRating}</h6>
         <LineChart data={this.state.ratingByCategory} precision={2} xtitle="Category" ytitle="Rating" min={0} max={5.0} legend="bottom"/>
       </Paper>
       <Paper  elevation={15}className="mediumChart">
-      <ColumnChart data={this.state.yearData} xtitle="Year" ytitle="Movies Watched"/>
+      <h6 className="chartText">Movies in filter - {this.state.reviews.length}</h6>
+        <PieChart data={this.state.categoryData} legend="bottom" donut={true} />
       </Paper>
-   </Grid>
+      </Grid>
+      </div>
+      </div>
    <footer>
-   <div id="footerText"> 
+   <Grid container justify = "center" id="footerText">
        <h6>Need your feedback to improve  
        <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
        </h6>
-   </div>
+    </Grid>
  </footer>
  </div>
+  }
+
+  getMovies(result){
+    var res = result.sort((a,b)=>{return a.rating-b.rating});
+    var rating =0;
+    for(var i=0;i<res.length;i++){
+        rating+=res[i].rating;
+    }
+    rating = rating/res.length;
+    return {
+      "bestMovie":res[res.length-1],
+      "worstMovie":res[0],
+      "averageRating":rating.toFixed(2)
+    }
   }
 
 getLanguages(result){
@@ -107,7 +256,6 @@ getMovieCountByYear(result){
     const count = result.filter((obj) => new Date(obj.timeStamp).getFullYear() === year[i]).length;
     yearCount.push([year[i],count])
   }
-  debugger;
   return yearCount;
 }
 

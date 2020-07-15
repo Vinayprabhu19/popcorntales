@@ -24,34 +24,35 @@
 .title{
     font-size: 1.25em;
     font-weight: bolder;
-    text-align: left;
-    margin-top: 10px;
-    margin-left: 3%;
-    margin-bottom: 0;
+    text-align: center;
+    margin: 5px 3px 5px 3px ;
     display: block;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     color: darkblue;
 }
-.language,.rating{
-    font-size: 1.25em;
+.language{
+    font-size: .95em;
     font-weight: bolder;
     text-align: left;
-    margin-left: 3%;
     margin-bottom: 0;
     display: block;
     white-space: nowrap;
     overflow: hidden;
+    font-weight: normal;
+    float: left;
+    margin-left: 10px;
     text-overflow: ellipsis;
+    margin-bottom: 5px;
 }
-
 .rating{
-    color: purple;
-    font-size: larger;
-    padding: 3px;
-    text-align: center;
-    color: white;
+    font-size: .95em;
+    margin: 0px;
+    float: right;
+    font-weight: normal;
+    margin-right: 10px;
+    margin-bottom: 5px;
 }
 .filtercontainer{
     padding-left: 25px;
@@ -65,7 +66,7 @@
     margin: 0;
 }
 
-.card-img{
+.card-image{
     padding: 3px;
     object-fit: stretch;
     align-self: auto;
@@ -79,7 +80,7 @@
     /* visibility: hidden; */
 }
 #card-content{
-    width: 100%;
+    width: fit-content;
     height: fit-content;
     position: absolute;
     z-index: 5;
@@ -140,13 +141,13 @@
     margin-top: 10px;
 }
 @media screen and (min-width: 2000px){
-    .card-img{
+    .card-image{
         width: 400px;
         height: 500px;
     }
 }
 @media screen and (max-width: 2000px){
-    .card-img{
+    .card-image{
         width: 250px;
         height: 300px;
     }
@@ -168,7 +169,7 @@
     #card-content{
         font-size: 1.2;
     }
-    .card-img{
+    .card-image{
         width: 220px;
         height: 250px;
     }
@@ -190,7 +191,7 @@
     .language{
         font-size: .85em;
     }
-    .card-img{
+    .card-image{
         width: 200px;
         height: 260px;
     }
@@ -202,8 +203,8 @@
 
   @media screen and (max-width: 576px) {
     .card-container{
-        margin-left : 5%;
-        margin-right: 5%;
+        margin-left : 10px;
+        margin-right: 10px;
         padding: 0;
     }
     .title{
@@ -213,7 +214,7 @@
     .language{
         font-size: .85em;
     }
-    .card-img{
+    .card-image{
         width: 150px;
         height: 200px;
     }
@@ -225,20 +226,20 @@
 
   @media screen and (max-width: 380px) {
     .card-container{
-        margin-left : 5px;
-        margin-right: 5px;
+        margin-left : 3px;
+        margin-right: 3px;
         padding: 0;
     }
     .title{
-        width: 140px;
+        width: 130px;
         margin:0;
         font-size: .8em;
     }
     .language{
         font-size: .75em;
     }
-    .card-img{
-        width: 140px;
+    .card-image{
+        width: 130px;
         height: 200px;
     }
     .movie-img{
@@ -261,7 +262,7 @@
     .language{
         font-size: .65em;
     }
-    .card-img{
+    .card-image{
         width: 100px;
         height: 180px;
     }

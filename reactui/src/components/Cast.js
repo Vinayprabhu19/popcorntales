@@ -12,14 +12,16 @@ class Cast extends Component {
   render() {
     return <div className="cast-component">
         <h4>Cast</h4>
+        <div id="cast-details">
         {
             this.state.cast.map(c=>(
                 <div className="flexbox-container" key={c}>
                     <div><LocalMoviesIcon className="movieIcon" /></div>
-                    <h6>{c}</h6>
+                    <h6 className="bullets">{c}</h6>
                 </div>
             ))
         }
+        </div>
     </div>
   }
 }

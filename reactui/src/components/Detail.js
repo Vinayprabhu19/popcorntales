@@ -3,19 +3,13 @@ import { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
 import HomeButton from '@material-ui/icons/Home';
-import Synopsis from './Synopsis';
-import Review from './Review';
 import LazyImage from "../components/LazyImage";
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import Cast from './Cast';
-import Ticket from './Ticket';
 import MailIcon from '@material-ui/icons/Mail';
 import SocialMenu from './SocialMenu';
 import DetailedRating from './DetailedRating';
@@ -24,6 +18,7 @@ import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Helmet } from 'react-helmet';
 import LazyLoad from 'react-lazy-load';
+import DetailTab from './DetailTab';
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -81,7 +76,7 @@ class Detail extends Component {
             selectedTab:0,
             loading:false,
             shareUrl:"www.popcorntales.com/review/"+movieTitle.replace(/ /g, '%20'),
-            quote:"I read a review of "+movieTitle+" and I feel that it's worth watching. Read the review and let's watch it together!!"
+            quote:"I read a review of "+movieTitle+". Let me know what you felt after reading it!!"
           });
     })
     .catch(error =>{
@@ -95,28 +90,6 @@ class Detail extends Component {
       selectedTab:v
     })
   }
-
-  getToolbar = () => {
-    switch(this.state.selectedTab) {
-        case 0: 
-          if(this.state.selectedMovie.review !== undefined)
-            return <Synopsis synopsis={this.state.selectedMovie.review.synopsis}/>
-        break;
-        case 1: 
-          if(this.state.selectedMovie.review !== undefined)
-            return <Review review={this.state.selectedMovie.review} title={this.state.selectedMovie.title}/>
-         break;
-      case 2: 
-          return <Cast cast={this.state.selectedMovie.cast}/>
-       break;
-    case 3: 
-          return <Ticket ticketDetails={this.state.selectedMovie.ticketDetails}/>
-        break;
-        default: {
-            return <p></p>
-        }
-    }   
-};
 
 hearts = (starCount) => {
   if(starCount == undefined)
@@ -150,7 +123,6 @@ processImageData(data){
 }
 
 render(){
-  const toolbar = this.getToolbar();
   const overallRating = this.hearts(this.state.selectedMovie.rating);
   return (
     <>
@@ -164,7 +136,7 @@ render(){
         </Backdrop>
     <div id="container" className={this.state.loading ? 'hidden' : ''}>
         
-        <AppBar id="appBar" position="static">
+        <AppBar id="appBar" position="static" className="tabbar">
         <Toolbar>
             <a href="/"><HomeButton/></a>
             <h1 id="title">Popcorn Tales</h1>
@@ -218,26 +190,18 @@ render(){
             </Hidden>
             <LazyLoad >
             <Hidden mdDown>
+              <LazyLoad>
               <div id="trailer_div">
                   <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
                   </iframe>
               </div>
+              </LazyLoad>
             </Hidden>
             </LazyLoad>
         </div>
         <div className="movie-detail">
-          <AppBar position="static">
-            <Tabs onChange={this.handleChange}  value={this.state.selectedTab} variant="fullWidth" aria-label="simple tabs example">
-              <Tab value={0} label="Review" className="tab"/>
-              <Tab value={1} label="Hit & Miss" className="tab"/>
-              <Tab value={2} label="Cast & Crew" className="tab"/>
-              <Tab value={3} label="Ticket" className="tab"/>
-            </Tabs>
-          </AppBar>
-          <div>
-          {toolbar}
-          </div>
+          <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab}/>
         </div>
         <footer>
           <div id="footerText"> 

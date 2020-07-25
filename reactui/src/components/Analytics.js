@@ -104,7 +104,6 @@ class Analytics extends Component {
     reviews = reviews.filter(function(r){return r.rating >= data.filter.rating[0] && r.rating <= data.filter.rating[1]});
     var categoryData = this.getMovieCountByCategory(reviews);
     var ratingByCategory = this.getRatingCountByCategory(reviews);
-    var ratingCountByLanguage = this.getratingCountByLanguage(reviews);
     var movies = this.getMovies(reviews);
     this.setState({
       reviews: reviews,
@@ -112,7 +111,6 @@ class Analytics extends Component {
       filter:data.filter,
       categoryData:categoryData,
       ratingByCategory:ratingByCategory,
-      ratingCountByLanguage:ratingCountByLanguage,
       bestMovie:movies["bestMovie"],
       worstMovie:movies["worstMovie"],
       averageRating:movies["averageRating"]
@@ -216,9 +214,11 @@ class Analytics extends Component {
         rating+=res[i].rating;
     }
     rating = rating/res.length;
+    var bestMovie = (res.length>0)?res[res.length-1]:[];
+    var worstMovie = (res.length>0)?res[0]:[];
     return {
-      "bestMovie":res[res.length-1],
-      "worstMovie":res[0],
+      "bestMovie":bestMovie,
+      "worstMovie":worstMovie,
       "averageRating":rating.toFixed(2)
     }
   }

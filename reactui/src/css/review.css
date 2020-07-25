@@ -1,10 +1,8 @@
 .review-component {
-    margin: 20px 50px 20px 50px;
     font-size: larger;
     text-align: justify;
 }
 .cast-component{
-    margin: 20px 50px 20px 50px;
     font-size: larger;
     text-align: justify;
 }
@@ -48,6 +46,14 @@ h5,h6{
 .Ticket{
     text-align: center;
 }
+.bullets{
+    font-weight: normal;
+    font-size: large;
+    margin-top: 10px;
+}
+#cast-details{
+    margin-top: 20px;
+}
 .pointerText{
     padding: 3px;
     text-align: justify;
@@ -59,14 +65,13 @@ h5,h6{
     width: 500px;
     height: 500px;
 }
-@media screen and (max-width: 900px) {
+@media screen and (min-width: 900px) {
+    .review-component {
+        margin:20px
+    }
     .cast-component{
-        margin: 20px 10px 20px 20px;
+        margin:20px
     }
-    .review-component{
-        margin: 20px 30px 30px 20px;
-    }
-
     .graphImage{
         width: 400px;
         height: 400px;
@@ -74,6 +79,7 @@ h5,h6{
 }
 
 @media screen and (max-width: 400px) {
+    
     .graphImage{
         width: 300px;
         height: 300px;

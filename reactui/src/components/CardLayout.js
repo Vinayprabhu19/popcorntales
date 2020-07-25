@@ -32,15 +32,11 @@ class CardLayout extends Component {
     const stars = this.stars(this.props.review.rating);
     return <Paper className="card-container" elevation={8}>
     <h4 className="title">{this.props.review.title}</h4>
-    <Paper elevation={0} className="card"  >
         <a href={this.props.review.title}>
-            <figure id="card-figure">
               <LazyLoad>
               <img className="card-image" alt={"Popcorn Tales - " + this.props.review.title } src={this.props.review.titleImage}/>
               </LazyLoad>
-            </figure>
         </a>
-    </Paper>
     <div className="detail">
         <h3 className="language">{this.props.review.language}</h3>
         <h4 className="rating">{this.props.review.rating}/5</h4>

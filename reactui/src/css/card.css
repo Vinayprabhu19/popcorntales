@@ -25,10 +25,11 @@
     font-size: 1.25em;
     font-weight: bolder;
     text-align: center;
-    margin: 5px 3px 5px 3px ;
+    margin: 5px 3px 2px 3px ;
     display: block;
     white-space: nowrap;
     overflow: hidden;
+    padding:1px 3px 1px 3px;
     text-overflow: ellipsis;
     color: darkblue;
 }

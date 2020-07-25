@@ -30,6 +30,7 @@
     "react-router-sitemap": "^1.2.0",
     "react-scripts": "3.4.1",
     "react-share": "^4.1.0",
+    "react-swipeable-views": "^0.13.9",
     "save": "^2.4.0"
   },
   "scripts": {

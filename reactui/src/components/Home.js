@@ -63,7 +63,7 @@ class Home extends Component {
       .then(response => response.json())
       .then(result => {
         this.getFilteredData(result);
-        // result = this.processImageData(result);
+        //result = this.processImageData(result);
         result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
           const rvs = result.map(item => {
             return item;

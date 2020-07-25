@@ -156,20 +156,19 @@ h5,h6{
 
     #card{
         float: left;
-        margin-left: 5%;
+        margin-left: 50px;
+        margin-top: 50px;
     }
     
     #movie-description{
-        padding-left: 5%;
-        padding-right: 5%;
+        margin-left: 20px;
+        margin-top: 50px;
     }
     
     #trailer{
-        width: 800px;
-        height: 540px;
         margin-right: 50px;
+        margin-top: 50px;
     }
-
 }
 
 @media screen and (max-width: 2100px){
@@ -185,6 +184,13 @@ h5,h6{
         margin-top: 20px;
     }
 }
+
+@media screen and (min-width: 957px) {
+    .movie-detail{
+        margin-top: 370px;
+    }
+}
+
 
 @media screen and (max-width: 1398px) {
 

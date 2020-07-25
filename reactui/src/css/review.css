@@ -2,11 +2,7 @@
     font-size: larger;
     text-align: justify;
 }
-.cast-component{
-    font-size: larger;
-    text-align: justify;
-}
-.ticket-component{
+#ticket-component{
     width: 100%;
     padding: 20px;
 }
@@ -51,9 +47,6 @@ h5,h6{
     font-size: large;
     margin-top: 10px;
 }
-#cast-details{
-    margin-top: 20px;
-}
 .pointerText{
     padding: 3px;
     text-align: justify;
@@ -67,9 +60,6 @@ h5,h6{
 }
 @media screen and (min-width: 900px) {
     .review-component {
-        margin:20px
-    }
-    .cast-component{
         margin:20px
     }
     .graphImage{

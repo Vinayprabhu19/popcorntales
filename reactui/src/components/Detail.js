@@ -4,7 +4,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
 import HomeButton from '@material-ui/icons/Home';
-import LazyImage from "../components/LazyImage";
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
 import Grid from '@material-ui/core/Grid';
@@ -50,6 +49,8 @@ class Detail extends Component {
               pros:[],
               cons:[]
             },
+            ticketDetails:{ticketImage:"Graph/Popcorn Tales.png"},
+            cast:[],
             rating:5
         },
         selectedTab:null,
@@ -149,7 +150,7 @@ render(){
             <div id="card" >
               <Paper elevation={19}>
               <LazyLoad>
-              <img className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title + " Review Image"} src={this.state.selectedMovie.titleImage}/>
+              <img className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
               </LazyLoad>
                </Paper>
               <Hidden smDown>
@@ -188,17 +189,15 @@ render(){
                 </div>
             </div>
             </Hidden>
-            <LazyLoad >
             <Hidden mdDown>
-              <LazyLoad>
               <div id="trailer_div">
+              <LazyLoad>
                   <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
                   </iframe>
-              </div>
               </LazyLoad>
+              </div>
             </Hidden>
-            </LazyLoad>
         </div>
         <div className="movie-detail">
           <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab}/>

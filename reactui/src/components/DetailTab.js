@@ -1,106 +1,127 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import SwipeableViews from 'react-swipeable-views';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
 import '../css/Detail.css';
 import '../css/review.css';
+import LazyLoad from 'react-lazy-load';
+import BeenhereIcon from '@material-ui/icons/Beenhere';
+import CancelIcon from '@material-ui/icons/Cancel';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import Review from './Review';
 import Cast from './Cast';
 import Ticket from './Ticket';
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`full-width-tabpanel-${index}`}
-      aria-labelledby={`full-width-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `full-width-tab-${index}`,
-    'aria-controls': `full-width-tabpanel-${index}`,
-  };
-}
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    backgroundColor: theme.palette.background.primary
-  },
-}));
-
+import Accordion from '@material-ui/core/Accordion';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
 export default function FullWidthTabs(props) {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  const handleChangeIndex = (index) => {
-    setValue(index);
-  };
-
+  const pros = props.movie.review.pros;
+  const cons = props.movie.review.cons;
+  const url = "https://api.popcorntales.com/image?object=Graph/"+props.movie.title+".png&width=500&height=500";
+  const cast = props.movie.cast;
+  const ticketImage = "https://api.popcorntales.com/image?object="+props.movie.ticketDetails.ticketImage;
   return (
-    <div className={classes.root}>
-      <AppBar position="static" >
-        <Tabs
-          value={value}
-          onChange={handleChange}
-          variant="fullWidth"
+    <div>
+      <Accordion defaultExpanded={true}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
         >
-          <Tab label="Review" {...a11yProps(0)} className="tab"/>
-          <Tab label="Hit & Miss" {...a11yProps(1)} className="tab"/>
-          <Tab label="Cast & Crew" {...a11yProps(2)} className="tab"/>
-          <Tab label="Ticket" {...a11yProps(3)} className="tab"/>
-        </Tabs>
-      </AppBar>
-      <SwipeableViews
-        axis={theme.direction === 'rtl' ? 'x-reverse' : 'x'}
-        index={value}
-        onChangeIndex={handleChangeIndex}
-      >
-        <TabPanel value={value} index={0} dir={theme.direction}>
+          <h5 className="centerText">Review</h5>
+        </AccordionSummary>
+        <AccordionDetails>
         <div className="review-component">
           { props.movie.review.synopsis.split("\n").map(para =>(
                 <p key={para}>{para}</p>
             ))
           }
         </div>
-        </TabPanel>
-        <TabPanel value={value} index={1} dir={theme.direction}>
-            <Review review={props.movie.review} title={props.movie.title}/>
-        </TabPanel>
-        <TabPanel value={value} index={2} dir={theme.direction}>
-            <Cast cast={props.movie.cast}/>
-        </TabPanel>
-        <TabPanel value={value} index={3} dir={theme.direction}>
-        <Ticket ticketDetails={props.movie.ticketDetails}/>
-        </TabPanel>
-      </SwipeableViews>
+        </AccordionDetails>
+    </Accordion>
+    <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <h5 className="centerText">Hit and Miss</h5>
+        </AccordionSummary>
+        <AccordionDetails>
+        <div className="review-component">
+              <h4>What worked well?</h4>
+              {
+                  pros.map(pro=>(
+                      <div className="flexbox-container" key={pro}>
+                          <div><BeenhereIcon className="checkIcon" /></div>
+                          <p className="pointerText">{pro}</p>
+                      </div>
+                  ))
+              }
+              <h4 className="subsection">What didn't work well?</h4>
+              {
+                  cons.map(con=>(
+                      <div className="flexbox-container" key={con}>
+                          <div><CancelIcon className="cancelIcon" /></div>
+                          <p className="pointerText">{con}</p>
+                      </div>
+                  ))
+              }
+              <Grid container justify = "center" className="graphContainer">
+              <Paper elevation={10}>
+                <LazyLoad>
+              <img src={url} className="graphImage" alt={"Popcorn Tales " + props.movie.title}/>
+              </LazyLoad>
+              </Paper>
+              </Grid>
+          </div>
+        </AccordionDetails>
+    </Accordion>
+    <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <h5 className="centerText">Cast and Crew</h5>
+        </AccordionSummary>
+        <AccordionDetails>
+        <div className="cast-component">
+            <div>
+            {
+                cast.map(c=>(
+                    <div className="flexbox-container" key={c}>
+                        <div><LocalMoviesIcon className="movieIcon" /></div>
+                        <h6 className="bullets">{c}</h6>
+                    </div>
+                ))
+            }
+            </div>
+        </div>
+        </AccordionDetails>
+    </Accordion>
+    <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <h5 className="centerText">Ticket</h5>
+        </AccordionSummary>
+        <AccordionDetails>
+        <div id="ticket-component">
+          <h5 className="Ticket">Date Watched : {props.movie.ticketDetails.watchDate}</h5>
+          <h5 className="Ticket">Place Watched : {props.movie.ticketDetails.placeWatched}</h5>
+          <Grid container justify = "center">
+          <Paper elevation={20} id="ticket-container">
+          <LazyLoad>
+          <img src={ticketImage} className="ticketImage" alt={"Ticket image of the movie"}></img>
+          </LazyLoad>
+          </Paper>
+          </Grid>
+        </div>
+        </AccordionDetails>
+    </Accordion>
     </div>
   );
 }

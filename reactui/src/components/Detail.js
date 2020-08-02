@@ -128,7 +128,7 @@ render(){
   return (
     <>
        <Helmet>
-          <title>{this.state.selectedMovie.title + " Review "+this.state.selectedMovie.rating+"/5"}</title>
+          <title>{this.state.selectedMovie.title + " Movie Review"}</title>
           <meta name="description" content={this.state.selectedMovie.review.synopsis}/>
         </Helmet>
     <div>

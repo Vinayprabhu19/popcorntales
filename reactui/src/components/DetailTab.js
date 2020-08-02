@@ -6,9 +6,6 @@ import BeenhereIcon from '@material-ui/icons/Beenhere';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import Review from './Review';
-import Cast from './Cast';
-import Ticket from './Ticket';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
@@ -114,8 +111,13 @@ export default function FullWidthTabs(props) {
           <h5 className="Ticket">Place Watched : {props.movie.ticketDetails.placeWatched}</h5>
           <Grid container justify = "center">
           <Paper elevation={20} id="ticket-container">
+          {/* <React.Suspense fallback={<Spinner />}> */}
+          {/* <div>
+            <NoRenderImage src={ticketImage} className="ticketImage"/>
+          </div> */}
+        {/* </React.Suspense> */}
           <LazyLoad>
-          <img src={ticketImage} className="ticketImage" alt={"Ticket image of the movie"}></img>
+          <img src={ticketImage} className="ticketImage" alt={"Ticket"}></img>
           </LazyLoad>
           </Paper>
           </Grid>

@@ -12,7 +12,6 @@ import React, { Component } from 'react';
 import Carousel from 'react-bootstrap/Carousel';
 import '../css/Home.css';
 import '../css/card.css';
-import LazyImage from "../components/LazyImage";
 import LazyLoad from 'react-lazy-load';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import CardLayout from "./CardLayout";

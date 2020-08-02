@@ -1,5 +1,4 @@
-import React from "react";
-import { Component } from 'react';
+import React, { Suspense, lazy,Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
@@ -18,7 +17,6 @@ import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Helmet } from 'react-helmet';
 import LazyLoad from 'react-lazy-load';
-import DetailTab from './DetailTab';
 import LazyImage from './LazyImage';
 import {
   FacebookShareButton,
@@ -39,6 +37,7 @@ const StyledRating = withStyles({
     color: '#ff3d47',
   },
 })(Rating);
+const DetailTab = lazy(() => import('./DetailTab'));
 class Detail extends Component {
   constructor(props) {
     super(props);
@@ -64,8 +63,8 @@ class Detail extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
   shouldComponentUpdate(nextProps, nextState){
-    if(this.state.selectedMovie.title == nextState.selectedMovie.title)
-     return false;
+    if(JSON.stringify(this.state) === JSON.stringify(nextState) )
+    return false;
     return true;
   }
 
@@ -134,7 +133,7 @@ processImageData(data){
 
 render(){
   const overallRating = this.hearts(this.state.selectedMovie.rating);
-  const { dataLoaded } = this.state
+  const { dataLoaded } = this.state;
   return (
     <div>
     {
@@ -200,15 +199,19 @@ render(){
             </div>
             </Hidden>
             <Hidden mdDown>
+              <LazyLoad>
               <div id="trailer_div">
                   <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
                   </iframe>
               </div>
+              </LazyLoad>
             </Hidden>
         </div>
         <div className="movie-detail">
+        <Suspense fallback={<div>Loading...</div>}>
           <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab}/>
+        </Suspense>
         </div>
         <footer>
           <div id="footerText"> 

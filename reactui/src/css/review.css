@@ -18,6 +18,10 @@
     color: red;
     margin-right: 20px;
 }
+.centerText{
+    text-align: center;
+    width: 100%;
+}
 .movieIcon{
     color: black;
     margin-right: 20px;

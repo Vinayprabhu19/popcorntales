@@ -8,40 +8,31 @@ import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import MailIcon from '@material-ui/icons/Mail';
 import SortIcon from '@material-ui/icons/Sort';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import React, { Component } from 'react';
+import React, { Suspense, lazy,Component } from 'react';
 import '../css/index.css';
 import '../css/Home.css';
 import '../css/card.css';
-import LazyLoad from 'react-lazy-load';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import CardLayout from "./CardLayout";
 import Pagination from "./Pagination";
-import Sort from "./Sort";
 import { Helmet } from 'react-helmet';
-import Filter from "./Filter";
 import Grid from '@material-ui/core/Grid';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import SocialMenu from './SocialMenu';
 import Tooltip from '@material-ui/core/Tooltip';
-import { Carousel } from 'react-responsive-carousel';
+import Spinner from 'react-bootstrap/Spinner';
+const CardLayout = lazy(() => import('./CardLayout'));
+const Banner = lazy(() => import('./Banner'));
+const Sort = lazy(() => import('./Sort'));
+const Filter = lazy(() => import('./Filter'));
 class Home extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
-    var banners=[];
-    for(var i=1;i<=4;i++){
-      banners.push({
-        id:i,
-        name:"Movie"+i,
-        url:"https://api.popcorntales.com/image?object=Banners/Movie"+i+".jpg"
-      })
-    }
+    
     this.state = { 
       reviews: [],
       totalPages:0,
       currentList:[],
-      banners:banners,
       loading:true,
       sortOpen:false,
       filterOpen:false,
@@ -66,7 +57,15 @@ class Home extends Component {
      this.getFilteredData = this.getFilteredData.bind(this);
      this.onSearch = this.onSearch.bind(this);
   }
-
+  shouldComponentUpdate(nextProps, nextState){
+    if(JSON.stringify(this.state) == JSON.stringify(nextState)){
+      console.log("not changing");
+      return false;
+    }
+    console.log("changing");
+    console.log(nextState);
+    return true;
+  }
   componentDidMount(){
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
@@ -182,19 +181,9 @@ render(){
           </section>
         </Toolbar>
       </AppBar>
-      <Paper id="banner-container" elevation={10}>
-      <Carousel showThumbs={false} showStatus={false}>
-            {
-              this.state.banners.map(banner=>{
-                return <LazyLoad key={banner.url} >
-                <div key={banner.url} className="movie-img" style={{backgroundImage: "url(" + banner.url + ")"}} >
-                {/* <LazyImage  className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/> */}
-                </div>
-                </LazyLoad>
-              })
-            }
-        </Carousel>
-      </Paper>
+      <Suspense fallback={<div>Loading...</div>}>
+      <Banner/>
+      </Suspense>
       <Paper className="filter-sort" elevation={12}>
           <Grid container justify = "center">
           <input type="text" id="searchField" value={this.state.searchText} onChange={this.onSearch} placeholder="Movie Title"/>
@@ -214,14 +203,20 @@ render(){
           <Button className="iconBtn" onClick={this.openFilter}><FilterListIcon fontSize={"default"} style={{fill: "purple"}}/> </Button>
           </Tooltip>
           </Hidden>
+          <Suspense fallback={<div>Loading...</div>}>
         <Sort open={this.state.sortOpen} close={(data)=>this.handleSortClose(data)} data={this.state.sorter}/>
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
         <Filter open={this.state.filterOpen} close={(data)=>this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData}/>
+        </Suspense>
         </Grid>
       </Paper>
       <div className="App-Content">
         <GridList className="cardGridList"  >
                       {this.state.currentList.map(image => (
+                         <Suspense key={image.title} fallback={<Spinner />}>
                           <CardLayout key={image.title} review={image}/>
+                          </Suspense>
                       ))} 
         </GridList>
       </div>
@@ -349,6 +344,8 @@ handleSortClose(data){
         sorter:data
       });
     }
+
 }
+
 
 export default Home;

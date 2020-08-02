@@ -28,6 +28,11 @@ class CardLayout extends Component {
                       icon={<FavoriteIcon fontSize="inherit" />}/>
     );
   }
+  shouldComponentUpdate(nextProps, nextState){
+    if(JSON.stringify(this.state) === JSON.stringify(nextState) )
+    return false;
+    return true;
+  }
   render() {
     const stars = this.stars(this.props.review.rating);
     return <Paper className="card-container" elevation={8}>

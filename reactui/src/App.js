@@ -1,10 +1,5 @@
 import React, { Suspense, lazy } from 'react';
 import history from './services/history';
-// import Home from './components/Home';
-// import Detail from './components/Detail';
-// import Movie from './components/Movie';
-// import Analytics from './components/Analytics';
-// import ImageAdder from './components/ImageAdder';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {

@@ -1,5 +1,5 @@
 html,body,#root {
-  font-family: 'Straight';
+  font-family: 'Verdana';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
@@ -8,20 +8,6 @@ html,body,#root {
   background-repeat: repeat;
   background-blend-mode: soft-light;
   
-}
-
-@font-face {
-  font-family: 'Regular';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../resources/regular.ttf'); 
-}
-
-@font-face {
-  font-family: 'Straight';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../resources/straight.ttf'); 
 }
 
 code {

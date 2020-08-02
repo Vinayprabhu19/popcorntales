@@ -13,7 +13,7 @@ reactui/package-lock.json
 .mta/
 
 nextjs
-
+dist/
 ### NodeJS related ###
 npm-debug.log
 node_modules

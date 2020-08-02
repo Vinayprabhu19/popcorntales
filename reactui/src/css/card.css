@@ -22,6 +22,7 @@
     /* margin: 40px; */
 }
 .title{
+    width: 225px;
     font-size: 1.25em;
     font-weight: bolder;
     text-align: center;
@@ -29,9 +30,10 @@
     display: block;
     white-space: nowrap;
     overflow: hidden;
-    padding:1px 3px 1px 3px;
+    padding:1px 5px 1px 5px;
     text-overflow: ellipsis;
     color: darkblue;
+    font-family: 'Helvetica';
 }
 .language{
     font-size: .95em;
@@ -210,7 +212,7 @@
     }
     .title{
         width: 150px;
-        font-size: .95em;
+        font-size: .9em;
     }
     .language{
         font-size: .85em;
@@ -233,7 +235,6 @@
     }
     .title{
         width: 130px;
-        margin:0;
         font-size: .8em;
     }
     .language{

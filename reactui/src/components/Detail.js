@@ -3,6 +3,7 @@ import { Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
+import '../css/index.css';
 import HomeButton from '@material-ui/icons/Home';
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';

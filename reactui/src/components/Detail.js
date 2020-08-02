@@ -60,9 +60,10 @@ class Detail extends Component {
         shareUrl:"www.popcorntales.com",
         tags:"#popcorntales #movietime #moviereview #popcorn #letswatch"
     };
-    this.handleChange = this.handleChange.bind(this);
   }
   shouldComponentUpdate(nextProps, nextState){
+    if(!nextState.dataLoaded)
+      return false;
     if(JSON.stringify(this.state) === JSON.stringify(nextState) )
     return false;
     return true;
@@ -94,11 +95,6 @@ class Detail extends Component {
     })  
   }
 
-  handleChange(e,v){
-    this.setState({
-      selectedTab:v
-    })
-  }
 
 hearts = (starCount) => {
   if(starCount == undefined)
@@ -133,19 +129,16 @@ processImageData(data){
 
 render(){
   const overallRating = this.hearts(this.state.selectedMovie.rating);
-  const { dataLoaded } = this.state;
-  return (
-    <div>
-    {
-      dataLoaded && <>
+  if (!this.state.dataLoaded) {
+    return <Backdrop open={this.state.loading}>
+    <CircularProgress color="inherit" />
+  </Backdrop>
+}
+  return ( <>
        <Helmet>
           <title>{this.state.selectedMovie.title + " Movie Review"}</title>
           <meta name="description" content={this.state.selectedMovie.review.synopsis}/>
         </Helmet>
-    <div>
-    <Backdrop open={this.state.loading}>
-          <CircularProgress color="inherit" />
-        </Backdrop>
     <div id="container" className={this.state.loading ? 'hidden' : ''}>
         
         <AppBar id="appBar" position="static" className="tabbar">
@@ -159,9 +152,11 @@ render(){
         </AppBar>
         <div className="movie-header">
             <div id="card" >
-              <Paper elevation={19}>
-              <LazyImage className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+              <LazyLoad>
+              <Paper elevation={19} className="card-img">
+              <img className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                </Paper>
+               </LazyLoad>
               <Hidden smDown>
               <Grid container justify = "center" className="ratingHearts">
                  {overallRating}
@@ -231,9 +226,7 @@ render(){
           </div>
         </footer>
     </div>
-    </div>
-    </>}
-    </div>
+    </>
   );
 }
 }

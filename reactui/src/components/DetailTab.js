@@ -11,6 +11,7 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
+import Spinner from 'react-bootstrap/Spinner'
 export default function FullWidthTabs(props) {
   const pros = props.movie.review.pros;
   const cons = props.movie.review.cons;
@@ -111,11 +112,7 @@ export default function FullWidthTabs(props) {
           <h5 className="Ticket">Place Watched : {props.movie.ticketDetails.placeWatched}</h5>
           <Grid container justify = "center">
           <Paper elevation={20} id="ticket-container">
-          {/* <React.Suspense fallback={<Spinner />}> */}
-          {/* <div>
-            <NoRenderImage src={ticketImage} className="ticketImage"/>
-          </div> */}
-        {/* </React.Suspense> */}
+
           <LazyLoad>
           <img src={ticketImage} className="ticketImage" alt={"Ticket"}></img>
           </LazyLoad>

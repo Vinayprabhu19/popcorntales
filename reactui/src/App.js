@@ -1,16 +1,22 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import history from './services/history';
-import Home from './components/Home';
-import Detail from './components/Detail';
-import Movie from './components/Movie';
-import Analytics from './components/Analytics';
-import ImageAdder from './components/ImageAdder';
+// import Home from './components/Home';
+// import Detail from './components/Detail';
+// import Movie from './components/Movie';
+// import Analytics from './components/Analytics';
+// import ImageAdder from './components/ImageAdder';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
   const reload = () => window.location.reload();
+  const Home = lazy(() => import('./components/Home'));
+const Detail = lazy(() => import('./components/Detail'));
+const Movie = lazy(() => import('./components/Movie'));
+const Analytics = lazy(() => import('./components/Analytics'));
+const ImageAdder = lazy(() => import('./components/ImageAdder'));
   return (
     <Router history={history}>
+      <Suspense fallback={<div>Loading...</div>}>
       <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/analytics" component={Analytics} />
@@ -20,6 +26,7 @@ function App() {
       <Route path="/review/:movieName" component={Detail} />
       <Route path="/:movieName" component={Detail} />
     </Switch>
+    </Suspense>
     </Router>
   );
 }

@@ -19,6 +19,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Helmet } from 'react-helmet';
 import LazyLoad from 'react-lazy-load';
 import DetailTab from './DetailTab';
+import LazyImage from './LazyImage';
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -42,6 +43,7 @@ class Detail extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      dataLoaded: false,
         selectedMovie: {
             title: "Popcorn Tales",
             genre : [],
@@ -61,6 +63,11 @@ class Detail extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
+  shouldComponentUpdate(nextProps, nextState){
+    if(this.state.selectedMovie.title == nextState.selectedMovie.title)
+     return false;
+    return true;
+  }
 
   componentDidMount(){
     var movieTitle = this.props.match.params.movieName;
@@ -74,6 +81,7 @@ class Detail extends Component {
         result.review=JSON.parse(result.review);
         result.ticketDetails = JSON.parse(result.ticketDetails);
         this.setState({
+            dataLoaded:true,  
             selectedMovie : result,
             selectedTab:0,
             loading:false,
@@ -126,8 +134,11 @@ processImageData(data){
 
 render(){
   const overallRating = this.hearts(this.state.selectedMovie.rating);
+  const { dataLoaded } = this.state
   return (
-    <>
+    <div>
+    {
+      dataLoaded && <>
        <Helmet>
           <title>{this.state.selectedMovie.title + " Movie Review"}</title>
           <meta name="description" content={this.state.selectedMovie.review.synopsis}/>
@@ -150,9 +161,7 @@ render(){
         <div className="movie-header">
             <div id="card" >
               <Paper elevation={19}>
-              <LazyLoad>
-              <img className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
-              </LazyLoad>
+              <LazyImage className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                </Paper>
               <Hidden smDown>
               <Grid container justify = "center" className="ratingHearts">
@@ -192,11 +201,9 @@ render(){
             </Hidden>
             <Hidden mdDown>
               <div id="trailer_div">
-              <LazyLoad>
                   <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
                   allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
                   </iframe>
-              </LazyLoad>
               </div>
             </Hidden>
         </div>
@@ -222,7 +229,8 @@ render(){
         </footer>
     </div>
     </div>
-    </>
+    </>}
+    </div>
   );
 }
 }

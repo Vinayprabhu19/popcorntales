@@ -6,6 +6,14 @@
   background-repeat: repeat;
   align-items: center;
 }
+#appBar{
+  width: 100%;
+  height: 60px;
+  background-color: #fff;
+  vertical-align: middle;
+  color: black;
+ 
+}
 .hidden{
   display: none;
 }

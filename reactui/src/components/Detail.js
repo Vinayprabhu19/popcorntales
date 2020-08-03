@@ -130,12 +130,12 @@ processImageData(data){
 }
 
 render(){
-  const overallRating = this.hearts(this.state.selectedMovie.rating);
   if (!this.state.dataLoaded) {
     return <Backdrop open={this.state.loading}>
     <CircularProgress color="inherit" />
   </Backdrop>
 }
+const overallRating = this.hearts(this.state.selectedMovie.rating);
   return ( <>
        <Helmet>
           <title>{this.state.selectedMovie.title + " Movie Review and Analysis"}</title>
@@ -199,20 +199,15 @@ render(){
             </Hidden>
             <Hidden mdDown>
               <LazyLoad>
-              <div id="trailer_div">
                   <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
                   allow="accelerometer; autoplay; picture-in-picture" >
                   </iframe>
-              </div>
               </LazyLoad>
             </Hidden>
         </div>
-        <div className="movie-detail" >
         <Suspense fallback={<div>Loading...</div>}>
           <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab} 	/>
         </Suspense>
-        </div>
-        <footer>
           <div id="footerText"> 
               <Hidden smUp>
                 <Grid container justify = "center" className="icon-container">
@@ -228,7 +223,6 @@ render(){
               </h6>
               </Grid>
           </div>
-        </footer>
     </div>
     </>
   );

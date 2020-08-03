@@ -17,7 +17,7 @@ export default function FullWidthTabs(props) {
   const cast = props.movie.cast;
   const ticketImage = "https://api.popcorntales.com/image?object="+props.movie.ticketDetails.ticketImage;
   return (
-    <div>
+    <div className="movie-detail">
       <Accordion defaultExpanded={true}>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -26,8 +26,8 @@ export default function FullWidthTabs(props) {
         >
           <h5 className="centerText">Review</h5>
         </AccordionSummary>
-        <AccordionDetails>
-        <div className="review-component" >
+        <AccordionDetails className="review-component" >
+        <div >
           { props.movie.review.synopsis.split("\n").map(para =>(
                 <p key={para}>{para}</p>
             ))
@@ -64,11 +64,9 @@ export default function FullWidthTabs(props) {
                   ))
               }
               <Grid container justify = "center" className="graphContainer">
-              <Paper elevation={10}>
                 <LazyLoad>
-              <img src={url} className="graphImage" alt={"Popcorn Tales " + props.movie.title}/>
+              <img src={url} className="graphImage" />
               </LazyLoad>
-              </Paper>
               </Grid>
           </div>
         </AccordionDetails>

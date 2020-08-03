@@ -163,6 +163,11 @@ class Home extends Component {
   
 
 render(){
+  if(this.state.loading){
+    return <Backdrop open={this.state.loading}>
+    <CircularProgress color="inherit" />
+  </Backdrop>
+  }
   return (
     <>
     <Helmet>
@@ -171,9 +176,6 @@ render(){
           <script className='structured-data-list' type="application/ld+json">{this.state.schema}</script>
         </Helmet>
     <div>
-      <Backdrop open={this.state.loading}>
-          <CircularProgress color="inherit" />
-        </Backdrop>
     <div className={this.state.loading ? 'hidden' : 'App'}>
       <AppBar id="appBar" position="static">
         <Toolbar>
@@ -214,15 +216,13 @@ render(){
         </Suspense>
         </Grid>
       </Paper>
-      <div className="App-Content">
-        <GridList className="cardGridList"  >
+        <GridList className="App-Content cardGridList"  >
                       {this.state.currentList.map(image => (
                          <Suspense key={image.title} fallback={<Spinner />}>
                           <CardLayout key={image.title} review={image}/>
                           </Suspense>
                       ))} 
         </GridList>
-      </div>
       <footer>
           <Pagination  totalRecords={this.state.totalPages} pageLimit={8}
                 pageNeighbours={1}
@@ -350,7 +350,6 @@ handleSortClose(data){
 
     
 getSchema(movieList){
-  debugger;
   var jsonbody={
     "@context": "https://schema.org",
     "@type": "ItemList",

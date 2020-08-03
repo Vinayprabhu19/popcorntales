@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import MailIcon from '@material-ui/icons/Mail';
 import SortIcon from '@material-ui/icons/Sort';
-import React, { Suspense, lazy,Component } from 'react';
+import React, { Suspense, lazy,PureComponent as Component } from 'react';
 import '../css/index.css';
 import '../css/Home.css';
 import '../css/card.css';
@@ -72,6 +72,7 @@ class Home extends Component {
       .then(result => {
         this.getFilteredData(result);
         //result = this.processImageData(result);
+        var schema = this.getSchema(result);
         result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
           const rvs = result.map(item => {
             return item;
@@ -82,6 +83,7 @@ class Home extends Component {
             currentPages.push(rvs[i]);
           }
           this.setState({
+            schema:schema,
             activePage: 1,
             totalPages: rvs.length,
             allReviews:rvs,
@@ -164,8 +166,9 @@ render(){
   return (
     <>
     <Helmet>
-        <title>Popcorn Tales</title>
-          <meta name="description" content="Popcorn Tales is an Indian movie review website reviewing movies from Kannada,Hindi,English,Tamil,Telugu,Malayalam and other languages. Find latest movie review here."/>
+        <title>Popcorn Tales - Movie Reviews & Analysis</title>
+          <meta name="description" content="Find the latest movies reviews from various Indian and Foreign languages"/>
+          <script className='structured-data-list' type="application/ld+json">{this.state.schema}</script>
         </Helmet>
     <div>
       <Backdrop open={this.state.loading}>
@@ -345,6 +348,27 @@ handleSortClose(data){
       });
     }
 
+    
+getSchema(movieList){
+  debugger;
+  var jsonbody={
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": []
+  };
+
+  for(var i=0;i<movieList.length;i++){
+    var movie = movieList[i];
+    var item={
+          "@type": "ListItem",
+          "position":i+1,
+          "url":"https://popcorntales.com/"+movie.title
+      }
+      jsonbody.itemListElement.push(item);
+  }
+   return JSON.stringify(jsonbody)
+ }
+ 
 }
 
 

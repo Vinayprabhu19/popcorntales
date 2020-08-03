@@ -1,6 +1,4 @@
 import React from 'react';
-import '../css/Detail.css';
-import '../css/review.css';
 import LazyLoad from 'react-lazy-load';
 import BeenhereIcon from '@material-ui/icons/Beenhere';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -29,7 +27,7 @@ export default function FullWidthTabs(props) {
           <h5 className="centerText">Review</h5>
         </AccordionSummary>
         <AccordionDetails>
-        <div className="review-component">
+        <div className="review-component" >
           { props.movie.review.synopsis.split("\n").map(para =>(
                 <p key={para}>{para}</p>
             ))

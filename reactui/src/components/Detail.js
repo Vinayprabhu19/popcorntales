@@ -1,4 +1,4 @@
-import React, { Suspense, lazy,Component } from 'react';
+import React, { Suspense, lazy,PureComponent as Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
@@ -17,7 +17,6 @@ import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Helmet } from 'react-helmet';
 import LazyLoad from 'react-lazy-load';
-import LazyImage from './LazyImage';
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -58,7 +57,8 @@ class Detail extends Component {
         selectedTab:null,
         loading:true,
         shareUrl:"www.popcorntales.com",
-        tags:"#popcorntales #movietime #moviereview #popcorn #letswatch"
+        tags:"#popcorntales #movietime #moviereview #popcorn #letswatch",
+        schema:{}
     };
   }
   shouldComponentUpdate(nextProps, nextState){
@@ -79,6 +79,7 @@ class Detail extends Component {
     .then(result => {
         result=this.processImageData(result);
         result.review=JSON.parse(result.review);
+        var schema = this.getSchema(result);
         result.ticketDetails = JSON.parse(result.ticketDetails);
         this.setState({
             dataLoaded:true,  
@@ -86,7 +87,8 @@ class Detail extends Component {
             selectedTab:0,
             loading:false,
             shareUrl:"www.popcorntales.com/review/"+movieTitle.replace(/ /g, '%20'),
-            quote:"I read a review of "+movieTitle+". Let me know what you felt after reading it!!"
+            quote:"I read a review of "+movieTitle+". Let me know what you felt after reading it!!",
+            schema:schema
           });
     })
     .catch(error =>{
@@ -136,15 +138,17 @@ render(){
 }
   return ( <>
        <Helmet>
-          <title>{this.state.selectedMovie.title + " Movie Review"}</title>
+          <title>{this.state.selectedMovie.title + " Movie Review and Analysis"}</title>
           <meta name="description" content={this.state.selectedMovie.review.synopsis}/>
+          <script className='structured-data-list' type="application/ld+json">{this.state.schema}</script>
         </Helmet>
     <div id="container" className={this.state.loading ? 'hidden' : ''}>
         
         <AppBar id="appBar" position="static" className="tabbar">
         <Toolbar>
             <a href="/"><HomeButton/></a>
-            <h1 id="title">Popcorn Tales</h1>
+            {(this.state.selectedMovie.title.length < 20) && <h1 id="title">{this.state.selectedMovie.title +" Movie Review"}</h1>}
+            {(this.state.selectedMovie.title.length >= 20) && <h1 id="title">{this.state.selectedMovie.title}</h1>}
             <section className="rightToolbar">
             <SocialMenu/>
             </section>
@@ -154,7 +158,7 @@ render(){
             <div id="card" >
               <LazyLoad>
               <Paper elevation={19} className="card-img">
-              <img className="card-img" alt={"Popcorn Tales " + this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+              <img className="card-img" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                </Paper>
                </LazyLoad>
               <Hidden smDown>
@@ -163,28 +167,28 @@ render(){
                   </Grid>
               </Hidden>
             </div>
-            <Hidden mdUp >
+            <Hidden mdUp >  
                   <div className="topHeader">
                     <Grid container alignItems="center" spacing={0} justify = "center">
-                  <h1 className="headerLevel1 centerAligned">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                  <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
                   <DetailedRating selectedMovie={this.state.selectedMovie}/>
                   </Grid>
-                  <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.language}</h3>
-                  <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.genre.join(",")}</h3>
+                  <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</h3>
+                  <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.genre.join(",")}</h3>
                   <Grid container justify = "center">
                   {overallRating}
                   </Grid>
                   </div>
             </Hidden>
             <Hidden smDown>
-            <div id="movie-description">
+            <div id="movie-description" >
                 <Grid container alignItems="center" spacing={0} justify = "center">
-                  <h1 className="headerLevel1 centerAligned">{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                  <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
                   <DetailedRating selectedMovie={this.state.selectedMovie}/>
                   </Grid>
-                <h2 className="headerLevel2">{this.state.selectedMovie.language}</h2>
-                <h3 className="headerLevel2">{this.state.selectedMovie.genre.join(",")}</h3>
-                <h3 className="headerLevel2">{this.state.selectedMovie.rating}/5</h3>   
+                <h2 className="headerLevel2" >{this.state.selectedMovie.language}</h2>
+                <h3 className="headerLevel2" >{this.state.selectedMovie.genre.join(",")}</h3>
+                <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>   
                 <div className="icon-container">
                 <TwitterShareButton url={this.state.shareUrl} quote={this.state.quote} className="social-media-icon"><TwitterIcon size={28} round/></TwitterShareButton>
                 <FacebookShareButton url={this.state.shareUrl} title={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={28} round/></FacebookShareButton>
@@ -197,15 +201,15 @@ render(){
               <LazyLoad>
               <div id="trailer_div">
                   <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
-                  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture">
+                  allow="accelerometer; autoplay; picture-in-picture" >
                   </iframe>
               </div>
               </LazyLoad>
             </Hidden>
         </div>
-        <div className="movie-detail">
+        <div className="movie-detail" >
         <Suspense fallback={<div>Loading...</div>}>
-          <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab}/>
+          <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab} 	/>
         </Suspense>
         </div>
         <footer>
@@ -229,6 +233,39 @@ render(){
     </>
   );
 }
+
+getSchema(movie){
+  var ticketDetails = JSON.parse(movie.ticketDetails);
+ var jsonbody= {
+    "@context" : "http://schema.org",
+    "@type" : "Movie",
+    "name" : movie.title,
+    "image" : movie.titleImage,
+    "author": {
+      "@type": "Person",
+      "name": "Vinay Prabhu"
+    },
+    "director": {
+      "@type": "Person",
+      "name": movie.cast[0].split("-")[0].trim()
+    },
+    "dateCreated": ticketDetails.watchDate,
+    "review" : {
+      "@type" : "Review",
+      "author" : {
+        "@type" : "Person",
+        "name" : "Vinay Prabhu"
+      },
+      "reviewRating" : {
+        "@type" : "Rating",
+        "ratingValue" : movie.rating
+      },
+      "reviewBody" : movie.review.synopsis
+    }
+  }
+  return JSON.stringify(jsonbody)
+}
+
 }
 
 export default Detail;

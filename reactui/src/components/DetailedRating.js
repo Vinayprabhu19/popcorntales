@@ -2,10 +2,7 @@ import React from 'react';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import Rating from '@material-ui/lab/Rating';
-import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
-import Grid from '@material-ui/core/Grid';
-import "../css/Detail.css";
 
 export default function DetailedRating(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -31,7 +28,7 @@ export default function DetailedRating(props) {
   const editingRating = stars(props.selectedMovie.editingRating);
   const cinematographyRating = stars(props.selectedMovie.cinematographyRating);
   const musicRating = stars(props.selectedMovie.musicRating);
-  return ( <div>
+  return ( <div >
         <InfoIcon onClick={handleClick} className="infoBtn"/>
       <Menu
         id="rating-menu"

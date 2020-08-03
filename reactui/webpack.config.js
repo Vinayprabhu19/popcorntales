@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
     entry: "./src/index.js",
@@ -28,7 +29,7 @@ module.exports = {
 			  ]
 			},
         {
-            test: /\.(png|jpg|gif)$/,
+            test: /\.(png|jpg|gif|xml|txt)$/,
             use: [
                 {
                     loader: 'file-loader'
@@ -45,12 +46,43 @@ module.exports = {
 	devServer: {
     historyApiFallback: true
 	},
+	optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      automaticNameDelimiter: '~',
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+	},
     plugins: [
         new HtmlWebPackPlugin({
             hash: true,
             filename: "index.html",  //target html
             template: "./src/index.html" //source html
         }),
-		 new MiniCssExtractPlugin()
+		 new MiniCssExtractPlugin(),
+		 new CopyWebpackPlugin(
+			  { 
+				patterns: [
+				  { from: 'src/robots.txt', to: 'robots.txt' },
+				  { from: 'src/sitemap.xml', to: 'sitemap.xml' }
+				]
+			  }
+			)
 		]
 }

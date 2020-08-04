@@ -81,7 +81,9 @@ export default function FullWidthTabs(props) {
               }
               <Grid container justify = "center" className="graphContainer">
                 <LazyLoad>
+                  <Paper elevation={10}>
               <img src={url} className="graphImage" />
+              </Paper>
               </LazyLoad>
               </Grid>
           </div>

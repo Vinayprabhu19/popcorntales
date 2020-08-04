@@ -4,13 +4,4 @@ html,body,#root {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   width: 100%;
-  background-image: linear-gradient(rgba(255,255,255,.3), rgba(255,255,255,.3)), url("../resources/memphis-colorful.png");
-  background-repeat: repeat;
-  background-blend-mode: soft-light;
-  
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

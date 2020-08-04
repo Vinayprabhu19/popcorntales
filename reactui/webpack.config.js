@@ -3,12 +3,16 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
-    entry: "./src/index.js",
+    entry: {
+		main: "./src/index.js",
+		vendor: "./src/vendor.js"
+	  },
     output: {
         path: path.join(__dirname, "/dist"),
-        filename: "index_bundle.js"
+        filename: "[name].[contentHash].bundle.js"
     },
     module: {
         rules: [{
@@ -70,6 +74,7 @@ module.exports = {
     }
 	},
     plugins: [
+	new CleanWebpackPlugin(),
         new HtmlWebPackPlugin({
             hash: true,
             filename: "index.html",  //target html

@@ -214,11 +214,10 @@ export default function FullWidthTabs(props) {
         </AccordionSummary>
         <AccordionDetails>
         <div id="ticket-component">
-          <h5 className="Ticket">Date Watched : {props.movie.ticketDetails.watchDate}</h5>
-          <h5 className="Ticket">Place Watched : {props.movie.ticketDetails.placeWatched}</h5>
+          <h5 className="centerAligned">Date Watched : {props.movie.ticketDetails.watchDate}</h5>
+          <h5 className="centerAligned">Place Watched : {props.movie.ticketDetails.placeWatched}</h5>
           <Grid container justify = "center">
           <Paper elevation={20} id="ticket-container">
-
           <LazyLoad>
           <img src={ticketImage} className="ticketImage" alt={"Ticket"}></img>
           </LazyLoad>

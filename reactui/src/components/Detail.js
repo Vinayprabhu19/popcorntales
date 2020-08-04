@@ -102,8 +102,8 @@ hearts = (starCount) => {
     return;
   const value = starCount;
   return (
-        <StyledRating name="customized-color" defaultValue={value} precision={0.1} value={value} 
-                    icon={<FavoriteIcon fontSize="inherit" />}/>
+        <StyledRating name="customized-color" defaultValue={value} precision={0.25} value={value} 
+                    icon={<FavoriteIcon fontSize="inherit" />} readOnly={true}/>
   );
 }
 processImageData(data){

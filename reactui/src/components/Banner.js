@@ -23,10 +23,10 @@ class Banner extends Component {
   }
   render() {
    return <Paper id="banner-container" elevation={10}>
-      <Carousel showThumbs={false} showStatus={false}>
+      <Carousel>
             {
               this.state.banners.map(banner=>{
-                return <Carousel.Item>
+                return <Carousel.Item  key={banner.url}>
                 <div key={banner.url} className="movie-img" style={{backgroundImage: "url(" + banner.url + ")"}} >
                 {/* <LazyImage  className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/> */}
                 </div>

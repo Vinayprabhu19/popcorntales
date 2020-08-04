@@ -1,5 +1,7 @@
 import React from 'react';
 import LazyLoad from 'react-lazy-load';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import BeenhereIcon from '@material-ui/icons/Beenhere';
 import CancelIcon from '@material-ui/icons/Cancel';
 import Grid from '@material-ui/core/Grid';
@@ -10,6 +12,11 @@ import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
 import Spinner from 'react-bootstrap/Spinner';
+import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
+import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
+import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
+import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
+import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
 import Rating from '@material-ui/lab/Rating';
 export default function FullWidthTabs(props) {
   const pros = props.movie.review.pros;
@@ -17,21 +24,38 @@ export default function FullWidthTabs(props) {
   const url = "https://api.popcorntales.com/image?object=Graph/"+props.movie.title+".png&width=400&height=400";
   const cast = props.movie.cast;
   const ticketImage = "https://api.popcorntales.com/image?object="+props.movie.ticketDetails.ticketImage;
-  const stars = (starCount) => {
-    if(starCount == undefined)
-      return;
-    const value = starCount;
-    return (
-          <Rating name="customized-color" defaultValue={value} precision={0.1} value={value}/>
-    );
+  const customIcons = {
+    1: {
+      icon: <SentimentVeryDissatisfiedIcon />,
+      label: 'Very Dissatisfied',
+    },
+    2: {
+      icon: <SentimentDissatisfiedIcon />,
+      label: 'Dissatisfied',
+    },
+    3: {
+      icon: <SentimentSatisfiedIcon />,
+      label: 'Neutral',
+    },
+    4: {
+      icon: <SentimentSatisfiedAltIcon />,
+      label: 'Satisfied',
+    },
+    5: {
+      icon: <SentimentVerySatisfiedIcon />,
+      label: 'Very Satisfied',
+    },
+  };
+
+  function IconContainer(props) {
+    const { value, ...other } = props;
+    return <span {...other}>{customIcons[value].icon}</span>;
   }
-  const actingRating = stars(props.movie.actingRating);
-  const directionRating = stars(props.movie.directionRating);
-  const dialoguesRating = stars(props.movie.dialoguesRating);
-  const scriptRating = stars(props.movie.scriptRating);
-  const editingRating = stars(props.movie.editingRating);
-  const cinematographyRating = stars(props.movie.cinematographyRating);
-  const musicRating = stars(props.movie.musicRating);
+  
+
+  IconContainer.propTypes = {
+    value: PropTypes.number.isRequired,
+  };
   return (
     <div className="movie-detail">
       <Accordion defaultExpanded={true}>
@@ -101,27 +125,58 @@ export default function FullWidthTabs(props) {
         <div className="review-component">
             <div>
              <h5>Acting - {props.movie.actingRating}/5</h5>
-            {actingRating}
+            {/* {actingRating} */}
+            <Rating
+              name="customized-icons"
+              defaultValue={Math.round(props.movie.actingRating)}
+              getLabelText={(value) => customIcons[value].label}
+              IconContainerComponent={IconContainer} readOnly={true}
+            />
             </div>
             <div>
               <h5>Direction - {props.movie.directionRating}/5</h5>
-              {directionRating}
+              <Rating
+              name="customized-icons"
+              defaultValue={Math.round(props.movie.directionRating)}
+              getLabelText={(value) => customIcons[value].label}
+              IconContainerComponent={IconContainer} readOnly={true}
+            />
             </div>
             <div>
               <h5>Dialogues - {props.movie.dialoguesRating}/5</h5>
-              {dialoguesRating}
+              <Rating
+              name="customized-icons"
+              defaultValue={Math.round(props.movie.dialoguesRating)}
+              getLabelText={(value) => customIcons[value].label}
+              IconContainerComponent={IconContainer} readOnly={true}
+            />
             </div>
             <div>
               <h5>Visuals - {props.movie.cinematographyRating}/5</h5>
-              {cinematographyRating}
+              <Rating
+              name="customized-icons"
+              defaultValue={Math.round(props.movie.dialoguesRating)}
+              getLabelText={(value) => customIcons[value].label}
+              IconContainerComponent={IconContainer} readOnly={true}
+            />
             </div>
             <div>
               <h5>Editing - {props.movie.editingRating}/5</h5>
-              {editingRating}
+              <Rating
+              name="customized-icons"
+              defaultValue={Math.round(props.movie.editingRating)}
+              getLabelText={(value) => customIcons[value].label}
+              IconContainerComponent={IconContainer} readOnly={true}
+            />
             </div>
             <div>
               <h5>Music - {props.movie.musicRating}/5</h5>
-              {musicRating}
+              <Rating
+              name="customized-icons"
+              defaultValue={Math.round(props.movie.musicRating)}
+              getLabelText={(value) => customIcons[value].label}
+              IconContainerComponent={IconContainer} readOnly={true}
+            />
             </div>
           </div>
         </AccordionDetails>

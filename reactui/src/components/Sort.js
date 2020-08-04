@@ -23,6 +23,7 @@ class Sort extends Component {
         field:evt.target.value
       });
       }
+   
       handleOrderChange(evt){
         this.setState({
           sortType:evt.target.value

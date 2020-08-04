@@ -2,7 +2,6 @@ import AppBar from '@material-ui/core/AppBar';
 import Backdrop from '@material-ui/core/Backdrop';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import GridList from '@material-ui/core/GridList';
 import Hidden from '@material-ui/core/Hidden';
 import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -19,11 +18,10 @@ import Grid from '@material-ui/core/Grid';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import SocialMenu from './SocialMenu';
 import Tooltip from '@material-ui/core/Tooltip';
-import Spinner from 'react-bootstrap/Spinner';
-const CardLayout = lazy(() => import('./CardLayout'));
 const Banner = lazy(() => import('./Banner'));
 const Sort = lazy(() => import('./Sort'));
 const Filter = lazy(() => import('./Filter'));
+const CardsList = lazy(() => import('./CardsList'));
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -216,13 +214,7 @@ render(){
         </Suspense>
         </Grid>
       </Paper>
-        <GridList className="App-Content cardGridList"  >
-                      {this.state.currentList.map(image => (
-                         <Suspense key={image.title} fallback={<Spinner />}>
-                          <CardLayout key={image.title} review={image}/>
-                          </Suspense>
-                      ))} 
-        </GridList>
+        <CardsList movies={this.state.currentList}/>
       <footer>
           <Pagination  totalRecords={this.state.totalPages} pageLimit={8}
                 pageNeighbours={1}

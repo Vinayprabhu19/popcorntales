@@ -1,4 +1,4 @@
-import React, { PureComponent as Component } from 'react';
+import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
@@ -16,24 +16,12 @@ class CardLayout extends Component {
   constructor(props){
     super(props);
   }
-  stars = (starCount) => {
-    if(starCount === undefined)
-      return;
-    const value = starCount;
-    return (
-      // <Rating name="disabled" value={value} precision={0.25}  size="large"/>
-  
-          <StyledRating name="customized-color" defaultValue={value} precision={0.25}
-                      icon={<FavoriteIcon fontSize="inherit" />}/>
-    );
+  shouldComponentUpdate(nextProps, nextState){
+    if(this.props.review.title == nextProps.review.title)
+    return false;
+    return true;
   }
-  // shouldComponentUpdate(nextProps, nextState){
-  //   if(JSON.stringify(this.state) === JSON.stringify(nextState) )
-  //   return false;
-  //   return true;
-  // }
   render() {
-    const stars = this.stars(this.props.review.rating);
     return <Paper className="card-container" elevation={8}>
     <h4 className="title">{this.props.review.title}</h4>
         <a href={this.props.review.title}>

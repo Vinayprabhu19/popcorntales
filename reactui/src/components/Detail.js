@@ -61,6 +61,7 @@ class Detail extends Component {
     };
   }
   shouldComponentUpdate(nextProps, nextState){
+    console.log(JSON.stringify(nextProps));
     if(!nextState.dataLoaded)
       return false;
     if(JSON.stringify(this.state) === JSON.stringify(nextState) )
@@ -143,30 +144,25 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         </Helmet>
     <div id="container" className={this.state.loading ? 'hidden' : ''}>
         
-        <AppBar id="appBar" position="static" className="tabbar">
+        <AppBar style={{width:"100%",height:"60px",backgroundColor:"white",color:"black"}} position="static">
         <Toolbar>
             <a href="/"><HomeButton/></a>
             {(this.state.selectedMovie.title.length < 20) && <h1 id="title">{this.state.selectedMovie.title +" Movie Review"}</h1>}
             {(this.state.selectedMovie.title.length >= 20) && <h1 id="title">{this.state.selectedMovie.title}</h1>}
-            <section className="rightToolbar">
+            <section style={{marginLeft:"auto"}}>
             <SocialMenu/>
             </section>
           </Toolbar>
         </AppBar>
-        <div className="movie-header">
-            <div id="card" >
-              <LazyLoad>
-              <Paper elevation={19} className="card-img">
-              <img className="card-img" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
-               </Paper>
-               </LazyLoad>
-              <Hidden smDown>
-              <Grid container justify = "center" className="ratingHearts">
-                 {overallRating}
-                  </Grid>
-              </Hidden>
-            </div>
-            <Hidden mdUp >  
+        <div style={{width:"100%",padding:"10px"}}>
+            <Hidden lgUp >  
+              <div style={{width:"100%",marginTop:"50px"}} >
+                  <Grid container alignItems="center" spacing={0} justify = "center">
+                    <LazyLoad>
+                    <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+                    </LazyLoad>
+                    </Grid>
+                  </div>
                   <div className="topHeader">
                     <Grid container alignItems="center" spacing={0} justify = "center">
                   <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
@@ -178,28 +174,34 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                   </Grid>
                   </div>
             </Hidden>
-            <Hidden smDown>
-            <div id="movie-description" >
-                <Grid container alignItems="center" spacing={0} justify = "center">
-                  <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
-                  </Grid>
-                <h2 className="headerLevel2" >{this.state.selectedMovie.language}</h2>
-                <h3 className="headerLevel2" >{this.state.selectedMovie.genre.join(",")}</h3>
-                <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>   
-                <div className="icon-container">
-                <TwitterShareButton url={this.state.shareUrl} quote={this.state.quote} className="social-media-icon"><TwitterIcon size={28} round/></TwitterShareButton>
-                <FacebookShareButton url={this.state.shareUrl} title={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={28} round/></FacebookShareButton>
-                <WhatsappShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><WhatsappIcon size={28} round/></WhatsappShareButton>
-                <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={28} round/></TelegramShareButton>
-                </div>
-            </div>
-            </Hidden>
             <Hidden mdDown>
-              <LazyLoad>
-                  <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
+            <div className="movieDetail">
+                <div id="card" style={{width:"fit-content",marginTop:"2%",marginLeft:"2%"}}>
+                  <LazyLoad className="movie-card">
+                  <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+                  </LazyLoad>
+                </div>
+                <div style={{width:"fit-content",marginTop:"2%",width:"350px"}}>
+                    <h1 className="headerLevel1" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                    <h2 className="headerLevel2" >{this.state.selectedMovie.language}</h2>
+                    <h3 className="headerLevel2" >{this.state.selectedMovie.genre.join(",")}</h3>
+                    <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>   
+                    {overallRating}
+                    <div className="icon-container">
+                    <TwitterShareButton url={this.state.shareUrl} quote={this.state.quote} className="social-media-icon"><TwitterIcon size={28} round/></TwitterShareButton>
+                    <FacebookShareButton url={this.state.shareUrl} title={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={28} round/></FacebookShareButton>
+                    <WhatsappShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><WhatsappIcon size={28} round/></WhatsappShareButton>
+                    <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={28} round/></TelegramShareButton>
+                    </div>
+                </div>
+                <div>
+                <LazyLoad > 
+                  <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer} style={{float:"right",marginLeft:"150px"}}
                   allow="accelerometer; autoplay; picture-in-picture" >
                   </iframe>
-              </LazyLoad>
+                  </LazyLoad>
+                </div>
+            </div>
             </Hidden>
         </div>
         <Suspense fallback={<div>Loading...</div>}>

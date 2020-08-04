@@ -185,7 +185,7 @@ render(){
         </Toolbar>
       </AppBar>
       <Suspense fallback={<div>Loading...</div>}>
-      <Banner/>
+      <Banner/> 
       </Suspense>
       <Paper className="filter-sort" elevation={12}>
           <Grid container justify = "center">

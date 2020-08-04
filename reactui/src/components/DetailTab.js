@@ -1,17 +1,14 @@
 import React from 'react';
 import LazyLoad from 'react-lazy-load';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import BeenhereIcon from '@material-ui/icons/Beenhere';
 import CancelIcon from '@material-ui/icons/Cancel';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
-import Spinner from 'react-bootstrap/Spinner';
 import SentimentVeryDissatisfiedIcon from '@material-ui/icons/SentimentVeryDissatisfied';
 import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
@@ -103,13 +100,13 @@ export default function FullWidthTabs(props) {
                       </div>
                   ))
               }
-              <Grid container justify = "center" className="graphContainer">
+              <div class="d-flex justify-content-center">
                 <LazyLoad>
                   <Paper elevation={10}>
               <img src={url} className="graphImage" />
               </Paper>
               </LazyLoad>
-              </Grid>
+              </div>
           </div>
         </AccordionDetails>
     </Accordion>
@@ -216,13 +213,13 @@ export default function FullWidthTabs(props) {
         <div id="ticket-component">
           <h5 className="centerAligned">Date Watched : {props.movie.ticketDetails.watchDate}</h5>
           <h5 className="centerAligned">Place Watched : {props.movie.ticketDetails.placeWatched}</h5>
-          <Grid container justify = "center">
-          <Paper elevation={20} id="ticket-container">
-          <LazyLoad>
-          <img src={ticketImage} className="ticketImage" alt={"Ticket"}></img>
-          </LazyLoad>
-          </Paper>
-          </Grid>
+          <div class="d-flex justify-content-center">
+            <Paper elevation={20} id="ticket-container">
+            <LazyLoad>
+            <img src={ticketImage} className="ticketImage" alt={"Ticket"}></img>
+            </LazyLoad>
+            </Paper>
+          </div>
         </div>
         </AccordionDetails>
     </Accordion>

@@ -4,7 +4,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
 import HomeButton from '@material-ui/icons/Home';
 import Hidden from '@material-ui/core/Hidden';
-import Grid from '@material-ui/core/Grid';
 import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MailIcon from '@material-ui/icons/Mail';
@@ -155,21 +154,21 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         <div style={{width:"100%",padding:"10px"}}>
             <Hidden lgUp >  
               <div style={{width:"100%",marginTop:"50px"}} >
-                  <Grid container alignItems="center" spacing={0} justify = "center">
+                    <div class="d-flex justify-content-center">
                     <LazyLoad>
                     <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                     </LazyLoad>
-                    </Grid>
+                    </div>
                   </div>
                   <div className="topHeader">
-                    <Grid container alignItems="center" spacing={0} justify = "center">
+                  <div class="d-flex justify-content-center">
                   <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
-                  </Grid>
+                  </div>
                   <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</h3>
                   <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.genre.join(",")}</h3>
-                  <Grid container justify = "center">
+                  <div class="d-flex justify-content-center">
                   {overallRating}
-                  </Grid>
+                  </div>
                   </div>
             </Hidden>
             <Hidden mdDown>
@@ -207,18 +206,19 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         </Suspense>
           <div id="footerText"> 
               <Hidden smUp>
-                <Grid container justify = "center" className="icon-container">
+                Share this review with your friend
+                <div class="d-flex justify-content-center">
                   <TwitterShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TwitterIcon size={25} round/></TwitterShareButton>
                   <FacebookShareButton url={this.state.shareUrl} quote={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={25} round/></FacebookShareButton>
                   <WhatsappShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><WhatsappIcon size={25} round/></WhatsappShareButton>
                   <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={25} round/></TelegramShareButton>
-                  </Grid>
+                  </div>
               </Hidden>
-              <Grid container justify = "center" id="footerText">
+              <div class="d-flex justify-content-center">
               <h6>Need your feedback to improve  
               <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
               </h6>
-              </Grid>
+              </div>
           </div>
     </div>
     </>

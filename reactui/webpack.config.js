@@ -80,7 +80,10 @@ module.exports = {
             filename: "index.html",  //target html
             template: "./src/index.html" //source html
         }),
-		 new MiniCssExtractPlugin(),
+		 new MiniCssExtractPlugin({
+		 filename: '[name].[contenthash].css',
+		 chunkFilename: '[id].[contenthash].css'
+		 }),
 		 new CopyWebpackPlugin(
 			  { 
 				patterns: [

@@ -22,11 +22,10 @@ class Movie extends Component {
     };
 
     this.onSubmit = this.onSubmit.bind(this);
-    
     this.onFileChange = this.onFileChange.bind(this);
   }
   componentDidUpdate(prevProps, prevState, snapshot){
-    
+
   }
 
   setupBeforeUnloadListener = () => {
@@ -40,7 +39,7 @@ componentDidMount() {
     // Activate the event listener
     this.setupBeforeUnloadListener();
 }
-  
+
   onSubmit(evt){
     if(this.state.imageName == ""){
       alert("Image name is empty");
@@ -74,7 +73,7 @@ componentDidMount() {
         console.error(error);
       })
   }
-  
+
   async onFileChange(evt){
 
 const file = document.querySelector('#file').files[0];
@@ -85,22 +84,22 @@ this.setState({
 })
   }
 
-  
+
   render() {
-    return <div className="container"> 
+    return <div className="container">
       <h3>Add Image</h3>
        <FormControl component="fieldset" className="container">
       <FormGroup>
-          <input type="file" id="file" onChange={this.onFileChange} /> 
+          <input type="file" id="file" onChange={this.onFileChange} />
           <TextField className="smallField" type={"text"} value={this.state.imageName} onChange={e=> this.setState({imageName : e.target.value})} label={"Image Name"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"text"} value={this.state.userId} onChange={e=> this.setState({userId : e.target.value})} label={"User Id"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"password"} value={this.state.password} onChange={e=> this.setState({password : e.target.value})} label={"Password"} InputProps={{ disableUnderline: true }}/>
 
-          
+
           <Button onClick={this.onSubmit} >Submit</Button>
       </FormGroup>
     </FormControl>
-    
+
     </div>
   }
 }

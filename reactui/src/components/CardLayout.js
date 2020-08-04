@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import LazyLoad from 'react-lazy-load';
 const StyledRating = withStyles({
   iconFilled: {

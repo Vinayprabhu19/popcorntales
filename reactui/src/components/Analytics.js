@@ -37,7 +37,7 @@ class Analytics extends Component {
             worstMovie:{},
             averageRating:5
         };
-          
+
      this.openFilter=this.openFilter.bind(this);
      this.getFilteredData = this.getFilteredData.bind(this);
       }
@@ -71,7 +71,7 @@ class Analytics extends Component {
             console.error(error);
           })
       }
-  
+
   openFilter(){
         this.setState({
           filterOpen : true
@@ -86,7 +86,7 @@ class Analytics extends Component {
         this.state.filterData.years.push(result[i].year);}
     this.state.filterData.years.sort();
     this.state.filterData.years.reverse();
-  } 
+  }
   handleFilterClose(data){
     if(data == null){
       this.setState({
@@ -102,7 +102,7 @@ class Analytics extends Component {
       reviews = reviews.filter(function(r){return r.language == data.filter.language});}
     if(data.filter.year!="All"){
         reviews = reviews.filter(function(r){return r.year == data.filter.year});}
-    
+
     reviews = reviews.filter(function(r){return r.rating >= data.filter.rating[0] && r.rating <= data.filter.rating[1]});
     var categoryData = this.getMovieCountByCategory(reviews);
     var ratingByCategory = this.getRatingCountByCategory(reviews);
@@ -157,7 +157,7 @@ class Analytics extends Component {
     </Paper>
     <Filter open={this.state.filterOpen} close={(data)=>this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData}/>
     <div id="section">
-    
+
     <div id="centerSection">
     <Accordion>
         <AccordionSummary
@@ -201,7 +201,7 @@ class Analytics extends Component {
       </div>
    <footer>
    <Grid container justify = "center" id="footerText">
-       <h6>Need your feedback to improve  
+       <h6>Need your feedback to improve
        <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
        </h6>
     </Grid>
@@ -244,7 +244,7 @@ getLanguages(result){
 
 
 getMovieCountByYear(result){
- 
+
   var year = [];
   var yearCount = [];
   for (var i = 0; i < result.length; i++){

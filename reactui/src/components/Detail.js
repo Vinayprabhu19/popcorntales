@@ -69,7 +69,7 @@ class Detail extends Component {
   componentDidMount(){
     var movieTitle = this.props.match.params.movieName;
     fetch('https://api.popcorntales.com/moviereview?movie='+movieTitle,{
-        headers : { 
+        headers : {
           'Accept': 'application/json'
          }})
     .then(response => response.json())
@@ -79,7 +79,7 @@ class Detail extends Component {
         var schema = this.getSchema(result);
         result.ticketDetails = JSON.parse(result.ticketDetails);
         this.setState({
-            dataLoaded:true,  
+            dataLoaded:true,
             selectedMovie : result,
             selectedTab:0,
             loading:false,
@@ -91,7 +91,7 @@ class Detail extends Component {
     .catch(error =>{
       console.error(error);
       this.props.history.push('/');
-    })  
+    })
   }
 
 
@@ -100,7 +100,7 @@ hearts = (starCount) => {
     return;
   const value = starCount;
   return (
-        <StyledRating name="customized-color" defaultValue={value} precision={0.25} value={value} 
+        <StyledRating name="customized-color" defaultValue={value} precision={0.25} value={value}
                     icon={<FavoriteIcon fontSize="inherit" />} readOnly={true}/>
   );
 }
@@ -140,7 +140,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
           <script className='structured-data-list' type="application/ld+json">{this.state.schema}</script>
         </Helmet>
     <div id="container" className={this.state.loading ? 'hidden' : ''}>
-        
+
         <AppBar style={{width:"100%",height:"60px",backgroundColor:"white",color:"black"}} position="static">
         <Toolbar>
             <a href="/"><HomeButton/></a>
@@ -152,7 +152,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
           </Toolbar>
         </AppBar>
         <div style={{width:"100%",padding:"10px"}}>
-            <Hidden lgUp >  
+            <Hidden lgUp >
               <div style={{width:"100%",marginTop:"50px"}} >
                     <div class="d-flex justify-content-center">
                     <LazyLoad>
@@ -173,16 +173,16 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             </Hidden>
             <Hidden mdDown>
             <div className="movieDetail">
-                <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"6%"}}>
+                <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"6%",float:"left"}}>
                   <LazyLoad className="movie-card">
                   <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                   </LazyLoad>
                 </div>
-                <div style={{width:"fit-content",marginTop:"2%",width:"350px"}}>
+                <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"50px"}}>
                     <h1 className="headerLevel1" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
                     <h2 className="headerLevel2" >{this.state.selectedMovie.language}</h2>
                     <h3 className="headerLevel2" >{this.state.selectedMovie.genre.join(",")}</h3>
-                    <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>   
+                    <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>
                     {overallRating}
                     <div className="icon-container">
                     <TwitterShareButton url={this.state.shareUrl} quote={this.state.quote} className="social-media-icon"><TwitterIcon size={28} round/></TwitterShareButton>
@@ -191,9 +191,9 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                     <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={28} round/></TelegramShareButton>
                     </div>
                 </div>
-                <div>
-                <LazyLoad > 
-                  <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer} style={{float:"right",marginLeft:"150px"}}
+                <div style={{float:"right",marginLeft:"150px",float:"right"}}>
+                <LazyLoad >
+                  <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
                   allow="accelerometer; autoplay; picture-in-picture" >
                   </iframe>
                   </LazyLoad>
@@ -204,7 +204,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         <Suspense fallback={<div>Loading...</div>}>
           <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab} 	/>
         </Suspense>
-          <div id="footerText"> 
+          <div id="footerText">
               <Hidden smUp>
                 Share this review with your friend
                 <div class="d-flex justify-content-center">
@@ -215,7 +215,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                   </div>
               </Hidden>
               <div class="d-flex justify-content-center">
-              <h6>Need your feedback to improve  
+              <h6>Need your feedback to improve
               <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
               </h6>
               </div>

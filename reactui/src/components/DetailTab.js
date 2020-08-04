@@ -13,7 +13,7 @@ import Spinner from 'react-bootstrap/Spinner'
 export default function FullWidthTabs(props) {
   const pros = props.movie.review.pros;
   const cons = props.movie.review.cons;
-  const url = "https://api.popcorntales.com/image?object=Graph/"+props.movie.title+".png&width=500&height=500";
+  const url = "https://api.popcorntales.com/image?object=Graph/"+props.movie.title+".png&width=400&height=400";
   const cast = props.movie.cast;
   const ticketImage = "https://api.popcorntales.com/image?object="+props.movie.ticketDetails.ticketImage;
   return (

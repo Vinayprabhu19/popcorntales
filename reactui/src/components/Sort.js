@@ -8,7 +8,6 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import '../css/card.css';
 import Grid from '@material-ui/core/Grid';
 class Sort extends Component {
     constructor(props) {

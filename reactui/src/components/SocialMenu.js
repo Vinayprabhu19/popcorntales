@@ -23,7 +23,8 @@ export default function SocialMenu() {
       <Button aria-controls="social-menu" aria-haspopup="true" onClick={handleClick}>
         <AssistantPhotoIcon color={"primary"} fontSize={"default"}/>
       </Button>
-      <Menu
+      {
+      Boolean(anchorEl) && <Menu
         id="social-menu"
         anchorEl={anchorEl}
         keepMounted
@@ -43,7 +44,7 @@ export default function SocialMenu() {
               <InstagramIcon fontSize={"default"}/>
           </a>
         </MenuItem>
-      </Menu>
+      </Menu>}
     </div>
   );
 }

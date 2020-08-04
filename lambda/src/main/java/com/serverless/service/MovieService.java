@@ -52,6 +52,8 @@ import com.serverless.models.MovieReview;
 import com.serverless.models.Review;
 import com.serverless.utils.DTOUtil;
 
+import net.coobird.thumbnailator.Thumbnails;
+
 public class MovieService {
 	
     private static final String DYNAMODB_TABLE_MOVIE = "MOVIE";
@@ -246,7 +248,11 @@ public class MovieService {
 			if(params.containsKey("width") && params.containsKey("height")) {
 				int width = Integer.parseInt(input.getQueryStringParameters().get("width"));
 				int height = Integer.parseInt(input.getQueryStringParameters().get("height"));
-				srcImage =resize(srcImage, height,width);
+				srcImage = 
+					    Thumbnails.of(srcImage)
+					        .height(height).width(width)
+					        .asBufferedImage();
+//				srcImage = resize(srcImage, height,width);
 			}
 			ImageIO.write(srcImage, contentType, os);
 	        byte[] imageBytes = os.toByteArray();

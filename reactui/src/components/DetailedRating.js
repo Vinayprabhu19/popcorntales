@@ -30,7 +30,7 @@ export default function DetailedRating(props) {
   const musicRating = stars(props.selectedMovie.musicRating);
   return ( <div >
         <InfoIcon onClick={handleClick} className="infoBtn"/>
-      <Menu
+     { Boolean(anchorEl) && <Menu
         id="rating-menu"
         anchorEl={anchorEl}
         keepMounted
@@ -78,7 +78,7 @@ export default function DetailedRating(props) {
             {musicRating}
           </div>
         </MenuItem>
-      </Menu>
+      </Menu>}
     </div>
   );
 }

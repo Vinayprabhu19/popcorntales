@@ -8,7 +8,7 @@ import Paper from '@material-ui/core/Paper';
 import Toolbar from '@material-ui/core/Toolbar';
 import MailIcon from '@material-ui/icons/Mail';
 import SortIcon from '@material-ui/icons/Sort';
-import React, { Suspense, lazy,PureComponent as Component } from 'react';
+import React, { Suspense, lazy, Component } from 'react';
 import '../css/index.css';
 import '../css/Home.css';
 import '../css/card.css';
@@ -71,7 +71,7 @@ class Home extends Component {
       .then(response => response.json())
       .then(result => {
         this.getFilteredData(result);
-        //result = this.processImageData(result);
+        result = this.processImageData(result);
         var schema = this.getSchema(result);
         result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
           const rvs = result.map(item => {

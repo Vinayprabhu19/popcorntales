@@ -1,4 +1,4 @@
-import React, { Suspense, lazy,PureComponent as Component } from 'react';
+import React, { Suspense, lazy,Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";

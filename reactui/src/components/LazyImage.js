@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/card.css';
 export default class LazyImage extends React.Component {
     constructor(props) {
       super(props);

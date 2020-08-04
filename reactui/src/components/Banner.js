@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/Detail.css';
 import Paper from '@material-ui/core/Paper';
 import LazyLoad from 'react-lazy-load';
 import { Carousel } from 'react-responsive-carousel';
@@ -27,9 +26,11 @@ class Banner extends Component {
       <Carousel showThumbs={false} showStatus={false}>
             {
               this.state.banners.map(banner=>{
-                return <div key={banner.url} className="movie-img" style={{backgroundImage: "url(" + banner.url + ")"}} >
+                return <LazyLoad key={banner.url} >
+                <div key={banner.url} className="movie-img" style={{backgroundImage: "url(" + banner.url + ")"}} >
                 {/* <LazyImage  className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/> */}
                 </div>
+                </LazyLoad>
               })
             }
         </Carousel>

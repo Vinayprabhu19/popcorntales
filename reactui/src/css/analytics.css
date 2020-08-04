@@ -11,10 +11,28 @@
 
 .smallChart{
     padding: 20px;
-    width: 250px;
+    width: 250px; 
     margin: 10px;
 }
 
+#appBar{
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    vertical-align: middle;
+    color: black;
+   
+  }
+  #title{
+    padding-left: 20px ;
+    height: auto;
+    display: inline-block;
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+    vertical-align: middle;
+  }
 .mediumChart{
     padding: 20px;
     width: 350px;

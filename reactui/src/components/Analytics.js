@@ -9,6 +9,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import React, { Component } from 'react';
 import { ColumnChart, LineChart, PieChart } from 'react-chartkick';
 import '../css/analytics.css';
+import '../css/card.css';
 import Filter from "./Filter";
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';

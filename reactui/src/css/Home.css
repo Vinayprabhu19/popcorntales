@@ -98,6 +98,9 @@ footer nav{
   background-color: black;
 }
 
+.cardGridList{
+  margin-top: 20px;
+}
 @media screen and (min-width: 2000px){
   #searchField{
     width: 400px;

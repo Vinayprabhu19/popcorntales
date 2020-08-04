@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../css/card.css';
 import Paper from '@material-ui/core/Paper';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';

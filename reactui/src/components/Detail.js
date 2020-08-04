@@ -2,7 +2,6 @@ import React, { Suspense, lazy,Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
-import '../css/index.css';
 import HomeButton from '@material-ui/icons/Home';
 import Paper from '@material-ui/core/Paper';
 import Hidden from '@material-ui/core/Hidden';
@@ -11,7 +10,6 @@ import Backdrop from '@material-ui/core/Backdrop';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MailIcon from '@material-ui/icons/Mail';
 import SocialMenu from './SocialMenu';
-import DetailedRating from './DetailedRating';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -171,7 +169,6 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                   <div className="topHeader">
                     <Grid container alignItems="center" spacing={0} justify = "center">
                   <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
-                  <DetailedRating selectedMovie={this.state.selectedMovie}/>
                   </Grid>
                   <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</h3>
                   <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.genre.join(",")}</h3>
@@ -184,7 +181,6 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             <div id="movie-description" >
                 <Grid container alignItems="center" spacing={0} justify = "center">
                   <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
-                  <DetailedRating selectedMovie={this.state.selectedMovie}/>
                   </Grid>
                 <h2 className="headerLevel2" >{this.state.selectedMovie.language}</h2>
                 <h3 className="headerLevel2" >{this.state.selectedMovie.genre.join(",")}</h3>

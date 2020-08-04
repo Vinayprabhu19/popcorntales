@@ -9,13 +9,29 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from 'react-bootstrap/Spinner';
+import Rating from '@material-ui/lab/Rating';
 export default function FullWidthTabs(props) {
   const pros = props.movie.review.pros;
   const cons = props.movie.review.cons;
   const url = "https://api.popcorntales.com/image?object=Graph/"+props.movie.title+".png&width=400&height=400";
   const cast = props.movie.cast;
   const ticketImage = "https://api.popcorntales.com/image?object="+props.movie.ticketDetails.ticketImage;
+  const stars = (starCount) => {
+    if(starCount == undefined)
+      return;
+    const value = starCount;
+    return (
+          <Rating name="customized-color" defaultValue={value} precision={0.1} value={value}/>
+    );
+  }
+  const actingRating = stars(props.movie.actingRating);
+  const directionRating = stars(props.movie.directionRating);
+  const dialoguesRating = stars(props.movie.dialoguesRating);
+  const scriptRating = stars(props.movie.scriptRating);
+  const editingRating = stars(props.movie.editingRating);
+  const cinematographyRating = stars(props.movie.cinematographyRating);
+  const musicRating = stars(props.movie.musicRating);
   return (
     <div className="movie-detail">
       <Accordion defaultExpanded={true}>
@@ -68,6 +84,43 @@ export default function FullWidthTabs(props) {
               <img src={url} className="graphImage" />
               </LazyLoad>
               </Grid>
+          </div>
+        </AccordionDetails>
+    </Accordion>
+    <Accordion >
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <h5 className="centerText">Parts and Parcel</h5>
+        </AccordionSummary>
+        <AccordionDetails>
+        <div className="review-component">
+            <div>
+             <h5>Acting - {props.movie.actingRating}/5</h5>
+            {actingRating}
+            </div>
+            <div>
+              <h5>Direction - {props.movie.directionRating}/5</h5>
+              {directionRating}
+            </div>
+            <div>
+              <h5>Dialogues - {props.movie.dialoguesRating}/5</h5>
+              {dialoguesRating}
+            </div>
+            <div>
+              <h5>Visuals - {props.movie.cinematographyRating}/5</h5>
+              {cinematographyRating}
+            </div>
+            <div>
+              <h5>Editing - {props.movie.editingRating}/5</h5>
+              {editingRating}
+            </div>
+            <div>
+              <h5>Music - {props.movie.musicRating}/5</h5>
+              {musicRating}
+            </div>
           </div>
         </AccordionDetails>
     </Accordion>

@@ -9,7 +9,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import MailIcon from '@material-ui/icons/Mail';
 import SortIcon from '@material-ui/icons/Sort';
 import React, { Suspense, lazy, Component } from 'react';
-import '../css/index.css';
 import '../css/Home.css';
 import '../css/card.css';
 import FilterListIcon from '@material-ui/icons/FilterList';

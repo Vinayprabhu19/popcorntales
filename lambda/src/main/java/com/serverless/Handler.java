@@ -1,7 +1,5 @@
 package com.serverless;
 
-import java.util.Arrays;
-
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONObject;
 
@@ -38,23 +36,11 @@ public class Handler implements RequestHandler<ApiGatewayProxyRequest, ApiGatewa
 	
 	public ApiGatewayProxyResponse addImage(ApiGatewayProxyRequest input,Context context) {
 		String b= input.getBody();
-		System.out.println(b);
 		String decodedString = decodeString(b);
-		System.out.println("image");
-		System.out.println(decodedString);
 		JSONObject body = new JSONObject(decodedString);
-		
 		return MovieService.addImage(body);
-		
 	}
-	
-	public ApiGatewayProxyResponse resizeImage(ApiGatewayProxyRequest input,Context context) {
-		String b= input.getBody();
-		String decodedString = decodeString(b);
-		input.setBody(decodedString);
-		return MovieService.resizeImage(input);
-		
-	}
+
 	
 	private String decodeString(String encodedString) {
 		byte[] byteArray = Base64.decodeBase64(encodedString.getBytes());

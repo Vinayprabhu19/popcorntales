@@ -7,13 +7,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.security.Timestamp;
-import java.security.acl.LastOwnerException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Base64;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.TimeZone;
@@ -43,7 +40,6 @@ import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.GetObjectRequest;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.serverless.config.DynamoDBOperations;
 import com.serverless.dto.ApiGatewayProxyRequest;
 import com.serverless.dto.ApiGatewayProxyResponse;
@@ -55,6 +51,7 @@ import com.serverless.utils.DTOUtil;
 import net.coobird.thumbnailator.Thumbnails;
 
 public class MovieService {
+	
 	
     private static final String DYNAMODB_TABLE_MOVIE = "MOVIE";
     private static final String DYNAMODB_TABLE_MOVIE_REVIEW = "MOVIE_REVIEW";
@@ -274,60 +271,6 @@ public class MovieService {
 		}
 	}
 	
-	public static ApiGatewayProxyResponse resizeImage(ApiGatewayProxyRequest input) {
-		JSONObject request = new JSONObject(input.getBody());
-		int width = request.getInt("width");
-		int height = request.getInt("height");
-		String objectKey = request.getString("key");
-		String destKey = request.getString("dest");
-		ApiGatewayProxyResponse response = new ApiGatewayProxyResponse();
-		 AmazonS3 s3Client = new AmazonS3Client();
-         S3Object s3Object = s3Client.getObject(new GetObjectRequest(
-                 BUCKET_NAME, objectKey));
-         InputStream objectData = s3Object.getObjectContent();
-
-         // Read the source image
-         try {
-			BufferedImage srcImage = ImageIO.read(objectData);
-			srcImage =resize(srcImage, height,width);
-			 Iterator<ImageWriter> writers = ImageIO.getImageWritersByFormatName("jpg");
-            if (!writers.hasNext())
-              throw new IllegalStateException("No writers found");
-            ImageWriter writer = (ImageWriter) writers.next();
-            ByteArrayOutputStream os=new ByteArrayOutputStream() ;
-            ImageOutputStream ios = ImageIO.createImageOutputStream(os);
-            writer.setOutput(ios);
-            ImageWriteParam param = writer.getDefaultWriteParam();
-            // compress to a given quality
-            param.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
-            param.setCompressionQuality(0.95f);
-             // appends a complete image stream containing a single image and
-            //associated stream and image metadata and thumbnails to the output
-            writer.write(null, new IIOImage(srcImage, null, null), param);
-            ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
-
-            //InputStream is = new ByteArrayInputStream(retValue);
-            BufferedImage destImage = ImageIO.read(is);
-
-             ByteArrayOutputStream os1 = new ByteArrayOutputStream();
-             ImageIO.write(destImage, "jpg", os1);
-             InputStream is1 = new ByteArrayInputStream(os1.toByteArray()); 
-             ObjectMetadata meta = new ObjectMetadata();
-             meta.setContentLength(os1.size());
-             meta.setContentType("image/jpeg");
-             s3Client.putObject(BUCKET_NAME,destKey, is1, meta);
-             
-			response.setBody("Modified file");
-			response.setStatusCode(HttpStatus.SC_OK);
-			return response;
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			response.setBody(DTOUtil.getMessage(e.getMessage()));
-			response.setStatusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR);
-			return response;
-		}
-	}
 	
 	public static ApiGatewayProxyResponse addImage(JSONObject input) {
 		ApiGatewayProxyResponse 

@@ -206,7 +206,6 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         </Suspense>
           <div id="footerText">
               <Hidden smUp>
-                Share this review with your friend
                 <div class="d-flex justify-content-center">
                   <TwitterShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TwitterIcon size={25} round/></TwitterShareButton>
                   <FacebookShareButton url={this.state.shareUrl} quote={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={25} round/></FacebookShareButton>

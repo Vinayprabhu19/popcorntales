@@ -59,22 +59,17 @@ package:
 functions:
   addMovie:
     handler: com.serverless.Handler::handleRequest
-    warmup: true
   getMovies: 
     handler: com.serverless.Handler::getMovies
     warmup: true
   getMovieReview:
     handler: com.serverless.Handler::getMovieReview
     warmup: true
-  resizeImage:
-    handler: com.serverless.Handler::resizeImage
-    warmup: true
   fetchImage:
     handler: com.serverless.Handler::fetchImage
     warmup: true
   addImage:
     handler: com.serverless.Handler::addImage
-    warmup: true
   
   
 #    The following are a few example events you can configure

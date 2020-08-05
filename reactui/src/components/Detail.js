@@ -1,4 +1,4 @@
-import React, { Suspense, lazy,Component } from 'react';
+import React, { Suspense, lazy,Component,memo } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
@@ -58,7 +58,6 @@ class Detail extends Component {
     };
   }
   shouldComponentUpdate(nextProps, nextState){
-    console.log(JSON.stringify(nextProps));
     if(!nextState.dataLoaded)
       return false;
     if(JSON.stringify(this.state) === JSON.stringify(nextState) )
@@ -154,19 +153,19 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         <div style={{width:"100%",padding:"10px"}}>
             <Hidden lgUp >
               <div style={{width:"100%",marginTop:"50px"}} >
-                    <div class="d-flex justify-content-center">
+                    <div className="d-flex justify-content-center">
                     <LazyLoad>
                     <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                     </LazyLoad>
                     </div>
                   </div>
                   <div className="topHeader">
-                  <div class="d-flex justify-content-center">
+                  <div className="d-flex justify-content-center">
                   <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
                   </div>
                   <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</h3>
                   <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.genre.join(",")}</h3>
-                  <div class="d-flex justify-content-center">
+                  <div className="d-flex justify-content-center">
                   {overallRating}
                   </div>
                   </div>
@@ -206,14 +205,14 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         </Suspense>
           <div id="footerText">
               <Hidden smUp>
-                <div class="d-flex justify-content-center">
+                <div className="d-flex justify-content-center">
                   <TwitterShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TwitterIcon size={25} round/></TwitterShareButton>
                   <FacebookShareButton url={this.state.shareUrl} quote={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={25} round/></FacebookShareButton>
                   <WhatsappShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><WhatsappIcon size={25} round/></WhatsappShareButton>
                   <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={25} round/></TelegramShareButton>
                   </div>
               </Hidden>
-              <div class="d-flex justify-content-center">
+              <div className="d-flex justify-content-center">
               <h6>Need your feedback to improve
               <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
               </h6>

@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
@@ -12,7 +13,7 @@ module.exports = {
 	  },
     output: {
         path: path.join(__dirname, "/dist"),
-        filename: "[name].[contentHash].bundle.js"
+        filename: process.env.production ? `bundle-[chunkHash].js` : `bundle-[hash].js`
     },
     module: {
         rules: [{
@@ -51,34 +52,38 @@ module.exports = {
     historyApiFallback: true
 	},
 	optimization: {
-    splitChunks: {
-      chunks: 'all',
-      minSize: 20000,
-      maxSize: 0,
-      minChunks: 1,
-      maxAsyncRequests: 30,
-      maxInitialRequests: 30,
-      automaticNameDelimiter: '~',
-      enforceSizeThreshold: 50000,
-      cacheGroups: {
-        defaultVendors: {
-          test: /[\\/]node_modules[\\/]/,
-          priority: -10
-        },
-        default: {
-          minChunks: 2,
-          priority: -20,
-          reuseExistingChunk: true
-        }
-      }
-    }
+	  minimize: true,
+	  minimizer: [new TerserPlugin({
+	  cache: true
+	   })],
+		splitChunks: {
+		  chunks: 'all',
+		  minSize: 20000,
+		  maxSize: 0,
+		  minChunks: 1,
+		  maxAsyncRequests: 30,
+		  maxInitialRequests: 30,
+		  automaticNameDelimiter: '~',
+		  enforceSizeThreshold: 50000,
+		  cacheGroups: {
+			defaultVendors: {
+			  test: /[\\/]node_modules[\\/]/,
+			  priority: -10
+			},
+			default: {
+			  minChunks: 2,
+			  priority: -20,
+			  reuseExistingChunk: true
+			}
+		  }
+		}
 	},
     plugins: [
 	new CleanWebpackPlugin(),
         new HtmlWebPackPlugin({
             hash: true,
             filename: "index.html",  //target html
-            template: "./src/index.html" //source html
+            template: "./src/index.html", //source html
         }),
 		 new MiniCssExtractPlugin({
 		 filename: '[name].[contenthash].css',

@@ -55,11 +55,8 @@ class Home extends Component {
   }
   shouldComponentUpdate(nextProps, nextState) {
     if (JSON.stringify(this.state) == JSON.stringify(nextState)) {
-      console.log("not changing");
       return false;
     }
-    console.log("changing");
-    console.log(nextState);
     return true;
   }
   componentDidMount() {
@@ -187,7 +184,7 @@ class Home extends Component {
               <Banner />
             </Suspense>
             <Paper className="filter-sort" elevation={12}>
-              <div class="d-flex justify-content-center">
+              <div className="d-flex justify-content-center">
                 <input type="text" id="searchField" value={this.state.searchText} onChange={this.onSearch} placeholder="Movie Title" />
                 <Hidden smDown>
                   <Tooltip title="Sort">
@@ -215,14 +212,14 @@ class Home extends Component {
             </Paper>
             <CardsList movies={this.state.currentList} />
             <footer>
-              <div class="d-flex justify-content-center">
+              <div className="d-flex justify-content-center">
                 <Suspense fallback={<div>Loading...</div>}>
                   <Pagination totalRecords={this.state.totalPages} pageLimit={8}
                     pageNeighbours={1}
                     onPageChanged={this.onPageChanged} />
                 </Suspense>
               </div>
-              <div class="d-flex justify-content-center">
+              <div className="d-flex justify-content-center">
                 <h6>Need your feedback to improve
               <a href="mailto:popcorntales19@gmail.com"> <MailIcon /></a>
                 </h6>

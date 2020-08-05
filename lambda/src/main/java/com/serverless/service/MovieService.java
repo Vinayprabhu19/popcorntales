@@ -176,7 +176,7 @@ public class MovieService {
 			Collections.sort(movieList,new Comparator<Item>() {
 				@Override
 				public int compare(Item o1, Item o2) {
-					return o1.getString("timeStamp").compareTo(o2.getString("timeStamp"));
+					return o2.getString("timeStamp").compareTo(o1.getString("timeStamp"));
 				}
 			});
 			JSONArray movies = new JSONArray();

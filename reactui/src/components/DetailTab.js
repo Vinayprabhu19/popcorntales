@@ -48,7 +48,7 @@ export default function FullWidthTabs(props) {
     const { value, ...other } = props;
     return <span {...other}>{customIcons[value].icon}</span>;
   }
-  
+
 
   IconContainer.propTypes = {
     value: PropTypes.number.isRequired,
@@ -100,7 +100,7 @@ export default function FullWidthTabs(props) {
                       </div>
                   ))
               }
-              <div class="d-flex justify-content-center">
+              <div className="d-flex justify-content-center">
                 <LazyLoad>
                   <Paper elevation={10}>
               <img src={url} className="graphImage" />
@@ -213,7 +213,7 @@ export default function FullWidthTabs(props) {
         <div id="ticket-component">
           <h5 className="centerAligned">Date Watched : {props.movie.ticketDetails.watchDate}</h5>
           <h5 className="centerAligned">Place Watched : {props.movie.ticketDetails.placeWatched}</h5>
-          <div class="d-flex justify-content-center">
+          <div className="d-flex justify-content-center">
             <Paper elevation={20} id="ticket-container">
             <LazyLoad>
             <img src={ticketImage} className="ticketImage" alt={"Ticket"}></img>

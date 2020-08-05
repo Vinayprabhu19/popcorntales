@@ -15,11 +15,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.TimeZone;
 
-import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
-import javax.imageio.ImageWriteParam;
-import javax.imageio.ImageWriter;
-import javax.imageio.stream.ImageOutputStream;
 
 import org.apache.http.HttpStatus;
 import org.json.JSONArray;
@@ -51,7 +47,6 @@ import com.serverless.utils.DTOUtil;
 import net.coobird.thumbnailator.Thumbnails;
 
 public class MovieService {
-	
 	
     private static final String DYNAMODB_TABLE_MOVIE = "MOVIE";
     private static final String DYNAMODB_TABLE_MOVIE_REVIEW = "MOVIE_REVIEW";

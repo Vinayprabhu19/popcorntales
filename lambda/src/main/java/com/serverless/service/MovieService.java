@@ -9,9 +9,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
@@ -161,12 +165,23 @@ public class MovieService {
 			        
 			Iterator<Item> iterator = items.iterator(); 
 			    
-			JSONArray movies = new JSONArray();
+			List<Item> movieList = new ArrayList<Item>();
 			while (iterator.hasNext()) { 
 				Item item = iterator.next();
 				String titleImage = DTOUtil.API_OBJECT_URL + item.get("titleImage");
 				item.with("titleImage", titleImage);
-				movies.put(new JSONObject(item.toJSON()));
+				movieList.add(item);
+//				movies.put(new JSONObject(item.toJSON()));
+			}
+			Collections.sort(movieList,new Comparator<Item>() {
+				@Override
+				public int compare(Item o1, Item o2) {
+					return o1.getString("timeStamp").compareTo(o2.getString("timeStamp"));
+				}
+			});
+			JSONArray movies = new JSONArray();
+			for(int i=0;i<movieList.size();i++) {
+				movies.put(new JSONObject(movieList.get(i).toJSON()));
 			}
 			response.addHeader("Content-type", "application/json");
 			response.addHeader("Cache-Control","max-age=600");

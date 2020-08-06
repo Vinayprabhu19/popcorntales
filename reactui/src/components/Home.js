@@ -10,8 +10,6 @@ import SortIcon from '@material-ui/icons/Sort';
 import React, { Suspense, lazy, Component } from 'react';
 import '../css/Home.css';
 import '../css/card.css';
-import worker from "./worker.js";
-import WebWorker from "./workerSetup";
 import FilterListIcon from '@material-ui/icons/FilterList';
 import { Helmet } from 'react-helmet';
 import BarChartIcon from '@material-ui/icons/BarChart';
@@ -26,9 +24,11 @@ class Home extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
-    this.worker = new WebWorker(worker);
-    this.worker.postMessage("Fetch Movies");
+
     this.state = {
+      reviews: [],
+      totalPages: 0,
+      currentList: [],
       loading: true,
       sortOpen: false,
       filterOpen: false,
@@ -50,6 +50,7 @@ class Home extends Component {
     this.openSort = this.openSort.bind(this);
     this.handleSortClose = this.handleSortClose.bind(this);
     this.openFilter = this.openFilter.bind(this);
+    this.getFilteredData = this.getFilteredData.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
   shouldComponentUpdate(nextProps, nextState) {
@@ -59,20 +60,35 @@ class Home extends Component {
     return true;
   }
   componentDidMount() {
-
-
-    this.worker.addEventListener("message", event => {
-      var response = event.data;
-      this.setState({
-        schema: response.schema,
-        activePage: 1,
-        totalPages: response.rvs.length,
-        allReviews: response.movies,
-        reviews: response.rvs,
-        currentList: response.currentPages,
-        loading: false
+    fetch('https://api.popcorntales.com/movie')
+      .then(response => response.json())
+      .then(result => {
+        this.getFilteredData(result);
+        result = this.processImageData(result);
+        var schema = this.getSchema(result);
+        result.sort(function (a, b) { return new Date(b.timeStamp) - new Date(a.timeStamp) });
+        const rvs = result.map(item => {
+          return item;
+        });
+        var currentPages = [];
+        var len = (rvs.length > 8) ? 8 : rvs.length;
+        for (var i = 0; i < len; i++) {
+          currentPages.push(rvs[i]);
+        }
+        this.setState({
+          schema: schema,
+          activePage: 1,
+          totalPages: rvs.length,
+          allReviews: rvs,
+          reviews: rvs,
+          currentList: currentPages,
+          loading: false
+        })
       })
-    });
+      .catch(error => {
+        console.error(error);
+      })
+
   }
 
   onPageChanged(e) {
@@ -95,6 +111,8 @@ class Home extends Component {
     for (var i = 0; i < this.state.allReviews.length; i++) {
       reviews.push(this.state.allReviews[i]);
     }
+
+
     reviews = reviews.filter(function (r) { return r.title.toLocaleLowerCase().includes(text.toLowerCase()); });
 
     var currentPages = [];
@@ -212,8 +230,40 @@ class Home extends Component {
       </>
     );
   }
+  getFilteredData(result) {
+    for (var i = 0; i < result.length; i++) {
+      if (this.state.filterData.languages.includes(result[i].language)) continue;
+      this.state.filterData.languages.push(result[i].language);
+    }
+    for (var i = 0; i < result.length; i++) {
+      if (this.state.filterData.years.includes(result[i].year)) continue;
+      this.state.filterData.years.push(result[i].year);
+    }
+    this.state.filterData.years.sort();
 
-
+  }
+  processImageData(data) {
+    var width, height;
+    if (window.matchMedia("(max-width: 576px)").matches) {
+      width = 140; height = 200;
+    }
+    else if (window.matchMedia("(max-width: 958px)").matches) {
+      width = 200; height = 260;
+    }
+    else if (window.matchMedia("(max-width: 1300px)").matches) {
+      width = 220; height = 250;
+    }
+    else if (window.matchMedia("(max-width: 2000px)").matches) {
+      width = 250; height = 300;
+    }
+    else {
+      width = 400; height = 500;
+    }
+    for (var i = 0; i < data.length; i++) {
+      data[i].titleImage = data[i].titleImage + "&width=" + width + "&height=" + height;
+    }
+    return data;
+  }
   handleFilterClose(data) {
     if (data == null) {
       this.setState({
@@ -250,28 +300,6 @@ class Home extends Component {
       filter: data.filter,
       searchText: ""
     });
-  }
-  processImageData(data) {
-    var width, height;
-    if (window.matchMedia("(max-width: 576px)").matches) {
-      width = 140; height = 200;
-    }
-    else if (window.matchMedia("(max-width: 958px)").matches) {
-      width = 200; height = 260;
-    }
-    else if (window.matchMedia("(max-width: 1300px)").matches) {
-      width = 220; height = 250;
-    }
-    else if (window.matchMedia("(max-width: 2000px)").matches) {
-      width = 250; height = 300;
-    }
-    else {
-      width = 400; height = 500;
-    }
-    for (var i = 0; i < data.length; i++) {
-      data[i].titleImage = data[i].titleImage + "&width=" + width + "&height=" + height;
-    }
-    return data;
   }
   handleSortClose(data) {
     // result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
@@ -319,5 +347,28 @@ class Home extends Component {
       sorter: data
     });
   }
+
+
+  getSchema(movieList) {
+    var jsonbody = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": []
+    };
+
+    for (var i = 0; i < movieList.length; i++) {
+      var movie = movieList[i];
+      var item = {
+        "@type": "ListItem",
+        "position": i + 1,
+        "url": "https://popcorntales.com/" + movie.title
+      }
+      jsonbody.itemListElement.push(item);
+    }
+    return JSON.stringify(jsonbody)
+  }
+
 }
+
+
 export default Home;

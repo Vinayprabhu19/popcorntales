@@ -13,8 +13,6 @@ import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Helmet } from 'react-helmet';
 import LazyLoad from 'react-lazy-load';
-import worker from "./workerReview.js";
-import WebWorker from "./workerSetup";
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -38,12 +36,24 @@ const DetailTab = lazy(() => import('./DetailTab'));
 class Detail extends Component {
   constructor(props) {
     super(props);
-    var movieTitle = this.props.match.params.movieName;
-    this.worker = new WebWorker(worker);
-    this.worker.postMessage(movieTitle);
     this.state = {
       dataLoaded: false,
+        selectedMovie: {
+            title: "Popcorn Tales",
+            genre : [],
+            review : {
+              synopsis:"",
+              pros:[],
+              cons:[]
+            },
+            ticketDetails:{ticketImage:"Graph/Popcorn Tales.png"},
+            cast:[],
+            rating:5
+        },
+        selectedTab:null,
         loading:true,
+        shareUrl:"www.popcorntales.com",
+        tags:"#popcorntales #movietime #moviereview #popcorn #letswatch",
         schema:{}
     };
   }
@@ -56,22 +66,31 @@ class Detail extends Component {
   }
 
   componentDidMount(){
-    this.worker.addEventListener("message", event => {
-      var response = event.data;
-      if(response=="Redirect")
-        this.props.history.push('/');
-        var result=this.processImageData(response.movie);
+    var movieTitle = this.props.match.params.movieName;
+    fetch('https://api.popcorntales.com/moviereview?movie='+movieTitle,{
+        headers : {
+          'Accept': 'application/json'
+         }})
+    .then(response => response.json())
+    .then(result => {
+        result=this.processImageData(result);
+        result.review=JSON.parse(result.review);
+        var schema = this.getSchema(result);
         result.ticketDetails = JSON.parse(result.ticketDetails);
         this.setState({
             dataLoaded:true,
             selectedMovie : result,
+            selectedTab:0,
             loading:false,
-            shareUrl:"www.popcorntales.com/review/"+result.title.replace(/ /g, '%20'),
-            quote:"I read a review of "+result.title+". Let me know what you felt after reading it!!",
-            schema:response.schema
+            shareUrl:"www.popcorntales.com/review/"+movieTitle.replace(/ /g, '%20'),
+            quote:"I read a review of "+movieTitle+". Let me know what you felt after reading it!!",
+            schema:schema
           });
-
-    });
+    })
+    .catch(error =>{
+      console.error(error);
+      this.props.history.push('/');
+    })
   }
 
 
@@ -182,7 +201,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             </Hidden>
         </div>
         <Suspense fallback={<div>Loading...</div>}>
-          <DetailTab movie={this.state.selectedMovie}/>
+          <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab} 	/>
         </Suspense>
           <div id="footerText">
               <Hidden smUp>
@@ -204,7 +223,37 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
   );
 }
 
-
+getSchema(movie){
+  var ticketDetails = JSON.parse(movie.ticketDetails);
+ var jsonbody= {
+    "@context" : "http://schema.org",
+    "@type" : "Movie",
+    "name" : movie.title,
+    "image" : movie.titleImage,
+    "author": {
+      "@type": "Person",
+      "name": "Vinay Prabhu"
+    },
+    "director": {
+      "@type": "Person",
+      "name": movie.cast[0].split("-")[0].trim()
+    },
+    "dateCreated": ticketDetails.watchDate,
+    "review" : {
+      "@type" : "Review",
+      "author" : {
+        "@type" : "Person",
+        "name" : "Vinay Prabhu"
+      },
+      "reviewRating" : {
+        "@type" : "Rating",
+        "ratingValue" : movie.rating
+      },
+      "reviewBody" : movie.review.synopsis
+    }
+  }
+  return JSON.stringify(jsonbody)
+}
 
 }
 

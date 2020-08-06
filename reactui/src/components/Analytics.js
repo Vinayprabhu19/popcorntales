@@ -122,7 +122,6 @@ class Analytics extends Component {
         <Toolbar>
         <div>
             <a href="/"><HomeButton/></a>
-            <h1 id="title">Popcorn Tales</h1>
           </div>
           </Toolbar>
     </AppBar>

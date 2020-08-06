@@ -120,6 +120,15 @@ export default function FullWidthTabs(props) {
         </AccordionSummary>
         <AccordionDetails>
         <div className="review-component">
+             <div>
+              <h5>Script - {props.movie.scriptRating}/5</h5>
+              <Rating
+              name="customized-icons"
+              defaultValue={Math.round(props.movie.scriptRating)}
+              getLabelText={(value) => customIcons[value].label}
+              IconContainerComponent={IconContainer} readOnly={true}
+            />
+            </div>
             <div>
              <h5>Acting - {props.movie.actingRating}/5</h5>
             {/* {actingRating} */}
@@ -152,7 +161,7 @@ export default function FullWidthTabs(props) {
               <h5>Visuals - {props.movie.cinematographyRating}/5</h5>
               <Rating
               name="customized-icons"
-              defaultValue={Math.round(props.movie.dialoguesRating)}
+              defaultValue={Math.round(props.movie.cinematographyRating)}
               getLabelText={(value) => customIcons[value].label}
               IconContainerComponent={IconContainer} readOnly={true}
             />

@@ -4,7 +4,7 @@
   background-color: #fff;
   vertical-align: middle;
   color: black;
- 
+
 }
 .hidden{
   display: none;
@@ -81,7 +81,7 @@ footer nav{
 }
 .filter-sort{
   margin-top: 0px;
-  margin-bottom: 2%;
+  margin-bottom: 50px;
   width: 100%;
   float: right;
   padding: 10px;
@@ -121,14 +121,14 @@ footer nav{
     padding-left: 10%;
     padding-right: 10%;
   }
-} 
+}
 
 @media screen and (max-width: 600px) {
 
   .App-Content{
     margin: 100px 1% 1% 1%;
   }
-  
+
   #title{
     font-size: 1.0rem;
     visibility: hidden;
@@ -147,7 +147,7 @@ footer nav{
   .App-Content{
     margin: 100px 1% 1% 1%;
   }
-  
+
   #title{
     font-size: 1rem;
     visibility: hidden;

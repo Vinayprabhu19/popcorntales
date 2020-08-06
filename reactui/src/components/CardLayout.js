@@ -4,8 +4,6 @@ import LazyLoad from 'react-lazy-load';
 class CardLayout extends Component {
   constructor(props){
     super(props);
-    this.processImageData = this.processImageData.bind(this);
-    props.review.titleImage = this.processImageData(props.review.titleImage);
   }
   shouldComponentUpdate(nextProps, nextState){
     if(this.props.review.title == nextProps.review.title)
@@ -25,27 +23,6 @@ class CardLayout extends Component {
         <h4 className="rating">{this.props.review.rating}/5</h4>
         </div>
   </Paper>
-  }
-  processImageData(image){
-    var width,height;
-    var width,height;
-    if(window.matchMedia("(max-width: 576px)").matches){
-      width=150;height=200;
-    }
-    else if(window.matchMedia("(max-width: 958px)").matches){
-      width=200;height=260;
-    }
-    else if(window.matchMedia("(max-width: 1300px)").matches){
-      width=220;height=250;
-    }
-    else if(window.matchMedia("(max-width: 2000px)").matches){
-      width=250;height=300;
-    }
-    else{
-      width=400;height=500;
-    }
-    return image+"&width="+width+"&height="+height;
-
   }
 }
 

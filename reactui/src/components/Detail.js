@@ -38,23 +38,12 @@ const DetailTab = lazy(() => import('./DetailTab'));
 class Detail extends Component {
   constructor(props) {
     super(props);
+    var movieTitle = this.props.match.params.movieName;
+    this.worker = new WebWorker(worker);
+    this.worker.postMessage(movieTitle);
     this.state = {
       dataLoaded: false,
-        selectedMovie: {
-            title: "Popcorn Tales",
-            genre : [],
-            review : {
-              synopsis:"",
-              pros:[],
-              cons:[]
-            },
-            ticketDetails:{ticketImage:"Graph/Popcorn Tales.png"},
-            cast:[],
-            rating:5
-        },
         loading:true,
-        shareUrl:"www.popcorntales.com",
-        tags:"#popcorntales #movietime #moviereview #popcorn #letswatch",
         schema:{}
     };
   }
@@ -67,9 +56,6 @@ class Detail extends Component {
   }
 
   componentDidMount(){
-    var movieTitle = this.props.match.params.movieName;
-    this.worker = new WebWorker(worker);
-    this.worker.postMessage(movieTitle);
     this.worker.addEventListener("message", event => {
       var response = event.data;
       if(response=="Redirect")
@@ -80,8 +66,8 @@ class Detail extends Component {
             dataLoaded:true,
             selectedMovie : result,
             loading:false,
-            shareUrl:"www.popcorntales.com/review/"+movieTitle.replace(/ /g, '%20'),
-            quote:"I read a review of "+movieTitle+". Let me know what you felt after reading it!!",
+            shareUrl:"www.popcorntales.com/review/"+result.title.replace(/ /g, '%20'),
+            quote:"I read a review of "+result.title+". Let me know what you felt after reading it!!",
             schema:response.schema
           });
 

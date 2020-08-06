@@ -26,11 +26,9 @@ class Home extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
-
+    this.worker = new WebWorker(worker);
+    this.worker.postMessage("Fetch Movies");
     this.state = {
-      reviews: [],
-      totalPages: 0,
-      currentList: [],
       loading: true,
       sortOpen: false,
       filterOpen: false,
@@ -62,8 +60,6 @@ class Home extends Component {
   }
   componentDidMount() {
 
-    this.worker = new WebWorker(worker);
-    this.worker.postMessage("Fetch Movies");
 
     this.worker.addEventListener("message", event => {
       var response = event.data;

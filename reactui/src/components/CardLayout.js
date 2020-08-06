@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
-import Rating from '@material-ui/lab/Rating';
-import { withStyles } from '@material-ui/core/styles';
 import LazyLoad from 'react-lazy-load';
-const StyledRating = withStyles({
-  iconFilled: {
-    color: '#ff6d75'
-  },
-  iconHover: {
-    color: '#ff3d47',
-  },
-})(Rating);
 class CardLayout extends Component {
   constructor(props){
     super(props);
+    this.processImageData = this.processImageData.bind(this);
+    props.review.titleImage = this.processImageData(props.review.titleImage);
   }
   shouldComponentUpdate(nextProps, nextState){
     if(this.props.review.title == nextProps.review.title)
@@ -33,6 +25,27 @@ class CardLayout extends Component {
         <h4 className="rating">{this.props.review.rating}/5</h4>
         </div>
   </Paper>
+  }
+  processImageData(image){
+    var width,height;
+    var width,height;
+    if(window.matchMedia("(max-width: 576px)").matches){
+      width=150;height=200;
+    }
+    else if(window.matchMedia("(max-width: 958px)").matches){
+      width=200;height=260;
+    }
+    else if(window.matchMedia("(max-width: 1300px)").matches){
+      width=220;height=250;
+    }
+    else if(window.matchMedia("(max-width: 2000px)").matches){
+      width=250;height=300;
+    }
+    else{
+      width=400;height=500;
+    }
+    return image+"&width="+width+"&height="+height;
+
   }
 }
 

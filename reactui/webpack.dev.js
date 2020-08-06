@@ -10,6 +10,8 @@ const webpack = require('webpack');
     historyApiFallback: true
 	},
 	plugins:[
-		new BundleAnalyzerPlugin(),
+		new BundleAnalyzerPlugin({
+			excludeAssets:'/.*\.hot-update\.js/'
+		}),
 	],
  })

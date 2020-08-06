@@ -49,7 +49,7 @@ module.exports = {
         ]
     },
     plugins: [
-		// 
+		//
 		new CleanWebpackPlugin(),
         new HtmlWebPackPlugin({
             hash: true,
@@ -69,5 +69,5 @@ module.exports = {
 			  }
 			),
 		new LodashModuleReplacementPlugin(),
-		]
+    ]
 }

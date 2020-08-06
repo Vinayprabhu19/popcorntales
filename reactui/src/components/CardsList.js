@@ -6,7 +6,7 @@ class CardsList extends Component {
   constructor(props){
     super(props);
   }
-  
+
   shouldComponentUpdate(nextProps, nextState){
     if(nextProps.movies.length>0 && (this.props.movies[0].title != nextProps.movies[0].title))
     return true;
@@ -19,7 +19,7 @@ class CardsList extends Component {
        <Suspense key={image.title} fallback={<Spinner />}>
         <CardLayout key={image.title} review={image}/>
         </Suspense>
-    ))} 
+    ))}
   </GridList>
   }
 }

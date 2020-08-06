@@ -9,7 +9,7 @@ const Movie = lazy(() => import('./components/Movie'));
 const Analytics = lazy(() => import('./components/Analytics'));
 const ImageAdder = lazy(() => import('./components/ImageAdder'));
   return (
-    <Router >
+    <Router>
       <Suspense fallback={<div>Loading...</div>}>
       <Switch>
       <Route path="/" exact component={Home} />

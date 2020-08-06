@@ -1,10 +1,10 @@
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const webpack = require('webpack');
 module.exports = {
     devtool: 'source-map',
     entry: {
@@ -25,7 +25,7 @@ module.exports = {
                     presets: ['@babel/preset-react']
                 }
             }
-        }, 
+        },
 		{
 			  test: /\.css$/,
 			  use: [
@@ -48,38 +48,9 @@ module.exports = {
        { test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000'] }
         ]
     },
-	devServer: {
-    historyApiFallback: true
-	},
-	optimization: {
-	  minimize: true,
-	  minimizer: [new TerserPlugin({
-	  cache: true
-	   })],
-		splitChunks: {
-		  chunks: 'all',
-		  minSize: 20000,
-		  maxSize: 0,
-		  minChunks: 1,
-		  maxAsyncRequests: 30,
-		  maxInitialRequests: 30,
-		  automaticNameDelimiter: '~',
-		  enforceSizeThreshold: 50000,
-		  cacheGroups: {
-			defaultVendors: {
-			  test: /[\\/]node_modules[\\/]/,
-			  priority: -10
-			},
-			default: {
-			  minChunks: 2,
-			  priority: -20,
-			  reuseExistingChunk: true
-			}
-		  }
-		}
-	},
     plugins: [
-	new CleanWebpackPlugin(),
+		// 
+		new CleanWebpackPlugin(),
         new HtmlWebPackPlugin({
             hash: true,
             filename: "index.html",  //target html
@@ -90,12 +61,13 @@ module.exports = {
 		 chunkFilename: '[id].[contenthash].css'
 		 }),
 		 new CopyWebpackPlugin(
-			  { 
+			  {
 				patterns: [
 				  { from: 'src/robots.txt', to: 'robots.txt' },
 				  { from: 'src/sitemap.xml', to: 'sitemap.xml' }
 				]
 			  }
-			)
+			),
+		new LodashModuleReplacementPlugin(),
 		]
 }

@@ -1,10 +1,8 @@
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MailIcon from '@material-ui/icons/Mail';
-import 'chart.js';
-import { makeStyles } from '@material-ui/core/styles';
 import HomeButton from '@material-ui/icons/Home';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'chart.js';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import React, { Component } from 'react';

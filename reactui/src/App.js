@@ -1,5 +1,4 @@
 import React, { Suspense, lazy } from 'react';
-import history from './services/history';
 import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
@@ -10,7 +9,7 @@ const Movie = lazy(() => import('./components/Movie'));
 const Analytics = lazy(() => import('./components/Analytics'));
 const ImageAdder = lazy(() => import('./components/ImageAdder'));
   return (
-    <Router history={history}>
+    <Router >
       <Suspense fallback={<div>Loading...</div>}>
       <Switch>
       <Route path="/" exact component={Home} />

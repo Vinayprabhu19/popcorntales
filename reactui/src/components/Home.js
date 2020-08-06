@@ -66,7 +66,6 @@ class Home extends Component {
         this.getFilteredData(result);
         result = this.processImageData(result);
         var schema = this.getSchema(result);
-        result.sort(function (a, b) { return new Date(b.timeStamp) - new Date(a.timeStamp) });
         const rvs = result.map(item => {
           return item;
         });

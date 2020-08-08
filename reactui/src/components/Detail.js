@@ -5,6 +5,7 @@ import "../css/Detail.css";
 import HomeButton from '@material-ui/icons/Home';
 import Hidden from '@material-ui/core/Hidden';
 import Backdrop from '@material-ui/core/Backdrop';
+import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MailIcon from '@material-ui/icons/Mail';
 import SocialMenu from './SocialMenu';
@@ -155,8 +156,10 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
               <div style={{width:"100%",marginTop:"50px"}} >
                     <div className="d-flex justify-content-center">
                     <LazyLoad>
-                    <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
-                    </LazyLoad>
+                    <Paper elevation={19} className="card-container">
+                      <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+                      </Paper>
+                   </LazyLoad>
                     </div>
                   </div>
                   <div className="topHeader">
@@ -173,8 +176,10 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             <Hidden mdDown>
             <div className="movieDetail">
                 <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"6%",float:"left"}}>
-                  <LazyLoad className="movie-card">
+                  <LazyLoad>
+                    <Paper elevation={19}  className="card-container">
                   <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+                  </Paper>
                   </LazyLoad>
                 </div>
                 <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"50px"}}>

@@ -18,7 +18,7 @@
 }
 
 .movieDetail{
-    height: 325px;
+    height: 340px;
 }
 
 #footerText{
@@ -128,6 +128,9 @@ h5,h6{
 }
 .ticketImage{
     width: 350px;
+}
+.card-container{
+    padding: 2px;
 }
 h4{
     text-align: center;

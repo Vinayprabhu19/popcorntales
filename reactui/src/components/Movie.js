@@ -107,11 +107,19 @@ componentDidMount() {
 
           <TextField className="mediumField" type={"text"} value={this.state.trailer} onChange={e=> this.setState({trailer : e.target.value})} label={"Trailer"} InputProps={{ disableUnderline: true }}/>
           <div>
-          <Button variant="contained" color="primary" onClick={e=> this.setState({synopsis : this.state.synopsis+"<span><a href=''></a></span>"})}>Link</Button>
-          <Button variant="contained" color="primary" onClick={e=> this.setState({synopsis : this.state.synopsis+"<span><img src='https://api.popcorntales.com/image?object=Images/&width=300&height=300'></img></span>"})}>Img</Button>
+          <Button variant="contained" color="primary" onClick={e=> this.setState({synopsis : this.state.synopsis+" <span><a href=''></a></span> "})}>Link</Button>
+          <Button variant="contained" color="primary" onClick={e=> this.setState({synopsis : this.state.synopsis+"\n<img class='filmImage' src='https://api.popcorntales.com/image?object=Images/Image.jpg'></img>\n"})}>Img</Button>
           </div>
           <TextareaAutosize aria-label="Synopsis" rowsMin={3} placeholder="Synopsis" value={this.state.synopsis} onChange={e=> this.setState({synopsis : e.target.value})} className="textArea"  />
+          <div>
+          <Button variant="contained" color="primary" onClick={e=> this.setState({pros : this.state.pros+" <span><a href=''></a></span> "})}>Link</Button>
+          <Button variant="contained" color="primary" onClick={e=> this.setState({pros : this.state.pros+"<img class='filmImage' src='https://api.popcorntales.com/image?object=Images/Image.jpg'></img>"})}>Img</Button>
+          </div>
           <TextareaAutosize aria-label="Pros" rowsMin={3} placeholder="Pros" value={this.state.pros} onChange={e=> this.setState({pros : e.target.value})}  className="textArea"/>
+          <div>
+          <Button variant="contained" color="primary" onClick={e=> this.setState({cons : this.state.cons+" <span><a href=''></a></span> "})}>Link</Button>
+          <Button variant="contained" color="primary" onClick={e=> this.setState({cons : this.state.cons+"<img class='filmImage' src='https://api.popcorntales.com/image?object=Images/Image.jpg'></img>"})}>Img</Button>
+          </div>
           <TextareaAutosize aria-label="Cons" rowsMin={3} placeholder="Cons" value={this.state.cons} onChange={e=> this.setState({cons : e.target.value})}  className="textArea"/>
           <TextareaAutosize aria-label="Cast" rowsMin={3} placeholder="Cast" value={this.state.cast} onChange={e=> this.setState({cast : e.target.value})}  className="textArea"/>
           <TextField className="mediumField" type={"text"} value={this.state.ticketImage} onChange={e=> this.setState({ticketImage : e.target.value})} label={"Ticket Image"} InputProps={{ disableUnderline: true }}/>

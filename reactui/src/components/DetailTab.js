@@ -83,21 +83,21 @@ export default function FullWidthTabs(props) {
         </AccordionSummary>
         <AccordionDetails>
         <div className="review-component">
-              <h4>What worked well?</h4>
+              <h4 className="subHeader">What worked well?</h4>
               {
                   pros.map(pro=>(
                       <div className="flexbox-container" key={pro}>
                           <div><BeenhereIcon className="checkIcon" /></div>
-                          <p className="pointerText">{pro}</p>
+                          <div className='pointerText'>{ ReactHtmlParser("<p>"+pro+"</p>") }</div>
                       </div>
                   ))
               }
-              <h4 className="subsection">What didn't work well?</h4>
+              <h4 className="subHeader">What didn't work well?</h4>
               {
                   cons.map(con=>(
                       <div className="flexbox-container" key={con}>
                           <div><CancelIcon className="cancelIcon" /></div>
-                          <p className="pointerText">{con}</p>
+                          <div className='pointerText'>{ ReactHtmlParser("<p>"+con+"</p>") }</div>
                       </div>
                   ))
               }

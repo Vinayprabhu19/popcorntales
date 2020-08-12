@@ -120,7 +120,7 @@ processImageData(data){
     width=250;height=300;
   }
   else{
-    width=400;height=500;
+    width=250;height=300;
   }
   data.titleImage=  data.titleImage+"&width="+width+"&height="+height;
   return data;

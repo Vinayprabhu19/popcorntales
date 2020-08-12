@@ -14,6 +14,7 @@ import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied'
 import SentimentSatisfiedIcon from '@material-ui/icons/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@material-ui/icons/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@material-ui/icons/SentimentVerySatisfied';
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 import Rating from '@material-ui/lab/Rating';
 export default function FullWidthTabs(props) {
   const pros = props.movie.review.pros;
@@ -66,7 +67,7 @@ export default function FullWidthTabs(props) {
         <AccordionDetails className="review-component" >
         <div >
           { props.movie.review.synopsis.split("\n").map(para =>(
-                <p key={para}>{para}</p>
+            <div>{ ReactHtmlParser("<p>"+para+"</p>") }</div>
             ))
           }
         </div>

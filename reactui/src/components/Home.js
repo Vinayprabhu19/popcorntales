@@ -350,6 +350,7 @@ class Home extends Component {
 
   getSchema(movieList) {
     var jsonbody = {
+      "name":"Popcorn Tales",
       "@context": "https://schema.org",
       "@type": "ItemList",
       "itemListElement": []
@@ -360,6 +361,8 @@ class Home extends Component {
       var item = {
         "@type": "ListItem",
         "position": i + 1,
+         "name":movie.title,
+         "image":movie.titleImage,
         "url": "https://popcorntales.com/" + movie.title
       }
       jsonbody.itemListElement.push(item);

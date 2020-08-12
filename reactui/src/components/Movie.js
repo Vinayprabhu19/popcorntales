@@ -19,7 +19,7 @@ class Movie extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
   componentDidUpdate(prevProps, prevState, snapshot){
-    
+
   }
 
   setupBeforeUnloadListener = () => {
@@ -33,7 +33,7 @@ componentDidMount() {
     // Activate the event listener
     this.setupBeforeUnloadListener();
 }
-  
+
   onSubmit(evt){
     var data ={
       title:this.state.title,
@@ -86,7 +86,7 @@ componentDidMount() {
   }
 
   render() {
-    return <div className="container"> 
+    return <div className="container">
       <h3>Add Review</h3>
        <FormControl component="fieldset" className="container">
       <FormGroup>
@@ -102,10 +102,14 @@ componentDidMount() {
           <TextField className="smallField" type={"number"} value={this.state.cinematographyRating} onChange={e=> this.setState({cinematographyRating : e.target.value})} label={"Cinematography Rating"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"number"} value={this.state.editingRating} onChange={e=> this.setState({editingRating : e.target.value})} label={"Editing Rating"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"number"} value={this.state.musicRating} onChange={e=> this.setState({musicRating : e.target.value})} label={"Music Rating"} InputProps={{ disableUnderline: true }}/>
-          <TextField className="smallField" type={"number"} value={this.state.actingRating} onChange={e=> this.setState({actingRating : e.target.value})} label={"Acting Rating"} InputProps={{ disableUnderline: true }}/>          
-        
-          
+          <TextField className="smallField" type={"number"} value={this.state.actingRating} onChange={e=> this.setState({actingRating : e.target.value})} label={"Acting Rating"} InputProps={{ disableUnderline: true }}/>
+
+
           <TextField className="mediumField" type={"text"} value={this.state.trailer} onChange={e=> this.setState({trailer : e.target.value})} label={"Trailer"} InputProps={{ disableUnderline: true }}/>
+          <div>
+          <Button variant="contained" color="primary" onClick={e=> this.setState({synopsis : this.state.synopsis+"<span><a href=''></a></span>"})}>Link</Button>
+          <Button variant="contained" color="primary" onClick={e=> this.setState({synopsis : this.state.synopsis+"<span><img src='https://api.popcorntales.com/image?object=Images/&width=300&height=300'></img></span>"})}>Img</Button>
+          </div>
           <TextareaAutosize aria-label="Synopsis" rowsMin={3} placeholder="Synopsis" value={this.state.synopsis} onChange={e=> this.setState({synopsis : e.target.value})} className="textArea"  />
           <TextareaAutosize aria-label="Pros" rowsMin={3} placeholder="Pros" value={this.state.pros} onChange={e=> this.setState({pros : e.target.value})}  className="textArea"/>
           <TextareaAutosize aria-label="Cons" rowsMin={3} placeholder="Cons" value={this.state.cons} onChange={e=> this.setState({cons : e.target.value})}  className="textArea"/>
@@ -116,11 +120,11 @@ componentDidMount() {
           <TextField className="smallField" type={"text"} value={this.state.userId} onChange={e=> this.setState({userId : e.target.value})} label={"User Id"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"password"} value={this.state.password} onChange={e=> this.setState({password : e.target.value})} label={"Password"} InputProps={{ disableUnderline: true }}/>
 
-          
+
           <Button onClick={this.onSubmit} >Submit</Button>
       </FormGroup>
     </FormControl>
-    
+
     </div>
   }
 }

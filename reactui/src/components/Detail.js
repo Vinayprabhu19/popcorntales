@@ -153,7 +153,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         </AppBar>
         <div style={{width:"100%",padding:"10px"}}>
             <Hidden lgUp >
-              <div style={{width:"100%",marginTop:"50px"}} >
+              <div style={{width:"100%",marginTop:"50px",zIndex:999}} >
                     <div className="d-flex justify-content-center">
                     <LazyLoad>
                     <Paper elevation={19} className="card-container">
@@ -175,7 +175,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             </Hidden>
             <Hidden mdDown>
             <div className="movieDetail">
-                <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"6%",float:"left"}}>
+                <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"6%",float:"left",zIndex:999}}>
                   <LazyLoad>
                     <Paper elevation={19}  className="card-container">
                   <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>

@@ -60,6 +60,8 @@ class Home extends Component {
     return true;
   }
   componentDidMount() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var pageNo = urlParams.get("page");
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
@@ -70,13 +72,15 @@ class Home extends Component {
           return item;
         });
         var currentPages = [];
-        var len = (rvs.length > 8) ? 8 : rvs.length;
-        for (var i = 0; i < len; i++) {
-          currentPages.push(rvs[i]);
+        pageNo = (pageNo ==null)?1:parseInt(pageNo);
+        var start = 8 * (pageNo - 1);
+        var len = (result.length > 8 * (pageNo)) ? 8 * (pageNo) : result.length;
+        for (var i = start; i < len; i++) {
+          currentPages.push(result[i]);
         }
         this.setState({
           schema: schema,
-          activePage: 1,
+          activePage: pageNo,
           totalPages: rvs.length,
           allReviews: rvs,
           reviews: rvs,
@@ -100,6 +104,7 @@ class Home extends Component {
     this.setState({
       currentList: currentPages
     });
+    this.props.history.push("/?page="+e.currentPage);;
   }
 
   onSearch(e) {
@@ -132,11 +137,6 @@ class Home extends Component {
       },
       searchText: text
     });
-  }
-
-
-  onCardClick(image) {
-    this.props.history.push('/review/' + image.title);
   }
 
   handleSelect = (selectedIndex, e) => {
@@ -213,7 +213,7 @@ class Home extends Component {
             <footer>
               <div className="d-flex justify-content-center">
                 <Suspense fallback={<div>Loading...</div>}>
-                  <Pagination totalRecords={this.state.totalPages} pageLimit={8}
+                  <Pagination totalRecords={this.state.totalPages} pageLimit={8} landingPage={this.state.activePage}
                     pageNeighbours={1}
                     onPageChanged={this.onPageChanged} />
                 </Suspense>

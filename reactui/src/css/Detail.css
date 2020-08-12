@@ -78,6 +78,7 @@
     height: 300px;
     padding: 3px;
     display: block;
+    z-index: 999;
 }
 
 h5,h6{

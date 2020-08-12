@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
@@ -24,7 +25,7 @@ class Pagination extends Component {
 
   constructor(props) {
     super(props);
-    
+
     const { totalRecords = null, pageLimit = 30, pageNeighbours = 0 } = props;
 
     this.pageLimit = typeof pageLimit === 'number' ? pageLimit : 30;
@@ -35,10 +36,10 @@ class Pagination extends Component {
       ? Math.max(0, Math.min(pageNeighbours, 2))
       : 0;
 
-      this.state = { currentPage: 1 ,totalPages:Math.ceil(this.totalRecords / this.pageLimit)};
+      this.state = { currentPage: props.landingPage ,totalPages:Math.ceil(this.totalRecords / this.pageLimit)};
 
 
-    
+
   }
   componentDidUpdate(prevProps, prevState, snapshot) {
     if(this.props.totalRecords !== prevProps.totalRecords){
@@ -48,7 +49,7 @@ class Pagination extends Component {
         })
     }
   }
- 
+
   gotoPage = page => {
     const { onPageChanged = f => f } = this.props;
 
@@ -165,25 +166,25 @@ class Pagination extends Component {
 
               if (page === LEFT_PAGE) return (
                 <li key={index} className="page-item">
-                  <a className="page-link" href="#" aria-label="Previous" onClick={this.handleMoveLeft}>
+                  <Link className="page-link"  to="/?sort=name" aria-label="Previous" onClick={this.handleMoveLeft}>
                     <span aria-hidden="true">&laquo;</span>
                     <span className="sr-only">Previous</span>
-                  </a>
+                  </Link>
                 </li>
               );
 
               if (page === RIGHT_PAGE) return (
                 <li key={index} className="page-item">
-                  <a className="page-link" href="#" aria-label="Next" onClick={this.handleMoveRight}>
+                  <Link className="page-link" to="/?sort=name" aria-label="Next" onClick={this.handleMoveRight}>
                     <span aria-hidden="true">&raquo;</span>
                     <span className="sr-only">Next</span>
-                  </a>
+                  </Link>
                 </li>
               );
 
               return (
                 <li key={index} className={`page-item${ currentPage === page ? ' active' : ''}`}>
-                  <a className="page-link" href="#" onClick={ this.handleClick(page) }>{ page }</a>
+                  <Link className="page-link"  onClick={ this.handleClick(page) }>{ page }</Link>
                 </li>
               );
 

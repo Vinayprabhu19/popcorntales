@@ -1,11 +1,8 @@
 import React, { Suspense, lazy,Component} from 'react';
-import LazyLoad from 'react-lazy-load';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
-
 const HitAndMiss = lazy(() => import('./HitAndMiss'));
 const Ticket = lazy(() => import('./Ticket'));
 const PartsAndParcel = lazy(() => import('./PartsAndParcel'));

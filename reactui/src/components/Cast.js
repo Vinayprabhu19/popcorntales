@@ -5,7 +5,7 @@ class Cast extends Component {
     super(props);
   }
   shouldComponentUpdate(nextProps, nextState){
-    if(JSON.stringify(this.props) === JSON.stringify(props) )
+    if(JSON.stringify(this.props) === JSON.stringify(nextProps) )
     return false;
     return true;
   }

@@ -33,19 +33,18 @@ class DetailTab extends PureComponent {
 
   render(){
     return <div className="movie-detail">
-        <Accordion defaultExpanded={true}>
+        <Accordion defaultExpanded={true} TransitionProps={{ unmountOnExit: true }} >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
+            id="panel1a-header">
             <h5 className="centerText">Review</h5>
           </AccordionSummary>
           <AccordionDetails className="review-component" >
             <Synopsis synopsis={this.state.synopsis}/>
           </AccordionDetails>
       </Accordion>
-      <Accordion >
+      <Accordion TransitionProps={{ unmountOnExit: true }} >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -59,7 +58,7 @@ class DetailTab extends PureComponent {
             </Suspense>
           </AccordionDetails>
       </Accordion>
-      <Accordion >
+      <Accordion TransitionProps={{ unmountOnExit: true }} >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -68,10 +67,12 @@ class DetailTab extends PureComponent {
             <h5 className="centerText">Parts and Parcel</h5>
           </AccordionSummary>
           <AccordionDetails>
+          <Suspense fallback={<div>Loading...</div>}>
             <PartsAndParcel movie={this.state.movie}/>
+            </Suspense>
           </AccordionDetails>
       </Accordion>
-      <Accordion >
+      <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
@@ -80,10 +81,12 @@ class DetailTab extends PureComponent {
             <h5 className="centerText">Cast and Crew</h5>
           </AccordionSummary>
           <AccordionDetails>
+          <Suspense fallback={<div>Loading...</div>}>
           <Cast cast={this.state.cast}/>
+          </Suspense>
           </AccordionDetails>
       </Accordion>
-      <Accordion >
+      <Accordion TransitionProps={{ unmountOnExit: true }} >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"

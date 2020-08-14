@@ -201,9 +201,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             </div>
             </Hidden>
         </div>
-        <Suspense fallback={<div>Loading...</div>}>
           <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab} 	/>
-        </Suspense>
           <div id="footerText">
               <Hidden smUp>
                 <div className="d-flex justify-content-center">

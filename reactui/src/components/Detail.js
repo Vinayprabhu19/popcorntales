@@ -1,7 +1,7 @@
 import React, { Suspense, lazy,Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import "../css/Detail.css";
+import (/* webpackPrefetch: true */ "../css/Detail.css");
 import HomeButton from '@material-ui/icons/Home';
 import Hidden from '@material-ui/core/Hidden';
 import Backdrop from '@material-ui/core/Backdrop';

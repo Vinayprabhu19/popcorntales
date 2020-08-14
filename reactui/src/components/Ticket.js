@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import Paper from '@material-ui/core/Paper';
-import LazyLoad from 'react-lazy-load';
-import BeenhereIcon from '@material-ui/icons/Beenhere';
-import CancelIcon from '@material-ui/icons/Cancel';
-import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 class Ticket extends Component {
   constructor(props){
     super(props);

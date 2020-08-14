@@ -57,11 +57,11 @@ module.exports = {
     plugins: [
 		//
 		new CleanWebpackPlugin(),
-        new HtmlWebPackPlugin({
-            hash: true,
-            filename: "index.html",  //target html
-            template: "./src/index.html", //source html
-        }),
+      new HtmlWebPackPlugin({
+          hash: true,
+          filename: "index.html",  //target html
+          template: "./src/index.html", //source html
+      }),
 		 new MiniCssExtractPlugin({
 		 filename: '[name].[contenthash].css',
 		 chunkFilename: '[id].[contenthash].css'
@@ -76,5 +76,6 @@ module.exports = {
 			),
     new LodashModuleReplacementPlugin(),
     new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
+
     ]
 }

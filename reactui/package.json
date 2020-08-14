@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server --mode development --open --hot --config webpack.dev.js",
     "build": "webpack --mode production -p  --config webpack.prod.js",
-    "deploy": "firebase deploy"
+    "deploy": "firebase deploy",
+    "webpack":"webpack -v"
   },
   "dependencies": {
     "@material-ui/core": "^4.9.7",
@@ -58,6 +59,7 @@
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "preload-webpack-plugin": "^2.3.0",
     "style-loader": "^1.2.1",
     "terser-webpack-plugin": "^4.0.0",
     "url-loader": "^4.1.0",

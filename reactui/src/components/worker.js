@@ -1,8 +1,13 @@
 export default () => {
     self.addEventListener("message", e => {
-
-
-        postMessage(banners);
+        fetch('https://api.popcorntales.com/movie')
+        .then(response => response.json())
+        .then(result => {
+            postMessage(result);
+        })
+        .catch(error => {
+          console.error(error);
+        })
 
     });
 

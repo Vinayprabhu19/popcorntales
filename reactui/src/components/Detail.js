@@ -13,6 +13,7 @@ import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Helmet } from 'react-helmet';
+
 import LazyLoad from 'react-lazy-load';
 import {
   FacebookShareButton,
@@ -156,7 +157,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
               <div style={{width:"100%",marginTop:"50px",zIndex:999}} >
                     <div className="d-flex justify-content-center">
                     <Paper elevation={19} className="card-container">
-                      <img eager className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+                      <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                       </Paper>
                     </div>
                   </div>

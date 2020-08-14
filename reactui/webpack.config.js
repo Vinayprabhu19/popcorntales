@@ -68,6 +68,7 @@ module.exports = {
 				]
 			  }
 			),
-		new LodashModuleReplacementPlugin(),
+    new LodashModuleReplacementPlugin(),
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
     ]
 }

@@ -18,7 +18,7 @@ class Synopsis extends Component {
   render() {
     return  <div >
     { this.props.synopsis.split("\n").map(para =>(
-      <div>{ ReactHtmlParser("<p>"+para+"</p>") }</div>
+      <div key={para}>{ ReactHtmlParser("<p>"+para+"</p>") }</div>
       ))
     }
   </div>

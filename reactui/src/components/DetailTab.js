@@ -1,4 +1,4 @@
-import React, { Suspense, lazy,PureComponent} from 'react';
+import React, { Suspense, lazy,Component} from 'react';
 import LazyLoad from 'react-lazy-load';
 import Accordion from '@material-ui/core/Accordion';
 import AccordionSummary from '@material-ui/core/AccordionSummary';
@@ -11,7 +11,7 @@ const Ticket = lazy(() => import('./Ticket'));
 const PartsAndParcel = lazy(() => import('./PartsAndParcel'));
 const Cast = lazy(() => import('./Cast'));
 const Synopsis = lazy(() => import('./Synopsis'));
-class DetailTab extends PureComponent {
+class DetailTab extends Component {
   constructor(props){
     super(props);
     var pros = this.props.movie.review.pros;
@@ -28,6 +28,11 @@ class DetailTab extends PureComponent {
       synopsis:this.props.movie.review.synopsis,
       movie:props.movie
     }
+  }
+  shouldComponentUpdate(nextProps, nextState){
+    if(JSON.stringify(this.props) === JSON.stringify(nextProps) )
+    return false;
+    return true;
   }
 
 

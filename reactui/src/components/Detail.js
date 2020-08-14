@@ -1,4 +1,4 @@
-import React, { Suspense, lazy,Component,memo } from 'react';
+import React, { Suspense, lazy,Component } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import "../css/Detail.css";
@@ -156,7 +156,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
               <div style={{width:"100%",marginTop:"50px",zIndex:999}} >
                     <div className="d-flex justify-content-center">
                     <Paper elevation={19} className="card-container">
-                      <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+                      <img eager className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                       </Paper>
                     </div>
                   </div>

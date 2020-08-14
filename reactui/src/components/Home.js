@@ -44,8 +44,6 @@ class Home extends Component {
       },
       filterData: { "years": ["All"], "languages": ["All"] }
     };
-
-    this.carouselIndex = 0;
     this.onPageChanged = this.onPageChanged.bind(this);
     this.openSort = this.openSort.bind(this);
     this.handleSortClose = this.handleSortClose.bind(this);
@@ -54,6 +52,7 @@ class Home extends Component {
     this.onSearch = this.onSearch.bind(this);
   }
   shouldComponentUpdate(nextProps, nextState) {
+    console.log("Updating State");
     if (JSON.stringify(this.state) == JSON.stringify(nextState)) {
       return false;
     }
@@ -65,8 +64,6 @@ class Home extends Component {
     fetch('https://api.popcorntales.com/movie')
       .then(response => response.json())
       .then(result => {
-        this.getFilteredData(result);
-        result = this.processImageData(result);
         var schema = this.getSchema(result);
         const rvs = result.map(item => {
           return item;
@@ -87,11 +84,11 @@ class Home extends Component {
           currentList: currentPages,
           loading: false
         })
+        this.getFilteredData(result);
       })
       .catch(error => {
         console.error(error);
       })
-
   }
 
   onPageChanged(e) {
@@ -104,18 +101,16 @@ class Home extends Component {
     this.setState({
       currentList: currentPages
     });
-    this.props.history.push("/?page="+e.currentPage);;
+    this.props.history.push("?page="+e.currentPage);;
   }
 
   onSearch(e) {
 
     var text = e.target.value;
-
     var reviews = [];
     for (var i = 0; i < this.state.allReviews.length; i++) {
       reviews.push(this.state.allReviews[i]);
     }
-
 
     reviews = reviews.filter(function (r) { return r.title.toLocaleLowerCase().includes(text.toLowerCase()); });
 
@@ -139,9 +134,6 @@ class Home extends Component {
     });
   }
 
-  handleSelect = (selectedIndex, e) => {
-    this.carouselIndex = selectedIndex;
-  };
   openSort() {
     this.setState({
       sortOpen: true
@@ -168,7 +160,8 @@ class Home extends Component {
           <meta name="description" content="Find the latest movies reviews from various Indian and Foreign languages" />
           <script className='structured-data-list' type="application/ld+json">{this.state.schema}</script>
         </Helmet>
-        <div>
+        {
+        !this.state.loading && <div>
           <div className={this.state.loading ? 'hidden' : 'App'}>
             <AppBar id="appBar" position="static">
               <Toolbar>
@@ -226,10 +219,11 @@ class Home extends Component {
             </footer>
           </div>
         </div>
+        }
       </>
     );
   }
-  getFilteredData(result) {
+  async getFilteredData(result) {
     for (var i = 0; i < result.length; i++) {
       if (this.state.filterData.languages.includes(result[i].language)) continue;
       this.state.filterData.languages.push(result[i].language);

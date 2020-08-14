@@ -184,7 +184,7 @@ class Pagination extends Component {
 
               return (
                 <li key={index} className={`page-item${ currentPage === page ? ' active' : ''}`}>
-                  <Link className="page-link"  onClick={ this.handleClick(page) }>{ page }</Link>
+                  <Link className="page-link" to="/?sort=name" onClick={ this.handleClick(page) }>{ page }</Link>
                 </li>
               );
 

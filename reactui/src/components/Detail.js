@@ -155,11 +155,9 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             <Hidden lgUp >
               <div style={{width:"100%",marginTop:"50px",zIndex:999}} >
                     <div className="d-flex justify-content-center">
-                    <LazyLoad>
                     <Paper elevation={19} className="card-container">
                       <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                       </Paper>
-                   </LazyLoad>
                     </div>
                   </div>
                   <div className="topHeader">
@@ -176,11 +174,9 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             <Hidden mdDown>
             <div className="movieDetail">
                 <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"6%",float:"left",zIndex:999}}>
-                  <LazyLoad>
                     <Paper elevation={19}  className="card-container">
                   <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
                   </Paper>
-                  </LazyLoad>
                 </div>
                 <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"50px"}}>
                     <h1 className="headerLevel1" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>

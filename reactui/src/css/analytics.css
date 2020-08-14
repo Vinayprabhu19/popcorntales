@@ -1,3 +1,10 @@
+html,body,#root {
+    font-family: 'Verdana';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    width: 100%;
+  }
 .chart-container{
     margin-left: 7%;
     margin-right: 7%;
@@ -11,7 +18,7 @@
 
 .smallChart{
     padding: 20px;
-    width: 250px; 
+    width: 250px;
     margin: 10px;
 }
 
@@ -21,7 +28,7 @@
     background-color: #fff;
     vertical-align: middle;
     color: black;
-   
+
   }
   #title{
     padding-left: 20px ;

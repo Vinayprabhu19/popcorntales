@@ -1,4 +1,12 @@
 
+
+html,body,#root {
+    font-family: 'Verdana';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    width: 100%;
+  }
 .hidden{
     display: none;
 }

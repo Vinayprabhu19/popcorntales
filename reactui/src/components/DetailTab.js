@@ -65,12 +65,14 @@ export default function FullWidthTabs(props) {
           <h5 className="centerText">Review</h5>
         </AccordionSummary>
         <AccordionDetails className="review-component" >
+          <LazyLoad>
         <div >
           { props.movie.review.synopsis.split("\n").map(para =>(
             <div>{ ReactHtmlParser("<p>"+para+"</p>") }</div>
             ))
           }
         </div>
+        </LazyLoad>
         </AccordionDetails>
     </Accordion>
     <Accordion >
@@ -83,6 +85,8 @@ export default function FullWidthTabs(props) {
         </AccordionSummary>
         <AccordionDetails>
         <div className="review-component">
+        <LazyLoad>
+          <>
               <h4 className="subHeader">What worked well?</h4>
               {
                   pros.map(pro=>(
@@ -101,6 +105,8 @@ export default function FullWidthTabs(props) {
                       </div>
                   ))
               }
+              </>
+              </LazyLoad>
               <div className="d-flex justify-content-center">
                 <LazyLoad>
                   <Paper elevation={10}>

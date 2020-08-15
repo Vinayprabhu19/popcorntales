@@ -7,6 +7,7 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import com.serverless.dto.ApiGatewayProxyRequest;
 import com.serverless.dto.ApiGatewayProxyResponse;
+import com.serverless.service.DesignService;
 import com.serverless.service.MovieService;
 
 public class Handler implements RequestHandler<ApiGatewayProxyRequest, ApiGatewayProxyResponse> {
@@ -41,9 +42,14 @@ public class Handler implements RequestHandler<ApiGatewayProxyRequest, ApiGatewa
 		return MovieService.addImage(body);
 	}
 
+	public ApiGatewayProxyResponse getDesigns(ApiGatewayProxyRequest input,Context context) {
+		return DesignService.getDesigns();
+	}
+	
 	
 	private String decodeString(String encodedString) {
 		byte[] byteArray = Base64.decodeBase64(encodedString.getBytes());
 		return new String(byteArray);
 	}
+	
 }

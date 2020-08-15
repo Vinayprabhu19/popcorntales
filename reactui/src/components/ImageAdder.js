@@ -18,7 +18,8 @@ class Movie extends Component {
     this.state = {
       imageName:"",
       userId:"",
-      password:""
+      password:"",
+      title:""
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -47,6 +48,7 @@ componentDidMount() {
     }
     var strImage = this.state.image.replace(/^data:image\/[a-z]+;base64,/, "");
     var data ={
+      title:this.state.title,
       imageName:this.state.imageName,
       image:strImage,
       imageType:this.state.imageType,
@@ -90,8 +92,10 @@ this.setState({
       <h3>Add Image</h3>
        <FormControl component="fieldset" className="container">
       <FormGroup>
+      <TextField className="smallField" type={"text"} value={this.state.title} onChange={e=> this.setState({title : e.target.value})} label={"Title(Only for Design)"} InputProps={{ disableUnderline: true }}/>
+
           <input type="file" id="file" onChange={this.onFileChange} />
-          <TextField className="smallField" type={"text"} value={this.state.imageName} onChange={e=> this.setState({imageName : e.target.value})} label={"Image Name"} InputProps={{ disableUnderline: true }}/>
+          <TextField className="smallField" type={"text"} value={this.state.imageName} onChange={e=> this.setState({imageName : e.target.value})} label={"Image Name ( Design for art)"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"text"} value={this.state.userId} onChange={e=> this.setState({userId : e.target.value})} label={"User Id"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"password"} value={this.state.password} onChange={e=> this.setState({password : e.target.value})} label={"Password"} InputProps={{ disableUnderline: true }}/>
 

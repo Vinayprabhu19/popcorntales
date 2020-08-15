@@ -62,6 +62,9 @@ functions:
   getMovies: 
     handler: com.serverless.Handler::getMovies
     warmup: true
+  getDesigns: 
+    handler: com.serverless.Handler::getDesigns
+    warmup: true
   getMovieReview:
     handler: com.serverless.Handler::getMovieReview
     warmup: true

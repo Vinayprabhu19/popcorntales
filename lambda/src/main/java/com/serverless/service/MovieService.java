@@ -43,6 +43,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.serverless.config.DynamoDBOperations;
 import com.serverless.dto.ApiGatewayProxyRequest;
 import com.serverless.dto.ApiGatewayProxyResponse;
+import com.serverless.dto.Design;
 import com.serverless.models.Movie;
 import com.serverless.models.MovieReview;
 import com.serverless.models.Review;
@@ -54,6 +55,7 @@ public class MovieService {
 	
     private static final String DYNAMODB_TABLE_MOVIE = "MOVIE";
     private static final String DYNAMODB_TABLE_MOVIE_REVIEW = "MOVIE_REVIEW";
+    private static final String DYNAMODB_TABLE_DESIGN = "Design";
     private static final String DYNAMO_AUTH_TABLE = "AUTH";
     private static final Regions REGION = Regions.US_EAST_1;
     private static final String BUCKET_NAME = "popcorntales-media";
@@ -317,6 +319,15 @@ public class MovieService {
 			metadata.setContentType(imageType);
 			metadata.setCacheControl("public, max-age=31536000");
 			s3.putObject(BUCKET_NAME, imageName, fis, metadata);
+			
+			if(input.has("title") && input.getString("title").trim().length()!=0) {
+				String title = input.getString("title");
+				Design design = new Design();
+				design.setTitle(title);
+				design.setImage(imageName);
+				
+				DynamoDBOperations.persistData(dynamoDB, DYNAMODB_TABLE_DESIGN, design.getItem());
+			}
 			response.setBody(DTOUtil.getMessage("Added image "));
 			response.setStatusCode(HttpStatus.SC_CREATED);
 		} catch (AmazonServiceException e) {

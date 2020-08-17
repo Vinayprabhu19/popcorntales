@@ -22,7 +22,6 @@
     /* margin: 40px; */
 }
 .title{
-    width: 225px;
     font-size: 1.25em;
     font-weight: bolder;
     text-align: center;
@@ -73,7 +72,7 @@
     padding: 3px;
     object-fit: stretch;
     align-self: auto;
-    
+
 }
 #card-figure{
     margin: 0;
@@ -188,7 +187,6 @@
         margin-right: 6%;
     }
     .title{
-        width: 150px;
         font-size: .95em;
     }
     .language{
@@ -211,7 +209,6 @@
         padding: 0;
     }
     .title{
-        width: 150px;
         font-size: .9em;
     }
     .language,.rating{
@@ -234,7 +231,6 @@
         padding: 0;
     }
     .title{
-        width: 130px;
         font-size: .8em;
     }
     .language,.rating{
@@ -249,7 +245,7 @@
         align-self: center;
       }
   }
-  
+
   @media screen and (max-width: 350px) {
     .card-container{
         margin-left : 2px;
@@ -257,7 +253,6 @@
         padding: 0;
     }
     .title{
-        width: 120px;
         margin:0;
         font-size: .7em;
     }
@@ -273,4 +268,3 @@
         align-self: center;
       }
   }
-  

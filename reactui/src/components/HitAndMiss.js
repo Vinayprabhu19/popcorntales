@@ -9,7 +9,7 @@ class HitAndMiss extends Component {
     super(props);
   }
   shouldComponentUpdate(nextProps, nextState){
-    if(JSON.stringify(this.props) === JSON.stringify(props) )
+    if(JSON.stringify(this.props) === JSON.stringify(this.props) )
     return false;
     return true;
   }

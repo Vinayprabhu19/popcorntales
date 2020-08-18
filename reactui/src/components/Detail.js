@@ -75,6 +75,10 @@ class Detail extends Component {
          }})
     .then(response => response.json())
     .then(result => {
+      if(result.message!= null ){
+        this.props.history.push('/404');
+        return;
+      }
         result=this.processImageData(result);
         result.review=JSON.parse(result.review);
         var schema = this.getSchema(result);
@@ -91,7 +95,8 @@ class Detail extends Component {
     })
     .catch(error =>{
       console.error(error);
-      this.props.history.push('/');
+      this.props.history.push('/404');
+      return;
     })
   }
 

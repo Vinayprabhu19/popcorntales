@@ -13,7 +13,8 @@ module.exports = {
 	  },
     output: {
         path: path.join(__dirname, "/dist"),
-        filename: process.env.production ? `bundle-[chunkHash].js` : `bundle-[hash].js`
+        filename: process.env.production ? `bundle-[chunkHash].js` : `bundle-[hash].js`,
+        publicPath: '/'
     },
     module: {
         rules: [{

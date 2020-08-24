@@ -9,22 +9,13 @@ import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import MailIcon from '@material-ui/icons/Mail';
 import SocialMenu from './SocialMenu';
+// import ShareMenu from './ShareMenu';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Helmet } from 'react-helmet';
 
 import LazyLoad from 'react-lazy-load';
-import {
-  FacebookShareButton,
-  TelegramShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-  FacebookIcon,
-  WhatsappIcon,
-  TelegramIcon,
-  TwitterIcon
-} from "react-share";
 
 const StyledRating = withStyles({
   iconFilled: {
@@ -54,8 +45,6 @@ class Detail extends Component {
         },
         selectedTab:null,
         loading:true,
-        shareUrl:"www.popcorntales.com",
-        tags:"#popcorntales #movietime #moviereview #popcorn #letswatch",
         schema:{}
     };
   }
@@ -88,8 +77,6 @@ class Detail extends Component {
             selectedMovie : result,
             selectedTab:0,
             loading:false,
-            shareUrl:"www.popcorntales.com/review/"+movieTitle.replace(/ /g, '%20'),
-            quote:"I read a review of "+movieTitle+". Let me know what you felt after reading it!!",
             schema:schema
           });
     })
@@ -152,7 +139,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             <a href="/"><HomeButton/></a>
             {(this.state.selectedMovie.title.length < 20) && <h1 id="title">{this.state.selectedMovie.title +" Movie Review"}</h1>}
             {(this.state.selectedMovie.title.length >= 20) && <h1 id="title">{this.state.selectedMovie.title}</h1>}
-            <section style={{marginLeft:"auto"}}>
+            <section style={{marginLeft:"auto",display:"inline-block"}}>
             <SocialMenu/>
             </section>
           </Toolbar>
@@ -169,6 +156,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                   <div className="topHeader">
                   <div className="d-flex justify-content-center">
                   <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                  {/* <ShareMenu title={this.state.selectedMovie.title}/> */}
                   </div>
                   <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</h3>
                   <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.genre.join(",")}</h3>
@@ -185,17 +173,14 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                   </Paper>
                 </div>
                 <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"50px"}}>
+                    <div className="d-flex justify-content-center">
                     <h1 className="headerLevel1" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                    {/* <ShareMenu title={this.state.selectedMovie.title}/> */}
+                    </div>
                     <h2 className="headerLevel2" >{this.state.selectedMovie.language}</h2>
                     <h3 className="headerLevel2" >{this.state.selectedMovie.genre.join(",")}</h3>
                     <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>
                     {overallRating}
-                    <div className="icon-container">
-                    <TwitterShareButton url={this.state.shareUrl} quote={this.state.quote} className="social-media-icon"><TwitterIcon size={28} round/></TwitterShareButton>
-                    <FacebookShareButton url={this.state.shareUrl} title={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={28} round/></FacebookShareButton>
-                    <WhatsappShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><WhatsappIcon size={28} round/></WhatsappShareButton>
-                    <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={28} round/></TelegramShareButton>
-                    </div>
                 </div>
                 <div style={{float:"right",marginLeft:"150px",float:"right"}}>
                 <LazyLoad >
@@ -209,14 +194,6 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         </div>
           <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab} 	/>
           <div id="footerText">
-              <Hidden smUp>
-                <div className="d-flex justify-content-center">
-                  <TwitterShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TwitterIcon size={25} round/></TwitterShareButton>
-                  <FacebookShareButton url={this.state.shareUrl} quote={this.state.quote} hashtag={this.state.tags} className="social-media-icon"><FacebookIcon size={25} round/></FacebookShareButton>
-                  <WhatsappShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><WhatsappIcon size={25} round/></WhatsappShareButton>
-                  <TelegramShareButton url={this.state.shareUrl} title={this.state.quote} className="social-media-icon"><TelegramIcon size={25} round/></TelegramShareButton>
-                  </div>
-              </Hidden>
               <div className="d-flex justify-content-center">
               <h6>Need your feedback to improve
               <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>

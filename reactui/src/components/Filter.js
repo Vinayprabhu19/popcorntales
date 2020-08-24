@@ -34,6 +34,7 @@ class Filter extends Component {
         this.props.close(null);
       }
       onOK(){
+        debugger;
         this.state.originalFilter["year"]=this.state.filter["year"];
         this.state.originalFilter["language"]=this.state.filter["language"];
         this.state.originalFilter["rating"]=this.state.filter["rating"];
@@ -96,7 +97,7 @@ class Filter extends Component {
         <Button onClick={this.onCancel}>Cancel</Button>
       </ButtonGroup>
     </Grid>
-    
+
   </div>
   </Dialog>
   }

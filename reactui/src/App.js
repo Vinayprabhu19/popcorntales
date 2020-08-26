@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from 'react';
 import {Redirect, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 
+import CircularProgress from '@material-ui/core/CircularProgress';
 function App() {
   const reload = () => window.location.reload();
   const Home = lazy(() => import('./components/Home'));
@@ -11,7 +12,7 @@ function App() {
   const NotFoundPage = lazy(() => import('./components/NotFoundPage'));
   return (
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={ <CircularProgress color="inherit" style={{marginLeft:"50%"}}/>}>
       <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/404" exact component={NotFoundPage} />

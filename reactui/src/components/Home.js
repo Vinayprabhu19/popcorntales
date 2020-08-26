@@ -150,7 +150,7 @@ class Home extends Component {
   render() {
     if (this.state.loading) {
       return <Backdrop open={this.state.loading}>
-        <CircularProgress color="inherit" />
+         <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />
       </Backdrop>
     }
     return (
@@ -172,7 +172,7 @@ class Home extends Component {
                 </section>
               </Toolbar>
             </AppBar>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
               <Banner />
             </Suspense>
             <Paper className="filter-sort" elevation={12}>
@@ -194,10 +194,10 @@ class Home extends Component {
                     <Button className="iconBtn" onClick={this.openFilter}><FilterListIcon fontSize={"default"} style={{ fill: "purple" }} /> </Button>
                   </Tooltip>
                 </Hidden>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
                   <Sort open={this.state.sortOpen} close={(data) => this.handleSortClose(data)} data={this.state.sorter} />
                 </Suspense>
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
                   <Filter open={this.state.filterOpen} close={(data) => this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData} />
                 </Suspense>
               </div>
@@ -205,7 +205,7 @@ class Home extends Component {
             <CardsList movies={this.state.currentList} />
             <footer>
               <div className="d-flex justify-content-center">
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
                   <Pagination totalRecords={this.state.totalPages} pageLimit={8} landingPage={this.state.activePage}
                     pageNeighbours={1}
                     onPageChanged={this.onPageChanged} />
@@ -361,6 +361,13 @@ class Home extends Component {
       }
       jsonbody.itemListElement.push(item);
     }
+    // var entries="";
+  //   for(var i=0;i<movieList.length;i++){
+  //     var entry = "<url>\n<loc>" + "https://www.popcorntales.com/"+movieList[i].title+"</loc>\n"+
+  //   "<lastmod>"+new Date().toISOString()+"</lastmod>\n"+
+  // "</url>";
+  //     entries = entries + entry +"\n";
+  // }
     return JSON.stringify(jsonbody)
   }
 

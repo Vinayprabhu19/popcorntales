@@ -46,7 +46,7 @@ class DetailTab extends Component {
             <Synopsis synopsis={this.state.synopsis}/>
           </AccordionDetails>
       </Accordion>
-      <Accordion TransitionProps={{ unmountOnExit: true }} >
+      <Accordion >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"

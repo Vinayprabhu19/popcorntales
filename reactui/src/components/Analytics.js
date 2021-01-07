@@ -28,12 +28,13 @@ class Analytics extends Component {
           filter:{
             "language":"All",
             "year":"All",
+            "genre":"All",
             "rating":[0.0,5.0]
           },
-          filterData:{"years":["All"],"languages":["All"]},
+          filterData:{"years":["All"],"languages":["All"],"genre":["All"]},
           bestMovie:{},
-            worstMovie:{},
-            averageRating:5
+          worstMovie:{},
+          averageRating:5
         };
 
      this.openFilter=this.openFilter.bind(this);
@@ -82,6 +83,13 @@ class Analytics extends Component {
     for(var i=0;i<result.length;i++){
         if(this.state.filterData.years.includes(result[i].year)) continue;
         this.state.filterData.years.push(result[i].year);}
+    for (var i = 0; i < result.length; i++) {
+      for(var j=0;j<result[i].genre.length;j++){
+        if (this.state.filterData.genre.includes(result[i].genre[j])) continue;
+        this.state.filterData.genre.push(result[i].genre[j]);
+      }
+
+    }
     this.state.filterData.years.sort();
     this.state.filterData.years.reverse();
   }
@@ -100,7 +108,9 @@ class Analytics extends Component {
       reviews = reviews.filter(function(r){return r.language == data.filter.language});}
     if(data.filter.year!="All"){
         reviews = reviews.filter(function(r){return r.year == data.filter.year});}
-
+    if (data.filter.genre != "All") {
+      reviews = reviews.filter(function (r) { return r.genre.includes(data.filter.genre)});
+    }
     reviews = reviews.filter(function(r){return r.rating >= data.filter.rating[0] && r.rating <= data.filter.rating[1]});
     var categoryData = this.getMovieCountByCategory(reviews);
     var ratingByCategory = this.getRatingCountByCategory(reviews);

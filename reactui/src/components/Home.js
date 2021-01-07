@@ -371,14 +371,14 @@ class Home extends Component {
       }
       jsonbody.itemListElement.push(item);
     }
-    var entries="";
-    for(var i=0;i<movieList.length;i++){
-      var entry = "<url>\n<loc>" + "https://www.popcorntales.com/"+movieList[i].title.replaceAll(" ","%20")+"</loc>\n"+
-    "<lastmod>"+new Date().toISOString()+"</lastmod>\n"+
-  "</url>";
-      entries = entries + entry +"\n";
-  }
-  debugger;
+  //   var entries="";
+  //   for(var i=0;i<movieList.length;i++){
+  //     var entry = "<url>\n<loc>" + "https://www.popcorntales.com/"+movieList[i].title.replaceAll(" ","%20")+"</loc>\n"+
+  //   "<lastmod>"+new Date().toISOString()+"</lastmod>\n"+
+  // "</url>";
+  //     entries = entries + entry +"\n";
+  // }
+  // debugger;
 
     return JSON.stringify(jsonbody)
   }

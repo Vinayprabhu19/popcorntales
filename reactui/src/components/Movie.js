@@ -13,7 +13,7 @@ class Movie extends Component {
       titleImage:"",year:"2020-05",genre:"",rating:5,scriptRating:5,directionRating:5,dialoguesRating:5,cinematographyRating:5,
       editingRating:5,musicRating:5,actingRating:5,
       synopsis:"",pros:"",cons:"",language:"",cast:"",
-      ticketImage:"",watchDate:"2020-05-19",placeWatched:"",userId:"",password:"",trailer:""
+      ticketImage:"",watchDate:"2020-05-19",placeWatched:"",userId:"",password:"",trailer:"https://www.youtube.com/embed/"
     };
 
     this.onSubmit = this.onSubmit.bind(this);

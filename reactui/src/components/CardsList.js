@@ -7,11 +7,6 @@ class CardsList extends Component {
     super(props);
   }
 
-  shouldComponentUpdate(nextProps, nextState){
-    if(nextProps.movies.length>0 && (this.props.movies[0].title != nextProps.movies[0].title))
-    return true;
-    return false;
-  }
   render() {
     return <GridList className="App-Content cardGridList"  >
     {

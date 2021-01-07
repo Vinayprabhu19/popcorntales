@@ -46,6 +46,11 @@ html,body,#root {
     margin: 10px;
 }
 
+.largeChart{
+    padding: 20px;
+    width: 100%;
+}
+
 #section{
     align-items: center;
     align-content: center;
@@ -71,3 +76,4 @@ html,body,#root {
     text-align: center;
     margin: 5px;
 }
+

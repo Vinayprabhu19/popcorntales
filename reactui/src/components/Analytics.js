@@ -162,7 +162,7 @@ class Analytics extends Component {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <h5 className="centerText">High Rated : {this.state.bestMovie.title} {this.state.bestMovie.rating}</h5>
+          <h5 className="centerText">High Rated : {this.state.bestMovie.title} - {this.state.bestMovie.rating}</h5>
         </AccordionSummary>
         <AccordionDetails>
         <Grid container justify = "center" >
@@ -176,7 +176,7 @@ class Analytics extends Component {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <h5 className="centerText">Low Rated : {this.state.worstMovie.title} {this.state.worstMovie.rating}</h5>
+          <h5 className="centerText">Low Rated : {this.state.worstMovie.title} - {this.state.worstMovie.rating}</h5>
         </AccordionSummary>
         <AccordionDetails>
         <Grid container justify = "center" >
@@ -185,11 +185,11 @@ class Analytics extends Component {
         </AccordionDetails>
     </Accordion>
     <Grid container justify = "center" >
-      <Paper  elevation={15}className="mediumChart">
+      <Paper  elevation={15} className="largeChart">
         <h6 className="chartText">Average Rating - {this.state.averageRating}</h6>
-        <LineChart data={this.state.ratingByCategory} precision={2} xtitle="Category" ytitle="Rating" min={0} max={5.0} legend="bottom"/>
+        <LineChart data={this.state.ratingByCategory} precision={2} xtitle="Category" ytitle="Rating" min={0} max={5.0}  className="largeChart" legend="bottom"/>
       </Paper>
-      <Paper  elevation={15}className="mediumChart">
+      <Paper  elevation={15} className="mediumChart">
       <h6 className="chartText">Movies in filter - {this.state.reviews.length}</h6>
         <PieChart data={this.state.categoryData} legend="bottom" donut={true} />
       </Paper>

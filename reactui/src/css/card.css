@@ -149,6 +149,10 @@
         width: 400px;
         height: 500px;
     }
+    .title{
+        width: 400px;
+        font-size: 1.15em;
+    }
 }
 @media screen and (max-width: 2000px){
     .card-image{
@@ -158,6 +162,10 @@
     .movie-img{
         align-self: center;
       }
+      .title{
+        width: 250px;
+        font-size: 1.05em;
+    }
 }
 @media screen and (max-width: 1398px) {
     .card-container{

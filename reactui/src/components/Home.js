@@ -150,7 +150,7 @@ class Home extends Component {
   render() {
     if (this.state.loading) {
       return <Backdrop open={this.state.loading}>
-         <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />
+         <CircularProgress color="inherit"/>
       </Backdrop>
     }
     return (
@@ -172,7 +172,7 @@ class Home extends Component {
                 </section>
               </Toolbar>
             </AppBar>
-            <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
+            <Suspense fallback={  <CircularProgress color="inherit" />}>
               <Banner />
             </Suspense>
             <Paper className="filter-sort" elevation={12}>

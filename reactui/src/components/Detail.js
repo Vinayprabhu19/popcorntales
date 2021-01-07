@@ -182,6 +182,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                     <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>
                     {overallRating}
                 </div>
+                <Hidden lgDown>
                 <div style={{float:"right",marginLeft:"150px",float:"right"}}>
                 <LazyLoad >
                   <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
@@ -189,6 +190,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                   </iframe>
                   </LazyLoad>
                 </div>
+                </Hidden>
             </div>
             </Hidden>
         </div>

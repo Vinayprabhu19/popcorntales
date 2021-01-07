@@ -12,7 +12,7 @@ function App() {
   const NotFoundPage = lazy(() => import('./components/NotFoundPage'));
   return (
     <Router>
-      <Suspense fallback={ <CircularProgress color="inherit" style={{marginLeft:"50%"}}/>}>
+      <Suspense fallback={ <CircularProgress color="inherit"/>}>
       <Switch>
       <Route path="/" exact component={Home} />
       <Route path="/404" exact component={NotFoundPage} />

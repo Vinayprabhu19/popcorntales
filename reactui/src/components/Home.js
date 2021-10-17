@@ -20,6 +20,13 @@ const Sort = lazy(() => import('./Sort'));
 const Filter = lazy(() => import('./Filter'));
 const CardsList = lazy(() => import('./CardsList'));
 const Pagination = lazy(() => import('./Pagination'));
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import RestoreIcon from '@material-ui/icons/Restore';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import FacebookIcon from '@material-ui/icons/Facebook';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -71,8 +78,8 @@ class Home extends Component {
         });
         var currentPages = [];
         pageNo = (pageNo ==null)?1:parseInt(pageNo);
-        var start = 8 * (pageNo - 1);
-        var len = (result.length > 8 * (pageNo)) ? 8 * (pageNo) : result.length;
+        var start = 12 * (pageNo - 1);
+        var len = (result.length > 12 * (pageNo)) ? 12 * (pageNo) : result.length;
         for (var i = start; i < len; i++) {
           currentPages.push(result[i]);
         }
@@ -94,8 +101,8 @@ class Home extends Component {
 
   onPageChanged(e) {
     var currentPages = [];
-    var start = 8 * (e.currentPage - 1);
-    var len = (this.state.reviews.length > 8 * (e.currentPage)) ? 8 * (e.currentPage) : this.state.reviews.length;
+    var start = 12 * (e.currentPage - 1);
+    var len = (this.state.reviews.length > 12 * (e.currentPage)) ? 12 * (e.currentPage) : this.state.reviews.length;
     for (var i = start; i < len; i++) {
       currentPages.push(this.state.reviews[i]);
     }
@@ -116,7 +123,7 @@ class Home extends Component {
     reviews = reviews.filter(function (r) { return r.title.toLocaleLowerCase().includes(text.toLowerCase()); });
 
     var currentPages = [];
-    var len = (reviews.length > 8) ? 8 : reviews.length;
+    var len = (reviews.length > 12) ? 12 : reviews.length;
     for (var i = 0; i < len; i++) {
       currentPages.push(reviews[i]);
     }
@@ -166,11 +173,7 @@ class Home extends Component {
           <div className={this.state.loading ? 'hidden' : 'App'}>
             <AppBar id="appBar" position="static">
               <Toolbar>
-                <Tooltip title="Analytics"><a href="/analytics"><BarChartIcon fontSize={"large"} color={"primary"} /></a></Tooltip>
                 <h1 id="title">Popcorn Tales</h1>
-                <section className="rightToolbar">
-                  <SocialMenu />
-                </section>
               </Toolbar>
             </AppBar>
             <Suspense fallback={  <CircularProgress color="inherit" />}>
@@ -207,17 +210,32 @@ class Home extends Component {
             <footer>
               <div className="d-flex justify-content-center">
                 <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
-                  <Pagination totalRecords={this.state.totalPages} pageLimit={8} landingPage={this.state.activePage}
+                  <Pagination totalRecords={this.state.totalPages} pageLimit={12} landingPage={this.state.activePage}
                     pageNeighbours={1}
                     onPageChanged={this.onPageChanged} />
                 </Suspense>
               </div>
-              <div className="d-flex justify-content-center">
-                <h6>Need your feedback to improve
-              <a href="mailto:popcorntales19@gmail.com"> <MailIcon /></a>
-                </h6>
+              <div className="d-flex justify-content-center" style={{height:"50px",margin:"5px"}}>
+
               </div>
+              <Paper className="fixedFooter" elevation="5">
+                <BottomNavigation
+
+                    showLabels
+                  >
+                    <a href="https://www.instagram.com/popcorntaless" target="_blank" className="social-icon">
+                    <BottomNavigationAction label="Instagram" icon={<InstagramIcon />} />
+                    </a>
+                    <a href="/analytics" target="_blank"  className="social-icon">
+                    <BottomNavigationAction label="Analytics" icon={<BarChartIcon />} />
+                    </a>
+                    <a href="mailto:popcorntales19@gmail.com" target="_blank"  className="social-icon">
+                    <BottomNavigationAction label="Mail" icon={<MailIcon />} />
+                    </a>
+                  </BottomNavigation>
+              </Paper>
             </footer>
+
           </div>
         </div>
         }
@@ -288,7 +306,7 @@ class Home extends Component {
     reviews = reviews.filter(function (r) { return r.rating >= data.filter.rating[0] && r.rating <= data.filter.rating[1] });
 
     var currentPages = [];
-    var len = (reviews.length > 8) ? 8 : reviews.length;
+    var len = (reviews.length > 12) ? 12 : reviews.length;
     for (var i = 0; i < len; i++) {
       currentPages.push(reviews[i]);
     }
@@ -336,7 +354,7 @@ class Home extends Component {
         })
     }
     var currentPages = [];
-    var len = (reviews.length > 8) ? 8 : reviews.length;
+    var len = (reviews.length > 12) ? 12 : reviews.length;
     for (var i = 0; i < len; i++) {
       currentPages.push(reviews[i]);
     }

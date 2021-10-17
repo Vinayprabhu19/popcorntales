@@ -21,6 +21,21 @@
     flex-wrap: nowrap;
     /* margin: 40px; */
 }
+.info{
+    margin: 100px;
+    position: absolute;
+    font-family: 'Helvetica';
+}
+.bannerTitle{
+    text-align: left;
+    color: white;
+    font-size: 3em;
+}
+.bannerRating{
+    color: white;
+    text-align: left;
+    font-size: 2em;
+}
 .title{
     width: 225px;
     font-size: 1.25em;
@@ -139,6 +154,8 @@
     height: 350px;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    /* filter:contrast(150%); */
+    /* filter:blur(5px); */
 }
 
 .buttonGroup{

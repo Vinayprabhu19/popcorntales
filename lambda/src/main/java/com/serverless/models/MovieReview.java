@@ -11,6 +11,7 @@ public class MovieReview {
 	private String title;
 	private String language;
 	private String titleImage;
+	  private String coverImage;
 	private String year;
 	private JSONArray genre;
 	private Review review;
@@ -33,6 +34,12 @@ public class MovieReview {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getCoverImage() {
+		return coverImage;
+	}
+	public void setCoverImage(String coverImage) {
+		this.coverImage = coverImage;
 	}
 	public String getLanguage() {
 		return language;
@@ -149,6 +156,7 @@ public class MovieReview {
     	item.with("title", this.title);
     	item.with("language", this.language);
     	item.with("titleImage", this.titleImage);
+    	item.with("coverImage", this.coverImage);
     	item.with("rating", this.rating);
     	item.with("scriptRating", this.scriptRating);
     	item.with("directionRating", this.directionRating);

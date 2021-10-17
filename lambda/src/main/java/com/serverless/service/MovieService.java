@@ -86,6 +86,7 @@ public class MovieService {
 			//Get individual objects
 			String title = input.getString("title");
 			String titleImage = input.getString("titleImage");
+			String coverImage=input.getString("coverImage");
 			String language = input.getString("language");
 			Float rating = input.getFloat("rating");
 			Float scriptRating = input.getFloat("scriptRating");
@@ -110,6 +111,7 @@ public class MovieService {
 			movie.setRating(rating);
 			movie.setYear(year);
 			movie.setGenre(genres);
+			movie.setCoverImage(coverImage);
 			
 			Review review = new Review();
 			review.setSynopsis(reviewObj.getString("synopsis"));
@@ -127,6 +129,7 @@ public class MovieService {
 			movieReview.setMusicRating(musicRating);
 			movieReview.setActingRating(actingRating);
 			movieReview.setYear(year);
+			movieReview.setCoverImage(coverImage);
 			movieReview.setGenre(genres);
 			movieReview.setReview(review);
 			movieReview.setTicketImage(ticketDetails.getString("ticketImage"));
@@ -171,7 +174,9 @@ public class MovieService {
 			while (iterator.hasNext()) { 
 				Item item = iterator.next();
 				String titleImage = DTOUtil.API_OBJECT_URL + item.get("titleImage");
+				String coverImage=DTOUtil.API_OBJECT_URL + item.get("coverImage");
 				item.with("titleImage", titleImage);
+				item.with("coverImage", coverImage);
 				movieList.add(item);
 //				movies.put(new JSONObject(item.toJSON()));
 			}

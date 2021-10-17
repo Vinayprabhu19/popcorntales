@@ -105,13 +105,12 @@ footer nav{
   align-items: center;
 }
 .filter-sort{
-  margin-top: 0px;
-  margin-bottom: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
   float: right;
   padding: 10px;
   color: #000;
-  background-color: purple;
 }
 .MuiPaper-root{
   background-color: black;

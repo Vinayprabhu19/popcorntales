@@ -10,6 +10,7 @@ public class Movie {
     private String title;
     private String language;
     private String titleImage;
+    private String coverImage;
     private String year;
     private Float rating;
     private JSONArray genre;
@@ -20,6 +21,13 @@ public class Movie {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public String getCoverImage() {
+		return coverImage;
+	}
+	public void setCoverImage(String coverImage) {
+		this.coverImage = coverImage;
 	}
 	public String getLanguage() {
 		return language;
@@ -62,10 +70,12 @@ public class Movie {
     	item.with("title", this.title);
     	item.with("language", this.language);
     	item.with("titleImage", this.titleImage);
+    	item.with("coverImage", this.coverImage);
     	item.with("rating", this.rating);
     	item.with("year", this.year);
     	item.with("genre", this.genre.toList());
     	item.with("timeStamp", this.timeStamp);
+    	
     	return item;
     }
  

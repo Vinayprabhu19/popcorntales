@@ -38,7 +38,6 @@ class Filter extends Component {
         this.props.close(null);
       }
       onOK(){
-        debugger;
         this.state.originalFilter["year"]=this.state.filter["year"];
         this.state.originalFilter["language"]=this.state.filter["language"];
         this.state.originalFilter["genre"]=this.state.filter["genre"];

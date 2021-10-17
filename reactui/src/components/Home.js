@@ -22,11 +22,7 @@ const CardsList = lazy(() => import('./CardsList'));
 const Pagination = lazy(() => import('./Pagination'));
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 import InstagramIcon from '@material-ui/icons/Instagram';
-import FacebookIcon from '@material-ui/icons/Facebook';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -83,6 +79,8 @@ class Home extends Component {
         for (var i = start; i < len; i++) {
           currentPages.push(result[i]);
         }
+        var len = currentPages.length>4?4:currentPages.length;
+        var banners=currentPages.slice(0,len+1);
         this.setState({
           schema: schema,
           activePage: pageNo,
@@ -90,7 +88,8 @@ class Home extends Component {
           allReviews: rvs,
           reviews: rvs,
           currentList: currentPages,
-          loading: false
+          loading: false,
+          banners:banners
         })
         this.getFilteredData(result);
       })
@@ -177,9 +176,9 @@ class Home extends Component {
               </Toolbar>
             </AppBar>
             <Suspense fallback={  <CircularProgress color="inherit" />}>
-              <Banner />
+              <Banner items={this.state.banners} />
             </Suspense>
-            <Paper className="filter-sort" elevation={12}>
+            <div className="filter-sort" elevation={12}>
               <div className="d-flex justify-content-center">
                 <input type="text" id="searchField" value={this.state.searchText} onChange={this.onSearch} placeholder="Movie Title" />
                 <Hidden smDown>
@@ -205,7 +204,7 @@ class Home extends Component {
                   <Filter open={this.state.filterOpen} close={(data) => this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData} />
                 </Suspense>
               </div>
-            </Paper>
+            </div>
             <CardsList movies={this.state.currentList} />
             <footer>
               <div className="d-flex justify-content-center">

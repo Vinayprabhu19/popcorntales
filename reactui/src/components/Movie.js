@@ -11,7 +11,7 @@ class Movie extends Component {
     this.state = {
       title:"",
       titleImage:"",year:"2020-05",genre:"",rating:5,scriptRating:5,directionRating:5,dialoguesRating:5,cinematographyRating:5,
-      editingRating:5,musicRating:5,actingRating:5,
+      editingRating:5,musicRating:5,actingRating:5,coverImage:"",
       synopsis:"",pros:"",cons:"",language:"",cast:"",
       ticketImage:"",watchDate:"2020-05-19",placeWatched:"",userId:"",password:"",trailer:"https://www.youtube.com/embed/"
     };
@@ -50,6 +50,7 @@ componentDidMount() {
       musicRating:this.state.musicRating,
       actingRating:this.state.actingRating,
       trailer:this.state.trailer,
+      coverImage:this.state.coverImage,
       review:{
         synopsis:this.state.synopsis,
         pros:this.state.pros.split("\n"),
@@ -92,6 +93,7 @@ componentDidMount() {
       <FormGroup>
           <TextField className="smallField" type={"text"} value={this.state.title} onChange={e=> this.setState({title : e.target.value})} label={"Title"} InputProps={{ disableUnderline: true }}/>
           <TextField className="mediumField" type={"text"} value={this.state.titleImage} onChange={e=> this.setState({titleImage : e.target.value})} label={"Title Image"} InputProps={{ disableUnderline: true }}/>
+          <TextField className="mediumField" type={"text"} value={this.state.coverImage} onChange={e=> this.setState({coverImage : e.target.value})} label={"Cover Image"} InputProps={{ disableUnderline: true }}/>
           <TextField className="mediumField" type={"text"} value={this.state.language} onChange={e=> this.setState({language : e.target.value})} label={"Language"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"month"} value={this.state.year} onChange={e=> this.setState({year : e.target.value})} label={"Year"} InputProps={{ disableUnderline: true }}/>
           <TextField className="smallField" type={"text"} value={this.state.genre} onChange={e=> this.setState({genre : e.target.value})} label={"Genre"} InputProps={{ disableUnderline: true }}/>

@@ -32,10 +32,10 @@ class Banner extends Component {
               this.props.items.map(banner=>{
                 return <CarouselItem  key={banner.title}>
                 <div key={banner.title} className="movie-img" style={{backgroundImage: "url(" + banner.coverImage + ")"}} >
-                  <div className="info">
+                  {/* <div className="info">
                    <h2 className="bannerTitle"> {banner.title}</h2>
                    <h2 className="bannerRating">{banner.language} - {banner.rating}/5</h2>
-                   </div>
+                   </div> */}
                 {/* <LazyImage  className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/> */}
                 </div>
                 </CarouselItem>

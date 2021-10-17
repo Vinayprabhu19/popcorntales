@@ -22,9 +22,12 @@
     /* margin: 40px; */
 }
 .info{
-    margin: 100px;
+    width: 100%;
+    padding: 100px;
     position: absolute;
     font-family: 'Helvetica';
+    justify-content: center; /* align horizontal */
+align-items: center; /* align vertical */
 }
 .bannerTitle{
     text-align: left;
@@ -252,6 +255,24 @@
         height: 250px;
         align-self: center;
       }
+
+      .info{
+          width: 100%;
+        padding-left: 15px;
+        padding-top: 50px;
+        position: absolute;
+        font-family: 'Helvetica';
+    }
+    .bannerTitle{
+        text-align: left;
+        color: white;
+        font-size: 2em;
+    }
+    .bannerRating{
+        color: white;
+        text-align: left;
+        font-size: 1.5em;
+    }
   }
 
   @media screen and (max-width: 380px) {

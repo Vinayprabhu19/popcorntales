@@ -15,7 +15,7 @@ import { Helmet } from 'react-helmet';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import SocialMenu from './SocialMenu';
 import Tooltip from '@material-ui/core/Tooltip';
-const Banner = lazy(() => import('./Banner'));
+import Banner from "./Banner";
 const Sort = lazy(() => import('./Sort'));
 const Filter = lazy(() => import('./Filter'));
 const CardsList = lazy(() => import('./CardsList'));

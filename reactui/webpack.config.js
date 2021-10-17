@@ -5,6 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const webpack = require('webpack');
+const CompressionPlugin = require('compression-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
     entry: {
@@ -13,7 +14,7 @@ module.exports = {
 	  },
     output: {
         path: path.join(__dirname, "/dist"),
-        filename: process.env.production ? `bundle-[chunkHash].js` : `bundle-[hash].js`,
+        filename: process.env.production ? `bundle-[name]-[chunkHash].js` : `bundle-[name]-[hash].js`,
         publicPath: '/'
     },
     module: {
@@ -49,14 +50,7 @@ module.exports = {
        { test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000'] }
         ]
     },
-      // "resolve": {
-      //   "alias": {
-      //     "react": "preact/compat",
-      //     "react-dom": "preact/compat"
-      //   }
-      // },
     plugins: [
-		//
 		new CleanWebpackPlugin(),
       new HtmlWebPackPlugin({
           hash: true,
@@ -76,7 +70,6 @@ module.exports = {
 			  }
 			),
     new LodashModuleReplacementPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
     ]
 }

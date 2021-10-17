@@ -26,8 +26,17 @@ html,body,#root {
 }
 
 .movieDetail{
-    height: 340px;
+    height: 380px;
 }
+
+
+.fixedFooter{
+    position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50px;
+  }
 
 .filmImage{
     display: block;
@@ -207,7 +216,7 @@ h5,h6{
 @media screen and (min-width: 957px) {
 
     .review-component {
-        margin:0 20px 20px 20px;
+        padding:0 20px 20px 20px;
 
     }
     .graphImage{

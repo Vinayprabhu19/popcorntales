@@ -4,6 +4,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import ShareIcon from '@material-ui/icons/Share';
 import LazyLoad from 'react-lazy-load';
+
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
 import {
   FacebookShareButton,
   TelegramShareButton,
@@ -15,11 +17,11 @@ import {
   TwitterIcon
 } from "react-share";
 
-export default function ShareMenu() {
+export default function ShareMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const tags = "#popcorntales #movietime #moviereview #popcorn #letswatch";
-  const shareUrl = "www.popcorntales.com/"+this.props.title.replace(/ /g, '%20');
-  const quote = "I read a review of \""+this.props.title+"\". Let me know what you felt after reading it!!";
+  const shareUrl = "www.popcorntales.com/"+props.title.replace(/ /g, '%20');
+  const quote = "I read a review of \""+props.title+"\". Let me know what you felt after reading it!!";
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -30,9 +32,8 @@ export default function ShareMenu() {
 
   return (
     <div>
-      <Button aria-controls="social-menu" aria-haspopup="true" onClick={handleClick}>
-        <ShareIcon color={"primary"} fontSize={"default"}/>
-      </Button>
+       <BottomNavigationAction label="Mail" icon={<ShareIcon />}  onClick={handleClick}/>
+
       {
       Boolean(anchorEl) && <Menu
         id="social-menu"

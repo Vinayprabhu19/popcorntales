@@ -7,13 +7,17 @@ import Hidden from '@material-ui/core/Hidden';
 import Backdrop from '@material-ui/core/Backdrop';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import MailIcon from '@material-ui/icons/Mail';
 import SocialMenu from './SocialMenu';
-// import ShareMenu from './ShareMenu';
+import ShareMenu from './ShareMenu';
+import BarChartIcon from '@material-ui/icons/BarChart';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import { Helmet } from 'react-helmet';
+import BottomNavigation from '@material-ui/core/BottomNavigation';
+import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import MailIcon from '@material-ui/icons/Mail';
 
 import LazyLoad from 'react-lazy-load';
 
@@ -140,7 +144,6 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             {(this.state.selectedMovie.title.length < 20) && <h1 id="title">{this.state.selectedMovie.title +" Movie Review"}</h1>}
             {(this.state.selectedMovie.title.length >= 20) && <h1 id="title">{this.state.selectedMovie.title}</h1>}
             <section style={{marginLeft:"auto",display:"inline-block"}}>
-            <SocialMenu/>
             </section>
           </Toolbar>
         </AppBar>
@@ -156,7 +159,6 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                   <div className="topHeader">
                   <div className="d-flex justify-content-center">
                   <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
-                  {/* <ShareMenu title={this.state.selectedMovie.title}/> */}
                   </div>
                   <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</h3>
                   <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.genre.join(",")}</h3>
@@ -175,7 +177,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                 <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"50px"}}>
                     <div className="d-flex justify-content-center">
                     <h1 className="headerLevel1" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
-                    {/* <ShareMenu title={this.state.selectedMovie.title}/> */}
+
                     </div>
                     <h2 className="headerLevel2" >{this.state.selectedMovie.language}</h2>
                     <h3 className="headerLevel2" >{this.state.selectedMovie.genre.join(",")}</h3>
@@ -183,25 +185,35 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                     {overallRating}
                 </div>
                 <Hidden lgDown>
-                <div style={{float:"right",marginLeft:"150px",float:"right"}}>
-                <LazyLoad >
-                  <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
+                <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
                   allow="accelerometer; autoplay; picture-in-picture" >
                   </iframe>
-                  </LazyLoad>
-                </div>
                 </Hidden>
             </div>
             </Hidden>
         </div>
           <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab} 	/>
-          <div id="footerText">
-              <div className="d-flex justify-content-center">
-              <h6>Need your feedback to improve
-              <a href="mailto:popcorntales19@gmail.com"> <MailIcon/></a>
-              </h6>
+          <footer>
+
+              <div className="d-flex justify-content-center" style={{height:"50px",margin:"5px"}}>
+
               </div>
-          </div>
+              <Paper className="fixedFooter" elevation="5">
+                <BottomNavigation
+                  >
+                    <a href="https://www.instagram.com/popcorntaless" target="_blank" rel="noreferrer" className="social-icon">
+                    <BottomNavigationAction label="Instagram" icon={<InstagramIcon />} />
+                    </a>
+                    <a href="/analytics" target="_blank"  className="social-icon">
+                    <BottomNavigationAction label="Analytics" icon={<BarChartIcon />} />
+                    </a>
+                    <a href="mailto:popcorntales19@gmail.com" target="_blank"  className="social-icon">
+                    <BottomNavigationAction label="Mail" icon={<MailIcon />} />
+                    </a>
+                    <ShareMenu title={this.state.selectedMovie.title}/>
+                  </BottomNavigation>
+              </Paper>
+            </footer>
     </div>
     </>
   );

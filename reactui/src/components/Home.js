@@ -170,15 +170,10 @@ class Home extends Component {
         {
         !this.state.loading && <div>
           <div className={this.state.loading ? 'hidden' : 'App'}>
-            <AppBar id="appBar" position="static">
-              <Toolbar>
-                <h1 id="title">Popcorn Tales</h1>
-              </Toolbar>
-            </AppBar>
             <Suspense fallback={  <CircularProgress color="inherit" />}>
               <Banner items={this.state.banners} />
             </Suspense>
-            <div className="filter-sort" elevation={12}>
+            <Paper className="filter-sort" elevation={12}>
               <div className="d-flex justify-content-center">
                 <input type="text" id="searchField" value={this.state.searchText} onChange={this.onSearch} placeholder="Movie Title" />
                 <Hidden smDown>
@@ -204,7 +199,7 @@ class Home extends Component {
                   <Filter open={this.state.filterOpen} close={(data) => this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData} />
                 </Suspense>
               </div>
-            </div>
+            </Paper>
             <CardsList movies={this.state.currentList} />
             <footer>
               <div className="d-flex justify-content-center">
@@ -219,10 +214,8 @@ class Home extends Component {
               </div>
               <Paper className="fixedFooter" elevation="5">
                 <BottomNavigation
-
-                    showLabels
                   >
-                    <a href="https://www.instagram.com/popcorntaless" target="_blank" className="social-icon">
+                    <a href="https://www.instagram.com/popcorntaless" target="_blank" rel="noreferrer" className="social-icon">
                     <BottomNavigationAction label="Instagram" icon={<InstagramIcon />} />
                     </a>
                     <a href="/analytics" target="_blank"  className="social-icon">

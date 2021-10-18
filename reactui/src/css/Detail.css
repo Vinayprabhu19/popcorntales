@@ -29,7 +29,15 @@ html,body,#root {
     height: 380px;
 }
 
-
+#trailerButton{
+    height: 35px;
+    padding: 5px 10px 5px 10px;
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    font-family: sans-serif;
+    margin: 10px;
+}
 .fixedFooter{
     position: fixed;
       bottom: 0;

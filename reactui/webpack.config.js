@@ -7,11 +7,7 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
 module.exports = {
-    devtool: 'source-map',
-    entry: {
-		main: "./src/index.js",
-		vendor: "./src/vendor.js"
-	  },
+     entry: './src/index.js',
     output: {
         path: path.join(__dirname, "/dist"),
         filename: process.env.production ? `bundle-[name]-[chunkHash].js` : `bundle-[name]-[hash].js`,

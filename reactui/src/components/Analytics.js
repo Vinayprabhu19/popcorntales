@@ -4,12 +4,10 @@ import MailIcon from '@material-ui/icons/Mail';
 import HomeButton from '@material-ui/icons/Home';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import React, { Component } from 'react';
+import React, { Component,lazy } from 'react';
 import 'chart.js';
-import { ColumnChart, LineChart, PieChart } from 'react-chartkick';
 import '../css/analytics.css';
 import '../css/card.css';
-import Filter from "./Filter";
 import Tooltip from '@material-ui/core/Tooltip';
 import Button from '@material-ui/core/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
@@ -18,7 +16,28 @@ import AccordionSummary from '@material-ui/core/AccordionSummary';
 import AccordionDetails from '@material-ui/core/AccordionDetails';
 import CardLayout from "./CardLayout";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-
+const ColumnChart = React.lazy(() =>
+  import("react-chartkick").then(
+    module => ({
+      default: module.ColumnChart
+    })
+  )
+);
+const LineChart = React.lazy(() =>
+  import("react-chartkick").then(
+    module => ({
+      default: module.LineChart
+    })
+  )
+);
+const PieChart = React.lazy(() =>
+  import("react-chartkick").then(
+    module => ({
+      default: module.PieChart
+    })
+  )
+);
+const Filter = lazy(() => import('./Filter'));
 class Analytics extends Component {
   constructor(props) {
     super(props);

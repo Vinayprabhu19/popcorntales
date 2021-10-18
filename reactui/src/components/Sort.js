@@ -36,7 +36,7 @@ class Sort extends Component {
         this.props.close(this.state);
       }
   render() {
-    return  <Dialog onClose={(data)=>this.props.close(data)} disableBackdropClick={true} disableEscapeKeyDown={true} aria-labelledby="simple-dialog-title" open={this.props.open}>
+    return  <Dialog onClose={(data)=>this.props.close(data)} disableEscapeKeyDown={true} aria-labelledby="simple-dialog-title" open={this.props.open}>
     <DialogTitle id="simple-dialog-title">Sort</DialogTitle>
     <div className="filtercontainer">
     <FormControl >

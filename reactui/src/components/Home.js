@@ -1,28 +1,25 @@
-import AppBar from '@material-ui/core/AppBar';
 import Backdrop from '@material-ui/core/Backdrop';
 import Button from '@material-ui/core/Button';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Hidden from '@material-ui/core/Hidden';
 import Paper from '@material-ui/core/Paper';
-import Toolbar from '@material-ui/core/Toolbar';
-import MailIcon from '@material-ui/icons/Mail';
-import SortIcon from '@material-ui/icons/Sort';
 import React, { Suspense, lazy, Component } from 'react';
 import '../css/Home.css';
 import '../css/card.css';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import { Helmet } from 'react-helmet';
 import BarChartIcon from '@material-ui/icons/BarChart';
-import SocialMenu from './SocialMenu';
 import Tooltip from '@material-ui/core/Tooltip';
 import Banner from "./Banner";
 const Sort = lazy(() => import('./Sort'));
 const Filter = lazy(() => import('./Filter'));
 const CardsList = lazy(() => import('./CardsList'));
 const Pagination = lazy(() => import('./Pagination'));
+const InstagramIcon = lazy(() => import('@material-ui/icons/Instagram'));
+const MailIcon = lazy(() => import('@material-ui/icons/Mail'));
+const SortIcon = lazy(() => import('@material-ui/icons/Sort'));
+const FilterListIcon = lazy(() => import('@material-ui/icons/FilterList'));
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import InstagramIcon from '@material-ui/icons/Instagram';
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -212,7 +209,7 @@ class Home extends Component {
               <div className="d-flex justify-content-center" style={{height:"50px",margin:"5px"}}>
 
               </div>
-              <Paper className="fixedFooter" elevation="5">
+              <Paper className="fixedFooter" elevation={5}>
                 <BottomNavigation
                   >
                     <a href="https://www.instagram.com/popcorntaless" target="_blank" rel="noreferrer" className="social-icon">

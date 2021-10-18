@@ -1,10 +1,18 @@
 import React, { Suspense, lazy } from 'react';
-import {Redirect, Switch, BrowserRouter as Router, Route } from 'react-router-dom';
+import {Switch,Route,BrowserRouter as Router} from 'react-router-dom';
+
+const Redirect = React.lazy(() =>
+  import("react-router-dom").then(
+    module => ({
+      default: module.Redirect
+    })
+  )
+);
 
 function App() {
   const reload = () => window.location.reload();
-  const Home = lazy(() => import('./components/Home'));
-  const Detail = lazy(() => import('./components/Detail'));
+  const Home = lazy(() => import(/* webpackChunkName: 'Home' */'./components/Home'));
+  const Detail = lazy(() => import(/* webpackChunkName: 'Detail' */'./components/Detail'));
   const Movie = lazy(() => import('./components/Movie'));
   const Analytics = lazy(() => import('./components/Analytics'));
   const ImageAdder = lazy(() => import('./components/ImageAdder'));

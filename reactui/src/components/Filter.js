@@ -45,7 +45,7 @@ class Filter extends Component {
         this.props.close(this.state);
       }
   render() {
-    return  <Dialog maxWidth={'sm'} fullWidth={true} onClose={(data)=>this.props.close(data)} disableBackdropClick={true} disableEscapeKeyDown={true} aria-labelledby="simple-dialog-title" open={this.props.open}>
+    return  <Dialog maxWidth={'sm'} fullWidth={true} onClose={(data)=>this.props.close(data)} disableEscapeKeyDown={true} aria-labelledby="simple-dialog-title" open={this.props.open}>
     <DialogTitle id="simple-dialog-title">Filter</DialogTitle>
     <div className="filtercontainer">
     <h5 className="item">Language</h5>

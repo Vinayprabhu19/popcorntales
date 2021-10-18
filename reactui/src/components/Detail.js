@@ -7,20 +7,16 @@ import Hidden from '@material-ui/core/Hidden';
 import Backdrop from '@material-ui/core/Backdrop';
 import Paper from '@material-ui/core/Paper';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import SocialMenu from './SocialMenu';
 import ShareMenu from './ShareMenu';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import Rating from '@material-ui/lab/Rating';
 import { withStyles } from '@material-ui/core/styles';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+const InstagramIcon = lazy(() => import('@material-ui/icons/Instagram'));
+const MailIcon = lazy(() => import('@material-ui/icons/Mail'));
+const FavoriteIcon = lazy(() => import('@material-ui/icons/Favorite'));
 import { Helmet } from 'react-helmet';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import MailIcon from '@material-ui/icons/Mail';
-
-import LazyLoad from 'react-lazy-load';
-
 const StyledRating = withStyles({
   iconFilled: {
     color: '#ff6d75',
@@ -165,6 +161,9 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                   <div className="d-flex justify-content-center">
                   {overallRating}
                   </div>
+                  <div className="d-flex justify-content-center">
+                  <a id="trailerButton" href={this.state.selectedMovie.trailer} target="_blank" rel="noreferrer">Watch trailer</a>
+                  </div>
                   </div>
             </Hidden>
             <Hidden mdDown>
@@ -198,7 +197,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
               <div className="d-flex justify-content-center" style={{height:"50px",margin:"5px"}}>
 
               </div>
-              <Paper className="fixedFooter" elevation="5">
+              <Paper className="fixedFooter" elevation={5}>
                 <BottomNavigation
                   >
                     <a href="https://www.instagram.com/popcorntaless" target="_blank" rel="noreferrer" className="social-icon">

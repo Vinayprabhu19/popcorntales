@@ -10,4 +10,5 @@ const TerserPlugin = require('terser-webpack-plugin');
 	   cache: true
 	    })],
 	},
+
  })

@@ -76,8 +76,8 @@ class Home extends Component {
         for (var i = start; i < len; i++) {
           currentPages.push(result[i]);
         }
-        var len = currentPages.length>4?4:currentPages.length;
-        var banners=currentPages.slice(0,len+1);
+        var len = currentPages.length;
+        var banners=currentPages;
         this.setState({
           schema: schema,
           activePage: pageNo,

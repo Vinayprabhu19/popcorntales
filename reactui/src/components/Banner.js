@@ -10,8 +10,10 @@ class Banner extends Component {
     for(var i=0;i<props.items.length;i++){
       // var url="https://api.popcorntales.com/image?object=Banners/Movie"+i+".jpg";
       var url = props.items[i].coverImage;
-      if (url=="")
-      url = props.items[i].titleImage;
+      if(url==null || url == undefined)
+        continue;
+      if(url.replace("https://api.popcorntales.com/image?object=","").trim() == "")
+       continue;
       banners.push({
         id:i,
         name: props.items[i].title,
@@ -29,9 +31,9 @@ class Banner extends Component {
    return <Paper id="banner-container" elevation={10}>
       <Carousel>
             {
-              this.props.items.map(banner=>{
-                return <CarouselItem  key={banner.title}>
-                <div key={banner.title} className="movie-img" style={{backgroundImage: "url(" + banner.coverImage + ")"}} >
+              this.state.banners.map(banner=>{
+                return <CarouselItem  key={banner.name}>
+                <div key={banner.name} className="movie-img" style={{backgroundImage: "url(" + banner.url + ")"}} >
                   {/* <div className="info">
                    <h2 className="bannerTitle"> {banner.title}</h2>
                    <h2 className="bannerRating">{banner.language} - {banner.rating}/5</h2>

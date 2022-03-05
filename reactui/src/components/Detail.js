@@ -183,11 +183,9 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                     <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>
                     {overallRating}
                 </div>
-                <Hidden lgDown>
                 <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
                   allow="accelerometer; autoplay; picture-in-picture" >
                   </iframe>
-                </Hidden>
             </div>
             </Hidden>
         </div>

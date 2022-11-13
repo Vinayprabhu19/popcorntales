@@ -77,7 +77,7 @@ class Home extends Component {
           currentPages.push(result[i]);
         }
         var len = currentPages.length;
-        var banners=currentPages;
+        var banners=result;
         this.setState({
           schema: schema,
           activePage: pageNo,

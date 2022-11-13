@@ -7,7 +7,8 @@ class Banner extends Component {
   constructor(props){
     super(props);
     var banners=[];
-    for(var i=0;i<props.items.length;i++){
+    var count=0;
+    for(var i=0;i<props.items.length && count<5;i++){
       // var url="https://api.popcorntales.com/image?object=Banners/Movie"+i+".jpg";
       var url = props.items[i].coverImage;
       if(url==null || url == undefined)
@@ -19,6 +20,7 @@ class Banner extends Component {
         name: props.items[i].title,
         url: url
       })
+      count++;
     }
     this.state={
       banners:banners

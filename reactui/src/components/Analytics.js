@@ -1,19 +1,19 @@
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 import MailIcon from '@material-ui/icons/Mail';
 import HomeButton from '@material-ui/icons/Home';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 import React, { Component,lazy } from 'react';
 import 'chart.js';
 import '../css/analytics.css';
 import '../css/card.css';
-import Tooltip from '@material-ui/core/Tooltip';
-import Button from '@material-ui/core/Button';
+import Tooltip from '@mui/material/Tooltip';
+import Button from '@mui/material/Button';
 import FilterListIcon from '@material-ui/icons/FilterList';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 import CardLayout from "./CardLayout";
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const ColumnChart = React.lazy(() =>
@@ -174,7 +174,7 @@ class Analytics extends Component {
           <h5 className="centerText">Total Movies : {this.state.totalMovies}</h5>
         </AccordionSummary>
         <AccordionDetails>
-          <Grid container justify="center">
+          <Grid container  justifyContent="center">
             <Paper elevation={15} className="largeChart">
               <LineChart data={this.state.ratingCountByLanguage} precision={2} className="largeChart" xtitle="Movie" ytitle="Rating" min={0} max={5.0} legend="bottom" />
             </Paper>
@@ -202,7 +202,7 @@ class Analytics extends Component {
               <h5 className="centerText">High Rated : {this.state.bestMovie.title} - {this.state.bestMovie.rating}</h5>
             </AccordionSummary>
             <AccordionDetails>
-              <Grid container justify="center" >
+              <Grid container  justifyContent="center" >
                 <CardLayout review={this.state.bestMovie} />
               </Grid>
             </AccordionDetails>
@@ -216,12 +216,12 @@ class Analytics extends Component {
               <h5 className="centerText">Low Rated : {this.state.worstMovie.title} - {this.state.worstMovie.rating}</h5>
             </AccordionSummary>
             <AccordionDetails>
-              <Grid container justify="center" >
+              <Grid container  justifyContent="center" >
                 <CardLayout review={this.state.worstMovie} />
               </Grid>
             </AccordionDetails>
           </Accordion>
-          <Grid container justify="center" >
+          <Grid container  justifyContent="center" >
           <h6 className="largeChart">Movies in filter - {this.state.reviews.length}</h6>
             <Paper elevation={15} className="mediumChart">
               <PieChart data={this.state.categoryData} legend="bottom" donut={true} />
@@ -240,7 +240,7 @@ class Analytics extends Component {
         </div>
       </div>
       <footer>
-        <Grid container justify="center" id="footerText">
+        <Grid container  justifyContent="center" id="footerText">
           <h6>Need your feedback to improve
        <a href="mailto:popcorntales19@gmail.com"> <MailIcon /></a>
           </h6>

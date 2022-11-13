@@ -1,11 +1,11 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import ShareIcon from '@material-ui/icons/Share';
 import LazyLoad from 'react-lazy-load';
 
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import {
   FacebookShareButton,
   TelegramShareButton,

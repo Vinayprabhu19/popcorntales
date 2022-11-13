@@ -1,5 +1,5 @@
 import React, { Component, Suspense, lazy} from 'react';
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import Spinner from 'react-bootstrap/Spinner';
 class CardLayout extends Component {
   constructor(props){

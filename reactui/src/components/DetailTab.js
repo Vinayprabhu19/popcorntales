@@ -1,7 +1,7 @@
 import React, { Suspense, lazy,Component} from 'react';
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 const HitAndMiss = lazy(() => import('./HitAndMiss'));
 const Ticket = lazy(() => import('./Ticket'));

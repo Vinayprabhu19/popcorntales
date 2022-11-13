@@ -1,14 +1,14 @@
-import Backdrop from '@material-ui/core/Backdrop';
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import Hidden from '@material-ui/core/Hidden';
-import Paper from '@material-ui/core/Paper';
+import Backdrop from '@mui/material/Backdrop';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import Hidden from '@mui/material/Hidden';
+import Paper from '@mui/material/Paper';
 import React, { Suspense, lazy, Component } from 'react';
 import '../css/Home.css';
 import '../css/card.css';
 import { Helmet } from 'react-helmet';
 import BarChartIcon from '@material-ui/icons/BarChart';
-import Tooltip from '@material-ui/core/Tooltip';
+import Tooltip from '@mui/material/Tooltip';
 import Banner from "./Banner";
 const Sort = lazy(() => import('./Sort'));
 const Filter = lazy(() => import('./Filter'));
@@ -18,8 +18,8 @@ const InstagramIcon = lazy(() => import('@material-ui/icons/Instagram'));
 const MailIcon = lazy(() => import('@material-ui/icons/Mail'));
 const SortIcon = lazy(() => import('@material-ui/icons/Sort'));
 const FilterListIcon = lazy(() => import('@material-ui/icons/FilterList'));
-import BottomNavigation from '@material-ui/core/BottomNavigation';
-import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 class Home extends Component {
   constructor(props) {
     super(props);

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import '../css/card.css';
-import FormControl from '@material-ui/core/FormControl';
-import FormGroup from '@material-ui/core/FormGroup';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import FormControl from '@mui/material/FormControl';
+import FormGroup from '@mui/material/FormGroup';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 class Movie extends Component {
   constructor(props) {
     super(props);

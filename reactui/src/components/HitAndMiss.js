@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import LazyLoad from 'react-lazy-load';
 import BeenhereIcon from '@material-ui/icons/Beenhere';
 import CancelIcon from '@material-ui/icons/Cancel';

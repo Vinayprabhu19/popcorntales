@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Dialog from '@material-ui/core/Dialog';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import Grid from '@material-ui/core/Grid';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from '@mui/material/Dialog';
+import Button from '@mui/material/Button';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Grid from '@mui/material/Grid';
 class Sort extends Component {
     constructor(props) {
         super(props);
@@ -56,7 +56,7 @@ class Sort extends Component {
         <FormControlLabel value="Descending" control={<Radio />} label="Descending" />
       </RadioGroup>
     </FormControl>
-    <Grid container justify = "center" id="starPhoto">
+    <Grid container  justifyContent="center" id="starPhoto">
     <ButtonGroup variant="text" className="buttonGroup" color="primary" aria-label="text primary button group">
         <Button onClick={this.onOK}>OK</Button>
         <Button onClick={this.onCancel}>Cancel</Button>

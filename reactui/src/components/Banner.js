@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Paper from '@material-ui/core/Paper';
+import Paper from '@mui/material/Paper';
 import  Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from 'react-bootstrap/CarouselItem';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 class Banner extends Component {
   constructor(props){
     super(props);

@@ -111,7 +111,7 @@ class Filter extends Component {
       }}
       valueLabelDisplay="auto"
     />
-    <Grid container justify = "center" id="starPhoto">
+    <Grid container justifyContent="center" id="starPhoto">
     <ButtonGroup variant="text" className="buttonGroup" color="primary" aria-label="text primary button group">
         <Button onClick={this.onOK}>OK</Button>
         <Button onClick={this.onCancel}>Cancel</Button>

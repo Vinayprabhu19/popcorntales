@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import Paper from '@mui/material/Paper';
 import  Carousel from 'react-bootstrap/Carousel';
 import CarouselItem from 'react-bootstrap/CarouselItem';
-import Button from '@mui/material/Button';
 class Banner extends Component {
   constructor(props){
     super(props);
@@ -36,11 +35,6 @@ class Banner extends Component {
               this.state.banners.map(banner=>{
                 return <CarouselItem  key={banner.name}>
                 <div key={banner.name} className="movie-img" style={{backgroundImage: "url(" + banner.url + ")"}} >
-                  {/* <div className="info">
-                   <h2 className="bannerTitle"> {banner.title}</h2>
-                   <h2 className="bannerRating">{banner.language} - {banner.rating}/5</h2>
-                   </div> */}
-                {/* <LazyImage  className="movie-img" unloadedSrc={banner.url} key={banner.id} alt="Movie Banner"/> */}
                 </div>
                 </CarouselItem>
               })

@@ -71,8 +71,8 @@ class Home extends Component {
         });
         var currentPages = [];
         pageNo = (pageNo ==null)?1:parseInt(pageNo);
-        var start = 12 * (pageNo - 1);
-        var len = (result.length > 12 * (pageNo)) ? 12 * (pageNo) : result.length;
+        var start = 18 * (pageNo - 1);
+        var len = (result.length > 18 * (pageNo)) ? 18 * (pageNo) : result.length;
         for (var i = start; i < len; i++) {
           currentPages.push(result[i]);
         }
@@ -97,8 +97,8 @@ class Home extends Component {
 
   onPageChanged(e) {
     var currentPages = [];
-    var start = 12 * (e.currentPage - 1);
-    var len = (this.state.reviews.length > 12 * (e.currentPage)) ? 12 * (e.currentPage) : this.state.reviews.length;
+    var start = 18 * (e.currentPage - 1);
+    var len = (this.state.reviews.length > 18 * (e.currentPage)) ? 18 * (e.currentPage) : this.state.reviews.length;
     for (var i = start; i < len; i++) {
       currentPages.push(this.state.reviews[i]);
     }
@@ -119,7 +119,7 @@ class Home extends Component {
     reviews = reviews.filter(function (r) { return r.title.toLocaleLowerCase().includes(text.toLowerCase()); });
 
     var currentPages = [];
-    var len = (reviews.length > 12) ? 12 : reviews.length;
+    var len = (reviews.length > 18) ? 18 : reviews.length;
     for (var i = 0; i < len; i++) {
       currentPages.push(reviews[i]);
     }
@@ -170,7 +170,7 @@ class Home extends Component {
             <Suspense fallback={  <CircularProgress color="inherit" />}>
               <Banner items={this.state.banners} />
             </Suspense>
-            <Paper className="filter-sort" elevation={12}>
+            <Paper className="filter-sort" elevation={18}>
               <div className="d-flex justify-content-center">
                 <input type="text" id="searchField" value={this.state.searchText} onChange={this.onSearch} placeholder="Movie Title" />
                 <Hidden smDown>
@@ -201,7 +201,7 @@ class Home extends Component {
             <footer>
               <div className="d-flex justify-content-center">
                 <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
-                  <Pagination totalRecords={this.state.totalPages} pageLimit={12} landingPage={this.state.activePage}
+                  <Pagination totalRecords={this.state.totalPages} pageLimit={18} landingPage={this.state.activePage}
                     pageNeighbours={1}
                     onPageChanged={this.onPageChanged} />
                 </Suspense>
@@ -295,7 +295,7 @@ class Home extends Component {
     reviews = reviews.filter(function (r) { return r.rating >= data.filter.rating[0] && r.rating <= data.filter.rating[1] });
 
     var currentPages = [];
-    var len = (reviews.length > 12) ? 12 : reviews.length;
+    var len = (reviews.length > 18) ? 18 : reviews.length;
     for (var i = 0; i < len; i++) {
       currentPages.push(reviews[i]);
     }
@@ -343,7 +343,7 @@ class Home extends Component {
         })
     }
     var currentPages = [];
-    var len = (reviews.length > 12) ? 12 : reviews.length;
+    var len = (reviews.length > 18) ? 18 : reviews.length;
     for (var i = 0; i < len; i++) {
       currentPages.push(reviews[i]);
     }

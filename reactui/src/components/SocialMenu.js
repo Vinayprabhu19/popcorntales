@@ -2,10 +2,10 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import AssistantPhotoIcon from '@material-ui/icons/AssistantPhoto';
-import InstagramIcon from '@material-ui/icons/Instagram';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import FacebookIcon from '@material-ui/icons/Facebook';
+import AssistantPhotoIcon from '@mui/icons-material/AssistantPhoto';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
 
 export default function SocialMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);

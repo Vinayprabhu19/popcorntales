@@ -7,21 +7,21 @@ import React, { Suspense, lazy, Component } from 'react';
 import '../css/Home.css';
 import '../css/card.css';
 import { Helmet } from 'react-helmet';
-import BarChartIcon from '@material-ui/icons/BarChart';
+import BarChartIcon from '@mui/icons-material/BarChart';
 import Tooltip from '@mui/material/Tooltip';
 const Sort = lazy(() => import('./Sort'));
 const Filter = lazy(() => import('./Filter'));
 const CardsList = lazy(() => import('./CardsList'));
-const Pagination = lazy(() => import('./Pagination'));
-const InstagramIcon = lazy(() => import('@material-ui/icons/Instagram'));
-const MailIcon = lazy(() => import('@material-ui/icons/Mail'));
-const SortIcon = lazy(() => import('@material-ui/icons/Sort'));
-const FilterListIcon = lazy(() => import('@material-ui/icons/FilterList'));
+const InstagramIcon = lazy(() => import('@mui/icons-material/Instagram'));
+const MailIcon = lazy(() => import('@mui/icons-material/Mail'));
+const SortIcon = lazy(() => import('@mui/icons-material/Sort'));
+const FilterListIcon = lazy(() => import('@mui/icons-material/FilterList'));
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { MenuOutlined, SearchOutlined, SortAscendingOutlined, FilterOutlined } from '@ant-design/icons';
 import Layout from 'antd/lib/layout';
 import Input from 'antd/lib/input';
+import { Pagination } from '@mui/material';
 
 const { Search } = Input;
 class Home extends Component {
@@ -184,15 +184,16 @@ class Home extends Component {
 
 
             <CardsList movies={this.state.currentList} />
+            <div style={{ width: "100%", height: "50px", marginBottom: "50px", display: "flex", justifyContent: "center", alignItems: "center" }}>
+              <Pagination
+                count={Math.ceil(this.state.totalPages / 18)} // Calculate total number of pages based on total records and page limit
+                page={this.state.activePage} // Current active page
+                onChange={(event, value) => this.onPageChanged(value)} // Function to handle page change
+                showFirstButton
+                showLastButton
+              />
+            </div>
             <footer>
-              <div className="d-flex justify-content-center">
-                <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
-                  <Pagination totalRecords={this.state.totalPages} pageLimit={18} landingPage={this.state.activePage}
-                    pageNeighbours={1}
-                    onPageChanged={this.onPageChanged} />
-                </Suspense>
-              </div>
-
               <Paper className="fixedFooter" elevation={5}>
                 <BottomNavigation
                   >

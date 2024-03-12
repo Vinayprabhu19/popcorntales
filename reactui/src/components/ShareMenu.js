@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import ShareIcon from '@material-ui/icons/Share';
+import ShareIcon from '@mui/icons-material/Share';
 import LazyLoad from 'react-lazy-load';
 
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';

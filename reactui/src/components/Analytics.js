@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import MailIcon from '@material-ui/icons/Mail';
-import HomeButton from '@material-ui/icons/Home';
+import MailIcon from '@mui/icons-material/Mail';
+import HomeButton from '@mui/icons-material/Home';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import React, { Component,lazy } from 'react';
@@ -10,12 +10,12 @@ import '../css/analytics.css';
 import '../css/card.css';
 import Tooltip from '@mui/material/Tooltip';
 import Button from '@mui/material/Button';
-import FilterListIcon from '@material-ui/icons/FilterList';
+import FilterListIcon from '@mui/icons-material/FilterList';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import CardLayout from "./CardLayout";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const ColumnChart = React.lazy(() =>
   import("react-chartkick").then(
     module => ({

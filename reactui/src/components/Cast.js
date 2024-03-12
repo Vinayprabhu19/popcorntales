@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 class Cast extends Component {
   constructor(props){
     super(props);

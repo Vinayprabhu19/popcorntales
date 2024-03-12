@@ -2,28 +2,33 @@ import React, { lazy,Component } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import (/* webpackPrefetch: true */ "../css/Detail.css");
-import HomeButton from '@material-ui/icons/Home';
+import HomeButton from '@mui/icons-material/Home';
 import Hidden from '@mui/material/Hidden';
 import Backdrop from '@mui/material/Backdrop';
 import Paper from '@mui/material/Paper';
 import CircularProgress from '@mui/material/CircularProgress';
 import ShareMenu from './ShareMenu';
-import BarChartIcon from '@material-ui/icons/BarChart';
-import Rating from '@material-ui/lab/Rating';
-import { styled } from '@mui/material/styles';
-const InstagramIcon = lazy(() => import('@material-ui/icons/Instagram'));
-const MailIcon = lazy(() => import('@material-ui/icons/Mail'));
-const FavoriteIcon = lazy(() => import('@material-ui/icons/Favorite'));
+import BarChartIcon from '@mui/icons-material/BarChart';
+import Rating from '@mui/material/Rating';
+const InstagramIcon = lazy(() => import('@mui/icons-material/Instagram'));
+const MailIcon = lazy(() => import('@mui/icons-material/Mail'));
+const FavoriteIcon = lazy(() => import('@mui/icons-material/Favorite'));
 import { Helmet } from 'react-helmet';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import { styled } from '@mui/material/styles';
 
 
-const StyledRating = styled(Rating)(({ theme }) => ({
-  '& .MuiRating-iconEmpty .MuiSvgIcon-root': {
-    color: theme.palette.action.disabled,
+const StyledRating = styled(Rating)({
+  '& .MuiRating-iconFilled': {
+    color: '#ff6d75',
   },
-}));
+  '& .MuiRating-iconHover': {
+    color: '#ff3d47',
+  },
+});
+
+
 const DetailTab = lazy(() => import('./DetailTab'));
 class Detail extends Component {
   constructor(props) {

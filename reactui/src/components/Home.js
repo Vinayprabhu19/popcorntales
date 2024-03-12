@@ -1,7 +1,6 @@
 import Backdrop from '@mui/material/Backdrop';
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
-import Hidden from '@mui/material/Hidden';
 import Paper from '@mui/material/Paper';
 import React, { Suspense, lazy, Component } from 'react';
 import '../css/Home.css';

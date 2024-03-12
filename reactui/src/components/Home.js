@@ -109,34 +109,26 @@ class Home extends Component {
   }
 
   onSearch(e) {
-
-    var text = e.target.value;
-    var reviews = [];
-    for (var i = 0; i < this.state.allReviews.length; i++) {
-      reviews.push(this.state.allReviews[i]);
-    }
-
-    reviews = reviews.filter(function (r) { return r.title.toLocaleLowerCase().includes(text.toLowerCase()); });
-
-    var currentPages = [];
-    var len = (reviews.length > 18) ? 18 : reviews.length;
-    for (var i = 0; i < len; i++) {
-      currentPages.push(reviews[i]);
-    }
+    const text = e.target.value.toLowerCase();
+    const filteredReviews = this.state.allReviews.filter(review => review.title.toLowerCase().includes(text));
+  
+    const totalPages = filteredReviews.length;
+    const currentList = filteredReviews.slice(0, 18);
+  
     this.setState({
       activePage: 1,
-      totalPages: reviews.length,
-      reviews: reviews,
-      currentList: currentPages,
+      totalPages,
+      reviews: filteredReviews,
+      currentList,
       loading: false,
       filter: {
-        "language": "All",
-        "year": "All",
-        "rating": [0.0, 5.0]
+        language: "All",
+        year: "All",
+        rating: [0.0, 5.0]
       },
       searchText: text
     });
-  }
+  }  
 
   openSort() {
     this.setState({
@@ -232,24 +224,21 @@ class Home extends Component {
     );
   }
   async getFilteredData(result) {
-    for (var i = 0; i < result.length; i++) {
-      if (this.state.filterData.languages.includes(result[i].language)) continue;
-      this.state.filterData.languages.push(result[i].language);
-    }
-    for (var i = 0; i < result.length; i++) {
-      if (this.state.filterData.years.includes(result[i].year)) continue;
-      this.state.filterData.years.push(result[i].year);
-    }
-    for (var i = 0; i < result.length; i++) {
-      for(var j=0;j<result[i].genre.length;j++){
-        if (this.state.filterData.genre.includes(result[i].genre[j])) continue;
-        this.state.filterData.genre.push(result[i].genre[j]);
-      }
-
-    }
-    this.state.filterData.years.sort();
-
+    const filterData = { years: new Set(), languages: new Set(), genre: new Set() };
+    
+    result.forEach(movie => {
+      filterData.languages.add(movie.language);
+      filterData.years.add(movie.year);
+      movie.genre.forEach(genre => filterData.genre.add(genre));
+    });
+  
+    filterData.years = ["All", ...Array.from(filterData.years)].sort();
+    filterData.languages = ["All", ...Array.from(filterData.languages)];
+    filterData.genre = ["All", ...Array.from(filterData.genre)];
+  
+    this.setState({ filterData });
   }
+  
   processImageData(data) {
     var width, height;
     if (window.matchMedia("(max-width: 576px)").matches) {
@@ -273,36 +262,25 @@ class Home extends Component {
     return data;
   }
   handleFilterClose(data) {
-    if (data == null) {
-      this.setState({
-        filterOpen: false
-      });
+    if (!data) {
+      this.setState({ filterOpen: false });
       return;
     }
-    var reviews = [];
-    for (var i = 0; i < this.state.allReviews.length; i++) {
-      reviews.push(this.state.allReviews[i]);
-    }
-    if (data.filter.language != "All") {
-      reviews = reviews.filter(function (r) { return r.language == data.filter.language });
-    }
-    if (data.filter.year != "All") {
-      reviews = reviews.filter(function (r) { return r.year == data.filter.year });
-    }
-    if (data.filter.genre != "All") {
-      reviews = reviews.filter(function (r) { return r.genre.includes(data.filter.genre)});
-    }
-    reviews = reviews.filter(function (r) { return r.rating >= data.filter.rating[0] && r.rating <= data.filter.rating[1] });
-
-    var currentPages = [];
-    var len = (reviews.length > 18) ? 18 : reviews.length;
-    for (var i = 0; i < len; i++) {
-      currentPages.push(reviews[i]);
-    }
+  
+    const { language, year, genre, rating } = data.filter;
+    let reviews = this.state.allReviews.filter(movie => {
+      const langCheck = language === "All" || movie.language === language;
+      const yearCheck = year === "All" || movie.year === year;
+      const genreCheck = genre === "All" || movie.genre.includes(genre);
+      const ratingCheck = movie.rating >= rating[0] && movie.rating <= rating[1];
+      return langCheck && yearCheck && genreCheck && ratingCheck;
+    });
+  
+    const currentPages = reviews.slice(0, 18);
     this.setState({
       activePage: 1,
       totalPages: reviews.length,
-      reviews: reviews,
+      reviews,
       currentList: currentPages,
       loading: false,
       sortOpen: false,
@@ -312,52 +290,45 @@ class Home extends Component {
     });
   }
   handleSortClose(data) {
-    // result.sort(function(a,b){return new Date(b.timeStamp)- new Date(a.timeStamp)});
-    // sorter:{
-    //   "field":"timeStamp",
-    //   "sortType":"Ascending"
-    // }
+    // Check if the sorting fields are the same as the current state
     if (data.field === this.state.sorter.field && data.sortType === this.state.sorter.sortType) {
-      this.setState({ sortOpen: false })
+      this.setState({ sortOpen: false });
       return;
     }
-    var reviews;
-    if (this.field === "timeStamp") {
-      if (data.sortType === "Descending")
-        reviews = this.state.reviews.sort(function (a, b) { return new Date(b.timeStamp) - new Date(a.timeStamp) })
-      else
-        reviews = this.state.reviews.sort(function (a, b) { return new Date(a.timeStamp) - new Date(b.timeStamp) })
+  
+    // Clone the reviews array to avoid mutating the state directly
+    let reviews = [...this.state.reviews];
+  
+    // Sort the reviews based on the field and sortType provided in the data
+    if (data.field === "timeStamp") {
+      reviews.sort((a, b) => {
+        const dateA = new Date(a.timeStamp);
+        const dateB = new Date(b.timeStamp);
+        return data.sortType === "Descending" ? dateB - dateA : dateA - dateB;
+      });
+    } else {
+      reviews.sort((a, b) => {
+        const valueA = a[data.field];
+        const valueB = b[data.field];
+        return data.sortType === "Descending" ? valueB - valueA : valueA - valueB;
+      });
     }
-    else {
-      if (data.sortType === "Descending")
-        reviews = this.state.reviews.sort(function (a, b) {
-          if (a[data.field] > b[data.field]) { return -1; }
-          if (a[data.field] < b[data.field]) { return 1; }
-          return 0;
-        })
-      else
-        reviews = this.state.reviews.sort(function (a, b) {
-          if (a[data.field] < b[data.field]) { return -1; }
-          if (a[data.field] > b[data.field]) { return 1; }
-          return 0;
-        })
-    }
-    var currentPages = [];
-    var len = (reviews.length > 18) ? 18 : reviews.length;
-    for (var i = 0; i < len; i++) {
-      currentPages.push(reviews[i]);
-    }
+  
+    // Update currentPages with the first 18 elements of the sorted reviews
+    const currentPages = reviews.slice(0, 18);
+  
+    // Update the state with the sorted reviews and other necessary data
     this.setState({
       activePage: 1,
       totalPages: reviews.length,
-      reviews: reviews,
+      reviews,
       currentList: currentPages,
       loading: false,
       sortOpen: false,
       sorter: data
     });
   }
-
+  
 
   getSchema(movieList) {
     var jsonbody = {

@@ -8,14 +8,13 @@ class CardsList extends Component {
   }
 
   render() {
-    return <NoSsr> <Grid container defer={true}  justifyContent="center" className="App-Content cardGridList"  >
+    return <Grid container defer={true}  justifyContent="center" className="App-Content"  >
     {
     this.props.movies.map(image => (
         <CardLayout key={image.title} review={image}/>
       
     ))}
   </Grid>
-  </NoSsr>
   }
 }
 

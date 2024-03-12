@@ -6,66 +6,76 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
-module.exports = {
-     entry: './src/index.js',
-    output: {
-        path: path.join(__dirname, "/dist"),
-        filename: process.env.production ? `bundle-[name]-[chunkHash].js` : `bundle-[name]-[hash].js`,
-        publicPath: '/'
-    },
-    module: {
-        rules: [{
-            test: /\.js$/,
-            exclude: /node_modules/,
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: ['@babel/preset-react']
-                }
-            }
+
+module.exports = (env, argv) => {
+    const isProduction = argv.mode === 'production';
+
+    return {
+        entry: './src/index.js',
+        output: {
+            path: path.join(__dirname, "/dist"),
+            filename: isProduction ? `bundle-[name]-[chunkHash].js` : `bundle-[name]-[hash].js`,
+            publicPath: '/'
         },
-		{
-			  test: /\.css$/,
-			  use: [
-				MiniCssExtractPlugin.loader, // instead of style-loader
-				'css-loader'
-			  ]
-			},
-        {
-            test: /\.(png|jpg|gif|xml|txt)$/,
-            use: [
+        module: {
+            rules: [
                 {
-                    loader: 'file-loader'
-                }
+                    test: /\.js$/,
+                    exclude: /node_modules/,
+                    use: {
+                        loader: 'babel-loader',
+                        options: {
+                            presets: ['@babel/preset-react']
+                        }
+                    }
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+                        'css-loader'
+                    ]
+                },
+                {
+                    test: /\.(png|jpg|jpeg|gif)$/i,
+                    use: [
+                        {
+                            loader: 'file-loader',
+                            options: {
+                                name: '[name].[ext]',
+                                outputPath: 'images', // Output directory for images
+                            },
+                        },
+                    ],
+                },
+                {
+                    test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                    use: ['file-loader']
+                },
+                { test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000'] }
             ]
         },
-		{
-         test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
-         use: ['file-loader']
-       },
-       { test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000'] }
+        plugins: [
+            new CleanWebpackPlugin(),
+            new HtmlWebPackPlugin({
+                hash: true,
+                filename: "index.html",  //target html
+                template: "./src/index.html", //source html
+            }),
+            new MiniCssExtractPlugin({
+                filename: isProduction ? '[name].[contenthash].css' : '[name].css',
+                chunkFilename: isProduction ? '[id].[contenthash].css' : '[id].css'
+            }),
+            new CopyWebpackPlugin(
+                {
+                    patterns: [
+                        { from: 'src/robots.txt', to: 'robots.txt' },
+                        { from: 'src/sitemap.xml', to: 'sitemap.xml' }
+                    ]
+                }
+            ),
+            new LodashModuleReplacementPlugin(),
+            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
         ]
-    },
-    plugins: [
-		new CleanWebpackPlugin(),
-      new HtmlWebPackPlugin({
-          hash: true,
-          filename: "index.html",  //target html
-          template: "./src/index.html", //source html
-      }),
-		 new MiniCssExtractPlugin({
-		 filename: '[name].[contenthash].css',
-		 chunkFilename: '[id].[contenthash].css'
-		 }),
-		 new CopyWebpackPlugin(
-			  {
-				patterns: [
-				  { from: 'src/robots.txt', to: 'robots.txt' },
-				  { from: 'src/sitemap.xml', to: 'sitemap.xml' }
-				]
-			  }
-			),
-    new LodashModuleReplacementPlugin(),
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-    ]
-}
+    };
+};

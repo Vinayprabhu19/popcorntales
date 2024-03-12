@@ -9,7 +9,6 @@ import '../css/card.css';
 import { Helmet } from 'react-helmet';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import Tooltip from '@mui/material/Tooltip';
-import Banner from "./Banner";
 const Sort = lazy(() => import('./Sort'));
 const Filter = lazy(() => import('./Filter'));
 const CardsList = lazy(() => import('./CardsList'));
@@ -20,6 +19,11 @@ const SortIcon = lazy(() => import('@material-ui/icons/Sort'));
 const FilterListIcon = lazy(() => import('@material-ui/icons/FilterList'));
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import { MenuOutlined, SearchOutlined, SortAscendingOutlined, FilterOutlined } from '@ant-design/icons';
+import Layout from 'antd/lib/layout';
+import Input from 'antd/lib/input';
+
+const { Search } = Input;
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -77,7 +81,6 @@ class Home extends Component {
           currentPages.push(result[i]);
         }
         var len = currentPages.length;
-        var banners=result;
         this.setState({
           schema: schema,
           activePage: pageNo,
@@ -85,9 +88,8 @@ class Home extends Component {
           allReviews: rvs,
           reviews: rvs,
           currentList: currentPages,
-          loading: false,
-          banners:banners
-        })
+          loading: false
+          })
         this.getFilteredData(result);
       })
       .catch(error => {
@@ -159,36 +161,28 @@ class Home extends Component {
         {
         !this.state.loading && <div>
           <div className={this.state.loading ? 'hidden' : 'App'}>
-            <Suspense fallback={  <CircularProgress color="inherit" />}>
-              <Banner items={this.state.banners} />
-            </Suspense>
-            <Paper className="filter-sort" elevation={18}>
+          <div style={{ color: '#fff', background: "#45b3e0", fontSize: '30px', height: "70px", padding: "5px", textAlign: "center", fontFamily: "Satisfy", display: "flex", justifyContent: "center", alignItems: "center" }}>Popcorn Tales</div>
+          
+            <Paper className="filter-sort" elevation={5}>
               <div className="d-flex justify-content-center">
-                <input type="text" id="searchField" value={this.state.searchText} onChange={this.onSearch} placeholder="Movie Title" />
-                <Hidden smDown>
-                  <Tooltip title="Sort">
-                    <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"large"} style={{ fill: "purple" }} /></Button>
-                  </Tooltip>
-                  <Tooltip title="Filter">
-                    <Button className="iconBtn" onClick={this.openFilter} ><FilterListIcon fontSize={"large"} style={{ fill: "purple" }} /> </Button>
-                  </Tooltip>
-                </Hidden>
-                <Hidden mdUp>
-                  <Tooltip title="Sort">
-                    <Button className="iconBtn" onClick={this.openSort} ><SortIcon fontSize={"default"} style={{ fill: "purple" }} /></Button>
-                  </Tooltip>
-                  <Tooltip title="Filter">
-                    <Button className="iconBtn" onClick={this.openFilter}><FilterListIcon fontSize={"default"} style={{ fill: "purple" }} /> </Button>
-                  </Tooltip>
-                </Hidden>
-                <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
+                <Search placeholder="Search..." style={{ width: 200, marginRight: '20px' }} prefix={<SearchOutlined />} value={this.state.searchText} onChange={this.onSearch}/>
+                <Tooltip title="Sort">
+                  <Button className="iconBtn" onClick={this.openSort}><SortIcon style={{ fill: "purple" }} /></Button>
+                </Tooltip>
+                <Tooltip title="Filter">
+                  <Button className="iconBtn" onClick={this.openFilter}><FilterListIcon style={{ fill: "purple" }} /> </Button>
+                </Tooltip>
+                <Suspense fallback={<CircularProgress style={{ marginLeft: "50%" }} color="inherit" />}>
                   <Sort open={this.state.sortOpen} close={(data) => this.handleSortClose(data)} data={this.state.sorter} />
                 </Suspense>
-                <Suspense fallback={  <CircularProgress style={{marginLeft:"50%"}}  color="inherit" />}>
+                <Suspense fallback={<CircularProgress style={{ marginLeft: "50%" }} color="inherit" />}>
                   <Filter open={this.state.filterOpen} close={(data) => this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData} />
                 </Suspense>
-              </div>
+                </div>
             </Paper>
+            
+
+
             <CardsList movies={this.state.currentList} />
             <footer>
               <div className="d-flex justify-content-center">
@@ -198,9 +192,7 @@ class Home extends Component {
                     onPageChanged={this.onPageChanged} />
                 </Suspense>
               </div>
-              <div className="d-flex justify-content-center" style={{height:"50px",margin:"5px"}}>
 
-              </div>
               <Paper className="fixedFooter" elevation={5}>
                 <BottomNavigation
                   >

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import Paper from '@mui/material/Paper';
 import BeenhereIcon from '@mui/icons-material/Beenhere';
 import CancelIcon from '@mui/icons-material/Cancel';
-import ReactHtmlParser from 'react-html-parser';
+import parse from 'html-react-parser';
+
 class HitAndMiss extends Component {
   constructor(props){
     super(props);
@@ -20,7 +21,7 @@ class HitAndMiss extends Component {
             this.props.pros.map(pro=>(
                 <div className="flexbox-container" key={pro}>
                     <div><BeenhereIcon className="checkIcon" /></div>
-                    <div className='pointerText'>{ ReactHtmlParser("<p>"+pro+"</p>") }</div>
+                    <div className='pointerText'>{ parse("<p>"+pro+"</p>") }</div>
                 </div>
             ))
         }
@@ -29,7 +30,7 @@ class HitAndMiss extends Component {
             this.props.cons.map(con=>(
                 <div className="flexbox-container" key={con}>
                     <div><CancelIcon className="cancelIcon" /></div>
-                    <div className='pointerText'>{ ReactHtmlParser("<p>"+con+"</p>") }</div>
+                    <div className='pointerText'>{ parse("<p>"+con+"</p>") }</div>
                 </div>
             ))
         }

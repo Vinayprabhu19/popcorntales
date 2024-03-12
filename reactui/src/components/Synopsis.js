@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import ReactHtmlParser from 'react-html-parser';
+import parse from 'html-react-parser';
+
 class Synopsis extends Component {
   constructor(props){
     super(props);
@@ -12,7 +13,7 @@ class Synopsis extends Component {
   render() {
     return  <div >
     { this.props.synopsis.split("\n").map(para =>(
-      <div key={para}>{ ReactHtmlParser("<p>"+para+"</p>") }</div>
+      <div key={para}>{ parse("<p>"+para+"</p>") }</div>
       ))
     }
   </div>

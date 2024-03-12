@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // Import bundle analyzer plugin
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = (env, argv) => {
     const isProduction = argv.mode === 'production';
@@ -15,8 +15,8 @@ module.exports = (env, argv) => {
         new CleanWebpackPlugin(),
         new HtmlWebPackPlugin({
             hash: true,
-            filename: "index.html",  //target html
-            template: "./src/index.html", //source html
+            filename: "index.html",
+            template: "./src/index.html",
         }),
         new MiniCssExtractPlugin({
             filename: isProduction ? '[name].[contenthash].css' : '[name].css',
@@ -35,7 +35,6 @@ module.exports = (env, argv) => {
     ];
 
     if (!isProduction) {
-        // Add bundle analyzer plugin only for development
         plugins.push(new BundleAnalyzerPlugin());
     }
 
@@ -72,7 +71,7 @@ module.exports = (env, argv) => {
                             loader: 'file-loader',
                             options: {
                                 name: '[name].[ext]',
-                                outputPath: 'images', // Output directory for images
+                                outputPath: 'images',
                             },
                         },
                     ],
@@ -85,5 +84,8 @@ module.exports = (env, argv) => {
             ]
         },
         plugins,
+        devServer: {
+            historyApiFallback: true
+        }
     };
 };

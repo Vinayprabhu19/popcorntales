@@ -17,10 +17,9 @@ const SortIcon = lazy(() => import('@mui/icons-material/Sort'));
 const FilterListIcon = lazy(() => import('@mui/icons-material/FilterList'));
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { MenuOutlined, SearchOutlined, SortAscendingOutlined, FilterOutlined } from '@ant-design/icons';
-import Layout from 'antd/lib/layout';
+const SearchOutlined = lazy(() => import('@ant-design/icons/SearchOutlined'));
 import Input from 'antd/lib/input';
-import { Pagination } from '@mui/material';
+import Pagination from '@mui/material/Pagination';
 
 const { Search } = Input;
 class Home extends Component {
@@ -147,7 +146,7 @@ class Home extends Component {
 
 
   render() {
-    if (this.state.loading) {
+if (this.state.loading) {
       return <Backdrop open={this.state.loading}>
          <CircularProgress color="inherit"/>
       </Backdrop>
@@ -156,7 +155,7 @@ class Home extends Component {
       <>
         <Helmet>
           <title>Popcorn Tales - Movie Reviews & Analysis</title>
-          <meta name="description" content="Find the latest movies reviews from various Indian and Foreign languages" />
+          <meta name="description" content="Find the latest movies reviews from various Indian and Foreign languages across platforms" />
           <script className='structured-data-list' type="application/ld+json">{this.state.schema}</script>
         </Helmet>
         {

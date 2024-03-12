@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.3.1",
-    "@emotion/react": "^11.10.0",
+"@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.15.12",
     "@mui/material": "^5.9.3",
@@ -60,6 +60,7 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.3",
     "webpack-merge": "^5.0.9",
+    "preload-webpack-plugin": "^2.3.0",
     "webpack-split-by-path": "^2.0.0"
   }
 }

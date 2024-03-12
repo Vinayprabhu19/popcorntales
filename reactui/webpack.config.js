@@ -6,9 +6,38 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin; // Import bundle analyzer plugin
 
 module.exports = (env, argv) => {
     const isProduction = argv.mode === 'production';
+
+    const plugins = [
+        new CleanWebpackPlugin(),
+        new HtmlWebPackPlugin({
+            hash: true,
+            filename: "index.html",  //target html
+            template: "./src/index.html", //source html
+        }),
+        new MiniCssExtractPlugin({
+            filename: isProduction ? '[name].[contenthash].css' : '[name].css',
+            chunkFilename: isProduction ? '[id].[contenthash].css' : '[id].css'
+        }),
+        new CopyWebpackPlugin(
+            {
+                patterns: [
+                    { from: 'src/robots.txt', to: 'robots.txt' },
+                    { from: 'src/sitemap.xml', to: 'sitemap.xml' }
+                ]
+            }
+        ),
+        new LodashModuleReplacementPlugin(),
+        new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    ];
+
+    if (!isProduction) {
+        // Add bundle analyzer plugin only for development
+        plugins.push(new BundleAnalyzerPlugin());
+    }
 
     return {
         entry: './src/index.js',
@@ -55,27 +84,6 @@ module.exports = (env, argv) => {
                 { test: /\.(png|woff|woff2|eot|ttf|svg)$/, use: ['url-loader?limit=100000'] }
             ]
         },
-        plugins: [
-            new CleanWebpackPlugin(),
-            new HtmlWebPackPlugin({
-                hash: true,
-                filename: "index.html",  //target html
-                template: "./src/index.html", //source html
-            }),
-            new MiniCssExtractPlugin({
-                filename: isProduction ? '[name].[contenthash].css' : '[name].css',
-                chunkFilename: isProduction ? '[id].[contenthash].css' : '[id].css'
-            }),
-            new CopyWebpackPlugin(
-                {
-                    patterns: [
-                        { from: 'src/robots.txt', to: 'robots.txt' },
-                        { from: 'src/sitemap.xml', to: 'sitemap.xml' }
-                    ]
-                }
-            ),
-            new LodashModuleReplacementPlugin(),
-            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-        ]
+        plugins,
     };
 };

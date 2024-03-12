@@ -97,17 +97,19 @@ class Home extends Component {
       })
   }
 
-  onPageChanged(e) {
+  onPageChanged(e,v) {
+    debugger;
     var currentPages = [];
-    var start = 18 * (e.currentPage - 1);
-    var len = (this.state.reviews.length > 18 * (e.currentPage)) ? 18 * (e.currentPage) : this.state.reviews.length;
+    var start = 18 * (v - 1);
+    var len = (this.state.reviews.length > 18 * (v)) ? 18 * (v) : this.state.reviews.length;
     for (var i = start; i < len; i++) {
       currentPages.push(this.state.reviews[i]);
     }
     this.setState({
-      currentList: currentPages
+      currentList: currentPages,
+      activePage:v
     });
-    this.props.history.push("?page="+e.currentPage);;
+    this.props.history.push("?page="+v);;
   }
 
   onSearch(e) {
@@ -188,7 +190,7 @@ class Home extends Component {
               <Pagination
                 count={Math.ceil(this.state.totalPages / 18)} // Calculate total number of pages based on total records and page limit
                 page={this.state.activePage} // Current active page
-                onChange={(event, value) => this.onPageChanged(value)} // Function to handle page change
+                onChange={(event, value) => this.onPageChanged(event,value)} // Function to handle page change
                 showFirstButton
                 showLastButton
               />

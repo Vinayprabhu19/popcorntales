@@ -17,7 +17,7 @@ import { Helmet } from 'react-helmet';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { styled } from '@mui/material/styles';
-
+import ImageLoader from './ImageLoader';
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -148,11 +148,11 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
           </Toolbar>
         </AppBar>
         <div style={{width:"100%",padding:"10px"}}>
-            <Hidden lgUp >
+            <Hidden mdUp >
               <div style={{width:"100%",marginTop:"50px",zIndex:999}} >
                     <div className="d-flex justify-content-center">
                     <Paper elevation={19} className="card-container">
-                      <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+                      <ImageLoader className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
                       </Paper>
                     </div>
                   </div>
@@ -174,7 +174,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             <div className="movieDetail">
                 <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"6%",float:"left",zIndex:999}}>
                     <Paper elevation={19}  className="card-container">
-                  <img className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}/>
+                    <ImageLoader className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
                   </Paper>
                 </div>
                 <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"50px"}}>

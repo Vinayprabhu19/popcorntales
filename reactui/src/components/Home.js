@@ -20,7 +20,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 const SearchOutlined = lazy(() => import('@ant-design/icons/SearchOutlined'));
 import Input from 'antd/lib/input';
 import Pagination from '@mui/material/Pagination';
-
+import logo from "../img/3dlogo.webp";
 const { Search } = Input;
 class Home extends Component {
   constructor(props) {
@@ -162,8 +162,8 @@ if (this.state.loading) {
         !this.state.loading && <div>
           <div className={this.state.loading ? 'hidden' : 'App'}>
           <Paper elevation={18} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center", height: "70px", padding: "5px",}}>
-          <img src="https://api.popcorntales.com/image?object=Posters/logo.png" style={{width:"35px",height:"40px",marginRight:"20px"}}></img>
-          <div style={{ color: 'purple', fontSize: '30px', textAlign: "center", fontFamily: "Russo One"  }}>Popcorn Tales</div>
+          <img src={logo} style={{width:"35px",height:"40px",marginRight:"20px"}} alt={"Popcorn Tales Logo"}></img>
+          <a href="/"><div className="appTitle" >Popcorn Tales</div></a>
           </Paper>
             <Paper className="filter-sort" elevation={5}>
               <div className="d-flex justify-content-center">

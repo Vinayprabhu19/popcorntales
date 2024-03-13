@@ -31,14 +31,18 @@ module.exports = {
 				'css-loader'
 			  ]
 			},
-        {
-            test: /\.(png|jpg|gif|xml|txt)$/,
-            use: [
-                {
-                    loader: 'file-loader'
-                }
-            ]
-        },
+            {
+                test: /\.(png|jpg|gif|xml|txt|webp)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]', // Keep the original file name
+                            outputPath: 'assets', // Output directory for files
+                        }
+                    }
+                ]
+            },
 		{
          test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
          use: ['file-loader']

@@ -1,5 +1,7 @@
 import React, { Component, Suspense, lazy} from 'react';
 import Paper from '@mui/material/Paper';
+import ImageLoader from './ImageLoader';
+
 class CardLayout extends Component {
   constructor(props){
     super(props);
@@ -15,7 +17,8 @@ class CardLayout extends Component {
     return <Paper className="card-container" elevation={8}>
     <h4 className="title">{this.props.review.title}</h4>
         <a href={this.props.review.title}>
-            <img className="card-image" alt={"Popcorn Tales - " + this.props.review.title } src={this.props.review.titleImage}/>
+            <ImageLoader className="card-image" alt={"Popcorn Tales - " + this.props.review.title } src={this.props.review.titleImage} ></ImageLoader>
+            {/* <img className="card-image" alt={"Popcorn Tales - " + this.props.review.title } src={this.props.review.titleImage}/> */}
         </a>
     <div className="detail">
         <h3 className="language">{this.props.review.language}</h3>

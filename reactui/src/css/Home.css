@@ -6,6 +6,18 @@ html,body,#root {
   width: 100%;
 }
 
+.appTitle
+  { 
+    color: purple;
+    font-size: 30px;
+    text-align: center;
+    font-family: "Russo One";
+    text-decoration:none
+   }
+a:hover{
+text-decoration: none;
+}
+
 
 #appBar{
   width: 100%;

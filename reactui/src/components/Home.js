@@ -15,11 +15,11 @@ const InstagramIcon = lazy(() => import('@mui/icons-material/Instagram'));
 const MailIcon = lazy(() => import('@mui/icons-material/Mail'));
 const SortIcon = lazy(() => import('@mui/icons-material/Sort'));
 const FilterListIcon = lazy(() => import('@mui/icons-material/FilterList'));
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 const SearchOutlined = lazy(() => import('@ant-design/icons/SearchOutlined'));
 import Input from 'antd/lib/input';
 import Pagination from '@mui/material/Pagination';
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import logo from "../img/3dlogo.webp";
 const { Search } = Input;
 class Home extends Component {
@@ -60,38 +60,42 @@ class Home extends Component {
     }
     return true;
   }
-  componentDidMount() {
-    var urlParams = new URLSearchParams(window.location.search);
-    var pageNo = urlParams.get("page");
-    fetch('https://api.popcorntales.com/movie')
-      .then(response => response.json())
-      .then(result => {
-        var schema = this.getSchema(result);
-        const rvs = result.map(item => {
-          return item;
-        });
-        var currentPages = [];
-        pageNo = (pageNo ==null)?1:parseInt(pageNo);
-        var start = 18 * (pageNo - 1);
-        var len = (result.length > 18 * (pageNo)) ? 18 * (pageNo) : result.length;
-        for (var i = start; i < len; i++) {
-          currentPages.push(result[i]);
-        }
-        var len = currentPages.length;
-        this.setState({
-          schema: schema,
-          activePage: pageNo,
-          totalPages: rvs.length,
-          allReviews: rvs,
-          reviews: rvs,
-          currentList: currentPages,
-          loading: false
-          })
-        this.getFilteredData(result);
-      })
-      .catch(error => {
-        console.error(error);
-      })
+  async componentDidMount() {
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      let pageNo = parseInt(urlParams.get("page")) || 1;
+      
+      const response = await fetch('https://api.popcorntales.com/movie');
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+  
+      const result = await response.json();
+      const schema = this.getSchema(result);
+      const allReviews = result.map(item => item);
+      const currentPages = this.getCurrentPages(result, pageNo);
+  
+      this.setState({
+        schema: schema,
+        activePage: pageNo,
+        totalPages: allReviews.length,
+        allReviews: allReviews,
+        reviews: allReviews,
+        currentList: currentPages,
+        loading: false
+      });
+  
+      this.getFilteredData(result);
+    } catch (error) {
+      console.error(error);
+      // Handle error, show message to user, etc.
+    }
+  }
+  
+  getCurrentPages(result, pageNo) {
+    const start = 18 * (pageNo - 1);
+    const end = Math.min(start + 18, result.length);
+    return result.slice(start, end);
   }
 
   onPageChanged(e,v) {
@@ -160,10 +164,11 @@ if (this.state.loading) {
         {
         !this.state.loading && <div>
           <div className={this.state.loading ? 'hidden' : 'App'}>
-          <Paper elevation={18} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center", height: "70px", padding: "5px",}}>
+          <Paper elevation={18} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center", height: "50px", padding: "5px",}}>
           <img src={logo} style={{width:"35px",height:"40px",marginRight:"20px"}} alt={"Popcorn Tales Logo"}></img>
           <a href="/"><div className="appTitle" >Popcorn Tales</div></a>
           </Paper>
+          <Suspense >
             <Paper className="filter-sort" elevation={5} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <Search placeholder="Search..." style={{ width: 200, marginRight: '20px' }} prefix={<SearchOutlined />} value={this.state.searchText} onChange={this.onSearch}/>
                 <Tooltip title="Sort">
@@ -172,14 +177,10 @@ if (this.state.loading) {
                 <Tooltip title="Filter">
                   <Button className="iconBtn" onClick={this.openFilter}><FilterListIcon style={{ fill: "purple" }} /> </Button>
                 </Tooltip>
-                <Suspense fallback={<CircularProgress style={{ marginLeft: "50%" }} color="inherit" />}>
                   <Sort open={this.state.sortOpen} close={(data) => this.handleSortClose(data)} data={this.state.sorter} />
-                </Suspense>
-                <Suspense fallback={<CircularProgress style={{ marginLeft: "50%" }} color="inherit" />}>
                   <Filter open={this.state.filterOpen} close={(data) => this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData} />
-                </Suspense>
             </Paper>
-            
+            </Suspense>
 
 
             <CardsList movies={this.state.currentList} />

@@ -53,11 +53,12 @@ class Detail extends Component {
     };
   }
   shouldComponentUpdate(nextProps, nextState){
+    debugger;
     if(!nextState.dataLoaded)
       return false;
-    if(JSON.stringify(this.state) === JSON.stringify(nextState) )
+    if(this.state.selectedMovie.title != nextState.selectedMovie.title)
+      return true;
     return false;
-    return true;
   }
 
   componentDidMount(){

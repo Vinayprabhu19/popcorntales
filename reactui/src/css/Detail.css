@@ -1,7 +1,7 @@
 
 
 html,body,#root {
-    font-family: 'Verdana';
+    font-family: 'Helvetica';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
@@ -144,6 +144,8 @@ h5,h6{
 }
 .centerText{
     text-align: center;
+    font-size: large;
+    font-family: 'Helvetica' !important;
     width: 100%;
 }
 .movieIcon{
@@ -189,6 +191,14 @@ h5,h6{
 .subHeader{
     margin-bottom: 20px;
 }
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root{
+    min-height: 0 !important;
+    height: 50px;
+}
+.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded{
+    min-height: 0 !important;
+    height: 30px;
+}
 @media screen and (min-width: 2100px) {
     #movie-card {
         width: 400px;
@@ -218,10 +228,6 @@ h5,h6{
 
 @media screen and (min-width: 957px) {
 
-    .review-component {
-        padding:0 20px 20px 20px;
-
-    }
     .graphImage{
         width: 400px;
         height: 400px;

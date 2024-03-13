@@ -43,7 +43,9 @@ class DetailTab extends Component {
             <h5 className="centerText">Review</h5>
           </AccordionSummary>
           <AccordionDetails className="review-component" >
+          <Suspense>
             <Synopsis synopsis={this.state.synopsis}/>
+            </Suspense>
           </AccordionDetails>
       </Accordion>
       <Accordion >

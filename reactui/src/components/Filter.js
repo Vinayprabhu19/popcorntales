@@ -7,6 +7,7 @@ import Slider from '@mui/material/Slider';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Grid from '@mui/material/Grid';
+
 class Filter extends Component {
     constructor(props) {
         super(props);

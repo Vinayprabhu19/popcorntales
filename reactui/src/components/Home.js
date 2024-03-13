@@ -16,12 +16,12 @@ const MailIcon = lazy(() => import('@mui/icons-material/Mail'));
 const SortIcon = lazy(() => import('@mui/icons-material/Sort'));
 const FilterListIcon = lazy(() => import('@mui/icons-material/FilterList'));
 const SearchOutlined = lazy(() => import('@ant-design/icons/SearchOutlined'));
-import Input from 'antd/lib/input';
+const Input = lazy(() => import('antd/lib/input'));
 const Pagination = lazy(() => import('@mui/material/Pagination'));
 const BottomNavigation = lazy(() => import('@mui/material/BottomNavigation'));
 const BottomNavigationAction = lazy(() => import('@mui/material/BottomNavigationAction'));
 import logo from "../img/3dlogo.webp";
-const { Search } = Input;
+
 class Home extends Component {
   constructor(props) {
     super(props);
@@ -56,6 +56,10 @@ class Home extends Component {
   }
   shouldComponentUpdate(nextProps, nextState) {
     if(this.state.currentList.length != nextState.currentList.length)
+      return true;
+    else if(this.state.sortOpen != nextState.sortOpen)
+      return true;
+    else if(this.state.filterOpen != nextState.filterOpen)
       return true;
     else if (this.state.currentList.length ==0)
       return false;
@@ -173,7 +177,7 @@ if (this.state.loading) {
           </Paper>
           <Suspense >
             <Paper className="filter-sort" elevation={5} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center",height:"50px"}}>
-                <Search placeholder="Search..." style={{ width: 200, marginRight: '20px' }} prefix={<SearchOutlined />} value={this.state.searchText} onChange={this.onSearch}/>
+                <Input placeholder="Search..." style={{ width: 200, marginRight: '20px' }} prefix={<SearchOutlined />} value={this.state.searchText} onChange={this.onSearch}/>
                 <Tooltip title="Sort">
                   <Button className="iconBtn" onClick={this.openSort}><SortIcon style={{ fill: "purple" }} /></Button>
                 </Tooltip>

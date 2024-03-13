@@ -4,6 +4,7 @@ html,body,#root {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   width: 100%;
+  text-decoration:none;
 }
 
 .appTitle

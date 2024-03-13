@@ -13,7 +13,7 @@ class Ticket extends Component {
     return <div id="ticket-component">
     <h5 className="centerAligned">Date Watched : {this.props.ticketDetails.watchDate}</h5>
     <h5 className="centerAligned">Place Watched : {this.props.ticketDetails.placeWatched}</h5>
-    <div className="d-flex justify-content-center">
+    <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
       <Paper elevation={20} id="ticket-container">
       <img src={this.props.ticketImage} className="ticketImage" alt={"Ticket"}></img>
       </Paper>

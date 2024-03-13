@@ -12,7 +12,6 @@ const ImageLoader = ({className,alt, src }) => {
     <div>
       {loading && <img className="card-image" src={logo} alt={alt} />}
       <img
-        className={className}
         src={src}
         alt={alt}
         style={{ display: loading ? 'none' : 'block' }}

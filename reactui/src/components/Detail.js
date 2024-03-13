@@ -1,4 +1,4 @@
-import React, { lazy,Component } from 'react';
+import React, { lazy,Suspense,Component } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import (/* webpackPrefetch: true */ "../css/Detail.css");
@@ -7,15 +7,15 @@ import Hidden from '@mui/material/Hidden';
 import Backdrop from '@mui/material/Backdrop';
 import Paper from '@mui/material/Paper';
 import CircularProgress from '@mui/material/CircularProgress';
-import ShareMenu from './ShareMenu';
-import BarChartIcon from '@mui/icons-material/BarChart';
 import Rating from '@mui/material/Rating';
+const ShareMenu = lazy(() => import('./ShareMenu'));
+const BarChartIcon = lazy(() => import('@mui/icons-material/BarChart'));
 const InstagramIcon = lazy(() => import('@mui/icons-material/Instagram'));
 const MailIcon = lazy(() => import('@mui/icons-material/Mail'));
 const FavoriteIcon = lazy(() => import('@mui/icons-material/Favorite'));
 import { Helmet } from 'react-helmet';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+const BottomNavigation = lazy(() => import('@mui/material/BottomNavigation'));
+const BottomNavigationAction = lazy(() => import('@mui/material/BottomNavigationAction'));
 import { styled } from '@mui/material/styles';
 import ImageLoader from './ImageLoader';
 
@@ -147,38 +147,38 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             </section>
           </Toolbar>
         </AppBar>
-        <div style={{width:"100%",padding:"10px"}}>
+        <div style={{padding:"10px"}}>
             <Hidden mdUp >
               <div style={{width:"100%",marginTop:"50px",zIndex:999}} >
-                    <div className="d-flex justify-content-center">
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <Paper elevation={19} className="card-container">
                       <ImageLoader className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
                       </Paper>
                     </div>
                   </div>
                   <div className="topHeader">
-                  <div className="d-flex justify-content-center">
+                  <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                   <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
                   </div>
                   <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</h3>
                   <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.genre.join(",")}</h3>
-                  <div className="d-flex justify-content-center">
+                  <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                   {overallRating}
                   </div>
-                  <div className="d-flex justify-content-center">
+                  <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                   <a id="trailerButton" href={this.state.selectedMovie.trailer} target="_blank" rel="noreferrer">Watch trailer</a>
                   </div>
                   </div>
             </Hidden>
             <Hidden mdDown>
             <div className="movieDetail">
-                <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"6%",float:"left",zIndex:999}}>
+                <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"20px",float:"left",zIndex:999}}>
                     <Paper elevation={19}  className="card-container">
                     <ImageLoader className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
                   </Paper>
                 </div>
-                <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"50px"}}>
-                    <div className="d-flex justify-content-center">
+                <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"30px"}}>
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <h1 className="headerLevel1" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
 
                     </div>
@@ -195,13 +195,9 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         </div>
           <DetailTab movie={this.state.selectedMovie} selectedTab={this.state.selectedTab} 	/>
           <footer>
-
-              <div className="d-flex justify-content-center" style={{height:"50px",margin:"5px"}}>
-
-              </div>
+          <Suspense>
               <Paper className="fixedFooter" elevation={5}>
-                <BottomNavigation
-                  >
+                <BottomNavigation >
                     <a href="https://www.instagram.com/popcorntaless" target="_blank" rel="noreferrer" className="social-icon">
                     <BottomNavigationAction label="Instagram" icon={<InstagramIcon />} />
                     </a>
@@ -214,6 +210,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                     <ShareMenu title={this.state.selectedMovie.title}/>
                   </BottomNavigation>
               </Paper>
+              </Suspense>
             </footer>
     </div>
     </>

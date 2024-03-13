@@ -6,20 +6,20 @@ import React, { Suspense, lazy, Component } from 'react';
 import '../css/Home.css';
 import '../css/card.css';
 import { Helmet } from 'react-helmet';
-import BarChartIcon from '@mui/icons-material/BarChart';
 import Tooltip from '@mui/material/Tooltip';
 const Sort = lazy(() => import('./Sort'));
 const Filter = lazy(() => import('./Filter'));
 const CardsList = lazy(() => import('./CardsList'));
+const BarChartIcon = lazy(() => import('@mui/icons-material/BarChart'));
 const InstagramIcon = lazy(() => import('@mui/icons-material/Instagram'));
 const MailIcon = lazy(() => import('@mui/icons-material/Mail'));
 const SortIcon = lazy(() => import('@mui/icons-material/Sort'));
 const FilterListIcon = lazy(() => import('@mui/icons-material/FilterList'));
 const SearchOutlined = lazy(() => import('@ant-design/icons/SearchOutlined'));
 import Input from 'antd/lib/input';
-import Pagination from '@mui/material/Pagination';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+const Pagination = lazy(() => import('@mui/material/Pagination'));
+const BottomNavigation = lazy(() => import('@mui/material/BottomNavigation'));
+const BottomNavigationAction = lazy(() => import('@mui/material/BottomNavigationAction'));
 import logo from "../img/3dlogo.webp";
 const { Search } = Input;
 class Home extends Component {
@@ -55,9 +55,12 @@ class Home extends Component {
     this.onSearch = this.onSearch.bind(this);
   }
   shouldComponentUpdate(nextProps, nextState) {
-    if (JSON.stringify(this.state) == JSON.stringify(nextState)) {
+    if(this.state.currentList.length != nextState.currentList.length)
+      return true;
+    else if (this.state.currentList.length ==0)
       return false;
-    }
+    else if (this.state.currentList[0].title == nextState.currentList[0].title)
+      return false;
     return true;
   }
   async componentDidMount() {
@@ -169,7 +172,7 @@ if (this.state.loading) {
           <a href="/"><div className="appTitle" >Popcorn Tales</div></a>
           </Paper>
           <Suspense >
-            <Paper className="filter-sort" elevation={5} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center"}}>
+            <Paper className="filter-sort" elevation={5} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center",height:"50px"}}>
                 <Search placeholder="Search..." style={{ width: 200, marginRight: '20px' }} prefix={<SearchOutlined />} value={this.state.searchText} onChange={this.onSearch}/>
                 <Tooltip title="Sort">
                   <Button className="iconBtn" onClick={this.openSort}><SortIcon style={{ fill: "purple" }} /></Button>
@@ -184,6 +187,7 @@ if (this.state.loading) {
 
 
             <CardsList movies={this.state.currentList} />
+            <Suspense>
             <div style={{ width: "100%", height: "50px", marginBottom: "50px", display: "flex", justifyContent: "center", alignItems: "center" }}>
               <Pagination
                 count={Math.ceil(this.state.totalPages / 18)} // Calculate total number of pages based on total records and page limit
@@ -193,7 +197,9 @@ if (this.state.loading) {
                 showLastButton
               />
             </div>
+            </Suspense>
             <footer>
+            <Suspense>
               <Paper className="fixedFooter" elevation={5}>
                 <BottomNavigation
                   >
@@ -208,6 +214,7 @@ if (this.state.loading) {
                     </a>
                   </BottomNavigation>
               </Paper>
+              </Suspense>
             </footer>
 
           </div>

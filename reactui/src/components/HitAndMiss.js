@@ -35,7 +35,7 @@ class HitAndMiss extends Component {
             ))
         }
         </>
-        <div className="d-flex justify-content-center">
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
             <Paper elevation={10}>
         <img src={this.props.url} className="graphImage" />
         </Paper>

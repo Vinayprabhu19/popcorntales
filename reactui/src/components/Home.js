@@ -55,7 +55,6 @@ class Home extends Component {
     this.onSearch = this.onSearch.bind(this);
   }
   shouldComponentUpdate(nextProps, nextState) {
-    console.log("Updating State");
     if (JSON.stringify(this.state) == JSON.stringify(nextState)) {
       return false;
     }
@@ -165,8 +164,7 @@ if (this.state.loading) {
           <img src={logo} style={{width:"35px",height:"40px",marginRight:"20px"}} alt={"Popcorn Tales Logo"}></img>
           <a href="/"><div className="appTitle" >Popcorn Tales</div></a>
           </Paper>
-            <Paper className="filter-sort" elevation={5}>
-              <div className="d-flex justify-content-center">
+            <Paper className="filter-sort" elevation={5} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center"}}>
                 <Search placeholder="Search..." style={{ width: 200, marginRight: '20px' }} prefix={<SearchOutlined />} value={this.state.searchText} onChange={this.onSearch}/>
                 <Tooltip title="Sort">
                   <Button className="iconBtn" onClick={this.openSort}><SortIcon style={{ fill: "purple" }} /></Button>
@@ -180,7 +178,6 @@ if (this.state.loading) {
                 <Suspense fallback={<CircularProgress style={{ marginLeft: "50%" }} color="inherit" />}>
                   <Filter open={this.state.filterOpen} close={(data) => this.handleFilterClose(data)} data={this.state.filter} filterData={this.state.filterData} />
                 </Suspense>
-                </div>
             </Paper>
             
 

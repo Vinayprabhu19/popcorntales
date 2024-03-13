@@ -161,8 +161,10 @@ if (this.state.loading) {
         {
         !this.state.loading && <div>
           <div className={this.state.loading ? 'hidden' : 'App'}>
-          <div style={{ color: '#fff', background: "#45b3e0", fontSize: '30px', height: "70px", padding: "5px", textAlign: "center", fontFamily: "Satisfy", display: "flex", justifyContent: "center", alignItems: "center" }}>Popcorn Tales</div>
-          
+          <Paper elevation={18} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center", height: "70px", padding: "5px",}}>
+          <img src="https://api.popcorntales.com/image?object=Posters/logo.png" style={{width:"35px",height:"40px",marginRight:"20px"}}></img>
+          <div style={{ color: 'purple', fontSize: '30px', textAlign: "center", fontFamily: "Russo One"  }}>Popcorn Tales</div>
+          </Paper>
             <Paper className="filter-sort" elevation={5}>
               <div className="d-flex justify-content-center">
                 <Search placeholder="Search..." style={{ width: 200, marginRight: '20px' }} prefix={<SearchOutlined />} value={this.state.searchText} onChange={this.onSearch}/>

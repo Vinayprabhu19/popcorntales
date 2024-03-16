@@ -204,7 +204,7 @@ align-items: center; /* align vertical */
     }
     .card-image{
         width: 220px;
-        height: 250px;
+        height: 270px;
     }
     .movie-img{
         align-self: center;
@@ -249,7 +249,7 @@ align-items: center; /* align vertical */
     }
     .card-image{
         width: 180px;
-        height: 220px;
+        height: 230px;
     }
     .movie-img{
         height: 250px;

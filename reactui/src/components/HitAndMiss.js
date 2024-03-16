@@ -19,7 +19,7 @@ class HitAndMiss extends Component {
         <h4 className="subHeader">What worked well?</h4>
         {
             this.props.pros.map(pro=>(
-                <div className="flexbox-container" key={pro}>
+              <div style={{ display: "flex", alignItems: "center" }} key={pro}>
                     <div><BeenhereIcon className="checkIcon" /></div>
                     <div className='pointerText'>{ parse("<p>"+pro+"</p>") }</div>
                 </div>
@@ -28,7 +28,7 @@ class HitAndMiss extends Component {
         <h4 className="subHeader">What didn't work well?</h4>
         {
             this.props.cons.map(con=>(
-                <div className="flexbox-container" key={con}>
+              <div style={{ display: "flex", alignItems: "center" }} key={con}>
                     <div><CancelIcon className="cancelIcon" /></div>
                     <div className='pointerText'>{ parse("<p>"+con+"</p>") }</div>
                 </div>

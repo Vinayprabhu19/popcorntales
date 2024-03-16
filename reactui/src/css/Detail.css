@@ -111,6 +111,7 @@ h5,h6{
 .centerAligned{
     position: relative;
     text-align: center;
+    font-family: 'Helvetica';
 }
 
 .topHeader{

@@ -53,7 +53,6 @@ class Detail extends Component {
     };
   }
   shouldComponentUpdate(nextProps, nextState){
-    debugger;
     if(!nextState.dataLoaded)
       return false;
     if(this.state.selectedMovie.title != nextState.selectedMovie.title)
@@ -150,7 +149,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         </AppBar>
         <div style={{padding:"10px"}}>
             <Hidden mdUp >
-              <div style={{width:"100%",marginTop:"50px",zIndex:999}} >
+              <div style={{width:"100%",marginTop:"20px",zIndex:999}} >
                     <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <Paper elevation={19} className="card-container">
                       <ImageLoader className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>

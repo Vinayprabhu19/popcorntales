@@ -191,13 +191,9 @@ h5,h6{
 .subHeader{
     margin-bottom: 20px;
 }
-.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root{
-    min-height: 0 !important;
-    height: 50px;
-}
-.css-sh22l5-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded{
-    min-height: 0 !important;
-    height: 30px;
+
+.movie-detail{
+    margin-bottom: 50px;
 }
 @media screen and (min-width: 2100px) {
     #movie-card {

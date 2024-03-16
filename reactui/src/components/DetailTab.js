@@ -1,13 +1,15 @@
 import React, { Suspense, lazy,Component} from 'react';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Collapse } from 'antd';
+import 'antd/lib/collapse/style';
+
+const { Panel } = Collapse; // Destructuring to get Panel component from Collapse
+
 const HitAndMiss = lazy(() => import('./HitAndMiss'));
 const Ticket = lazy(() => import('./Ticket'));
 const PartsAndParcel = lazy(() => import('./PartsAndParcel'));
 const Cast = lazy(() => import('./Cast'));
 const Synopsis = lazy(() => import('./Synopsis'));
+
 class DetailTab extends Component {
   constructor(props){
     super(props);
@@ -35,75 +37,33 @@ class DetailTab extends Component {
 
   render(){
     return <div className="movie-detail">
-        <Accordion defaultExpanded={true} TransitionProps={{ unmountOnExit: true }} >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header">
-            <h5 className="centerText">Review</h5>
-          </AccordionSummary>
-          <AccordionDetails className="review-component" >
-          <Suspense>
+      <Collapse accordion="true" defaultActiveKey={['1']}>
+        <Panel header="Review" key="1" style={{textAlign:"justify"}}>
+        <Suspense>
             <Synopsis synopsis={this.state.synopsis}/>
             </Suspense>
-          </AccordionDetails>
-      </Accordion>
-      <Accordion >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <h5 className="centerText">Hit and Miss</h5>
-          </AccordionSummary>
-          <AccordionDetails>
-          <Suspense fallback={<div>Loading...</div>}>
-            <HitAndMiss pros={this.state.pros} cons={this.state.cons} url={this.state.url}/>
+        </Panel>
+        <Panel header="Hit and Miss" key="2" style={{textAlign:"justify"}}>
+        <Suspense>
+             <HitAndMiss pros={this.state.pros} cons={this.state.cons} url={this.state.url}/>
             </Suspense>
-          </AccordionDetails>
-      </Accordion>
-      <Accordion TransitionProps={{ unmountOnExit: true }} >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <h5 className="centerText">Parts and Parcel</h5>
-          </AccordionSummary>
-          <AccordionDetails>
-          <Suspense fallback={<div>Loading...</div>}>
-            <PartsAndParcel movie={this.state.movie}/>
+        </Panel>
+        <Panel header="Parts and Parcel" key="3" style={{textAlign:"justify"}}>
+        <Suspense>
+        <PartsAndParcel movie={this.state.movie}/>
             </Suspense>
-          </AccordionDetails>
-      </Accordion>
-      <Accordion>
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <h5 className="centerText">Cast and Crew</h5>
-          </AccordionSummary>
-          <AccordionDetails>
-          <Suspense fallback={<div>Loading...</div>}>
-          <Cast cast={this.state.cast}/>
-          </Suspense>
-          </AccordionDetails>
-      </Accordion>
-      <Accordion TransitionProps={{ unmountOnExit: true }} >
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <h5 className="centerText">Ticket</h5>
-          </AccordionSummary>
-          <AccordionDetails>
-          <Suspense fallback={<div>Loading...</div>}>
-              <Ticket ticketDetails={this.state.movie.ticketDetails} ticketImage={this.state.ticketImage}/>
-              </Suspense>
-          </AccordionDetails>
-      </Accordion>
+        </Panel>
+        <Panel header="Cast and Crew" key="4" style={{textAlign:"justify"}}>
+        <Suspense>
+            <Cast cast={this.state.cast}/>
+            </Suspense>
+        </Panel>
+        <Panel header="Ticket" key="5" style={{textAlign:"justify"}}>
+        <Suspense>
+        <Ticket ticketDetails={this.state.movie.ticketDetails} ticketImage={this.state.ticketImage}/>
+            </Suspense>
+        </Panel>
+      </Collapse>
       </div>
   }
 

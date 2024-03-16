@@ -172,8 +172,8 @@ if (this.state.loading) {
         !this.state.loading && <div>
           <div className={this.state.loading ? 'hidden' : 'App'}>
           <Paper elevation={18} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center", height: "50px", padding: "5px",}}>
-          <img src={logo} style={{width:"35px",height:"40px",marginRight:"20px"}} alt={"Popcorn Tales Logo"}></img>
-          <a href="/"><div className="appTitle" >Popcorn Tales</div></a>
+          <a href="/"><img src={logo} style={{width:"35px",height:"40px",marginRight:"20px"}} alt={"Popcorn Tales Logo"}></img></a>
+          <div className="appTitle" >Popcorn Tales</div>
           </Paper>
           <Suspense >
             <Paper className="filter-sort" elevation={5} style={{background: "#fff", display: "flex", justifyContent: "center", alignItems: "center",height:"50px"}}>

@@ -11,15 +11,13 @@ class Cast extends Component {
   }
   render() {
     return <div className="cast-component">
-    <div>
-    {
-        this.props.cast.map(c=>(
-            <div className="flexbox-container" key={c}>
-                <div><LocalMoviesIcon className="movieIcon" /></div>
-                <h6 className="bullets">{c}</h6>
-            </div>
-        ))
-    }
+    <div >
+      {this.props.cast.map(c => (
+        <div style={{ display: "flex", alignItems: "center" }} key={c}>
+          <div><LocalMoviesIcon className="movieIcon" /></div>
+          <div style={{ marginLeft: "5px" }}>{c}</div>
+        </div>
+      ))}
     </div>
     </div>
   }

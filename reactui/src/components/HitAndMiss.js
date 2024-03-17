@@ -3,7 +3,7 @@ import Paper from '@mui/material/Paper';
 import BeenhereIcon from '@mui/icons-material/Beenhere';
 import CancelIcon from '@mui/icons-material/Cancel';
 import parse from 'html-react-parser';
-
+import ImageLoader from './ImageLoader';
 class HitAndMiss extends Component {
   constructor(props){
     super(props);
@@ -37,7 +37,7 @@ class HitAndMiss extends Component {
         </>
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
             <Paper elevation={10}>
-        <img src={this.props.url} className="graphImage" />
+        <ImageLoader src={this.props.url} className="graphImage" alt={"Graph Image"}/>
         </Paper>
         </div>
     </div>

@@ -56,16 +56,7 @@ class Home extends Component {
     this.getFilteredData = this.getFilteredData.bind(this);
     this.onSearch = this.onSearch.bind(this);
   }
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   if (this.state.currentList.length != nextState.currentList.length)
-  //     return true;
-  //   else if (this.state.sortOpen != nextState.sortOpen) return true;
-  //   else if (this.state.filterOpen != nextState.filterOpen) return true;
-  //   else if (this.state.currentList.length == 0) return false;
-  //   else if (this.state.currentList[0].title == nextState.currentList[0].title)
-  //     return false;
-  //   return true;
-  // }
+
   async componentDidMount() {
     try {
       const urlParams = new URLSearchParams(window.location.search);
@@ -105,7 +96,6 @@ class Home extends Component {
   }
 
   onPageChanged(e, v) {
-    debugger;
     var currentPages = [];
     var start = 18 * (v - 1);
     var len =

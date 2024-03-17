@@ -19,6 +19,7 @@ const BottomNavigationAction = lazy(() => import('@mui/material/BottomNavigation
 import { styled } from '@mui/material/styles';
 import ImageLoader from './ImageLoader';
 import Typography from "@mui/material/Typography";
+import logo from "../img/3dlogo.webp";
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -53,13 +54,6 @@ class Detail extends Component {
         schema:{}
     };
   }
-  // shouldComponentUpdate(nextProps, nextState){
-  //   if(!nextState.dataLoaded)
-  //     return false;
-  //   if(this.state.selectedMovie.title != nextState.selectedMovie.title)
-  //     return true;
-  //   return false;
-  // }
 
   componentDidMount(){
     var movieTitle = this.props.match.params.movieName;
@@ -141,8 +135,17 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
 
         <AppBar style={{width:"100%",height:"60px",backgroundColor:"white",color:"black"}} position="static">
         <Toolbar>
-            <a href="/" alt={"Popcorn Tales"}><HomeButton/></a>
-
+          <a href="/">
+                  <img
+                    src={logo}
+                    style={{
+                      width: "30px",
+                      height: "35px",
+                      marginRight: "10px",
+                    }}
+                    alt={"Popcorn Tales Logo"}
+                  ></img>
+            </a>
             {(this.state.selectedMovie.title.length < 20) && <Typography variant="subtitle1" fontWeight={"bold"}  >{this.state.selectedMovie.title +" Movie Review"}</Typography>}
             {(this.state.selectedMovie.title.length >= 20) && <Typography variant="subtitle1" fontWeight={"bold"} >{this.state.selectedMovie.title }</Typography>}
             <section style={{marginLeft:"auto",display:"inline-block"}}>
@@ -152,9 +155,9 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         <div style={{padding:"10px"}}>
             <Hidden mdUp >
               <div style={{width:"100%",marginTop:"20px",zIndex:999}} >
-                    <div className="movie-card" style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <div className="card-image" style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <Paper elevation={19} >
-                      <ImageLoader className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
+                      <ImageLoader className="card-image" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
                       </Paper>
                     </div>
                   </div>
@@ -174,9 +177,9 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             </Hidden>
             <Hidden mdDown>
             <div className="movieDetail">
-                <div className="movie-card" style={{width:"fit-content",marginTop:"2%",padding:"5px",float:"left",zIndex:999}}>
+                <div className="card-image" style={{width:"fit-content",marginTop:"2%",marginLeft:"2%",padding:"5px",float:"left",zIndex:999}}>
                     <Paper elevation={19}  >
-                    <ImageLoader className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
+                    <ImageLoader className="card-image" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
                   </Paper>
                 </div>
                 <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"30px"}}>

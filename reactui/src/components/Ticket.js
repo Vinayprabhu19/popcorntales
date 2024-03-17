@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Paper from '@mui/material/Paper';
 import Typography from "@mui/material/Typography";
-
+import ImageLoader from './ImageLoader';
 class Ticket extends Component {
   constructor(props){
     super(props);
@@ -17,7 +17,7 @@ class Ticket extends Component {
     <Typography variant="subtitle1" fontWeight={"bold"} textAlign={"center"} gutterBottom>Place Watched : {this.props.ticketDetails.placeWatched}</Typography>
     <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
       <Paper elevation={20} id="ticket-container">
-      <img src={this.props.ticketImage} className="ticketImage" alt={"Ticket"}></img>
+      <ImageLoader src={this.props.ticketImage} className="ticketImage" alt={"Ticket"}></ImageLoader>
       </Paper>
     </div>
   </div>

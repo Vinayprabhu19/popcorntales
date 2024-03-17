@@ -10,7 +10,7 @@ const ImageLoader = ({className,alt, src }) => {
 
   return (
     <div>
-      {loading && <img className="card-image" src={logo} alt={alt} />}
+      {loading && <img className={className} src={logo} alt={alt} />}
       <img
         className={className}
         src={src}

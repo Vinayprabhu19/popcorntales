@@ -53,13 +53,13 @@ class Detail extends Component {
         schema:{}
     };
   }
-  shouldComponentUpdate(nextProps, nextState){
-    if(!nextState.dataLoaded)
-      return false;
-    if(this.state.selectedMovie.title != nextState.selectedMovie.title)
-      return true;
-    return false;
-  }
+  // shouldComponentUpdate(nextProps, nextState){
+  //   if(!nextState.dataLoaded)
+  //     return false;
+  //   if(this.state.selectedMovie.title != nextState.selectedMovie.title)
+  //     return true;
+  //   return false;
+  // }
 
   componentDidMount(){
     var movieTitle = this.props.match.params.movieName;

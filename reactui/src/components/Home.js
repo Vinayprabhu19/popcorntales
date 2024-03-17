@@ -186,7 +186,7 @@ class Home extends Component {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  height: "50px",
+                  height: "80px",
                   padding: "5px",
                 }}
               >

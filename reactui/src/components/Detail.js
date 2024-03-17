@@ -18,6 +18,7 @@ const BottomNavigation = lazy(() => import('@mui/material/BottomNavigation'));
 const BottomNavigationAction = lazy(() => import('@mui/material/BottomNavigationAction'));
 import { styled } from '@mui/material/styles';
 import ImageLoader from './ImageLoader';
+import Typography from "@mui/material/Typography";
 
 const StyledRating = styled(Rating)({
   '& .MuiRating-iconFilled': {
@@ -141,8 +142,9 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         <AppBar style={{width:"100%",height:"60px",backgroundColor:"white",color:"black"}} position="static">
         <Toolbar>
             <a href="/" alt={"Popcorn Tales"}><HomeButton/></a>
-            {(this.state.selectedMovie.title.length < 20) && <h1 id="title">{this.state.selectedMovie.title +" Movie Review"}</h1>}
-            {(this.state.selectedMovie.title.length >= 20) && <h1 id="title">{this.state.selectedMovie.title}</h1>}
+
+            {(this.state.selectedMovie.title.length < 20) && <Typography variant="subtitle1" fontWeight={"bold"}  >{this.state.selectedMovie.title +" Movie Review"}</Typography>}
+            {(this.state.selectedMovie.title.length >= 20) && <Typography variant="subtitle1" fontWeight={"bold"} >{this.state.selectedMovie.title }</Typography>}
             <section style={{marginLeft:"auto",display:"inline-block"}}>
             </section>
           </Toolbar>
@@ -158,10 +160,10 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                   </div>
                   <div className="topHeader">
                   <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-                  <h1 className="headerLevel1 centerAligned" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                  <Typography variant="h6" fontWeight={"bold"}  textAlign={"center"} >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</Typography>
                   </div>
-                  <h3 className="headerLevel2 centerAligned">{this.state.selectedMovie.language}</h3>
-                  <h3 className="headerLevel2 centerAligned" >{this.state.selectedMovie.genre.join(",")}</h3>
+                  <Typography variant="subtitle1" fontWeight={"bold"} style={{color:"purple"}} textAlign={"center"} >{this.state.selectedMovie.language}</Typography>
+                  <Typography variant="subtitle1"  textAlign={"center"} >{this.state.selectedMovie.genre.join(",")}</Typography>
                   <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                   {overallRating}
                   </div>
@@ -179,12 +181,12 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
                 </div>
                 <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"30px"}}>
                     <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <h1 className="headerLevel1" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
+                    <Typography variant="h5" fontWeight={"bold"}  textAlign={"center"} >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</Typography>
                     <a id="trailerButton" href={this.state.selectedMovie.trailer} target="_blank" rel="noreferrer">Watch trailer</a>
                     </div>
-                    <h2 className="headerLevel2" >{this.state.selectedMovie.language}</h2>
-                    <h3 className="headerLevel2" >{this.state.selectedMovie.genre.join(",")}</h3>
-                    <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>
+                    <Typography variant="h6" fontWeight={"bold"} style={{color:"purple"}} >{this.state.selectedMovie.language}</Typography>
+                    <Typography variant="h6" >{this.state.selectedMovie.genre.join(",")}</Typography>
+                    <Typography variant="h6" fontWeight={"bold"}  >{this.state.selectedMovie.rating}/5</Typography>
                     {overallRating}
                 </div>
             </div>

@@ -58,13 +58,6 @@ html,body,#root {
     align-items: center;
     align-content: center;
 }
-.centerText{
-    width: 100%;
-    margin: 0;
-    text-align: center;
-    font-size: large;
-    font-family: 'Helvetica';
-}
 
 .iconBtn{
     float: right;

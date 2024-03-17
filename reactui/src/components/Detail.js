@@ -154,8 +154,8 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         </AppBar>
         <div style={{padding:"10px"}}>
             <Hidden mdUp >
-              <div style={{width:"100%",marginTop:"20px",zIndex:999}} >
-                    <div className="card-image" style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+              <div style={{width:"100%",marginTop:"20px",zIndex:999, display: "flex", justifyContent: "center", alignItems: "center"}} >
+                    <div className="card-image" >
                     <Paper elevation={19} >
                       <ImageLoader className="card-image" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
                       </Paper>

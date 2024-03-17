@@ -140,7 +140,7 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
 
         <AppBar style={{width:"100%",height:"60px",backgroundColor:"white",color:"black"}} position="static">
         <Toolbar>
-            <a href="/"><HomeButton/></a>
+            <a href="/" alt={"Popcorn Tales"}><HomeButton/></a>
             {(this.state.selectedMovie.title.length < 20) && <h1 id="title">{this.state.selectedMovie.title +" Movie Review"}</h1>}
             {(this.state.selectedMovie.title.length >= 20) && <h1 id="title">{this.state.selectedMovie.title}</h1>}
             <section style={{marginLeft:"auto",display:"inline-block"}}>
@@ -150,8 +150,8 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
         <div style={{padding:"10px"}}>
             <Hidden mdUp >
               <div style={{width:"100%",marginTop:"20px",zIndex:999}} >
-                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
-                    <Paper elevation={19} className="card-container">
+                    <div className="movie-card" style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <Paper elevation={19} >
                       <ImageLoader className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
                       </Paper>
                     </div>
@@ -172,26 +172,21 @@ const overallRating = this.hearts(this.state.selectedMovie.rating);
             </Hidden>
             <Hidden mdDown>
             <div className="movieDetail">
-                <div id="card" style={{width:"fit-content",marginTop:"2%",paddingLeft:"20px",float:"left",zIndex:999}}>
-                    <Paper elevation={19}  className="card-container">
+                <div className="movie-card" style={{width:"fit-content",marginTop:"2%",padding:"5px",float:"left",zIndex:999}}>
+                    <Paper elevation={19}  >
                     <ImageLoader className="movie-card" alt={this.state.selectedMovie.title} src={this.state.selectedMovie.titleImage}></ImageLoader>
                   </Paper>
                 </div>
                 <div style={{width:"fit-content",marginTop:"2%",float:"left",marginLeft:"30px"}}>
                     <div style={{ display: "flex", justifyContent: "center", alignItems: "center"}}>
                     <h1 className="headerLevel1" >{this.state.selectedMovie.title} ({this.state.selectedMovie.year})</h1>
-
+                    <a id="trailerButton" href={this.state.selectedMovie.trailer} target="_blank" rel="noreferrer">Watch trailer</a>
                     </div>
                     <h2 className="headerLevel2" >{this.state.selectedMovie.language}</h2>
                     <h3 className="headerLevel2" >{this.state.selectedMovie.genre.join(",")}</h3>
                     <h3 className="headerLevel2" >{this.state.selectedMovie.rating}/5</h3>
                     {overallRating}
                 </div>
-                <Suspense>
-                <iframe id="trailer" title={this.state.selectedMovie} src={this.state.selectedMovie.trailer}
-                  allow="accelerometer; autoplay; picture-in-picture" >
-                  </iframe>
-                  </Suspense>
             </div>
             </Hidden>
         </div>

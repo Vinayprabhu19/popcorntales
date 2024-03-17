@@ -6,6 +6,7 @@ import SentimentDissatisfiedIcon from '@mui/icons-material/SentimentDissatisfied
 import SentimentSatisfiedIcon from '@mui/icons-material/SentimentSatisfied';
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
+import Typography from "@mui/material/Typography";
 
 const customIcons = {
   1: {
@@ -48,7 +49,7 @@ class PartsAndParcel extends Component {
   render() {
     return <div className="review-component">
     <div>
-     <h5>Script - {this.props.movie.scriptRating}/5</h5>
+     <Typography variant="subtitle1" fontWeight={"bold"} gutterBottom>Script - {this.props.movie.scriptRating}/5</Typography>
      <Rating
      name="customized-icons"
      defaultValue={Math.round(this.props.movie.scriptRating)}
@@ -57,7 +58,7 @@ class PartsAndParcel extends Component {
    />
    </div>
    <div>
-    <h5>Acting - {this.props.movie.actingRating}/5</h5>
+    <Typography variant="subtitle1" fontWeight={"bold"} gutterBottom>Acting - {this.props.movie.actingRating}/5</Typography>
    {/* {actingRating} */}
    <Rating
      name="customized-icons"
@@ -67,7 +68,7 @@ class PartsAndParcel extends Component {
    />
    </div>
    <div>
-     <h5>Direction - {this.props.movie.directionRating}/5</h5>
+     <Typography variant="subtitle1" fontWeight={"bold"} gutterBottom>Direction - {this.props.movie.directionRating}/5</Typography>
      <Rating
      name="customized-icons"
      defaultValue={Math.round(this.props.movie.directionRating)}
@@ -76,7 +77,7 @@ class PartsAndParcel extends Component {
    />
    </div>
    <div>
-     <h5>Dialogues - {this.props.movie.dialoguesRating}/5</h5>
+     <Typography variant="subtitle1" fontWeight={"bold"} gutterBottom>Dialogues - {this.props.movie.dialoguesRating}/5</Typography>
      <Rating
      name="customized-icons"
      defaultValue={Math.round(this.props.movie.dialoguesRating)}
@@ -85,7 +86,7 @@ class PartsAndParcel extends Component {
    />
    </div>
    <div>
-     <h5>Visuals - {this.props.movie.cinematographyRating}/5</h5>
+     <Typography variant="subtitle1" fontWeight={"bold"} gutterBottom>Visuals - {this.props.movie.cinematographyRating}/5</Typography>
      <Rating
      name="customized-icons"
      defaultValue={Math.round(this.props.movie.cinematographyRating)}
@@ -94,7 +95,7 @@ class PartsAndParcel extends Component {
    />
    </div>
    <div>
-     <h5>Editing - {this.props.movie.editingRating}/5</h5>
+     <Typography variant="subtitle1" fontWeight={"bold"} gutterBottom>Editing - {this.props.movie.editingRating}/5</Typography>
      <Rating
      name="customized-icons"
      defaultValue={Math.round(this.props.movie.editingRating)}
@@ -103,7 +104,7 @@ class PartsAndParcel extends Component {
    />
    </div>
    <div>
-     <h5>Music - {this.props.movie.musicRating}/5</h5>
+     <Typography variant="subtitle1" fontWeight={"bold"} gutterBottom>Music - {this.props.movie.musicRating}/5</Typography>
      <Rating
      name="customized-icons"
      defaultValue={Math.round(this.props.movie.musicRating)}

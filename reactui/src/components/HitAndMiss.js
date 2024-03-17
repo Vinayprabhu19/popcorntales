@@ -16,21 +16,21 @@ class HitAndMiss extends Component {
   render() {
     return <div className="review-component">
     <>
-        <h4 className="subHeader">What worked well?</h4>
+        <h4 >What worked well?</h4>
         {
             this.props.pros.map(pro=>(
               <div style={{ display: "flex", alignItems: "center" }} key={pro}>
                     <div><BeenhereIcon className="checkIcon" /></div>
-                    <div className='pointerText'>{ parse("<p>"+pro+"</p>") }</div>
+                    <div>{ parse("<p>"+pro+"</p>") }</div>
                 </div>
             ))
         }
-        <h4 className="subHeader">What didn't work well?</h4>
+        <h4 >What didn't work well?</h4>
         {
             this.props.cons.map(con=>(
               <div style={{ display: "flex", alignItems: "center" }} key={con}>
                     <div><CancelIcon className="cancelIcon" /></div>
-                    <div className='pointerText'>{ parse("<p>"+con+"</p>") }</div>
+                    <div >{ parse("<p>"+con+"</p>") }</div>
                 </div>
             ))
         }
